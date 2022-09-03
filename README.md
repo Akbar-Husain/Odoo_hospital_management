@@ -1,1 +1,1 @@
-# Odoo_hospital_management new
+# Odoo_hospital_management
