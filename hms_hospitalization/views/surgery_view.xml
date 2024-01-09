@@ -1,0 +1,263 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="hms_surgery_view">
+            <field name="name">Surgery</field>
+            <field name="model">hms_surgery</field>
+            <field name="arch" type="xml">
+                <form string="Surgery">
+                    <sheet>
+                        <group id="surgon_id">
+                            <group>
+                                <field name="name"></field>
+                                <field name="description" required="1"></field>
+                                <field name="diseases"></field>
+                            </group>
+                            <group>
+                                <field name="dietplan"/>
+                                <field name="surgery_product_id" domain="[('hospital_product_type','=','surgery')]"/>
+                                <!-- <field name="speciality" /> -->
+                                <!-- <field name="sub_speciality" /> -->
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="classification"></field>
+                                <field name="date"></field>
+                            </group>
+                            <group>
+                                <field name="age"></field>
+                                <field name="surgeon"></field>
+                            </group>
+                        </group>
+                        <field name="extra_info" colspan='4'></field>
+                        <group>
+                            <notebook>
+                                <page string="Discharge Summary">
+                                    <label for="diagnosis"/>
+                                    <field name="diagnosis" colspan="4"></field>
+                                    <label for="clinincal_history"/>
+                                    <field name="clinincal_history" colspan="4"></field>
+                                    <label for="examination_id"/>
+                                    <field name="examination_id" colspan="4"></field>
+                                    <label for="investigation_id"/>
+                                    <field name="investigation_id" colspan="4"></field>
+                                    <label for="adv_on_dis"/>
+                                    <field name="adv_on_dis" colspan="4"/>
+                                </page>
+                            </notebook>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="hms_surgery_tree" model="ir.ui.view">
+            <field name="name">Surgery Lists</field>
+            <field name="model">hms_surgery</field>
+            <field name="arch" type="xml">
+                <tree string='Surgery'>
+                    <field name="name"></field>
+                    <field name="description"></field>
+                    <field name="diseases"></field>
+                </tree>
+            </field>
+        </record>
+
+        <record id="act_open_indiemdi_action_form_surgery" model="ir.actions.act_window">
+            <field name="name">Surgery Type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hms_surgery</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="hms_surgery_tree"/>
+        </record>
+
+        <!-- Include the Surgery page into the Patient History -->
+        <record model="ir.ui.view" id="hms_patient_view">
+            <field name="name">Patient</field>
+            <field name="model">banastech.hms.patient</field>
+            <field name="inherit_id" ref="banastech_hms.view_banastech_hms_patient_form" />
+            <field name="arch" type="xml">
+                <!-- <button name="view_invoice"> -->
+                <!-- <button name="action_hospitalization" string="Hospitalization" type="object" class="oe_stat_button" icon="fa-pencil-square-o"/>
+                </button> -->
+                <xpath expr="//notebook/page[@name='diseases']" position="after">
+                        <page string="Surgeries" invisible="0">
+                            <group string="Hospital Surgeries">
+                                <field name="surgery" colspan="4" nolabel="1" widget="one2many_list" readonly="0" />
+                            </group>
+                            <group string="Past Surgeries">
+                                <field name="past_surgeries_ids" colspan="4" nolabel="1">
+                                    <tree editable="top">
+                                        <field name="date"/>
+                                        <field name="description" required="1"/>
+                                        <field name="result" string="Outcome"/>
+                                        <field name="hosp_or_doctor"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                </xpath>
+                <xpath expr="//field[@name='age']" position="after">
+                    <field name="age_years" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_hospitalization_surgery_form">
+            <field name="name">Hospitalization Surgery</field>
+            <field name="model">inpatient.registration</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                    </header>
+                    <sheet class="indimedi_form_full_width">
+                         <h1>
+                            <field name="image" widget="image" class="oe_avatar" nolabel="1"/>
+                            <!-- <label string="Hospitalization Surgery #"/><br/> -->
+                            <field name="name" readonly="1" class="oe_inline" attrs="{'invisible': [('state','in',('draft'))]}"/>
+                            <field name="state" invisible="1"/>
+                        </h1>
+                        <group>
+                            <group>
+                                <field name="patient_id" required="1"></field>
+                                <field name="appointment_id" readonly="0"/>
+                                <field name="mobile"/>
+                                <field name="gender" invisible="1"/>
+                                <field name="invoice_id" invisible="1"/>
+                                <field name="hospitalization_date" required="1" />
+                                <field name="company_id" invisible="1"></field>
+                                <field name="department_id"></field>
+                                <!-- <field name="primary_physician" required="1"/> -->
+                                <label for="attending_physician_ids" string="Co-Consultant" />
+                                <div class="address_format">
+                                    <field name="attending_physician_ids" widget="many2many_tags"
+                                    />
+                                </div>
+                                <field name="relative_id" invisible="1"></field>
+                                <field name="relative_name"></field>
+                                <field name="relative_with_patient"></field>
+                                <field name="relative_number"></field>
+                                <field name="mlc"></field>
+                            </group>
+                            <group>
+                                <field name="ward_id" widget="selection" attrs="{'required': [('state','in',('confirm'))]}"/>
+                                <field name="bed_id"  domain="[('ward_id', '=', ward_id), ('state', '=', 'free')]"  attrs="{'required': [('state','in',('confirm'))]}"></field>
+                                <field name="admission_type" required="1"></field>
+                                <field name="admission_reason" invisible="1"/>
+                                <field name="discharge_date" invisible="1"></field>
+                                <field name="no_invoice" groups="banastech_hms.group_banas_hms_jr_doctor,banastech_hms.group_banastech_hms_nurse,banastech_hms.group_banastech_hms_manager,banastech_hms.group_banastech_hms_medical_officer,banastech_hms.group_banas_hms_doctor" invisible="1"></field>
+                                <field name="payment_category"/>
+                                <field name="expected_stay"/>
+                                <field name="remark_note"></field>
+                            </group>
+                        </group>
+                        <notebook>
+                            <!-- <page name="ot_pre_check" string="OT Pre Checklist" groups="banastech_hms.group_banastech_hms_nurse,banastech_hms.group_banastech_hms_medical_officer,banastech_hms.group_banas_hms_doctor">
+                                <field name="pre_operative_checklist_ids">
+                                    <tree editable="top">
+                                        <field name="name" readonly="1"/>
+                                        <field name="is_done" />
+                                        <field name="remark" />
+                                    </tree>
+                                </field>
+                            </page> -->
+                            <!-- <page string="Surgery" groups="banastech_hms.group_banastech_hms_medical_officer,banastech_hms.group_banas_hms_doctor">
+                                <group string="List of Medicaments">
+                                    <field name="medicament_line" nolabel="1" colspan="4">
+                                        <tree string="Line" editable="top">
+                                            <field name="product_id" expand="1" required="1" />
+                                            <field name="active_component_ids" widget="many2many_tags" />
+                                            <field name="form" />
+                                            <field name="dose" />
+                                            <field name="medicine_uom" required="1" string="Dosage Unit" />
+                                            <field name="common_dosage" />
+                                            <field name="qty" required="1" string="Units" />
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page> -->
+                            <!-- <page name="post_op_order" string="Post-Operative Orders" groups="banastech_hms.group_banastech_hms_medical_officer,banastech_hms.group_banas_hms_doctor">  -->
+                                <!-- <group string="General Instruction">
+                                    <field name="post_instruction_ids" nolabel="1" colspan="4">
+                                        <tree string="" editable="True">
+                                            <field name="instruction_list_id" string="Instruction"
+                                                required="1" />
+                                            <field name="instruction_done" />
+                                            <field name="instruction_time_ins" />
+                                        </tree>
+                                    </field>
+                                </group>
+                                <newline /> -->
+                                <!-- <group string="I/V Fluids">
+                                    <field name="fluid_ids" nolabel="1" colspan="4">
+                                        <tree string="Line" editable="top">
+                                            <field name="fluid_id" required="1" />
+                                            <field name="rate" />
+                                            <field name="quantity" />
+                                        </tree>
+                                    </field>
+                                </group>
+                                <newline /> -->
+                                <!-- <group string="Antibiotic-Analgesics">
+                                    <field name="antibiotic_ids" nolabel="1" colspan="4">
+                                        <tree string="Line" editable="top">
+                                            <field name="anti_id" />
+                                            <field name="sos" />
+                                            <field name="t1" />
+                                            <field name="b1" />
+                                            <field name="time1" readonly="1" />
+                                            <field name="t2" />
+                                            <field name="b2" />
+                                            <field name="time2" readonly="1" />
+                                            <field name="t3" />
+                                            <field name="b3" />
+                                            <field name="time3" readonly="1" />
+                                            <field name="t4" />
+                                            <field name="b4" />
+                                            <field name="time4" readonly="1" />
+                                        </tree>
+                                    </field>
+                                </group>
+                                <newline /> -->
+                                <!-- <group string="Miscellaneous Drugs">
+                                    <field name="miscellaneous_ids" nolabel="1" colspan="4">
+                                        <tree string="Line" editable="top">
+                                            <field name="misc_id" />
+                                            <field name="sos" />
+                                            <field name="t5" />
+                                            <field name="b5" />
+                                            <field name="time5" readonly="1" />
+                                            <field name="t6" />
+                                            <field name="b6" />
+                                            <field name="time6" readonly="1" />
+                                            <field name="t7" />
+                                            <field name="b7" />
+                                            <field name="time7" readonly="1" />
+                                            <field name="t8" />
+                                            <field name="b8" />
+                                            <field name="time8" readonly="1" />
+                                        </tree>
+                                    </field>
+                                </group> -->
+                                <newline />
+                                <!-- <label for="special_precautions_id" />
+                                <field name="special_precautions_id" /> -->
+                            <!-- </page> -->
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+         <record id="action_hospitalization_surgery_form" model="ir.actions.act_window">
+            <field name="name">Surgery</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">inpatient.registration</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">new</field>
+            <field name="context">{}</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                    (0, 0, {'view_mode': 'form', 'view_id': ref('view_hospitalization_surgery_form')})]"/>
+        </record>
+    </data>
+</odoo>

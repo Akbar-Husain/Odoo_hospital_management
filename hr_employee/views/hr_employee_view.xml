@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Employee Kanban inherit view -->
+        <record id="view_hr_employee_fullname_kanban" model="ir.ui.view">
+            <field name="name">hr.employee.full.name.kanban</field>
+            <field name="model">hr.employee</field>
+            <!-- <field name="inherit_id" ref="hr.hr_kanban_view_employees"/> -->
+            <field name="arch" type="xml">
+                <kanban>
+                <!-- <field name="name" position="replace"> -->
+                    <field name="full_name"/>
+                <!-- </field> -->
+                </kanban>
+            </field>
+        </record>
+
+        <record id="banas_hr_employee_form" model="ir.ui.view">
+            <field name="name">banas.hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <!-- <field name="inherit_id" ref="hr.view_employee_form"/> -->
+            <field name="arch" type="xml">
+                <form>
+                   <!--  <field name="work_email" position="replace"/>
+                    <field name="address_id" position="replace"/>
+                    <field name="work_phone" position="replace"/>
+                    <field name="mobile_phone" position="replace"/>
+                    <field name="work_location" position="replace"/>
+                    <field name="bank_account_id" position="replace"/>
+                    <xpath expr="//notebook/page[2]/group/group[4]" position="replace"/>
+                    <xpath expr="//notebook/page[2]/group/group[3]" position="replace"/>
+                    <field name="category_ids" position="replace">
+                        <div style="width:50%;">
+                            <label string="Category"/>
+                            <field name="category_ids" widget="many2many_tags" placeholder="e.g. Part Time" groups="base.group_hr_user"/>
+                        </div><br/>
+                    </field> -->
+                    <!-- <xpath expr="//div[@class='oe_title']" position="replace"> -->
+                        <div class="oe_title">
+                            <h2>
+                                <field name="full_name" style="width: 60%; font-weight: bold;" class="oe_read_only"/>
+                            </h2>
+                            <!-- <field name="name" placeholder="First Name" style="width: 60%; font-weight: bold;" class="oe_edit_only"/> -->
+                            <field name="middle_name" placeholder="Middle Name" style="width: 60%; font-weight: bold;" class="oe_edit_only"/>
+                            <field name="last_name" placeholder="Last Name" style="width: 60%; font-weight: bold;" class="oe_edit_only"/>
+                        </div>
+                    <!-- </xpath> -->
+                    <!-- <xpath expr="//page[@name='public']/group" position="inside"> -->
+                        <group name="work_info" string="Work Info">
+                            <!-- <field name="employee_code"/> -->
+                            <!-- <field name="address_id" on_change="onchange_address_id(address_id)"
+                                context="{'show_address': 1}"
+                                options='{"always_reload": True, "highlight_first_line": True}'/> -->
+                            <!-- <field name="mobile_phone"/> -->
+                            <!-- <field name="work_location"/> -->
+                            <!-- <field name="work_email" widget="email"/> -->
+                            <!-- <field name="work_phone"/> -->
+                            <field name="emergency_con_no"/>
+                            <field name="shift"/>
+                            <field name="date_joining"/>
+                            <field name="current_epxperiance"/>
+                            <field name="total_experience"/>
+                            <field name="help_check_amount"/>
+                        </group>
+                        <group name="further_info" string="Further Info">
+                            <field name="aadhar_no"/>
+                            <field name="aadhar_name"/>
+                            <field name="pancard_no"/>
+                            <field name="pan_name"/>
+                            <field name="voter_id"/>
+                            <field name="driving_lic"/>
+                            <!-- <field name="passport_id"/> -->
+                            <!-- <field name="gender"/> -->
+                            <!-- <field name="marital"/> -->
+                            <field name="date_of_marriage"/>
+                            <field name="uan_no"/>
+                            <field name="date_of_uan"/>
+                            <field name="pf_no"/>
+                            <!-- <field name="bank_account_id"/> -->
+                            <field name="ifsc_code"/>
+                        </group>
+                    <!-- </xpath> -->
+                    <!-- <xpath expr="//page[@name='public']/group" position="after"> -->
+                        <group string="Family">
+                            <div>
+                                <field name="employee_family_line">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="relationship"/>
+                                        <field name="family_dependence"/>
+                                        <field name="dob"/>
+                                        <field name="age" readonly="1"/>
+                                        <field name="kaizen_employees"/>
+                                    </tree>
+                                </field>
+                            </div>
+                        </group>
+                        <!-- <group string="Family Address">
+                            <div>
+                                <field name="employee_family_address_line">
+                                    <tree editable="bottom">
+                                        <field name="address_type"/>
+                                        <field name="con_person_name"/>
+                                        <field name="relationship_emp"/>
+                                        <field name="mobile_no"/>
+                                        <field name="address"/>
+                                        <field name="city"/>
+                                        <field name="dist"/>
+                                        <field name="state"/>
+                                        <field name="country"/>
+                                        <field name="zip_code"/>
+                                    </tree>
+                                </field>
+                            </div>
+                        </group> -->
+                        <!-- <group string="Employee Experience">
+                            <div>
+                                <field name="employee_experience_line">
+                                    <tree editable="bottom">
+                                        <field name="external_comp_name"/>
+                                        <field name="functional_domain"/>
+                                        <field name="external_comp_add"/>
+                                        <field name="last_salary_drawn"/>
+                                        <field name="from_date"/>
+                                        <field name="to_date"/>
+                                        <field name="experience_duration"/>
+                                        <field name="designation"/>
+                                        <field name="relevant_exp"/>
+                                    </tree>
+                                </field>
+                            </div>
+                        </group> -->
+                        <!-- <group string="Languages">
+                            <div>
+                                <field name="employee_language_line">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="is_read"/>
+                                        <field name="is_write"/>
+                                        <field name="is_speak"/>
+                                    </tree>
+                                </field>
+                            </div>
+                        </group> -->
+                        <!-- <group string="Qualification ">
+                            <div>
+                                <field name="employee_qualification_line">
+                                    <tree editable="bottom">
+                                        <field name="institute"/>
+                                        <field name="year"/>
+                                        <field name="grade"/>
+                                        <field name="subject"/>
+                                    </tree>
+                                </field>
+                            </div>
+                        </group>
+                    </xpath> -->
+                    <!-- <field name="work_phone" position="attributes">
+                        <attribute name="string">Phone Office</attribute>
+                    </field> -->
+                    <!-- <xpath expr="//page[@name='public']/group/group[1]" position="inside">
+                        <field name="gurdian"/>
+                        <field name="gurdian_occupation"/>
+                        <field name="phone_personal"/>
+                        <field name="personal_email"/>
+                        <field name="birthday"/>
+                        <field name="age" readonly="1"/>
+                        <field name="place_of_birth"/>
+                        <field name="blood_group"/>
+                    </xpath> -->
+                    <!-- <field name="job_id" position="attributes">
+                        <attribute name="string">Designation</attribute>
+                    </field>
+                    <field name="parent_id" position="attributes">
+                        <attribute name="string">Reporting 1</attribute>
+                    </field>
+                    <field name="coach_id" position="attributes">
+                        <attribute name="string">Reporting 2</attribute>
+                    </field>
+                    <page name="public" position="attributes">
+                        <attribute name="string">Employee Details</attribute>
+                    </page>
+                    <field name="passport_id" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </field> -->
+                    <!-- <field name="passport_id" position="after">
+                        <field name="aadhar_no" />
+                        <field name="pancard_no" />
+                    </field> -->
+                    <!-- <xpath expr="//group[@name='active_group']" position="after">
+                        <group string="Joining Details">
+                            <field name="joining_date"/>
+                        </group>
+                    </xpath> -->
+                    <!-- <field name="notes" position="before">
+                        <separator string="Job Description" />
+                        <notebook>
+                            <page string="Job Description">
+                                <field name="job_description" placeholder="Job Description ..." colspan="4" />
+                            </page>
+                            <page string="Previous Job Description" >
+                                <field name="old_description" string="Previous Description" readonly="1"/>
+                            </page>
+                        </notebook>
+                    </field> -->
+                    <!-- <xpath expr="//notebook/page[2]/group/group[2]" position="replace">
+                        <group string="Contact Information">
+                            <label for="street" string="Address"/>
+                            <div class="o_address_format">
+                                <field name="street" placeholder="Street..." class="o_address_street"/>
+                                <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                <field name="city" placeholder="City" class="o_address_city"/>
+                                <field name="state_id" class="o_address_state" placeholder="State" options='{"no_open": True}' on_change="onchange_state(state_id)"/>
+                                <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                            </div>
+                        </group>
+                    </xpath> -->
+                    <!-- <xpath expr="//notebook" position="inside">
+                        <page string="Joining Checklist" groups="base.group_hr_user">
+                            <group string="Employee Personal File Checklist">
+                                <div>
+                                    <field name="employee_check_list_line">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                            <field name="is_check"/>
+                                            <field name="remark"/>
+                                        </tree>
+                                    </field>
+                                </div>
+                            </group>
+                            <group string="Kaizen Document">
+                                <div>
+                                    <field name="kaizen_document_line">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                            <field name="is_check"/>
+                                            <field name="remark"/>
+                                        </tree>
+                                    </field>
+                                </div>
+                            </group>
+                        </page>
+                        <page string="Kaizen Tenure">
+                            <group string="Employee History (Promotion)">
+                                <div>
+                                    <field name="employee_history_line">
+                                        <tree editable="bottom">
+                                            <field name="employee_designation"/>
+                                            <field name="active_is"/>
+                                            <field name="designation_from_date"/>
+                                            <field name="designation_till_date"/>
+                                            <field name="reporting_to"/>
+                                        </tree>
+                                    </field>
+                                </div>
+                            </group>
+                            <group string="Training">
+                                <div>
+                                    <field name="employee_training_line">
+                                        <tree editable="bottom">
+                                            <field name="training_date"/>
+                                            <field name="topic"/>
+                                            <field name="employee_id"/>
+                                            <field name="evaluation_marks"/>
+                                        </tree>
+                                    </field>
+                                </div>
+                            </group>
+                            <group string="Awards &amp; Appreciation">
+                                <div>
+                                    <field name="employee_awards_line">
+                                        <tree editable="bottom">
+                                            <field name="date"/>
+                                            <field name="theme"/>
+                                            <field name="attachment_letter"/>
+                                        </tree>
+                                    </field>
+                                </div>
+                            </group>
+                            <group string="Discliplinary Action">
+                                <div>
+                                    <field name="employee_discliplinary_action_line">
+                                        <tree editable="bottom">
+                                            <field name="date"/>
+                                            <field name="reason"/>
+                                            <field name="attachment_letter"/>
+                                        </tree>
+                                    </field>
+                                </div>
+                            </group>
+                            <group string="Grievances">
+                                <div>
+                                    <field name="employee_grievances_line">
+                                        <tree editable="bottom">
+                                            <field name="date"/>
+                                            <field name="employee_id"/>
+                                            <field name="issue"/>
+                                            <field name="against_to_whom"/>
+                                        </tree>
+                                    </field>
+                                </div>
+                            </group>
+                            <group string="Events Report">
+                                <div>
+                                    <field name="employee_events_report_line">
+                                        <tree editable="bottom">
+                                            <field name="date"/>
+                                            <field name="type_error"/>
+                                            <field name="description"/>
+                                        </tree>
+                                    </field>
+                                </div>
+                            </group>
+                            <group string="Refuse to do extra work">
+                                <div>
+                                    <field name="employee_refuse_work_line">
+                                        <tree editable="bottom">
+                                            <field name="office_date"/>
+                                            <field name="work"/>
+                                            <field name="reason"/>
+                                        </tree>
+                                    </field>
+                                </div>
+                            </group>
+                            <group string="Appraisal &amp; Increment">
+                                <div>
+                                    <field name="employee_appraisal_line">
+                                        <tree editable="bottom">
+                                            <field name="year"/>
+                                            <field name="date"/>
+                                            <field name="ctc"/>
+                                            <field name="increment_percentage"/>
+                                            <field name="current"/>
+                                            <field name="retention_increment"/>
+                                        </tree>
+                                    </field>
+                                </div>
+                            </group>
+                            <group string="Advance Salary/Loan Detail">
+                                <div>
+                                    <field name="employee_advance_salary_line">
+                                        <tree editable="bottom">
+                                            <field name="date"/>
+                                            <field name="employee_id"/>
+                                            <field name="eid"/>
+                                            <field name="designation"/>
+                                            <field name="amount"/>
+                                            <field name="reason"/>
+                                            <field name="approval_person"/>
+                                        </tree>
+                                    </field>
+                                </div>
+                            </group>
+                            <group string="Documents Details">
+                                <div>
+                                    <field name="employee_documents_details_line">
+                                        <tree editable="bottom">
+                                            <field name="document_no"/>
+                                            <field name="description"/>
+                                            <field name="datas"/>
+                                        </tree>
+                                    </field>
+                                </div>
+                            </group>
+                        </page>
+                        <page string="Exit Checklist">
+                            <b>
+                                <field name="employee_exit_line">
+                                    <tree editable="bottom" create="0">
+                                        <field name="name" readonly="1"/>
+                                        <field name="is_check"/>
+                                    </tree>
+                                </field>
+                            </b>
+                            <b>
+                                <label string="Have we give any resource to him? Has he submitted that back to company?"/><br/>
+                            </b>
+                            <table style="width: 35%">
+                                <tr>
+                                    <td><label for="is_phone_resource" style="font-weight: bold"/></td>
+                                    <td><field name="is_phone_resource"/></td>
+                                    <td><label for="is_sim" style="font-weight: bold"/></td>
+                                    <td><field name="is_sim"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="is_card" style="font-weight: bold"/></td>
+                                    <td><field name="is_card"/></td>
+                                    <td><label for="is_uniform" style="font-weight: bold"/></td>
+                                    <td><field name="is_uniform"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="is_other" style="font-weight: bold"/></td>
+                                    <td><field name="is_other"/></td>
+                                </tr>
+                                <tr attrs="{'invisible': [('is_other', '=', False)]}">
+                                    <td><label for="other_resource" style="font-weight: bold"/></td>
+                                    <td><field name="other_resource" attrs="{'required': [('is_other', '=', True)]}"/></td>
+                                </tr>
+                            </table>
+                            <group>
+                                <field name="resigned_date"/>
+                                <field name="notice_period" style="width: 15%;"/>
+                                <field name="date_of_relieving"/>
+                            </group>
+                        </page>
+                    </xpath> -->
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

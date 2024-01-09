@@ -1,0 +1,99 @@
+<!-- <?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="apointment_letter_id" model="kaizen.document">
+            <field name="name">Apointment Letter</field>
+        </record>
+
+        <record id="salary_bifurcation_letter_id" model="kaizen.document">
+            <field name="name">Salary Bifurcation Letter</field>
+        </record>
+
+        <record id="job_discrioption_id" model="kaizen.document">
+            <field name="name">Job Discrioption</field>
+        </record>
+
+        <record id="confirmation_letter_id" model="kaizen.document">
+            <field name="name">Confirmation letter</field>
+        </record>
+
+        <record id="promotion_letter_appreciation_letter_id" model="kaizen.document">
+            <field name="name">Promotion letter/ Appreciation letter</field>
+        </record>
+
+
+        <record id="increment_letter_id" model="kaizen.document">
+            <field name="name">Increment letter</field>
+        </record>
+
+        <record id="performance_appraisal_id" model="kaizen.document">
+            <field name="name">Performance Appraisal</field>
+        </record>
+
+        <record id="pf_details_id" model="kaizen.document">
+            <field name="name">PF Details</field>
+        </record>
+
+        <record id="salary_certificate_id" model="kaizen.document">
+            <field name="name">Salary Certificate</field>
+        </record>
+
+        <record id="memo_id" model="kaizen.document">
+            <field name="name">Memo</field>
+        </record>
+
+        <record id="pf_details_id" model="kaizen.document">
+            <field name="name">PF Details</field>
+        </record>
+
+
+        <record id="relieving_letter_id" model="kaizen.document">
+            <field name="name">Relieving Letter</field>
+        </record>
+
+        <record id="credetial_form_id" model="kaizen.document">
+            <field name="name">Credetial Form</field>
+        </record>
+
+        <record id="department_clearance_form_id" model="kaizen.document">
+            <field name="name">Department Clearance form</field>
+        </record>
+
+
+        <record id="full_final_settlement_letter_id" model="kaizen.document">
+            <field name="name">Full &amp; Final Settlement letter</field>
+        </record>
+
+        <record id="health_check_up_report_id" model="kaizen.document">
+            <field name="name">Health Check up report</field>
+        </record>
+
+        <record id="alloted_phone_id" model="kaizen.document">
+            <field name="name">Alloted Phone</field>
+        </record>
+
+        <record id="alloted_uniform_id" model="kaizen.document">
+            <field name="name">Alloted Uniform</field>
+        </record>
+
+        <record id="id_card_id" model="kaizen.document">
+            <field name="name">ID Card</field>
+        </record>
+
+        <record id="alternate_email_id" model="kaizen.document">
+            <field name="name">Alternate Email ID</field>
+        </record>
+
+        <record id="alternate_phone_no_id" model="kaizen.document">
+            <field name="name">Alternate Phone No.</field>
+        </record>
+
+        <record id="employee_induction_checklist_id" model="kaizen.document">
+            <field name="name">Employee Induction Checklist</field>
+        </record>
+
+        <record id="employee_introduction_checklist_id" model="kaizen.document">
+            <field name="name">Employee Introduction Checklist</field>
+        </record>
+    </data>
+</odoo> -->

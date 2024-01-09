@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="hms_cost_estimation_report">
+            <t t-call="report.html_container">     
+                <t t-foreach="docs" t-as="o">        
+                    <div class="page">
+                        <div class="row">
+                            <div class="col-xs-4" align="left">
+                                <!-- <img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % o.company_id.logo" style="max-height: 65px;"/> -->
+                            </div>
+                            <div class="col-xs-4"/>                            
+                        </div>                        
+                        <div class="row">
+                            <table class="table table-condensed table-bordered" style="font-size:12px;">
+                              <tr colspan="4" style="background-color:#DBE1E5;">
+                                <td style="border: 1px solid black;"><strong>Patient Details</strong></td>
+                                <td style="border: 1px solid black;"></td>
+                                <td style="border: 1px solid black;"></td>
+                                <td style="border: 1px solid black;"></td>
+                              </tr>
+                              <tr>
+                                <td style="border: 1px solid black;"><strong>Patient Name</strong></td>
+                                <td style="border: 1px solid black;"><span t-field="o.patient_id"/></td>
+                                <td style="border: 1px solid black;"><strong>Date</strong></td>
+                                <td style="border: 1px solid black;"><span t-field="o.estimate_date"/></td>
+                              </tr>
+                              <tr>
+                                <td style="border: 1px solid black;"><strong>Consultant Name</strong></td>
+                                <td style="border: 1px solid black;"><span t-field="o.consultant_id"/></td>
+                                <td style="border: 1px solid black;"><strong>Room Category</strong></td>
+                                <td style="border: 1px solid black;"><span t-field="o.room_category"/></td>
+                              </tr>
+                              <tr>
+                                <td style="border: 1px solid black;"><strong>Surgery/Procedure</strong></td>
+                                <td style="border: 1px solid black;"><span t-field="o.surgery_procedure"/></td>
+                                <td style="border: 1px solid black;"><strong>No of Days</strong></td>
+                                <td style="border: 1px solid black;"><span t-field="o.estimate_day"/></td>
+                              </tr>
+                              <tr>
+                                <td style="border: 1px solid black;"><strong>Case Type</strong></td>
+                                <td style="border: 1px solid black;"><span t-field="o.case_type"/></td>
+                                <td style="border: 1px solid black;"><strong>Package</strong></td>
+                                <td style="border: 1px solid black;"><span t-field="o.package"/></td>
+                              </tr>
+                              <tr>
+                                <td style="border: 1px solid black;"><strong>Surgery Grade</strong></td>
+                                <td style="border: 1px solid black;"><span t-field="o.surgery_grade"/></td>
+                                <td style="border: 1px solid black;"><strong></strong></td>
+                                <td style="border: 1px solid black;"></td>
+                              </tr>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <table class="table">
+                                <thead>
+                                    <tr style="background-color:#DBE1E5;">
+                                        <td style="border: 1px solid black;">Particulars</td>
+                                        <td style="border: 1px solid black;">Room Type</td>
+                                        <td style="border: 1px solid black;">Days</td>
+                                        <td style="border: 1px solid black;">Charges</td>
+                                        <td style="border: 1px solid black;">Total Amount</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="o.room_facility_charges_ids" t-as="line">
+                                      <tr>
+                                        <td style="border: 1px solid black;">
+                                            <span t-esc="line.name"/>
+                                        </td>
+                                        <td style="border: 1px solid black;">
+                                            <span t-esc="line.room_type"/>
+                                        </td>
+                                        <td style="border: 1px solid black;">
+                                            <span t-esc="line.stay_day"/>
+                                        </td>
+                                        <td style="border: 1px solid black;">
+                                            <span t-esc="line.room_charges"/>
+                                        </td>
+                                        <td style="border: 1px solid black;">
+                                            <span t-esc="line.room_total_amount"/>
+                                        </td>
+                                      </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <table class="table">
+                                <thead>
+                                    <tr style="background-color:#DBE1E5;">
+                                        <td style="border: 1px solid black;">Risk Factor</td>
+                                        <td style="border: 1px solid black;">Particulars</td>
+                                        <td style="border: 1px solid black;">Room Type</td>
+                                        <td style="border: 1px solid black;">Days</td>
+                                        <td style="border: 1px solid black;">Charges</td>
+                                        <td style="border: 1px solid black;">Total Amount</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="o.surgical_charges_ids" t-as="line">
+                                      <tr>
+                                        <td style="border: 1px solid black;">
+                                            <span t-esc="line.risk_type"/>
+                                        </td>
+                                        <td style="border: 1px solid black;">
+                                            <span t-esc="line.name"/>
+                                        </td>
+                                        <td style="border: 1px solid black;">
+                                            <span t-esc="line.room_type"/>
+                                        </td>
+                                        <td style="border: 1px solid black;">
+                                            <span t-esc="line.stay_day"/>
+                                        </td>
+                                        <td style="border: 1px solid black;">
+                                            <span t-esc="line.room_charges"/>
+                                        </td>
+                                        <td style="border: 1px solid black;">
+                                            <span t-esc="line.room_total_amount"/>
+                                        </td>
+                                      </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <table class="table">
+                                <thead>
+                                    <tr style="background-color:#DBE1E5;">
+                                        <td style="border: 1px solid black;">Particulars</td>
+                                        <td style="border: 1px solid black;">Room Type</td>
+                                        <td style="border: 1px solid black;">
+                                            /Hr &amp; /Mins</td>
+                                        <td style="border: 1px solid black;">Charges</td>
+                                        <td style="border: 1px solid black;">Total Amount</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="o.operation_equip_charges_ids" t-as="line">
+                                      <tr>
+                                        <td style="border: 1px solid black;">
+                                            <span t-esc="line.name"/>
+                                        </td>
+                                        <td style="border: 1px solid black;">
+                                            <span t-esc="line.room_type"/>
+                                        </td>
+                                        <td style="border: 1px solid black;">
+                                            <span t-esc="line.stay_day"/>
+                                        </td>
+                                        <td style="border: 1px solid black;">
+                                            <span t-esc="line.room_charges"/>
+                                        </td>
+                                        <td style="border: 1px solid black;">
+                                            <span t-esc="line.room_total_amount"/>
+                                        </td>
+                                      </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <table class="table">
+                                <thead>
+                                    <tr style="background-color:#DBE1E5;">
+                                        <td style="border: 1px solid black;">Particulars</td>
+                                        <td style="border: 1px solid black;">Room Type</td>
+                                        <td style="border: 1px solid black;">Charges</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="o.investigation_pharmacy_charges_ids" t-as="line">
+                                      <tr>
+                                        <td style="border: 1px solid black;">
+                                            <span t-esc="line.name"/>
+                                        </td>
+                                        <td style="border: 1px solid black;">
+                                            <span t-esc="line.room_type"/>
+                                        </td>
+                                        <td style="border: 1px solid black;">
+                                            <span t-esc="line.room_charges"/>
+                                        </td>
+                                      </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> 
+                </t>
+            </t> 
+        </template>
+
+        <template id="report_cost_estimation">
+            <t t-call="report.html_container">
+              <t t-foreach="doc_ids" t-as="doc_id">
+                <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'hms_hospitalization.report_hms_cost_estimation')"/>
+              </t>
+            </t>
+        </template>
+    </data>
+</openerp>

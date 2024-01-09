@@ -1,0 +1,30 @@
+td.oe_list_field_object[data-field="action_zero"]{
+	padding: 2px 2px !important;
+}
+td.oe_list_field_object[data-field="action_zero"] button{
+	padding: 0px 4px !important;
+}
+td.oe_list_field_object[data-field="action_one"]{
+	padding: 2px 2px !important;
+}
+td.oe_list_field_object[data-field="action_one"] button{
+	padding: 0px 4px !important;
+}
+td.oe_list_field_object[data-field="action_two"]{
+	padding: 2px 2px !important;
+}
+td.oe_list_field_object[data-field="action_two"] button{
+	padding: 0px 4px !important;
+}
+td.oe_list_field_object[data-field="action_three"]{
+	padding: 2px 2px !important;
+}
+td.oe_list_field_object[data-field="action_three"] button{
+	padding: 0px 4px !important;
+}
+td.oe_list_field_object[data-field="action_four"]{
+	padding: 2px 2px !important;
+}
+td.oe_list_field_object[data-field="action_four"] button{
+	padding: 0px 4px !important;
+}

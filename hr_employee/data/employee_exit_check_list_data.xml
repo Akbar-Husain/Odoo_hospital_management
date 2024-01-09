@@ -1,0 +1,23 @@
+<!-- <?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="employee_resignation_id" model="employee.exist.check.list">
+            <field name="name">Did Supervisior approved resignation by replying to employee mail ans cc to HR </field>
+        </record>
+        <record id="completed_notice_period_id" model="employee.exist.check.list">
+            <field name="name">Has he/she completed notice period</field>
+        </record>
+        <record id="f_f_id" model="employee.exist.check.list">
+            <field name="name">F &amp; F Check given to Employee</field>
+        </record>
+        <record id="employee_pf_id" model="employee.exist.check.list">
+            <field name="name">PF form given to employee</field>
+        </record>
+        <record id="employee_tds_id" model="employee.exist.check.list">
+            <field name="name">TDS Form given to Emoployee</field>
+        </record>
+        <record id="experience_relive_id" model="employee.exist.check.list">
+            <field name="name">Experience &amp; Relieving letter</field>
+        </record>
+    </data>
+</odoo> -->

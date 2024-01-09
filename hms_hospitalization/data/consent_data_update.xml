@@ -1,0 +1,883 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    	 <!--C - UPPER GASTROINTESTINAL ENDOSCOPY DILATATION  -->
+        <template id="report_dilatation_document">
+           <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+            <div class="page" style="border: 1px solid white;height: 2000px;width:100%; border-bottom: 1px solid white;font-size:14px">
+                <div class="col-xs-12" style="margin:15px;">
+                    <div class="col-xs-4">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 90px;"/><br/>
+                    </div>
+                    <div class="col-xs-4">
+                    </div>
+                    <div class="col-xs-4" style="border: 1px solid black;height: 120px;width:245px;">
+                        <p style="text-align:center;font-size:16px;margin:50px;">Addressograph</p>
+                    </div>
+                </div>
+            <t t-foreach="docs" t-as="t">
+                    <div style="margin-top:5px">
+                        <p style="font-size:15px;text-align:center;"><b>CONSENT FOR UPPER GASTROINTESTINAL ENDOSCOPY &amp; DILATATION</b></p>
+                    </div>
+                    <div class="col-xs-6" style="border: 1px solid black;height: 1900px;width:400px;border-right:1px solid white; margin-left:50px;padding:3px;">
+                        <p style="background-color: #DCDCDC;font-size:14px;"><b>Interpreter</b></p>
+                        <p style="font-size:12px;">An Interpreter Service is required? ☐ Yes ☐ No</p>
+                        <p>If Yes, is a qualified Interpreter present ☐ Yes ☐ No</p>
+                        <p style="background-color: #DCDCDC;"><b>B. Condition and Treatment</b></p>
+                        <p style="font-size:12px;">The doctor has explained that you have the following condition: (Doctor to document in patient's own words)</p>
+                       
+                        <p><hr style="border: 1px solid black dotted;"/></p>
+                        <p style="font-size:12px;">This condition requires the following procedure.</p>
+                        <p style="font-size:12px;">(Doctor to document - include site and/or side where relevant to the procedure)</p>
+                        <p><hr style="border-style: dotted;"/></p>
+                        <p style="font-size:12px;">The following will be performed:</p>
+                        <p style="font-size:12px;">A Colonoscopy is where the doctor uses an instrument called a colonoscope to look at the inside lining of your bowel.</p>
+                        <p style="font-size:12px;">This procedure starts from your back passage (anus) and goes up to the right side of your large bowel (caecum). This is done to see if there are any growths, polyps or disease in your bowel.</p>
+                        <p style="font-size:12px;">Small pieces of your bowel may need to be removed for pathology tests.</p>
+                        <p style="font-size:12px;">This procedure may or may not require a sedation anaesthetic.</p>
+
+                        <p style="background-color: #DCDCDC;"><b>C. Risks Dilatation +/- sedation</b></p>
+                        <p style="font-size:12px;">There are risks and complications with this procedure. They include but are not limited to the following.</p>
+                        <p style="font-size:14px;"><b>Common risks and complications include:</b></p>
+                        <li style="font-size:12px;">Mild pain and discomfort in the abdomen for one to five days  after the procedure. This usually settles with walking, and moving around to get rid of the trapped air.</li>
+                        <li style="font-size:12px;">Nausea and vomiting.</li>
+                        <li style="font-size:12px;">Faintness or dizziness, especially when you start to move around.</li>
+                        <li style="font-size:12px;">Headache</li>
+                        <li style="font-size:12px;">Pain, redness or bruising at the sedation injection site (usually in the hand or arm).</li>
+                        <li style="font-size:12px;">Muscle aches and pains.</li>
+                        <li style="font-size:12px;">Allergy to medications given at time of the procedure.</li><br/>
+                        <p style="background-color: #DCDCDC;font-size:14px;"><b>F. Patient  consent</b></p><br/>
+                        <p style="font-size:12px;">I acknowledge that the doctor has explained :</p><br/>
+                        <li style="font-size:12px;">my medical condition and the proposed procedure, including additional treatment if the doctor finds something unexpected. I understand the risks, including the risks that are specific to me.</li><br/>
+                        <li style="font-size:12px;">procedure. I understand the risks, including the risks that are specific to me.</li><br/>
+                        <li style="font-size:12px;">other relevant procedure/treatment options and their associated risks.</li><br/>
+                        <li style="font-size:12px;">my prognosis and the risks of not having the procedure.</li><br/>
+                        <li style="font-size:12px;">that no guarantee has been made that  the procedure will improve my condition even though it has been carried out with due professional care.</li><br/>
+                        <li style="font-size:12px;">the procedure may include a blood transfusion.</li><br/>
+                        <li style="font-size:12px;">tissues and blood may be removed and could be used for diagnosis or management of my condition, stored and disposed of sensitively by the hospital.</li><br/>
+                        <li style="font-size:12px;">if immediate life-threatening events happen during the procedure, they will be treated based on my discussions with the doctor or my Acute Resuscitation Plan.</li><br/>
+                        <li style="font-size:12px;">a doctor other than the Consultant may conduct the procedure. I understand this could be a doctor undergoing further training.</li><br/>
+                        <p style="font-size:12px;"><b>I have been given the following Patient Information Sheets :</b></p><br/>
+                        <p style="font-size:14px;;"> ☐ <b>Upper Gastrointestinal Endoscopy &amp; Dilatation</b></p><br/>
+                        <li style="font-size:12px;">I was able to ask questions and raise concerns with the doctor about my condition, the proposed procedure and its risks, and my treatment options. My questions and concerns have been discussed and answered to my satisfaction.</li><br/>
+                        <li style="font-size:12px;">I understand I have the right to change my mind at any time, including after I have signed this form but, preferably following a discussion with my doctor.</li><br/>
+                        <li style="font-size:12px;">I understand that image/s or video footage may be recorded as part of and during my procedure and that these image/s or video/s will assist the doctor to provide appropriate treatment.</li><br/>
+                        <li style="font-size:12px;">I understand that all research will be approved by a research ethics committee and undertaken in accordance with appropriate ethical, legal and professional standards.</li><br/>
+                        <li style="font-size:12px;">I give consent that in case of averse unexpected situation, if the doctor has to re-operate, extend that operation, use special medicines or instrument or blood products and if required shift the patient to another hospital, it is for the benefit of the patient. The extra expenditure incurred in such a situation will be paid in ful by me.</li><br/>
+                    </div>
+                    <div class="col-xs-6" style="border: 1px solid black;height: 1900px;width:400px;border-left:1px solid white;padding:3px;">
+                        <li style="font-size:14px;"><b>Uncommon risks and complications include:</b></li>
+                        <li style="font-size:12px;">About 1 person in every 1,000 will accidentally get a hole (perforation) to the bowel causing leakage of bowel contents into the abdomen. Surgery may be needed to repair the hole.</li>
+                        <li style="font-size:12px;">About 1 person in every 100 will experience a significant bleed from the bowel where a polyp was removed. Further endoscopy, a blood transfusion or an operation may be necessary.</li>
+                        <li style="font-size:12px;">Not being able to see the entire bowel. This can happen if your bowel is not completely clean or the colonoscope could not be passed to the end of your large bowel.</li>
+                        <li style="font-size:12px;">Missed polyps, growths or bowel disease.</li>
+                        <li style="font-size:12px;">Heart and lung problems such as heart attack or vomit in the lungs causing pneumonia. Emergency treatment may be necessary.</li>
+                        <li style="font-size:12px;">Change of anaesthetic from a sedation anaesthetic to a general anaesthetic.</li>
+                        <li>Dead arm’ type feeling in any nerve due to positioning with the procedure — usually temporary.</li>
+                        <li style="font-size:12px;">An existing medical condition that you may already have getting worse.</li>
+                        <li style="font-size:14px;"><b>Rare risks and complications include:</b></li>
+                        <li style="font-size:12px;">Bacteraemia (infection in the blood). This will need antibiotics.</li>
+                        <li style="font-size:12px;">Stroke resulting in brain damage.</li>
+                        <li style="font-size:12px;">Anaphylaxis (severe allergy) to medication given at the time of procedure.</li>
+                        <li style="font-size:12px;">Death as a result of complications to this procedure is extremely rare.</li><br/>
+                        <li style="font-size:14px;"><b>D. Significant risks and procedure options</b></li>
+                        <li style="font-size:12px;">(Doctor to document in space provided. Continue in Medical Record if necessary.)</li>
+                        <p>......................................</p>
+                        <b><li style="font-size:14px;">E. Risks of not having this procedure</li></b>
+                        <li style="font-size:12px;">(Doctor to document in space provided. Continue in Medical Record if necessary.)</li>
+                        <p>.......................................</p>
+                        <li style="font-size:12px;">On the basis of I he above statements,</li>
+                        <p style="font-size:12px;"><b>I request to have the procedure</b></p>
+                        <t t-foreach="docs" t-as="o">
+                        <p style="font-size:12px;">Patient's Name:   <span t-field="o.consent_patient_name"/></p>
+                        </t>
+                        <p style="font-size:12px;">Signature:...........................</p>
+                        <p style="font-size:12px;">Date:...........................</p>
+                        <div style="border: 1px solid black;padding:5px;">
+                        <p style="font-size:12px;"><b>Patients who lack capacity to provide consent</b></p>
+                        <p style="font-size:12px;">Consent must be obtained from a  substitute decision marker/s in order below.</p>
+                        <p style="font-size:12px;">Name of Relative:...........................</p>
+                        <p style="font-size:12px;">Signature:...........................</p>
+                        <p style="font-size:12px;">Relation with Patient:...........................</p>
+                        <p style="font-size:12px;">Date:...........................</p>
+                        <p style="font-size:12px;">Witness Name:...........................</p>
+                        <p style="font-size:12px;">Signature:...........................</p>
+                        </div><br/><p></p>
+                        <div style="border: 1px solid black;padding:5px;">
+                        <p style="background-color: #DCDCDC;"><b><u>H. Interpreter's statement</u></b></p><br/>
+                        <p style="font-size:12px;">I have given a sight translation in</p><br/>
+                        <p style="font-size:12px;">............................................................</p><br/>
+                        <p style="font-size:12px;">(state the patient's language here) of the consent form the assisted in the provision of any verbal and written information given to the patient/parent or guardian/substitute decision-maker by the doctor.</p><br/>
+                        <p style="font-size:12px;">Name of Interpreter:......................................................................</p><br/>
+                        <p style="font-size:12px;">Signature:...........................</p><br/>
+                        <p style="font-size:12px;">Date:...........................</p><br/>
+                        </div><br/><br/><br/><br/><br/>
+                        <div style="border: 1px solid black;padding:5px;">
+                        <p style="font-size:12px;">Name of Consultane Doctor:...........................</p><br/>
+                        <p style="font-size:12px;">Signature:...........................</p><br/>
+                        <p style="font-size:12px;">Relation with Patient:...........................</p><br/>
+                        <p style="font-size:12px;">Date:...........................</p><br/>
+                        <p style="font-size:12px;">Time:...........................</p><br/>
+                        </div>
+                    </div>
+            </t>
+            </div>
+        </template>
+
+        <template id="report_dilatation_upp">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="hms_hospitalization.report_dilatation_document"/>
+                </t>
+            </t>
+        </template>
+
+        <report 
+            id="hms_hospitalization.report_dilatation_report"
+            string=" C - UPPER GASTROINTESTINAL ENDOSCOPY DILATATION"
+            model="inpatient.consent" 
+            report_type="qweb-pdf"
+            file="hms_hospitalization.report_dilatation_up" 
+            name="hms_hospitalization.report_dilatation_upp"
+            menu="False"
+        />
+
+        <record id="paperformat_indimedi_dilatation_oa_report" model="report.paperformat">
+            <field name="name">Dilatation</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">15</field>
+            <field name="margin_bottom">15</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False" />
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="hms_hospitalization.report_dilatation_report" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="hms_hospitalization.paperformat_indimedi_dilatation_oa_report" />
+        </record>
+
+         <!--C - UPPER GASTROINTESTINAL ENDOSCOPY FOR BLEEDING  -->
+        <template id="report_bleeding_document">
+           <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+            <div class="page" style="border: 1px solid white;height: 2000px;width:100%; border-bottom: 1px solid white;font-size:14px">
+                <div class="col-xs-12" style="margin:15px;">
+                    <div class="col-xs-4">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 90px;"/><br/>
+                    </div>
+                    <div class="col-xs-4">
+                    </div>
+                    <div class="col-xs-4" style="border: 1px solid black;height: 120px;width:245px;">
+                        <p style="text-align:center;font-size:12px;margin:50px;">Addressograph</p>
+                    </div>
+                </div>
+            <t t-foreach="docs" t-as="t">
+                    <div style= "margin-top:5px">
+                        <p style="font-size:15px;text-align:center;"><b>C - UPPER GASTROINTESTINAL ENDOSCOPY FOR BLEEDING</b></p>
+                    </div>
+                    <div class="col-xs-6" style="border: 1px solid black;height:1900px;width:400px;border-right:1px solid white; margin-left:50px;padding:3px;">
+                        <p style="background-color: #DCDCDC;"><b>Interpreter</b></p>
+                        <p style="font-size:12px;">An Interpreter Service is required? ☐ Yes ☐ No</p>
+                        <p style="font-size:12px;">If Yes, is a qualified Interpreter present ☐ Yes ☐ No</p>
+                        <p style="background-color: #DCDCDC;"><b>B. Condition and Treatment</b></p>
+                        <p style="font-size:12px;">The doctor has explained that you have the following condition: (Doctor to document in patient's own words)</p>
+                       
+                        <p><hr style="border: 1px solid black dotted;"/></p>
+                        <p style="font-size:12px;">This condition requires the following procedure.</p>
+                        <p style="font-size:12px;">(Doctor to document - include site and/or side where relevant to the procedure)</p>
+                        <p><hr style="border-style: dotted;"/></p>
+                        <p style="font-size:12px;">The following will be performed:</p>
+                        <p style="font-size:12px;">A Colonoscopy is where the doctor uses an instrument called a colonoscope to look at the inside lining of your bowel.</p>
+                        <p style="font-size:12px;">This procedure starts from your back passage (anus) and goes up to the right side of your large bowel (caecum). This is done to see if there are any growths, polyps or disease in your bowel.</p>
+                        <p style="font-size:12px;">Small pieces of your bowel may need to be removed for pathology tests.</p>
+                        <p style="font-size:12px;">This procedure may or may not require a sedation anaesthetic.</p>
+
+                        <p style="background-color: #DCDCDC;"><b>C. Risks of an upper gastrointestinal endoscopy and dilatation +/- sedation</b></p>
+                        <p style="font-size:12px;">There are risks and complications with this procedure. They include but are not limited to the following.</p>
+                        <p><b>Common risks and complications include:</b></p>
+                        <li style="font-size:12px;">Mild pain and discomfort in the abdomen for one to five days  after the procedure. This usually settles with walking, and moving around to get rid of the trapped air.</li>
+                        <li style="font-size:12px;">Nausea and vomiting.</li>
+                        <li style="font-size:12px;">Faintness or dizziness, especially when you start to move around.</li>
+                        <li style="font-size:12px;">Headache</li>
+                        <li style="font-size:12px;">Pain, redness or bruising at the sedation injection site (usually in the hand or arm).</li>
+                        <li style="font-size:12px;">Muscle aches and pains.</li>
+                        <li style="font-size:12px;">Allergy to medications given at time of the procedure.</li><br/>
+                        <p style="background-color: #DCDCDC;"><b>F. Patient  consent</b></p><br/>
+                        I acknowledge that the doctor has explained :<br/>
+                        <li style="font-size:12px;">my medical condition and the proposed procedure, including additional treatment if the doctor finds something unexpected. I understand the risks, including the risks that are specific to me.</li><br/>
+                        <li style="font-size:12px;">procedure. I understand the risks, including the risks that are specific to me.</li><br/>
+                        <li style="font-size:12px;">other relevant procedure/treatment options and their associated risks.</li><br/>
+                        <li style="font-size:12px;">my prognosis and the risks of not having the procedure.</li><br/><br/>
+                        <li style="font-size:12px;">that no guarantee has been made that  the procedure will improve my condition even though it has been carried out with due professional care.</li><br/>
+                        <li style="font-size:12px;">the procedure may include a blood transfusion.</li><br/>
+                        <li style="font-size:12px;">tissues and blood may be removed and could be used for diagnosis or management of my condition, stored and disposed of sensitively by the hospital.</li><br/>
+                        <li style="font-size:12px;">if immediate life-threatening events happen during the procedure, they will be treated based on my discussions with the doctor or my Acute Resuscitation Plan.</li><br/>
+                        <li style="font-size:12px;">a doctor other than the Consultant may conduct the procedure. I understand this could be a doctor undergoing further training.</li><br/>
+                        <p style="font-size:12px;"><b>I have been given the following Patient Information Sheets :</b></p><br/>
+                        <p style="font-size:12px;"> ☐ <b>Upper Gastrointestinal Endoscopy &amp; Dilatation</b></p><br/>
+                        <li style="font-size:12px;">I was able to ask questions and raise concerns with the doctor about my condition, the proposed procedure and its risks, and my treatment options. My questions and concerns have been discussed and answered to my satisfaction.</li><br/>
+                        <li style="font-size:12px;">I understand I have the right to change my mind at any time, including after I have signed this form but, preferably following a discussion with my doctor.</li><br/>
+                        <li style="font-size:12px;">I understand that image/s or video footage may be recorded as part of and during my procedure and that these image/s or video/s will assist the doctor to provide appropriate treatment.</li><br/>
+                        <li style="font-size:12px;">I understand that all research will be approved by a research ethics committee and undertaken in accordance with appropriate ethical, legal and professional standards.</li><br/>
+                        <li style="font-size:12px;">I give consent that in case of averse unexpected situation, if the doctor has to re-operate, extend that operation, use special medicines or instrument or blood products and if required shift the patient to another hospital, it is for the benefit of the patient. The extra expenditure incurred in such a situation will be paid in ful by me.</li><br/>
+                    </div>
+                    <p></p>
+                    <div class="col-xs-6" style="border: 1px solid black;height: 1900px;width:400px;border-left:1px solid white;padding:3px;">
+                        <li><b>Uncommon risks and complications include:</b></li>
+                        <li style="font-size:12px;">About 1 person in every 1,000 will accidentally get a hole (perforation) to the bowel causing leakage of bowel contents into the abdomen. Surgery may be needed to repair the hole.</li>
+                        <li style="font-size:12px;">About 1 person in every 100 will experience a significant bleed from the bowel where a polyp was removed. Further endoscopy, a blood transfusion or an operation may be necessary.</li>
+                        <li style="font-size:12px;">Not being able to see the entire bowel. This can happen if your bowel is not completely clean or the colonoscope could not be passed to the end of your large bowel.</li>
+                        <li style="font-size:12px;">Missed polyps, growths or bowel disease.</li>
+                        <li style="font-size:12px;">Heart and lung problems such as heart attack or vomit in the lungs causing pneumonia. Emergency treatment may be necessary.</li>
+                        <li style="font-size:12px;">Change of anaesthetic from a sedation anaesthetic to a general anaesthetic.</li>
+                        <li style="font-size:12px;">Dead arm’ type feeling in any nerve due to positioning with the procedure — usually temporary.</li>
+                        <li style="font-size:12px;">An existing medical condition that you may already have getting worse.</li>
+                        <li><b>Rare risks and complications include:</b></li>
+                        <li style="font-size:12px;">Bacteraemia (infection in the blood). This will need antibiotics.</li>
+                        <li style="font-size:12px;">Stroke resulting in brain damage.</li>
+                        <li style="font-size:12px;">Anaphylaxis (severe allergy) to medication given at the time of procedure.</li>
+                        <li style="font-size:12px;">Death as a result of complications to this procedure is extremely rare.</li>
+                        <li><b>D. Significant risks and procedure options</b></li>
+                        <li style="font-size:12px;">(Doctor to document in space provided. Continue in Medical Record if necessary.)</li>
+                        <p>......................................</p>
+                        <b><li>E. Risks of not having this procedure</li></b>
+                        <li style="font-size:12px;">(Doctor to document in space provided. Continue in Medical Record if necessary.)</li>
+                        <p>.......................................</p>
+                        <li style="font-size:12px;">On the basis of I he above statements,</li>
+                        <p><b>I request to have the procedure</b></p>
+                        <t t-foreach="docs" t-as="o">
+                        <p style="font-size:12px;">Patient's Name:   <span t-field="o.consent_patient_name"/></p>
+                        </t>
+                        <p>Signature:...........................</p>
+                        <p>Date:...........................</p>
+                        <div style="border: 1px solid black;padding:5px;">
+                        <p><b>Patients who lack capacity to provide consent</b></p>
+                        <p style="font-size:12px;">Consent must be obtained from a  substitute decision marker/s in order below.</p>
+                        <p style="font-size:12px;">Name of Relative:...........................</p>
+                        <p style="font-size:12px;">Signature:...........................</p>
+                        <p style="font-size:12px;">Relation with Patient:...........................</p>
+                        <p style="font-size:12px;">Date:...........................</p>
+                        <p style="font-size:12px;">Witness Name:...........................</p>
+                        <p style="font-size:12px;">Signature:...........................</p>
+                        </div><br/><br/><br/><br/>
+                        <div style="border: 1px solid black;padding:5px;">
+                        <p style="background-color: #DCDCDC;"><b><u>H. Interpreter's statement</u></b></p><br/><br/>
+                        <p>I have given a sight translation in</p><br/>
+                        <p>............................................................</p><br/>
+                        <p style="font-size:12px;">(state the patient's language here) of the consent form the assisted in the provision of any verbal and written information given to the patient/parent or guardian/substitute decision-maker by the doctor.</p><br/>
+                        <p style="font-size:12px;">Name of Interpreter:......................................................................</p><br/>
+                        <p style="font-size:12px;">Signature:...........................</p><br/>
+                        <p style="font-size:12px;">Date:...........................</p><br/>
+                        </div><br/><br/><br/><br/><br/>
+                        <div style="border: 1px solid black;padding:5px;">
+                        <p style="font-size:12px;">Name of Consultane Doctor:...........................</p><br/>
+                        <p style="font-size:12px;">Signature:...........................</p><br/>
+                        <p style="font-size:12px;">Relation with Patient:...........................</p><br/>
+                        <p style="font-size:12px;">Date:...........................</p><br/>
+                        <p style="font-size:12px;">Time:...........................</p><br/>
+                        </div>
+                    </div>
+            </t>
+            </div>
+        </template>
+
+        <template id="report_bleeding_upp">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="hms_hospitalization.report_bleeding_document"/>
+                </t>
+            </t>
+        </template>
+
+        <report 
+            id="hms_hospitalization.report_bleeding_report"
+            string=" C - UPPER GASTROINTESTINAL ENDOSCOPY FOR BLEEDING"
+            model="inpatient.consent" 
+            report_type="qweb-pdf"
+            file="hms_hospitalization.report_bleeding_up" 
+            name="hms_hospitalization.report_bleeding_upp"
+            menu="False"
+        />
+
+        <record id="paperformat_indimedi_dilatation_oa_report" model="report.paperformat">
+            <field name="name">Dilatation</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">15</field>
+            <field name="margin_bottom">15</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False" />
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="hms_hospitalization.report_bleeding_report" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="hms_hospitalization.paperformat_indimedi_dilatation_oa_report" />
+        </record>
+
+ <!--C - UPPER GASTROINTESTINAL ENDOSCOPY  VARICEAL BANDING (OR GLUEING), -->
+ <template id="report_variceal_document">
+           <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+            <div class="page" style="border: 1px solid white;height: 2000px;width:100%; border-bottom: 1px solid white;font-size:14px">
+                <div class="col-xs-12" style="margin:15px;">
+                    <div class="col-xs-4">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 90px;"/><br/>
+                    </div>
+                    <div class="col-xs-4">
+                    </div>
+                    <div class="col-xs-4" style="border: 1px solid black;height: 120px;width:245px;">
+                        <p style="text-align:center;font-size:16px;margin:50px;">Addressograph</p>
+                    </div>
+                </div>
+            <t t-foreach="docs" t-as="t">
+                    <div style= "margin-top:5px">
+                        <p style="font-size:15px;text-align:center;"><b>C - UPPER GASTROINTESTINAL ENDOSCOPY  VARICEAL BANDING (OR GLUEING)</b></p>
+                    </div>
+                    <div class="col-xs-6" style="border: 1px solid black;height:2000px;width:400px;border-right:1px solid white; margin-left:50px;">
+                        <p style="background-color: #DCDCDC;"><b>Interpreter</b></p>
+                        <p style="font-size:12px;">An Interpreter Service is required? ☐ Yes ☐ No</p>
+                        <p>If Yes, is a qualified Interpreter present ☐ Yes ☐ No</p>
+                        <p style="background-color: #DCDCDC;"><b>B. Condition and Treatment</b></p>
+                        <p style="font-size:12px;">The doctor has explained that you have the following condition: (Doctor to document in patient's own words)</p>
+                       
+                        <p><hr style="border: 1px solid black dotted;"/></p>
+                        <p style="font-size:12px;">This condition requires the following procedure.</p>
+                        <p style="font-size:12px;">(Doctor to document - include site and/or side where relevant to the procedure)</p>
+                        <p><hr style="border-style: dotted;"/></p>
+                        <p style="font-size:12px;">The following will be performed:</p>
+                        <p style="font-size:12px;">A Colonoscopy is where the doctor uses an instrument called a colonoscope to look at the inside lining of your bowel.</p>
+                        <p style="font-size:12px;">This procedure starts from your back passage (anus) and goes up to the right side of your large bowel (caecum). This is done to see if there are any growths, polyps or disease in your bowel.</p>
+                        <p style="font-size:12px;">Small pieces of your bowel may need to be removed for pathology tests.</p>
+                        <p style="font-size:12px;">This procedure may or may not require a sedation anaesthetic.</p>
+
+                        <p style="background-color: #DCDCDC;"><b>C. Risks of an upper gastrointestinal endoscopy and dilatation +/- sedation</b></p>
+                        <p style="font-size:12px;">There are risks and complications with this procedure. They include but are not limited to the following.</p>
+                        <p style="font-size:12px;"><b>Common risks and complications include:</b></p>
+                        <li style="font-size:12px;">Mild pain and discomfort in the abdomen for one to five days  after the procedure. This usually settles with walking, and moving around to get rid of the trapped air.</li>
+                        <li style="font-size:12px;">Nausea and vomiting.</li>
+                        <li style="font-size:12px;">Faintness or dizziness, especially when you start to move around.</li>
+                        <li style="font-size:12px;">Headache</li>
+                        <li style="font-size:12px;">Pain, redness or bruising at the sedation injection site (usually in the hand or arm).</li>
+                        <li style="font-size:12px;">Muscle aches and pains.</li>
+                        <li style="font-size:12px;">Allergy to medications given at time of the procedure.</li><br/>
+                        <p style="background-color: #DCDCDC;"><b>F. Patient  consent</b></p>
+                        I acknowledge that the doctor has explained :<br/>
+                        <li style="font-size:12px;">my medical condition and the proposed procedure, including additional treatment if the doctor finds something unexpected. I understand the risks, including the risks that are specific to me.</li><br/>
+                        <li style="font-size:12px;">procedure. I understand the risks, including the risks that are specific to me.</li><br/>
+                        <li style="font-size:12px;">other relevant procedure/treatment options and their associated risks.</li><br/>
+                        <li style="font-size:12px;">my prognosis and the risks of not having the procedure.</li><br/>
+                        <li style="font-size:12px;">that no guarantee has been made that  the procedure will improve my condition even though it has been carried out with due professional care.</li><br/>
+                        <li style="font-size:12px;">the procedure may include a blood transfusion.</li><br/>
+                        <li style="font-size:12px;">tissues and blood may be removed and could be used for diagnosis or management of my condition, stored and disposed of sensitively by the hospital.</li><br/>
+                        <li style="font-size:12px;">if immediate life-threatening events happen during the procedure, they will be treated based on my discussions with the doctor or my Acute Resuscitation Plan.</li><br/>
+                        <li style="font-size:12px;">a doctor other than the Consultant may conduct the procedure. I understand this could be a doctor undergoing further training.</li><br/>
+                        <p style="font-size:12px;"><b>I have been given the following Patient Information Sheets :</b></p><br/>
+                        <p> ☐ <b>Upper Gastrointestinal Endoscopy &amp; Dilatation</b></p>
+                        <li>I was able to ask questions and raise concerns with the doctor about my condition, the proposed procedure and its risks, and my treatment options. My questions and concerns have been discussed and answered to my satisfaction.</li><br/>
+                        <li style="font-size:12px;">I understand I have the right to change my mind at any time, including after I have signed this form but, preferably following a discussion with my doctor.</li><br/>
+                        <li style="font-size:12px;">I understand that image/s or video footage may be recorded as part of and during my procedure and that these image/s or video/s will assist the doctor to provide appropriate treatment.</li><br/>
+                        <li style="font-size:12px;">I understand that all research will be approved by a research ethics committee and undertaken in accordance with appropriate ethical, legal and professional standards.</li><br/>
+                        <li style="font-size:12px;">I give consent that in case of averse unexpected situation, if the doctor has to re-operate, extend that operation, use special medicines or instrument or blood products and if required shift the patient to another hospital, it is for the benefit of the patient. The extra expenditure incurred in such a situation will be paid in ful by me.</li><br/>
+                    </div>
+                    <div class="col-xs-6" style="border: 1px solid black;height: 2000px;width:400px;border-left:1px solid white;">
+                        <li><b>Uncommon risks and complications include:</b></li>
+                        <li style="font-size:12px;">About 1 person in every 1,000 will accidentally get a hole (perforation) to the bowel causing leakage of bowel contents into the abdomen. Surgery may be needed to repair the hole.</li>
+                        <li style="font-size:12px;">About 1 person in every 100 will experience a significant bleed from the bowel where a polyp was removed. Further endoscopy, a blood transfusion or an operation may be necessary.</li>
+                        <li style="font-size:12px;">Not being able to see the entire bowel. This can happen if your bowel is not completely clean or the colonoscope could not be passed to the end of your large bowel.</li>
+                        <li style="font-size:12px;">Missed polyps, growths or bowel disease.</li>
+                        <li style="font-size:12px;">Heart and lung problems such as heart attack or vomit in the lungs causing pneumonia. Emergency treatment may be necessary.</li>
+                        <li style="font-size:12px;">Change of anaesthetic from a sedation anaesthetic to a general anaesthetic.</li>
+                        <li style="font-size:12px;">Dead arm’ type feeling in any nerve due to positioning with the procedure — usually temporary.</li>
+                        <li style="font-size:12px;">An existing medical condition that you may already have getting worse.</li>
+                        <li><b>Rare risks and complications include:</b></li>
+                        <li style="font-size:12px;">Bacteraemia (infection in the blood). This will need antibiotics.</li>
+                        <li style="font-size:12px;">Stroke resulting in brain damage.</li>
+                        <li style="font-size:12px;">Anaphylaxis (severe allergy) to medication given at the time of procedure.</li>
+                        <li style="font-size:12px;">Death as a result of complications to this procedure is extremely rare.</li>
+                        <li><b>D. Significant risks and procedure options</b></li>
+                        <li style="font-size:12px;">(Doctor to document in space provided. Continue in Medical Record if necessary.)</li>
+                        <p>......................................</p>
+                        <b><li>E. Risks of not having this procedure</li></b>
+                        <li style="font-size:12px;">(Doctor to document in space provided. Continue in Medical Record if necessary.)</li>
+                        <p>.......................................</p>
+                        <li>On the basis of I he above statements,</li>
+                        <p style="font-size:12px;"><b>I request to have the procedure</b></p>
+                        <t t-foreach="docs" t-as="o">
+                        <p style="font-size:12px;">Patient's Name:   <span t-field="o.consent_patient_name"/></p>
+                        </t>
+                        <p style="font-size:12px;">Signature:...........................</p>
+                        <p style="font-size:12px;">Date:...........................</p>
+                        <div style="border: 1px solid black;padding:5px;">
+                        <p style="font-size:12px;"><b>Patients who lack capacity to provide consent</b></p>
+                        <p style="font-size:12px;">Consent must be obtained from a  substitute decision marker/s in order below.</p>
+                        <p style="font-size:12px;">Name of Relative:...........................</p>
+                        <p style="font-size:12px;">Signature:...........................</p>
+                        <p style="font-size:12px;">Relation with Patient:...........................</p>
+                        <p style="font-size:12px;">Date:...........................</p>
+                        <p style="font-size:12px;">Witness Name:...........................</p>
+                        <p style="font-size:12px;">Signature:...........................</p>
+                        </div><br/><p></p><br/><br/>
+                        <div style="border: 1px solid black;">
+                        <p style="background-color: #DCDCDC;"><b><u>H. Interpreter's statement</u></b></p><br/>
+                        <p style="font-size:12px;">I have given a sight translation in</p>
+                        <p>............................................................</p><br/>
+                        <p style="font-size:12px;">(state the patient's language here) of the consent form the assisted in the provision of any verbal and written information given to the patient/parent or guardian/substitute decision-maker by the doctor.</p><br/>
+                        <p style="font-size:12px;">Name of Interpreter:......................................................................</p><br/>
+                        <p style="font-size:12px;">Signature:...........................</p><br/>
+                        <p style="font-size:12px;">Date:...........................</p><br/>
+                        </div><br/><br/><br/>
+                        <div style="border: 1px solid black;">
+                        <p style="font-size:12px;">Name of Consultane Doctor:...........................</p><br/>
+                        <p style="font-size:12px;">Signature:...........................</p><br/>
+                        <p style="font-size:12px;">Relation with Patient:...........................</p><br/>
+                        <p style="font-size:12px;">Date:...........................</p><br/>
+                        <p style="font-size:12px;">Time:...........................</p><br/>
+                        </div>
+                    </div>
+            </t>
+            </div>
+        </template>
+
+        <template id="report_variceal_upp">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="hms_hospitalization.report_variceal_document"/>
+                </t>
+            </t>
+        </template>
+
+        <report 
+            id="hms_hospitalization.report_variceal_report"
+            string="C - UPPER GASTROINTESTINAL ENDOSCOPY  VARICEAL BANDING (OR GLUEING)"
+            model="inpatient.consent" 
+            report_type="qweb-pdf"
+            file="hms_hospitalization.report_variceal_up" 
+            name="hms_hospitalization.report_variceal_upp"
+            menu="False"
+        />
+
+        <record id="paperformat_indimedi_dilatation_oa_report" model="report.paperformat">
+            <field name="name">Dilatation</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">15</field>
+            <field name="margin_bottom">15</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False" />
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="hms_hospitalization.report_variceal_report" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="hms_hospitalization.paperformat_indimedi_dilatation_oa_report" />
+        </record>
+
+        <!--C - SIGMOIDOSCOPY, -->
+    <template id="report_sigma_document">
+           <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+            <div class="page" style="border: 1px solid white;height: 2000px;width:100%; border-bottom: 1px solid white;font-size:14px">
+                <div class="col-xs-12" style="margin:15px;">
+                    <div class="col-xs-4">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 90px;"/><br/>
+                    </div>
+                    <div class="col-xs-4">
+                    </div>
+                    <div class="col-xs-4" style="border: 1px solid black;height: 120px;width:245px;">
+                        <p style="text-align:center;font-size:16px;margin:50px;">Addressograph</p>
+                    </div>
+                </div>
+            <t t-foreach="docs" t-as="t">
+                    <div style= "margin-top:5px">
+                        <p style="font-size:15px;text-align:center;"><b>C - SIGMOIDOSCOPY</b></p>
+                    </div>
+                    <div class="col-xs-6" style="border: 1px solid black;height:1900px;width:400px;border-right:1px solid white; margin-left:50px;padding:3px;">
+                        <p style="background-color: #DCDCDC;font-size:14px;"><b>Interpreter</b></p>
+                        <p style="font-size:12px;">An Interpreter Service is required?☐ Yes ☐ No</p>
+                        <p style="font-size:12px;">If Yes, is a qualified Interpreter present ☐ Yes ☐ No</p>
+                        <p style="background-color: #DCDCDC;font-size:14px;"><b>B. Condition and Treatment</b></p>
+                        <p  style="font-size:12px;">The doctor has explained that you have the following condition: (Doctor to document in patient's own words)</p>
+                       
+                        <p><hr style="border: 1px solid black dotted;"/></p>
+                        <p  style="font-size:12px;">This condition requires the following procedure.</p>
+                        <p  style="font-size:12px;">(Doctor to document - include site and/or side where relevant to the procedure)</p>
+                        <p  style="font-size:12px;"><hr style="border-style: dotted;"/></p>
+                        <p  style="font-size:12px;">The following will be performed:</p>
+                        <p  style="font-size:12px;">A Colonoscopy is where the doctor uses an instrument called a colonoscope to look at the inside lining of your bowel.</p>
+                        <p  style="font-size:12px;">This procedure starts from your back passage (anus) and goes up to the right side of your large bowel (caecum). This is done to see if there are any growths, polyps or disease in your bowel.</p>
+                        <p  style="font-size:12px;">Small pieces of your bowel may need to be removed for pathology tests.</p>
+                        <p  style="font-size:12px;">This procedure may or may not require a sedation anaesthetic.</p>
+
+                        <p style="background-color: #DCDCDC;font-size:14px;"><b>C. Risks of an upper gastrointestinal endoscopy and dilatation +/- sedation</b></p>
+                        <p  style="font-size:12px;">There are risks and complications with this procedure. They include but are not limited to the following.</p>
+                        <p style="font-size:12px;"><b>Common risks and complications include:</b></p>
+                        <li style="font-size:12px;">Mild pain and discomfort in the abdomen for one to five days  after the procedure. This usually settles with walking, and moving around to get rid of the trapped air.</li>
+                        <li style="font-size:12px;">Nausea and vomiting.</li>
+                        <li style="font-size:12px;">Faintness or dizziness, especially when you start to move around.</li>
+                        <li style="font-size:12px;">Headache</li>
+                        <li style="font-size:12px;">Pain, redness or bruising at the sedation injection site (usually in the hand or arm).</li>
+                        <li style="font-size:12px;">Muscle aches and pains.</li>
+                        <li style="font-size:12px;">Allergy to medications given at time of the procedure.</li><br/>
+                        <p style="background-color: #DCDCDC;font-size:14px;"><b>F. Patient  consent</b></p>
+                        <p>I acknowledge that the doctor has explained :</p><br/>
+                        <li style="font-size:12px;">my medical condition and the proposed procedure, including additional treatment if the doctor finds something unexpected. I understand the risks, including the risks that are specific to me.</li><br/>
+                        <li style="font-size:12px;">procedure. I understand the risks, including the risks that are specific to me.</li><br/>
+                        <li style="font-size:12px;">other relevant procedure/treatment options and their associated risks.</li><br/>
+                        <li style="font-size:12px;">my prognosis and the risks of not having the procedure.</li><br/>
+                        <li>that no guarantee has been made that  the procedure will improve my condition even though it has been carried out with due professional care.</li><br/>
+                        <li style="font-size:12px;">the procedure may include a blood transfusion.</li><br/>
+                        <li style="font-size:12px;">tissues and blood may be removed and could be used for diagnosis or management of my condition, stored and disposed of sensitively by the hospital.</li><br/>
+                        <li style="font-size:12px;">if immediate life-threatening events happen during the procedure, they will be treated based on my discussions with the doctor or my Acute Resuscitation Plan.</li><br/>
+                        <li style="font-size:12px;">a doctor other than the Consultant may conduct the procedure. I understand this could be a doctor undergoing further training.</li><br/>
+                        <p style="font-size:12px;"><b>I have been given the following Patient Information Sheets :</b></p><br/>
+                        <p style="font-size:14px;"> ☐ <b>Colonoscopy</b></p><br/>
+                        <li style="font-size:12px;">I was able to ask questions and raise concerns with the doctor about my condition, the proposed procedure and its risks, and my treatment options. My questions and concerns have been discussed and answered to my satisfaction.</li><br/>
+                        <li style="font-size:12px;">I understand I have the right to change my mind at any time, including after I have signed this form but, preferably following a discussion with my doctor.</li><br/>
+                        <li style="font-size:12px;">I understand that image/s or video footage may be recorded as part of and during my procedure and that these image/s or video/s will assist the doctor to provide appropriate treatment.</li><br/>
+                        <li style="font-size:12px;">I understand that all research will be approved by a research ethics committee and undertaken in accordance with appropriate ethical, legal and professional standards.</li><br/>
+                        <li style="font-size:12px;">I give consent that in case of averse unexpected situation, if the doctor has to re-operate, extend that operation, use special medicines or instrument or blood products and if required shift the patient to another hospital, it is for the benefit of the patient. The extra expenditure incurred in such a situation will be paid in ful by me.</li><br/>
+                    </div>
+                    <div class="col-xs-6" style="border: 1px solid black;height: 1900px;width:400px;border-left:1px solid white;padding:3px">
+                        <p></p>
+                        <li style="font-size:14px;"><b>Uncommon risks and complications include:</b></li>
+                        <li style="font-size:12px;">About 1 person in every 1,000 will accidentally get a hole (perforation) to the bowel causing leakage of bowel contents into the abdomen. Surgery may be needed to repair the hole.</li><br/>
+                        <li style="font-size:12px;">About 1 person in every 100 will experience a significant bleed from the bowel where a polyp was removed. Further endoscopy, a blood transfusion or an operation may be necessary.</li><br/>
+                        <li style="font-size:12px;">Not being able to see the entire bowel. This can happen if your bowel is not completely clean or the colonoscope could not be passed to the end of your large bowel.</li><br/>
+                        <li style="font-size:12px;">Missed polyps, growths or bowel disease.</li><br/>
+                        <li style="font-size:12px;">Heart and lung problems such as heart attack or vomit in the lungs causing pneumonia. Emergency treatment may be necessary.</li><br/>
+                        <li style="font-size:12px;">Change of anaesthetic from a sedation anaesthetic to a general anaesthetic.</li><br/>
+                        <li style="font-size:12px;">Dead arm’ type feeling in any nerve due to positioning with the procedure — usually temporary.</li><br/>
+                        <li style="font-size:12px;">An existing medical condition that you may already have getting worse.</li><br/>
+                        <li style="font-size:14px;"><b>Rare risks and complications include:</b></li><br/>
+                        <li style="font-size:12px;">Bacteraemia (infection in the blood). This will need antibiotics.</li><br/>
+                        <li style="font-size:12px;">Stroke resulting in brain damage.</li><br/>
+                        <li style="font-size:12px;">Anaphylaxis (severe allergy) to medication given at the time of procedure.</li><br/>
+                        <li style="font-size:12px;">Death as a result of complications to this procedure is extremely rare.</li><br/>
+                        <li style="font-size:14px;"><b>D. Significant risks and procedure options</b></li>
+                        <li style="font-size:12px;">(Doctor to document in space provided. Continue in Medical Record if necessary.)</li>
+                        <p><b>......................................................................</b></p>
+                        <b><li style="font-size:14px;">E. Risks of not having this procedure</li></b><br/>
+                        <li style="font-size:12px;">(Doctor to document in space provided. Continue in Medical Record if necessary.)</li>
+                        <p><b>..........................................................................</b></p>
+                        <li style="font-size:12px;">On the basis of I he above statements,</li>
+                        <p style="font-size:14px;"><b>I request to have the procedure</b></p>
+                        <t t-foreach="docs" t-as="o">
+                        <p style="font-size:12px;">Patient's Name:   <span t-field="o.consent_patient_name"/></p>
+                        </t>
+                        <p style="font-size:12px;">Signature:...........................</p>
+                        <p style="font-size:12px;">Date:...........................</p>
+                        <div style="border: 1px solid black;padding:5px;">
+                        <p style="font-size:12px;margin:5px;"><b>Patients who lack capacity to provide consent</b></p>
+                        <p style="font-size:12px;margin:5px;">Consent must be obtained from a  substitute decision marker/s in order below.</p>
+                        <p style="font-size:12px;margin:5px;">Name of Relative:...........................</p>
+                        <p style="font-size:12px;margin:5px;">Signature:...........................</p>
+                        <p style="font-size:12px;margin:5px;">Relation with Patient:...........................</p>
+                        <p style="font-size:12px;margin:5px;">Date:...........................</p>
+                        <p style="font-size:12px;margin:5px;">Witness Name:...........................</p>
+                        <p style="font-size:12px;margin:5px;">Signature:...........................</p>
+                        </div><br/><br/>
+                        <div style="border: 1px solid black;padding:5px;">
+                        <p style="background-color: #DCDCDC;font-size:14px;margin:5px;"><b><u>H. Interpreter's statement</u></b></p><br/>
+                        <p style="font-size:12px;margin:5px;">I have given a sight translation in</p>
+                        <p>............................................................</p><br/>
+                        <p style="font-size:12px;margin:5px;">(state the patient's language here) of the consent form the assisted in the provision of any verbal and written information given to the patient/parent or guardian/substitute decision-maker by the doctor.</p><br/>
+                        <p style="font-size:12px;margin:5px;">Name of Interpreter:......................................................................</p><br/>
+                        <p style="font-size:12px;margin:5px;">Signature:...........................</p><br/>
+                        <p style="font-size:12px;margin:5px;">Date:...........................</p>
+                        </div><br/><br/>
+                        <div style="border: 1px solid black;padding:5px;">
+                        <p style="font-size:12px;margin:5px;">Name of Consultane Doctor:...........................</p><br/>
+                        <p style="font-size:12px;margin:5px;">Signature:...........................</p><br/>
+                        <p style="font-size:12px;margin:5px;">Relation with Patient:...........................</p><br/>
+                        <p style="font-size:12px;margin:5px;">Date:...........................</p><br/>
+                        <p style="font-size:12px;margin:5px;">Time:...........................</p><br/>
+                        </div>
+                    </div>
+            </t>
+            </div>
+        </template>
+
+        <template id="report_sigma_upp">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="hms_hospitalization.report_sigma_document"/>
+                </t>
+            </t>
+        </template>
+
+        <report 
+            id="hms_hospitalization.report_sigma_report"
+            string="C - SIGMOIDOSCOPY"
+            model="inpatient.consent" 
+            report_type="qweb-pdf"
+            file="hms_hospitalization.report_sigma_up" 
+            name="hms_hospitalization.report_sigma_upp"
+            menu="False"
+        />
+
+        <record id="paperformat_indimedi_dilatation_oa_report" model="report.paperformat">
+            <field name="name">Dilatation</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">15</field>
+            <field name="margin_bottom">15</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False" />
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="hms_hospitalization.report_sigma_report" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="hms_hospitalization.paperformat_indimedi_dilatation_oa_report" />
+        </record>
+
+        <record id="email_template_edi_sigma_confirmation_consentss" model="mail.template">
+            <field name="name">C - SIGMOIDOSCOPY</field>
+            <field name="model_id" ref="hms_hospitalization.model_inpatient_consent"/>
+            <field name="report_template" ref="hms_hospitalization.report_sigma_report"/>
+            <field name="report_name">${(object.name or '')</field>
+            <field name="body_html"><![CDATA[ 
+                       <div style= "margin-top:5px">
+                        <p style="font-size:15px;text-align:center;"><b>C - SIGMOIDOSCOPY</b></p>
+                    </div>
+                    <div class="col-xs-6" style="border: 1px solid black;height:1900px;width:400px;border-right:1px solid white; margin-left:50px;padding:3px;">
+                        <p style="background-color: grey;"><b>Interpreter</b></p>
+                        <p>An Interpreter Service is required?☐ Yes ☐ No</p>
+                        <p>If Yes, is a qualified Interpreter present ☐ Yes ☐ No</p>
+                        <p style="background-color: grey;"><b>B. Condition and Treatment</b></p>
+                        <p>The doctor has explained that you have the following condition: (Doctor to document in patient's own words)</p>
+                       
+                        <p><hr style="border: 1px solid black dotted;"/></p>
+                        <p>This condition requires the following procedure.</p>
+                        <p>(Doctor to document - include site and/or side where relevant to the procedure)</p>
+                        <p><hr style="border-style: dotted;"/></p>
+                        <p>The following will be performed:</p>
+                        <p>A Colonoscopy is where the doctor uses an instrument called a colonoscope to look at the inside lining of your bowel.</p>
+                        <p>This procedure starts from your back passage (anus) and goes up to the right side of your large bowel (caecum). This is done to see if there are any growths, polyps or disease in your bowel.</p>
+                        <p>Small pieces of your bowel may need to be removed for pathology tests.</p>
+                        <p>This procedure may or may not require a sedation anaesthetic.</p>
+
+                        <p style="background-color: grey;"><b>C. Risks of an upper gastrointestinal endoscopy and dilatation +/- sedation</b></p>
+                        <p>There are risks and complications with this procedure. They include but are not limited to the following.</p>
+                        <p><b>Common risks and complications include:</b></p>
+                        <li>Mild pain and discomfort in the abdomen for one to five days  after the procedure. This usually settles with walking, and moving around to get rid of the trapped air.</li>
+                        <li>Nausea and vomiting.</li>
+                        <li>Faintness or dizziness, especially when you start to move around.</li>
+                        <li>Headache</li>
+                        <li>Pain, redness or bruising at the sedation injection site (usually in the hand or arm).</li>
+                        <li>Muscle aches and pains.</li>
+                        <li>Allergy to medications given at time of the procedure.</li><br/>
+                        <p style="background-color: grey;"><b>F. Patient  consent</b></p>
+                        I acknowledge that the doctor has explained :
+                        <li>my medical condition and the proposed procedure, including additional treatment if the doctor finds something unexpected. I understand the risks, including the risks that are specific to me.</li>
+                        <li>procedure. I understand the risks, including the risks that are specific to me.</li>
+                        <li>other relevant procedure/treatment options and their associated risks.</li>
+                        <li>my prognosis and the risks of not having the procedure.</li>
+                        <li>that no guarantee has been made that  the procedure will improve my condition even though it has been carried out with due professional care.</li>
+                        <li>the procedure may include a blood transfusion.</li>
+                        <li>tissues and blood may be removed and could be used for diagnosis or management of my condition, stored and disposed of sensitively by the hospital.</li>
+                        <li>if immediate life-threatening events happen during the procedure, they will be treated based on my discussions with the doctor or my Acute Resuscitation Plan.</li>
+                        <li>a doctor other than the Consultant may conduct the procedure. I understand this could be a doctor undergoing further training.</li>
+                        <p><b>I have been given the following Patient Information Sheets :</b></p>
+                        <p> ☐ <b>Colonoscopy</b></p>
+                        <li>I was able to ask questions and raise concerns with the doctor about my condition, the proposed procedure and its risks, and my treatment options. My questions and concerns have been discussed and answered to my satisfaction.</li>
+                        <li>I understand I have the right to change my mind at any time, including after I have signed this form but, preferably following a discussion with my doctor.</li>
+                        <li>I understand that image/s or video footage may be recorded as part of and during my procedure and that these image/s or video/s will assist the doctor to provide appropriate treatment.</li>
+                        <li>I understand that all research will be approved by a research ethics committee and undertaken in accordance with appropriate ethical, legal and professional standards.</li>
+                        <li>I give consent that in case of averse unexpected situation, if the doctor has to re-operate, extend that operation, use special medicines or instrument or blood products and if required shift the patient to another hospital, it is for the benefit of the patient. The extra expenditure incurred in such a situation will be paid in ful by me.</li>
+                    </div>
+                    <div class="col-xs-6" style="border: 1px solid black;height: 1900px;width:400px;border-left:1px solid white;padding:3px">
+                        <p></p>
+                        <li><b>Uncommon risks and complications include:</b></li>
+                        <li>About 1 person in every 1,000 will accidentally get a hole (perforation) to the bowel causing leakage of bowel contents into the abdomen. Surgery may be needed to repair the hole.</li>
+                        <li>About 1 person in every 100 will experience a significant bleed from the bowel where a polyp was removed. Further endoscopy, a blood transfusion or an operation may be necessary.</li>
+                        <li>Not being able to see the entire bowel. This can happen if your bowel is not completely clean or the colonoscope could not be passed to the end of your large bowel.</li>
+                        <li>Missed polyps, growths or bowel disease.</li>
+                        <li>Heart and lung problems such as heart attack or vomit in the lungs causing pneumonia. Emergency treatment may be necessary.</li>
+                        <li>Change of anaesthetic from a sedation anaesthetic to a general anaesthetic.</li>
+                        <li>Dead arm’ type feeling in any nerve due to positioning with the procedure — usually temporary.</li>
+                        <li>An existing medical condition that you may already have getting worse.</li>
+                        <li><b>Rare risks and complications include:</b></li>
+                        <li>Bacteraemia (infection in the blood). This will need antibiotics.</li>
+                        <li>Stroke resulting in brain damage.</li>
+                        <li>Anaphylaxis (severe allergy) to medication given at the time of procedure.</li>
+                        <li>Death as a result of complications to this procedure is extremely rare.</li><br/>
+                        <li><b>D. Significant risks and procedure options</b></li><br/>
+                        <li>(Doctor to document in space provided. Continue in Medical Record if necessary.)</li>
+                        <p>......................................</p>
+                        <b><li>E. Risks of not having this procedure</li></b><br/>
+                        <li>(Doctor to document in space provided. Continue in Medical Record if necessary.)</li>
+                        <p>.......................................</p>
+                        <li>On the basis of I he above statements,</li><br/>
+                        <p><b>I request to have the procedure</b></p>
+                        <p>Name of Patient:......................</p>
+                        <p>Signature:...........................</p>
+                        <p>Date:...........................</p>
+                        <br/>
+                        <div style="border: 1px solid black;padding:5px;">
+                        <p><b>Patients who lack capacity to provide consent</b></p>
+                        <p>Consent must be obtained from a  substitute decision marker/s in order below.</p>
+                        <p>Name of Relative:...........................</p>
+                        <p>Signature:...........................</p>
+                        <p>Relation with Patient:...........................</p>
+                        <p>Date:...........................</p>
+                        <p>Witness Name:...........................</p>
+                        <p>Signature:...........................</p>
+                        </div><br/><br/>
+                        <div style="border: 1px solid black;padding:5px;">
+                        <p style="background-color: grey;"><b><u>H. Interpreter's statement</u></b></p>
+                        <p>I have given a sight translation in</p>
+                        <p>............................................................</p>
+                        <p>(state the patient's language here) of the consent form the assisted in the provision of any verbal and written information given to the patient/parent or guardian/substitute decision-maker by the doctor.</p>
+                        <p>Name of Interpreter:......................................................................</p>
+                        <p>Signature:...........................</p>
+                        <p>Date:...........................</p>
+                        </div>
+                        <div style="border: 1px solid black;padding:5px;">
+                        <p>Name of Consultane Doctor:...........................</p>
+                        <p>Signature:...........................</p>
+                        <p>Relation with Patient:...........................</p>
+                        <p>Date:...........................</p>
+                        <p>Time:...........................</p>
+                        </div>
+                    </div>
+            ]]></field>
+        </record>
+        
+             <!--Discharge on Request (DOR) eon$en, -->
+<template id="report_discharge_document">
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+            <div class="page" style="border: 1px solid white;font-size:18px">
+                <div class="col-xs-12" style="margin:15px;padding-bottom:20px">
+                    <div class="col-xs-6">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 80px;"/><br/>
+                    </div>
+                  
+                    <div class="col-xs-6">
+                          <div class="pull-right" style="line-height: 15px;">
+                            <span t-field="company.street"/>
+                            <span t-field="company.street2"/>
+                            <span t-field="company.zip"/>.
+                            <span>(<span style="text-transform: uppercase;" t-field="company.state_id.name"/>)
+                            <span style="text-transform: uppercase;" t-field="company.country_id.name"/></span><br/><br/>
+                            <strong>Tel. No.: </strong>  <span t-field="company.phone"/> <br/>
+
+                            <strong>| Email: </strong><span t-field="company.email"/><br/>
+                            <strong>| Website: </strong><span t-field="company.website"/> <br/><br/>
+                        </div>
+                        <div></div>
+                        <div></div>
+                        <br/>
+                    </div>
+                <!-- </div> -->
+             
+                 <t t-foreach="docs" t-as="t">
+                        <div style= "margin-top:10px">
+                            <p style="font-size:18px;text-align:center;padding-top:30px"><b><u>Discharge on Request (DOR) Consent</u></b></p>
+                        </div>
+                        <div class="col-xs-12" style= "padding-top:50px">
+                            <p>We have been informed about our relative Mr./Ms./Mrs...........................</p>
+                                <p>pertaining to his/her disease prognosis and pirysical condition in detail and
+required hospitalization in our familiar language.</p>
+<p>At present he/she is admitted in kaizen hospital for treatment but we are
+requesting to Discharge our relative (Patient) from Kaizen hospital.</p>
+<p>l/We am/are agreed and understoocJ about his/her present health condition.</p>
+<p>l/We am/are giving consent that any mishap or injury to our relatlve occurs during
+transportation orafter discharge we are the only responsible for that.</p>
+                            <p>Kaizen hospital staff or kaizen hospital doctors will not be responsible for any
+mishap or injury to the patient.</p>
+                        </div>
+                        <p></p>
+                        <div class="col-xs-12" >
+                            <div class="col-xs-6 pull-left" >
+                                <p>Patient / Relative Name:</p>
+                                <p>Patient / Relative signature:</p>
+                                <p>Relation with the patient</p>
+                            </div>
+                            <div class="col-xs-6">
+                                <p>Medical Officer Signature:</p>
+                                <p>Nurse Signature with lD:</p>
+
+                            </div>
+                        </div>
+                </t>
+            </div>
+        </div>
+        </template>
+
+        <template id="report_discharge_upp">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="hms_hospitalization.report_discharge_document"/>
+                </t>
+            </t>
+        </template>
+
+        <report 
+            id="hms_hospitalization.report_discharge_report"
+            string="Discharge on Request (DOR)"
+            model="inpatient.consent" 
+            report_type="qweb-pdf"
+            file="hms_hospitalization.report_discharge_up" 
+            name="hms_hospitalization.report_discharge_upp"
+            menu="False"
+        />
+
+        <record id="paperformat_indimedi_discharge_oa_report" model="report.paperformat">
+            <field name="name">Discharge</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">15</field>
+            <field name="margin_bottom">15</field>
+            <field name="margin_left">15</field>
+            <field name="margin_right">15</field>
+            <field name="header_line" eval="False" />
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="hms_hospitalization.report_discharge_report" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="hms_hospitalization.paperformat_indimedi_discharge_oa_report" />
+        </record>
+
+    </data>
+</odoo>

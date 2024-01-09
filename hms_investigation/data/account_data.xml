@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record model="account.account" id="ac200111">
+            <field name="name">Bill to Hospital</field>
+            <field name="code">200111</field>
+            <field name="user_type_id" ref="account.data_account_type_revenue"/>
+            <field name="reconcile" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

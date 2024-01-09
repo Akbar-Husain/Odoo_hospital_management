@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+        <record id="banas_hms_department_general" model="banas.hms.department">
+            <field name="name">General</field>
+            <field name="department_name">general</field>
+        </record>
+       <!--  <record id="hospital_department_urology" model="banas.hms.department">
+            <field name="name">Urology</field>
+            <field name="department_name">urology</field>
+        </record> -->
+        <record id="hospital_department_cardiology" model="banas.hms.department">
+            <field name="name">Cardiology</field>
+            <field name="department_name">cardiology</field>
+        </record>
+
+
+        <!-- Doctor Degree -->
+        <record id="doctor_degree_md" model="banas.hms.doctor.degree">
+            <field name="name">MD</field>
+        </record>
+        <record id="doctor_degree_bds" model="banas.hms.doctor.degree">
+            <field name="name">BDS</field>
+        </record>
+        <record id="doctor_degree_mbbs" model="banas.hms.doctor.degree">
+            <field name="name">MBBS</field>
+        </record>
+
+
+        <!-- Doctor Specialty -->
+        <record id="doctor_speciality_0" model="doctor.speciality">
+            <field name="code">CAD</field>
+            <field name="name">Cardiologist</field>
+        </record>
+        <record id="doctor_speciality_1" model="doctor.speciality">
+            <field name="code">URO</field>
+            <field name="name">Urologist</field>
+        </record>
+        <record id="doctor_speciality_2" model="doctor.speciality">
+            <field name="code">NEU</field>
+            <field name="name">Neurologist</field>
+        </record>
+        <record id="doctor_speciality_3" model="doctor.speciality">
+            <field name="code">ORT</field>
+            <field name="name">Orthopaedic</field>
+        </record>
+        <record id="doctor_speciality_4" model="doctor.speciality">
+            <field name="code">PAE</field>
+            <field name="name">Paediatric</field>
+        </record>
+
+
+         <!-- Ref. Doctor -->
+        <!-- <record id="referring_doctor_0" model="banas.hms.referring.doctor">
+            <field name="name">Dr. H.K.Patel</field>
+            <field name="email">hk.patel@yaho.in</field>
+            <field name="phone">21545741</field>
+            <field name="mobile">8455185251</field>
+            <field name="address">Vasna</field>
+            <field name="country_id">India</field>
+            <field name="city_id">Ahmedabad</field>
+        </record>
+        <record id="referring_doctor_1" model="banas.hms.referring.doctor">
+            <field name="name">Dr. Y.D. Vikani</field>
+            <field name="email">yd.vikani@gmail.com</field>
+            <field name="phone">41585214</field>
+            <field name="mobile">9988855522</field>
+            <field name="address">Pal Road</field>
+            <field name="country_id">India</field>
+            <field name="city_id">Surat</field>
+        </record>
+        <record id="referring_doctor_2" model="banas.hms.referring.doctor">
+            <field name="name">Dr. P.U.Marchant</field>
+            <field name="email">marchant.up@gmail.com</field>
+            <field name="phone">64455222</field>
+            <field name="mobile">8555215925</field>
+            <field name="address">Bandra</field>
+            <field name="country_id">India</field>
+            <field name="city_id">Mumbai</field>
+        </record>
+        <record id="referring_doctor_3" model="banas.hms.referring.doctor">
+            <field name="name">Dr. O.P Nayar</field>
+            <field name="email">nayarop@yahoo.in</field>
+            <field name="phone">48488252</field>
+            <field name="mobile">8445245632</field>
+            <field name="address">Chandkheda</field>
+            <field name="country_id">India</field>
+            <field name="city_id_">Ahmedabad</field>
+        </record>
+        <record id="referring_doctor_4" model="banas.hms.referring.doctor">
+            <field name="name">Dr. Sana Khan</field>
+            <field name="email">khan.Sana@gmail.com</field>
+            <field name="phone">25836995</field>
+            <field name="mobile">8488836985</field>
+            <field name="address">Memnagar</field>
+            <field name="country_id">India</field>
+            <field name="city_id">Ahmedabad</field>
+        </record> -->
+
+
+        <!-- Doctor -->
+        <!-- <record id="hms_physician_0" model="banas.hms.doctor">
+            <field name="image" type="base64" file="banastech_hms/static/img/doc_img_0.jpg"/>
+            <field name="name">Dr. Balamurali Ambati</field>
+            <field name="degree_ids" eval="[(4, ref('doctor_degree_mbbs')),(4, ref('doctor_degree_md'))]"></field>
+            <field name="active">True</field>
+            <field name="code">001</field>
+            <field name="consul_service" ref="hms_consultation_service_0"/>
+            <field name="is_primary_surgeon">True</field>
+            <field name="is_consultation_doctor">True</field>
+            <field name="government_id">215182589621</field>
+            <field name="specialty" ref="physician_specialty_0" />
+            <field name="city_id">Ahmedabad</field>
+            <field name="country_id" ref="base.in"/>
+            <field name="zip">380012</field>
+            <field name="website">www.balamuraliambati.in</field>
+            <field name="phone">25896325</field>
+            <field name="mobile">9898825874</field>
+            <field name="email">balamurali.ambati@gmail.com</field>
+            <field name="signature" type="base64" file="banastech_hms/static/img/doc_sign_0.png" />
+        </record> -->
+<!--            <field name="department_ids"  eval="[(4, ref('hospital_department_cardiology'))]"/> -->
+            <!-- <field name="state_id" ref="hms_gujarat_state" /> -->
+
+       <!--  <record id="hms_physician_1" model="banas.hms.doctor">
+            <field name="image" type="base64" file="banastech_hms/static/img/doc_img_1.jpg"/>
+            <field name="name">Dr. Devi Prasad Shetty</field>
+            <field name="degree_ids" eval="[(4, ref('doctor_degree_mbbs')),(4, ref('doctor_degree_md'))]"></field>
+            <field name="active">True</field>
+            <field name="code">002</field>
+            <field name="consul_service" ref="hms_consultation_service_0"/>
+            <field name="is_primary_surgeon">False</field>
+            <field name="is_consultation_doctor">True</field>
+            <field name="government_id">315182589621</field>
+            <field name="specialty" ref="physician_specialty_3" />
+            <field name="city_id">Ahmedabad</field>
+            <field name="zip">380025</field>
+            <field name="website">www.prasadhospital.com</field>
+            <field name="country_id" ref="base.in"/>
+            <field name="phone">79292312</field>
+            <field name="mobile">9429231234</field>
+            <field name="email">prasad.shetty@gmail.com</field>
+            <field name="signature" type="base64" file="banastech_hms/static/img/doc_sign_1.png" />
+        </record> -->
+<!--            <field name="department_ids"  eval="[(4, ref('hospital_department_orthopedic'))]"/-->
+            <!-- <field name="state_id" ref="hms_gujarat_state" /> -->
+
+       <!--  <record id="hms_physician_2" model="banas.hms.doctor">
+            <field name="image" type="base64" file="banastech_hms/static/img/doc_img_2.jpg"/>
+            <field name="name">Dr. Manish Dhawan</field>
+            <field name="degree_ids" eval="[(4, ref('doctor_degree_mbbs')),(4, ref('doctor_degree_md'))]"></field>
+            <field name="active">True</field>
+            <field name="code">003</field>
+            <field name="consul_service" ref="hms_consultation_service_0"/>
+            <field name="is_primary_surgeon">True</field>
+            <field name="is_consultation_doctor">True</field>
+            <field name="government_id">515182589621</field>
+            <field name="specialty" ref="physician_specialty_1" />
+            <field name="city_id">Ahmedabad</field>
+            <field name="zip">380015</field>
+            <field name="website">www.fusionhospital.com</field>
+            <field name="country_id" ref="base.in"/>
+            <field name="phone">79292369</field>
+            <field name="mobile">9429236985</field>
+            <field name="email">manishdhawan@gmail.com</field>
+            <field name="signature" type="base64" file="banastech_hms/static/img/doc_sign_2.png" />
+        </record> -->
+<!--            <field name="department_ids" eval="[(4, ref('hospital_department_urology'))]" /-->
+            <!-- <field name="state_id" ref="hms_gujarat_state" /> -->
+
+       <!--  <record id="hms_physician_3" model="banas.hms.doctor">
+            <field name="image" type="base64" file="banastech_hms/static/img/doc_img_3.jpg"/>
+            <field name="name">Dr. Deepak Chopra</field>
+            <field name="degree_ids" eval="[(4, ref('doctor_degree_mbbs')),(4, ref('doctor_degree_md'))]"></field>
+            <field name="active">True</field>
+            <field name="code">004</field>
+            <field name="consul_service" ref="hms_consultation_service_0"/>
+            <field name="is_primary_surgeon">True</field>
+            <field name="is_consultation_doctor">True</field>
+            <field name="government_id">900245788505</field>
+            <field name="specialty" ref="physician_specialty_4" />
+            <field name="city_id">Ahmedabad</field>
+            <field name="zip">380012</field>
+            <field name="website">www.civilhospital.in</field>
+            <field name="country_id" ref="base.in"/>
+            <field name="phone">79856312</field>
+            <field name="mobile">9854896213</field>
+            <field name="email">deepak@gmail.com</field>
+            <field name="signature" type="base64" file="banastech_hms/static/img/doc_sign_3.png" />
+        </record> -->
+<!--            <field name="department_ids" eval="[(4, ref('hospital_department_paediatric'))]" /-->
+            <!-- <field name="state_id" ref="hms_gujarat_state" /> -->
+
+        <!-- <record id="hms_physician_4" model="banas.hms.doctor">
+            <field name="image" type="base64" file="banastech_hms/static/img/doc_img_4.jpg"/>
+            <field name="name">Dr. Aamod Rao</field>
+            <field name="degree_ids" eval="[(4, ref('doctor_degree_mbbs'))]"></field>
+            <field name="active">True</field>
+            <field name="code">005</field>
+            <field name="consul_service" ref="hms_consultation_service_0"/>
+            <field name="is_primary_surgeon">True</field>
+            <field name="is_consultation_doctor">True</field>
+            <field name="government_id">548755400052</field>
+            <field name="specialty" ref="physician_specialty_3" />
+            <field name="city_id">Ahmedabad</field>
+            <field name="zip">547854</field>
+            <field name="website">www.raohospital.in</field>
+            <field name="country_id" ref="base.in"/>
+            <field name="phone">24511154</field>
+            <field name="mobile">8755400021</field>
+            <field name="email">aamod@gmail.com</field>
+            <field name="signature" type="base64" file="banastech_hms/static/img/doc_sign_4.png" />
+        </record> -->
+<!--            <field name="department_ids" eval="[(4, ref('hospital_department_orthopedic'))]" /-->
+            <!-- <field name="state_id" ref="hms_gujarat_state" /> -->
+
+       <!--  <record id="hms_physician_5" model="banas.hms.doctor">
+            <field name="image" type="base64" file="banastech_hms/static/img/doc_img_5.jpg"/>
+            <field name="name">Dr. Ramneek Mahajan</field>
+            <field name="degree_ids" eval="[(4, ref('doctor_degree_mbbs')),(4, ref('doctor_degree_bds'))]"></field>
+            <field name="active">True</field>
+            <field name="code">006</field>
+            <field name="consul_service" ref="hms_consultation_service_0"/>
+            <field name="is_primary_surgeon">True</field>
+            <field name="is_consultation_doctor">True</field>
+            <field name="government_id">721245778045</field>
+            <field name="specialty" ref="physician_specialty_4" />
+            <field name="city_id">Ahmedabad</field>
+            <field name="zip">547850</field>
+            <field name="website">www.sukanhospital.co.in</field>
+            <field name="country_id" ref="base.in"/>
+            <field name="phone">27214411</field>
+            <field name="mobile">9811001208</field>
+            <field name="email">ramneek@gmail.com</field>
+            <field name="signature" type="base64" file="banastech_hms/static/img/doc_sign_5.png" />
+        </record> -->
+<!--            <field name="department_ids" eval="[(4, ref('hospital_department_paediatric'))]"/-->
+            <!-- <field name="state_id" ref="hms_gujarat_state" /> -->
+
+</odoo>

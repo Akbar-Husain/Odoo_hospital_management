@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_banastech_hms_family_tree" model="ir.ui.view">
+            <field name="name">banastech.hms.family.tree</field>
+            <field name="model">banastech.hms.family</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Banastech HMS Family">
+                    <field name="name" />
+                    <field name="operational_sector" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_banastech_hms_family_form" model="ir.ui.view">
+            <field name="name">banastech.hms.family.form</field>
+            <field name="model">banastech.hms.family</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Banastech HMS Family" version="7.0">
+                    <sheet>
+                        <H1>
+                            <label for="name" string="Family: " class="o_form_label"/>
+                            <field name="name" />
+                        </H1>
+                        <notebook>
+                            <page string="Main">
+                                <group>
+                                    <field name="operational_sector">
+                                        <tree>
+                                            <field name="name" />
+                                            <!-- <field name="operational_area_id" /> -->
+                                        </tree>
+                                        <form>
+                                            <field name="name" />
+                                            <!-- <field name="operational_area_id" /> -->
+                                            <group colspan="4" string="Extra Infomation">
+                                                <field name="info"/>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </group>
+                                <group colspan="4" col="4" string="Members">
+                                    <field name="members" colspan="4" nolabel="1">
+                                        <tree>
+                                            <field name="role" />
+                                            <field name="member" />
+                                            <field name="family_id" />
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <field name="role" />
+                                                <field name="member" />
+                                            </group>
+                                        </form>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Info">
+                                <group string="Info" colspan="4" col="4">
+                                    <field name="info" colspan="4" nolabel="0" />
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_banastech_hms_family_search" model="ir.ui.view">
+            <field name="name">banastech.hms.family.search</field>
+            <field name="model">banastech.hms.family</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search string="Banastech HMS Family">
+                    <field name="info"/>
+                    <field name="operational_sector"/>
+                    <field name="name"/>
+                    <newline/>
+                    <group expand="0" string="Group By...">
+                        <filter name="operational_sector" string="Operational Sector" domain="[]" context="{'group_by':'operational_sector'}" />
+                        <filter name="name" string="Family" domain="[]" context="{'group_by':'name'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="act_open_banastech_hms_family_view" model="ir.actions.act_window">
+            <field name="name">Banastech HMS Family</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">banastech.hms.family</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_banastech_hms_family_search" />
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+        <!-- <record model="ir.actions.act_window.view" id="act_open_indimedi_family_view_form">
+            <field name="act_window_id" ref="act_open_banastech_hms_family_view" />
+            <field name="sequence" eval="20" />
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_banastech_hms_family_form" />
+        </record> -->
+        <!-- <record model="ir.actions.act_window.view" id="act_open_indimedi_family_view_tree">
+            <field name="act_window_id" ref="act_open_banastech_hms_family_view" />
+            <field name="sequence" eval="10" />
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_banastech_hms_family_tree" />
+        </record> -->
+
+       <!-- Family Member Views -->
+
+        <record id="view_banastech_hms_family_member_tree" model="ir.ui.view">
+            <field name="name">banastech.hms.family_member.tree</field>
+            <field name="model">banastech.hms.family_member</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Banastech HMS Family Member">
+                    <field name="family_id" />
+                    <field name="role" />
+                    <field name="member" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_banastech_hms_family_member_form" model="ir.ui.view">
+            <field name="name">banastech.hms.family_member.form</field>
+            <field name="model">banastech.hms.family_member</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Banastech HMS Family Member">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="family_id" colspan="4" />
+                                <field name="member" colspan="4" />
+                            </group>
+                            <group>
+                                <field name="role" colspan="4" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_banastech_hms_family_member_search" model="ir.ui.view">
+            <field name="name">banastech.hms.family_member.search</field>
+            <field name="model">banastech.hms.family_member</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search string="Banastech HMS Family Member">
+                    <field name="role" />
+                    <field name="member" />
+                    <field name="family_id" />
+                    <newline />
+                    <group expand="0" string="Group By...">
+                        <filter name="member" string="Party" domain="[]" context="{'group_by':'member'}" />
+                        <filter name="role" string="Role" domain="[]" context="{'group_by':'role'}" />
+                        <filter name="family_id" string="Family" domain="[]" context="{'group_by':'family_id'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="act_banastech_hms_family_member_view">
+            <field name="name">Banastech HMS Family Member</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">banastech.hms.family_member</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_banastech_hms_family_member_search" />
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+        <!-- <record model="ir.actions.act_window.view" id="act_open_indimedi_family_member_view_form">
+            <field name="act_window_id" ref="act_open_indimedi_family_member_view" />
+            <field name="sequence" eval="20" />
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_banastech_hms_family_member_form" />
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_indimedi_family_member_view_tree">
+            <field name="act_window_id" ref="act_open_indimedi_family_member_view" />
+            <field name="sequence" eval="10" />
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_banastech_hms_family_member_tree" />
+        </record> -->
+
+       <!-- Operational Areas -->
+
+        <record id="view_banastech_hms_operational_area_tree" model="ir.ui.view">
+            <field name="name">banastech.hms.operational_area.tree</field>
+            <field name="model">banastech.hms.operational_area</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Banastech HMS Operational_Area">
+                    <field name="info"/>
+                    <!-- field name="operational_sector"/  -->
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_banastech_hms_operational_area_form" model="ir.ui.view">
+            <field name="name">banastech.hms.operational_area.form</field>
+            <field name="model">banastech.hms.operational_area</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Banastech HMS Operational_Area">
+                    <group>
+                        <field name="info"/>
+                        <!-- field name="operational_sector"/  -->
+                        <field name="name"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="view_banastech_hms_operational_area_search" model="ir.ui.view">
+            <field name="name">banastech.hms.operational_area.search</field>
+            <field name="model">banastech.hms.operational_area</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search string="Banastech HMS Operational_Area">
+                    <field name="info"/>
+                    <field name="name"/>
+                    <newline />
+                    <group expand="0" string="Group By...">
+                        <filter name="info" string="Extra Information" domain="[]" context="{'group_by':'info'}" />
+                        <filter name="name" string="Name" domain="[]" context="{'group_by':'name'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="act_banastech_hms_operational_area_view">
+            <field name="name">Banastech HMS Operational Area</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">banastech.hms.operational_area</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_banastech_hms_operational_area_search" />
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+        <!-- <record model="ir.actions.act_window.view" id="act_open_indimedi_operational_area_view_form">
+            <field name="act_window_id" ref="act_banastech_hms_operational_area_view" />
+            <field name="sequence" eval="20" />
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_banastech_hms_operational_area_form" />
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_indimedi_operational_area_view_tree">
+            <field name="act_window_id" ref="act_banastech_hms_operational_area_view" />
+            <field name="sequence" eval="10" />
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_banastech_hms_operational_area_tree" />
+        </record> -->
+
+       <!-- Operational Sector -->
+
+        <record id="view_banastech_hms_operational_sector_tree" model="ir.ui.view">
+            <field name="name">banastech.hms.operational_sector.tree</field>
+            <field name="model">banastech.hms.operational_sector</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Banastech HMS Operational_Sector">
+                    <field name="name" />
+                    <field name="operational_area_id" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_banastech_hms_operational_sector_form" model="ir.ui.view">
+            <field name="name">banastech.hms.operational_sector.form</field>
+            <field name="model">banastech.hms.operational_sector</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Banastech HMS Operational_Sector">
+                    <group>
+                        <field name="name" />
+                        <field name="operational_area_id" />
+                    </group>
+                    <group colspan="4" string="Extra Infomation">
+                        <field name="info" colspan="4" nolabel="1" />
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="view_banastech_hms_operational_sector_search" model="ir.ui.view">
+            <field name="name">banastech.hms.operational_sector.search</field>
+            <field name="model">banastech.hms.operational_sector</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search string="Banastech HMS Operational_Sector">
+                    <field name="info" />
+                    <field name="operational_area_id" />
+                    <field name="name" />
+                    <newline />
+                    <group expand="0" string="Group By...">
+                        <filter name="info" string="Extra Information" domain="[]" context="{'group_by':'info'}" />
+                        <filter name="operational_area_id" string="Operational Area" domain="[]" context="{'group_by':'operational_area_id'}" />
+                        <filter name="name" string="Op. Sector" domain="[]" context="{'group_by':'name'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="act_banastech_hms_operational_sector_view">
+            <!-- act_open_hms_operational_sector_view -->
+            <field name="name">Banastech HMS Operational Sector</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">banastech.hms.operational_sector</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_banastech_hms_operational_sector_search"/>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+        <!-- <record model="ir.actions.act_window.view" id="act_open_indimedi_operational_sector_view_form">
+            <field name="act_window_id" ref="act_open_indimedi_operational_sector_view" />
+            <field name="sequence" eval="20" />
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_banastech_hms_operational_sector_form" />
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_indimedi_operational_sector_view_tree">
+            <field name="act_window_id" ref="act_open_indimedi_operational_sector_view" />
+            <field name="sequence" eval="10" />
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_banastech_hms_operational_sector_tree" />
+        </record> -->
+
+    </data>
+</odoo>

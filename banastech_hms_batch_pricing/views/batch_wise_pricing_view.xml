@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_production_lot_form_inherit" model="ir.ui.view">
+            <field name="name">stock.production.lot.form</field>
+            <field name="model">stock.production.lot</field>
+            <field name="inherit_id" ref="stock.view_production_lot_form"/>
+            <field name="arch" type="xml">
+                <group name='main_group' position="after">
+                    <group name="pricing" string="Pricing">
+                        <group>
+                            <field name="purchase_price"/>
+                            <!-- <field name="purchase_uom"/> -->
+                            <field name="mrp"/>
+                        </group>
+                        <group>
+                            <!-- <field name="sale_uom"/> -->
+                            <field name="sale_price"/>
+                        </group>
+                    </group>
+                </group>
+            </field>
+        </record>
+    </data>
+</odoo>

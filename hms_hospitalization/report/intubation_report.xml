@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="intubation_consent_call_main">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <div class="page">
+                       <p>કા ઈ ઝન હોસ્પિટલ </p>
+                       
+                        <div class="row">
+                            <p style="font-size:25px;"><center><u><strong><h4><b>ઇન્ટુબેશન  સારવાર અંગે નું સંહામતિ પત્રક  </b></h4></strong></u></center>
+                            </p>
+
+                        </div>
+                         <p style="font-size:20px;text-align:right" class ="pull-right"><h4>તારીખ અને સમય :</h4>
+                            </p>
+                        <div class="cl-xs-12">
+                            <div class="cl-xs-6">
+                                <p style="font-size:20px;" class="pull-left">દર્દી નું નામ :________________</p>
+                            </div>
+                            <div class="cl-xs-6">
+                                <p style="font-size:20px;" class="pull-right">ઉમર અને જતી :_________________</p>
+                            </div>
+                        </div>
+                        <div class="cl-xs-12">
+                            <div class="cl-xs-6">
+                                <p style="font-size:20px;" class="pull-left">દર્દી નો દાખલ નંબર :____________</p>
+                            </div>
+                            <div class="cl-xs-6">
+                                <p style="font-size:20px;" class="pull-right">ડૉક્ટર :_________________</p>
+                            </div>
+                        </div>
+                         <div class="cl-xs-12">
+                            <div class="cl-xs-12">
+                                <p style="font-size:20px;" class="pull-left">અમને એવું જાણવામાં આવ્યું છે, દર્દી _______________ ની તબિયત દયાન માં રાખીને। ઇન્ટુબેશન સારવાર આપવાની જરૂર પડી છે.અમને આ પક્રિયા ને લગતા તમામ લાભ તેમજ જોખમો વિષે માહિતગાર કરવામાં આવેલ છે.અને ઇન્ટુબેશન આવતી પ્રતિકિયા ને લગતા લાભ અને જોખમો ને સાચી રીતે સમજ્યા છે ,</p>
+                            </div>
+                        </div>
+                       
+                       
+                         <div class="cl-xs-12">
+                            <div class="cl-xs-12">
+                                <p style="font-size:20px;" class="pull-left">મેડિકલ ઓફિસર નું નામ :________________</p>
+                            </div>
+                        </div><br/>
+                         <div class="cl-xs-12">
+                            <div class="cl-xs-12">
+                                <p style="font-size:20px;" class="pull-left">સહી :____________</p>
+                            </div>
+                        </div>
+                         <div class="cl-xs-12">
+                            <div class="cl-xs-12">
+                                <p style="font-size:20px;" class="pull-left">તારીખ અને સમય :_____________</p>
+                            </div>
+                        </div>
+                         <div class="cl-xs-12">
+                            <div class="cl-xs-6">
+                                <p style="font-size:20px;" class="pull-left">દર્દી નો સંબંધ :______________</p>
+                            </div>
+                            <div class="cl-xs-6">
+                                <p style="font-size:20px;" class="pull-right">તારીખ :_________________</p>
+                            </div>
+                        </div>
+                        <div class="cl-xs-12">
+                            <div class="cl-xs-6 pull-left">
+                                <p style="font-size:20px;" class="pull-left">સહી :____________</p><br/>
+                            </div>
+                            <div class="cl-xs-6">
+                                <p style="font-size:20px;" class="pull-right">સમય  :_________________</p>
+                            </div>
+                        </div>
+                    </div>
+                             
+                </t>
+            </t>
+        </template>
+
+        <template id="intubation_consent_call">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="hms_hospitalization.intubation_consent_call_main"/>
+                </t>
+            </t>
+        </template>
+
+    
+        <report
+            id="intubation_consent_id"
+            string="Intubation Consent"
+            model="inpatient.consent"
+            report_type="qweb-pdf"
+            file="hms_hospitalization.intubation_consent_call"
+            name="hms_hospitalization.intubation_consent_call"
+            menu="False"
+        />
+    </data>
+</odoo>

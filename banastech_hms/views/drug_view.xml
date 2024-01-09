@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Drug Form -->
+        <record id="view_banas_hms_drug_form_tree" model="ir.ui.view">
+            <field name="name">banas.hms.drug.form.tree</field>
+            <field name="model">banas.hms.drug.form</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="HMS Drug Form">
+                    <field name="code" />
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_banas_hms_drug_form_form" model="ir.ui.view">
+            <field name="name">banas.hms.drug.form.form</field>
+            <field name="model">banas.hms.drug.form</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="HMS Drug Form">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="code" />
+                            </group>
+                            <group>
+                                <field name="name" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_banas_hms_drug_form_search" model="ir.ui.view">
+            <field name="name">banas.hms.drug.form.search</field>
+            <field name="model">banas.hms.drug.form</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search string="HMS Drug Form">
+                    <field name="code" />
+                    <field name="name" />
+                    <newline />
+                   <!--  <group expand="0" string="Group By...">
+                        <filter string="Code" domain="[]" context="{'group_by':'code'}" />
+                        <filter string="Form" domain="[]" context="{'group_by':'name'}" />
+                    </group> -->
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="act_open_drug_form_view">
+            <field name="name">Drug Form</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">banas.hms.drug.form</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_banas_hms_drug_form_search" />
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <record id="view_banas_hms_drug_company_form_search" model="ir.ui.view">
+            <field name="name">banas.hms.active.comp.search</field>
+            <field name="model">banas.hms.active.comp</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search string="Drug Company">
+                    <field name="name" />
+                    <newline />
+                    <!-- <group expand="0" string="Group By...">
+                        <filter string="Name" domain="[]" context="{'group_by':'name'}" />
+                    </group> -->
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="act_open_drug_company_form_view">
+            <field name="name">Drug Company</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">banas.hms.drug.company</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_banas_hms_drug_company_form_search" />
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+        
+        <record id="view_banas_hms_active_comp_form_search" model="ir.ui.view">
+            <field name="name">banas.hms.active.comp.search</field>
+            <field name="model">banas.hms.active.comp</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search string="Active Component">
+                    <field name="name" />
+                    <newline />
+                    <!-- <group expand="0" string="Group By...">
+                        <filter string="Name" domain="[]" context="{'group_by':'name'}" />
+                    </group> -->
+                </search>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="act_open_active_comp">
+            <field name="name">Active Component</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">banas.hms.active.comp</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_banas_hms_active_comp_form_search" />
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+        
+
+        <record model="ir.actions.act_window.view" id="act_open_drug_form_view_form">
+            <field name="act_window_id" ref="act_open_drug_form_view" />
+            <field name="sequence" eval="20" />
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_banas_hms_drug_form_form" />
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_drug_form_view_tree">
+            <field name="act_window_id" ref="act_open_drug_form_view" />
+            <field name="sequence" eval="10" />
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_banas_hms_drug_form_tree" />
+        </record>
+
+        <!-- Drug Route -->
+        <record id="view_banas_hms_drug_route_tree" model="ir.ui.view">
+            <field name="name">banas.hms.drug.route.tree</field>
+            <field name="model">banas.hms.drug.route</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="HMS Drug Route">
+                    <field name="code" />
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_banas_hms_drug_route_form" model="ir.ui.view">
+            <field name="name">banas.hms.drug.route.form</field>
+            <field name="model">banas.hms.drug.route</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="HMS Drug Route">
+                    <group>
+                        <group>
+                            <field name="code" />
+                        </group>
+                        <group>
+                            <field name="name" />
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="view_banas_hms_drug_route_search" model="ir.ui.view">
+            <field name="name">banas.hms.drug.route.search</field>
+            <field name="model">banas.hms.drug.route</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search string="HMS Drug Route">
+                    <field name="code" />
+                    <field name="name" />
+                    <newline />
+                    <!-- <group expand="0" string="Group By...">
+                        <filter string="Code" domain="[]" context="{'group_by':'code'}" />
+                        <filter string="Unit" domain="[]" context="{'group_by':'name'}" />
+                    </group> -->
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="act_open_drug_route_view">
+            <field name="name">HMS Drug Route</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">banas.hms.drug.route</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_banas_hms_drug_route_search" />
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_drug_route_view_form">
+            <field name="act_window_id" ref="act_open_drug_route_view" />
+            <field name="sequence" eval="20" />
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_banas_hms_drug_route_form" />
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_drug_route_view_tree">
+            <field name="act_window_id" ref="act_open_drug_route_view" />
+            <field name="sequence" eval="10" />
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_banas_hms_drug_route_tree" />
+        </record>
+    </data>
+</odoo>

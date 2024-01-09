@@ -1,0 +1,1225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="action_icu_welcome" model="ir.actions.act_window">
+            <field name="name">ICU Welcome</field>
+            <field name="res_model">hms.icu.welcome</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'tree_view_ref':'hms_icu.view_hms_icu_welcome_tree','form_view_ref': 'hms_icu.view_hms_icu_welcome_form'}</field>
+            <field name="domain">[]</field>
+        </record>
+        <menuitem id="action_menu_icu_welcome"
+            action="action_icu_welcome"
+            parent="action_menu_icu"
+            name="ICU Welcome" />
+            <!-- groups="banastech_hms.group_banastech_hms_icu" -->
+
+        <record id="view_hms_icu_welcome_tree" model="ir.ui.view">
+            <field name="name">hms.icu.welcome.tree</field>
+            <field name="model">hms.icu.welcome</field>
+            <field name="arch" type="xml">
+                <tree string="ICU Welcome">
+                    <field name="patient_id"/>
+                    <field name="name"/>
+                    <field name="gender"/>
+                    <field name="age"/>
+                    <field name="blood_group"/>
+                    <field name="weight"/>
+                    <field name="cm"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_hms_icu_welcome_form" model="ir.ui.view">
+            <field name="name">hms.icu.welcome.form</field>
+            <field name="model">hms.icu.welcome</field>
+            <field name="arch" type="xml">
+                <form string="ICU Welcome">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="icu_welcome_doctor" class="oe_stat_button" icon="fa-pencil-square-o" type="object" string="Doctor Chart" />
+                            <!-- groups="banastech_hms.group_banastech_hms_medical_officer,banastech_hms.group_banas_hms_doctor,banastech_hms.group_banastech_hms_nurse"  -->
+                        </div>
+                        <field name="image" widget="image" class="oe_avatar" />
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1" />
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="patient_id" />
+                                <field name="blood_group" readonly="True"/>
+                                <field name="age" readonly="True"/>
+                                <field name="gender" readonly="True"/>
+                            </group>
+                            <group>
+                                <field name="inpatient_id" invisible="True"/>
+                                <field name="cm"/>
+                                <field name="weight"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="General">
+                                <group string="Complaints">
+                                    <field name="complain_ids" nolabel="1">
+                                        <tree editable="bottom">
+                                            <field name="name" options="{'no_open': 1}"/>
+                                            <field name="days" options="{'no_open': 1}"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group string="General Examinations">
+                                    <group>
+                                        <field name="temp" />
+                                        <field name="pulse" />
+                                        <label for="bph" />
+                                        <div class="o_address_format">
+                                            <field name="bph" class="o_address_city" placeholder="BP(Low)" />
+                                            <field name="bpl" class="o_address_zip" placeholder="BP(UP)" />
+                                        </div>
+                                        <field name="rr" />
+                                        <field name="spo2" />
+                                    </group>
+                                    <group>
+                                        <field name="anemia" />
+                                        <field name="cyanosis" />
+                                        <field name="jaundice" />
+                                        <label for="edema" />
+                                        <div class="oe_inline">
+                                            <field name="edema" style="width:20%" />
+                                            <field name="edema_note" style="width:79%" attrs="{'invisible': [('edema', '=', False)]}" />
+                                        </div>
+                                        <field name="lymphadenopathy" />
+                                        <label for="clubbing" />
+                                        <div class="oe_inline">
+                                            <field name="clubbing" style="width:20%" />
+                                            <field name="clubbing_note" style="width:79%" attrs="{'invisible': [('clubbing', '=', False)]}" />
+                                        </div>
+                                        <label for="ge_other" />
+                                        <div class="oe_inline">
+                                            <field name="ge_other" style="width:20%" />
+                                            <field name="ge_other_note" style="width:79%" attrs="{'invisible': [('ge_other', '=', False)]}" />
+                                        </div>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Systemic Examinations">
+                                <group string="Respiratory" col="4">
+                                    <group>
+                                        <field name="asthma"/>
+                                        <field name="copd"/>
+                                        <field name="bronchitis"/>
+                                        <field name="dyspnoea"/>
+                                    </group>
+                                    <group>
+                                        <field name="orthopnoea"/>
+                                        <field name="pneumonia"/>
+                                        <field name="productive_cough"/>
+                                    </group>
+                                    <group>
+                                        <field name="urti"/>
+                                        <field name="shortness_of_breaths"/>
+                                        <field name="tuberculosis"/>
+                                    </group>
+                                    <group>
+                                        <field name="wnl_respiratory" class="text_value_color"/>
+                                    </group>
+                                </group>
+                                <group string="Cardiovascular" col="4">
+                                    <group>
+                                        <field name="hypertension"/>
+                                        <field name="mi"/>
+                                        <field name="angina"/>
+                                        <field name="murmur"/>
+                                    </group>
+                                    <group>
+                                        <field name="chf"/>
+                                        <field name="abnormal_ECG"/>
+                                        <field name="dysrhythmia"/>
+                                        <field name="rheumatic_fever"/>
+                                    </group>
+                                    <group>
+                                        <field name="valvular_heart_disease"/>
+                                        <label for="exercise_tolerance"/>
+                                        <div class="oe_inline">
+                                            <field name="exercise_tolerance" style="width:20%" />
+                                            <field name="exercise_tolerance_note" style="width:79%" attrs="{'invisible': [('exercise_tolerance', '=', False)]}"/>
+                                        </div>
+                                    </group>
+                                    <group>
+                                        <field name="wnl_cardiov" class="text_value_color"/>
+                                    </group>
+                                </group>
+                                <group string="Gastrointestinal and Liver" col="4">
+                                    <group>
+                                        <field name="nausea"/>
+                                        <field name="vomiting"/>
+                                        <field name="ulcer"/>
+                                        <field name="diarrhoea"/>
+                                    </group>
+                                    <group>
+                                        <field name="hematemesis"/>
+                                        <field name="melena"/>
+                                        <field name="bowel_obstruction"/>
+                                        <field name="hepatitis"/>
+                                    </group>
+                                    <group>
+                                        <field name="cirrhosis"/>
+                                        <field name="jaundice"/>
+                                        <field name="reflux_ds"/>
+                                    </group>
+                                    <group>
+                                        <field name="wnl_renal_endoc" class="text_value_color"/>
+                                    </group>
+                                </group>
+                                <group string="Renal/Endocrinal" col="4">
+                                    <group>
+                                        <field name="diabetes"/>
+                                        <field name="thyroid_ds"/>
+                                        <field name="renal_failure"/>
+                                    </group>
+                                    <group>
+                                        <field name="dialysis"/>
+                                        <field name="urinary_retention"/>
+                                        <field name="uti"/>
+                                    </group>
+                                    <group>
+                                        <field name="weight_loss_Gain"/>
+                                        <field name="edema"/>
+                                    </group>
+                                    <group>
+                                        <field name="wnl_renal_endoc" class="text_value_color"/>
+                                    </group>
+                                </group>
+                                <group string="Neuromuscular" col="4">
+                                    <group>
+                                        <field name="arthritis"/>
+                                        <field name="muscle_weakness"/>
+                                        <field name="back_problems"/>
+                                        <field name="paralysis"/>
+                                    </group>
+                                    <group>
+                                        <field name="paraesthesia"/>
+                                        <field name="syncope"/>
+                                        <field name="seizures"/>
+                                        <field name="headache"/>
+                                    </group>
+                                    <group>
+                                        <field name="raised_icp"/>
+                                        <field name="loss_of_cons"/>
+                                        <field name="cva_stroke_tias"/>
+                                    </group>
+                                    <group>
+                                        <field name="wnl_neuromuscular" class="text_value_color"/>
+                                    </group>
+                                </group>
+                                <group string="Other" col="4">
+                                    <group>
+                                        <field name="anemia"/>
+                                        <field name="bleeding_tendencies"/>
+                                        <field name="immunosuppressed"/>
+                                    </group>
+                                    <group>
+                                        <field name="cancer"/>
+                                        <field name="chemotherapy"/>
+                                        <field name="dehydration"/>
+                                    </group>
+                                    <group>
+                                        <field name="haemophilia"/>
+                                        <field name="pregnancy"/>
+                                        <field name="recent_steroids"/>
+                                    </group>
+                                    <group>
+                                        <field name="wnl_other" class="text_value_color"/>
+                                    </group>
+                                </group>
+                                <group string="On RX and Specific Comments">
+                                    <group>
+                                        <label for="icu_ho_addiction_ids" string="Addiction" />
+                                        <field name="icu_ho_addiction_ids" nolabel="1" colspan="2">
+                                            <tree editable="bottom">
+                                                <field name="ho_addiction_name"/>
+                                                <field name="ho_addiction_value"/>
+                                                <field name="ho_other_value"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                    <group>
+                                        <label for="specific_comments"/>
+                                        <field name="specific_comments" nolabel="1" colspan="2"/>
+                                    </group>
+                                </group>
+                                <group string="H/o Allergy">
+                                    <group>
+                                        <label for="ho_allergy"/>
+                                        <div class="oe_inline">
+                                            <field name="ho_allergy" style="width:20%"/>
+                                            <field name="ho_allergy_note" style="width:79%" attrs="{'invisible': [('ho_allergy', '=', False)]}" />
+                                        </div>
+                                    </group>
+                                </group>
+                                <group string="Airway/Teeth/Head &amp; Neck" col="4">
+                                    <group>
+                                        <field name="mp_grading"/>
+                                        <field name="neck_movement"/>
+                                        <field name="thyromental_distance"/>
+                                    </group>
+                                    <group>
+                                        <field name="mouth_opening"/>
+                                        <field name="tm_joint_movement"/>
+                                        <field name="air_teeth"/>
+                                    </group>
+                                    <group>
+                                        <field name="air_other"/>
+                                    </group>
+                                </group>
+                                <group col="1">
+                                    <group>
+                                        <group string="H/o Blood Transfusion or BTR">
+                                            <field name="ho_blood_transfusion" style="width:100%"/>
+                                        </group>
+                                        <group string="Family/H">
+                                            <field name="btr_family"/>
+                                        </group>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Investigations">
+                                <group col="3" string="Haemogram">
+                                    <group>
+                                        <field name="hb" />
+                                        <field name="platelet" />
+                                    </group>
+                                    <group>
+                                        <field name="tlc" />
+                                        <field name="pcv" />
+                                    </group>
+                                    <group>
+                                        <field name="dc" />
+                                        <field name="rbc" />
+                                    </group>
+                                </group>
+                                <group col="3" string="RFT and Electrolytes">
+                                    <group>
+                                        <field name="s_urea" />
+                                        <field name="s_k" />
+                                        <field name="s_cr" />
+                                        <field name="s_na" />
+                                    </group>
+                                    <group>
+                                        <field name="mg_plus_plus"/>
+                                        <field name="ca_plus_plus"/>
+                                        <field name="rbs" />
+                                    </group>
+                                    <group>
+                                        <field name="phosphorus"/>
+                                        <field name="cl_negative"/>
+                                        <field name="elec_blood_group1"/>
+                                    </group>
+                                </group>
+                                <group col="3" string="Liver Function Test">
+                                    <group>
+                                        <field name="s_bilirubin" />
+                                        <field name="sgpt" />
+                                    </group>
+                                    <group>
+                                        <field name="s_direct" />
+                                        <field name="alp" />
+                                    </group>
+                                    <group>
+                                        <field name="s_indirect" />
+                                    </group>
+                                </group>
+                                <group col="3" string="Coagulation Profile">
+                                    <group>
+                                        <field name="ct" />
+                                        <field name="bt" />
+                                    </group>
+                                    <group>
+                                        <field name="pt_coagulation" />
+                                        <field name="pt_test_note" attrs="{'invisible': [('pt_coagulation', '=', False)]}" />
+                                        <field name="pt_control_note" attrs="{'invisible': [('pt_coagulation', '=', False)]}" />
+                                        <field name="pt_inr_note" attrs="{'invisible': [('pt_coagulation', '=', False)]}" />
+                                    </group>
+                                    <group>
+                                        <field name="aptt_coagulation" />
+                                        <field name="aptt_test_note" attrs="{'invisible': [('aptt_coagulation', '=', False)]}" />
+                                        <field name="aptt_control_note" attrs="{'invisible': [('aptt_coagulation', '=', False)]}" />
+                                        <field name="aptt_inr_note" attrs="{'invisible': [('aptt_coagulation', '=', False)]}" />
+                                    </group>
+                                </group>
+                                <group string="Serological Study" col="3">
+                                    <group>
+                                        <field name="hiv" />
+                                    </group>
+                                    <group>
+                                        <field name="hbsag" />
+                                    </group>
+                                    <group>
+                                        <field name="anti_hcv" />
+                                    </group>
+                                </group>
+                                <group string="Cardiac Study">
+                                    <group>
+                                        <field name="cs_ecg" />
+                                    </group>
+                                    <group>
+                                        <field name="d_echo" />
+                                    </group>
+                                </group>
+                                <group string="Imaging Study">
+                                    <group>
+                                        <field name="x_Ray" />
+                                    </group>
+                                    <group>
+                                        <field name="usg" />
+                                    </group>
+                                    <group>
+                                        <field name="ct_mri" />
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Advices">
+                                <group string="Monitoring and Equipment" col="4">
+                                    <group>
+                                        <field name="ecg" />
+                                        <field name="nibp" />
+                                        <field name="spO2" />
+                                        <field name="etco2" />
+                                        <field name="temp1" />
+                                    </group>
+                                    <group>
+                                        <field name="respiration" />
+                                        <field name="urine_output" />
+                                        <field name="ibp" />
+                                        <field name="cv_line" />
+                                        <field name="ng_og_tube" />
+                                    </group>
+                                    <group>
+                                        <field name="foleys_catheter" />
+                                        <label for="iv_line" />
+                                        <div class="oe_inline">
+                                            <field name="iv_line" style="width:20%" />
+                                            <field name="iv_line_note" style="width:79%" attrs="{'invisible': [('iv_line', '=', False)]}" />
+                                        </div>
+                                        <label for="arterial_line" />
+                                        <div class="oe_inline">
+                                            <field name="arterial_line" style="width:20%" />
+                                            <field name="arterial_line_note" style="width:79%" attrs="{'invisible': [('arterial_line', '=', False)]}" />
+                                        </div>
+                                        <label for="other" />
+                                        <div class="oe_inline">
+                                            <field name="other" style="width:20%" />
+                                            <field name="other_note" style="width:79%" attrs="{'invisible': [('other', '=', False)]}" />
+                                        </div>
+                                    </group>
+                                </group>
+                                <group string="Advices">
+                                    <group>
+                                        <field name="advices_1" />
+                                        <field name="advices_2" />
+                                        <field name="advices_3" />
+                                    </group>
+                                    <group>
+                                        <label for="advices_4" />
+                                        <div class="oe_inline">
+                                            <field name="advices_4" style="width:20%" />
+                                            <field name="o2_theory_note" style="width:50%" attrs="{'invisible': [('advices_4', '=', False)]}" />
+                                            <span attrs="{'invisible': [('advices_4', '=', False)]}">L/min via</span>
+                                        </div>
+                                        <field name="mask_O2" attrs="{'invisible': [('advices_4', '=', False)]}" />
+                                        <field name="nasal_cannula" attrs="{'invisible': [('advices_4', '=', False)]}" />
+                                        <field name="t_piece" attrs="{'invisible': [('advices_4', '=', False)]}" />
+                                        <field name="oral_nasal_airway" attrs="{'invisible': [('advices_4', '=', False)]}" />
+                                        <field name="ett" attrs="{'invisible': [('advices_4', '=', False)]}" />
+                                        <field name="t_stomy" attrs="{'invisible': [('advices_4', '=', False)]}" />
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="diet" />
+                                        <label for="diet_liquid_ml" attrs="{'invisible': [('diet', '=', False)]}"/>
+                                        <div class="o_address_format" attrs="{'invisible': [('diet', '=', False)]}">
+                                            <field name="diet_liquid_ml" class="o_address_state" placeholder="ml"/>
+                                            <field name="diet_liquid_hr" class="o_address_city" placeholder="/hr"/>
+                                        </div>
+                                        <label for="diet_semisolid_ml" attrs="{'invisible': [('diet', '=', False)]}"/>
+                                        <div class="o_address_format" attrs="{'invisible': [('diet', '=', False)]}">
+                                            <field name="diet_semisolid_ml" class="o_address_state" placeholder="ml"/>
+                                            <field name="diet_semisolid_hr" class="o_address_city" placeholder="/hr"/>
+                                        </div>
+                                        <label for="diet_solid_ml" attrs="{'invisible': [('diet', '=', False)]}"/>
+                                        <div class="o_address_format" attrs="{'invisible': [('diet', '=', False)]}">
+                                            <field name="diet_solid_ml" class="o_address_state" placeholder="ml"/>
+                                            <field name="diet_solid_hr" class="o_address_city" placeholder="/hr"/>
+                                        </div>
+                                    </group>
+                                    <group>
+                                        <label for="iv_fluids" />
+                                        <div class="oe_inline">
+                                            <field name="iv_fluids" style="width:20%" />
+                                            <field name="iv_fluids_note" style="width:30%" attrs="{'invisible': [('iv_fluids', '=', False)]}" />
+                                            <span attrs="{'invisible': [('iv_fluids', '=', False)]}">@</span>
+                                            <field name="iv_fluids_note1" style="width:30%" attrs="{'invisible': [('iv_fluids', '=', False)]}" />
+                                            <span attrs="{'invisible': [('iv_fluids', '=', False)]}">ml/hr.</span>
+                                        </div>
+                                        <label for="ad_card_supt" />
+                                        <div class="oe_inline">
+                                            <field name="ad_card_supt" style="width:20%" />
+                                            <field name="ad_card_supt_note" style="width:80%" attrs="{'invisible': [('ad_card_supt', '=', False)]}" />
+                                        </div>
+                                        <label for="ad_infusions" />
+                                        <div class="oe_inline">
+                                            <field name="ad_infusions" style="width:20%" />
+                                            <field name="ad_infusions_note" style="width:80%" attrs="{'invisible': [('ad_infusions', '=', False)]}" />
+                                        </div>
+                                        <label for="ad_other" />
+                                        <div class="oe_inline">
+                                            <field name="ad_other" style="width:20%" />
+                                            <field name="ad_other_note" style="width:80%" attrs="{'invisible': [('ad_other', '=', False)]}" />
+                                        </div>
+                                        <label for="nbm"/>
+                                        <div class="oe_inline">
+                                            <field name="nbm" style="width:20%"/>
+                                            <field name="nbm_note" style="width:70%" attrs="{'invisible': [('nbm', '=', False)]}" />
+                                        </div>
+                                        <field name="oral"/>
+                                        <label for="ryles_tube"/>
+                                        <div class="oe_inline">
+                                            <field name="ryles_tube" style="width:20%"/>
+                                            <field name="ryles_tube_note" style="width:70%" attrs="{'invisible': [('ryles_tube', '=', False)]}" />
+                                        </div>
+                                        <field name="transparent" attrs="{'invisible': [('ryles_tube', '=', False)]}"/>
+                                        <field name="non_transparent" attrs="{'invisible': [('ryles_tube', '=', False)]}"/>
+                                        <field name="solids" attrs="{'invisible': [('ryles_tube', '=', False)]}"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <label for="ix_advised" />
+                                        <div class="oe_inline">
+                                            <field name="ix_advised" style="width:20%" />
+                                            <field name="ix_advised_note" style="width:79%" attrs="{'invisible': [('ix_advised', '=', False)]}" />
+                                        </div>
+                                    </group>
+                                    <group>
+                                        <label for="references" />
+                                        <div class="oe_inline">
+                                            <field name="references" style="width:20%" />
+                                            <field name="references_note" style="width:79%" attrs="{'invisible': [('references', '=', False)]}" />
+                                        </div>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="GCS">
+                                <!-- <group col="3">
+                                    <label for="eye_opening_resp_ids"/>
+                                    <label for="best_verbal_resp_ids"/>
+                                    <label for="best_motor_resp_ids"/>
+                                </group> -->
+                                <group col="3">
+                                    <group>
+                                        <field name="eye_value"/>
+                                        <field name="eye_score"/>
+                                    </group>
+                                    <group>
+                                        <field name="best_verbal_value"/>
+                                        <field name="best_verbal_score"/>
+                                    </group>
+                                    <group>
+                                        <field name="best_motor_value"/>
+                                        <field name="best_motor_score"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <field name="gcs_final_total"/>
+                                    <div class="oe_inline">
+                                       <strong><font style="color:red">
+                                            <field name="msg"/>
+                                        </font></strong>
+                                    </div>
+                                </group>
+                            </page>
+                            <page string="Pupil">
+                                <group string="Comments">
+                                    <field name="pupil_note" nolabel="1"/>
+                                </group> 
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_hms_icu_welcome_search" model="ir.ui.view">
+            <field name="name">ICU Welcome</field>
+            <field name="model">hms.icu.welcome</field>
+            <field name="arch" type="xml">
+                <search string="Search ICU Welcome Patient">
+                    <field name="patient_id"/>
+                    <separator />
+                    <group expand="0" string="Group By...">
+                        <filter name="grm_patient" string="Patient" domain="[]" context="{'group_by':'patient_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="view_hms_icu_chart1_tree" model="ir.ui.view">
+            <field name="name">hms.icu.chart1.tree</field>
+            <field name="model">hms.icu.chart</field>
+            <field name="priority">64</field>
+            <field name="arch" type="xml">
+                <tree string="Doctor Chart" >
+                    <!-- colors="blue:state=='done';red:state=='draft'" -->
+                    <field name="icu_chart_date"/>
+                    <field name="patient_id" />
+                    <field name="name" string="ID"/>
+                    <field name="gender"/>
+                    <field name="chart_blood_group"/>
+                    <field name="age"/>
+                    <field name="weight"/>
+                    <field name="cm"/>
+                    <field name="state"/>
+               </tree>
+            </field>
+        </record>
+        <record id="view_hms_icu_chart1_form" model="ir.ui.view">
+            <field name="name">hms.icu.chart1.form</field>
+            <field name="model">hms.icu.chart</field>
+            <field name="priority">64</field>
+            <field name="arch" type="xml">
+                <form string="Doctor Chart">
+                    <header>
+                        <field name="state" widget="statusbar" clickable="1"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="indimedi_icu_chart_two" class="oe_stat_button" icon="fa-pencil-square-o" type="object" string="ICU Nursing Chart"/>
+                            <!-- groups="banastech_hms.group_banastech_hms_medical_officer,banastech_hms.group_banas_hms_doctor,banastech_hms.group_banastech_hms_nurse" -->
+                        </div>
+                        <field name="image" widget="image" class="oe_avatar"/>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="icu_chart_date" attrs="{'readonly': [('state', '=', 'done')]}"/>
+                                <field name="patient_id"/>
+                                <field name="code" readonly="1"/>
+                                <field name="age"/>
+                                <field name="cm"/>
+                            </group>
+                            <group>
+                                <field name="inpatient_id" invisible="True"/>
+                                <field name="gender"/>
+                                <field name="chart_blood_group"/>
+                                <field name="weight"/>
+                                <field name="parent_id" domain="[('patient_id', '=', active_id)]" context="{'form_view_ref': 'hms_icu.view_hms_icu_chart1_form','default_type':'chart1'}"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Diagnosis(W/By Dr.)">
+                                <group>
+                                    <label for="diagnosis_ids" string="Diagnosis(To be written by Doctor)" />
+                                    <field name="diagnosis_ids" nolabel="1" colspan="2">
+                                        <tree editable="bottom">
+                                            <field name="diagnosis_id" required="1"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Prescription">
+                                <group>
+                                    <label for="prescription_ids" string="Prescription" />
+                                    <field name="prescription_ids" nolabel="1" colspan="2">
+                                        <tree editable="bottom">
+                                            <field name="day_no"/>
+                                            <field name="product_id"/>
+                                            <field name="pre_route"/>
+                                            <field name="common_dosage" required="1"/>
+                                            <field name="pre_time_1"/>
+                                            <field name="pre_time_2"/>
+                                            <field name="pre_time_3"/>
+                                            <field name="pre_time_4"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <label for="other_rx_ids" string="Other RX" />
+                                    <field name="other_rx_ids" nolabel="1" colspan="2">
+                                        <tree editable="bottom">
+                                            <field name="product_id" required="1"/>
+                                            <field name="common_dosage" required="1"/>
+                                            <field name="rx_time_1"/>
+                                            <field name="rx_time_2"/>
+                                            <field name="rx_time_3"/>
+                                            <field name="rx_time_4"/>
+                                        </tree>
+                                    </field>
+                                    <!-- <button name="icu_treatment_sheet" string="Treatment Sheet" type="object" class="oe_highlight" groups="hms.group_hms_jr_doctor,hms.group_hms_nurse,hms.group_hms_manager,hms.group_hms_medical_officer,hms.group_hms_doctor" /> -->
+                                </group>
+                                <group>
+                                    <label for="once_only_drug_ids" string="Once Only Drug"/>
+                                    <field name="once_only_drug_ids" nolabel="1" colspan="2">
+                                        <tree editable="bottom">
+                                            <field name="product_id" required="1"/>
+                                            <field name="common_dosage" required="1"/>
+                                            <field name="dose" />
+                                            <field name="route" />
+                                            <field name="time_given"/>
+                                            <field name="nurse_name" />
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <label for="prescription_diabetes_ids" string="Diabetic"/>
+                                    <field name="prescription_diabetes_ids" nolabel="1" colspan="2">
+                                        <tree editable="bottom">
+                                            <field name="diabetes_rbs"/>
+                                            <field name="diabetes_insulin"/>
+                                            <field name="diabetes_msg"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <field name="special_inst" placeholder="Prescription Special Instructions"/>
+                                </group>
+                            </page>
+                            <page string="TPN/Fluid/Infusion-Orders">
+                                <group>
+                                    <label for="tpn_orders_ids" string="TPN Order" />
+                                    <field name="tpn_orders_ids" nolabel="1" colspan="2">
+                                        <tree editable="bottom">
+                                            <field name="tpn_date"/>
+                                            <field name="tpn_drugs" required="1"/>
+                                            <field name="tpn_rate"/>
+                                            <field name="tpn_comments"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <label for="fluid_orders_ids" string="Fluid Orders" />
+                                    <field name="fluid_orders_ids" nolabel="1" colspan="2">
+                                        <tree editable="bottom">
+                                            <field name="fluid_date" />
+                                            <field name="fluid_drugs" required="1"/>
+                                            <field name="fluid_rate" placeholder="ml/Hr"/>
+                                            <field name="fluid_comments"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <label for="infusion_orders_ids" string="Infusion Orders" />
+                                    <field name="infusion_orders_ids" nolabel="1" colspan="2">
+                                        <tree editable="bottom">
+                                            <field name="infusion_orders_date" />
+                                            <field name="infusion_orders_drugs" required="1"/>
+                                            <field name="infusion_orders_dose"/>
+                                            <field name="infusion_orders_diluent"/>
+                                            <field name="infusion_orders_rate" placeholder="ml/Hr"/>
+                                            <field name="infusion_orders_comments"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="RT/Oral Feeding">
+                                <group col="6">
+                                    <label for="rt_oral_feeding"/>
+                                    <label for="rt_oral_dietplan_ids"/>
+                                </group>
+                                <group col="6">
+                                    <field name="rt_oral_feeding" nolabel="1"/>
+                                    <field name="rt_oral_dietplan_ids" nolabel="1">
+                                        <tree editable="bottom">
+                                            <field name="dietplan_selection"/>
+                                            <field name="dietplan_value" widget="many2many_tags" options="{'no_create': True}"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <label for="rt_oral_feeding_ids" string="RT/Oral Feeding" />
+                                    <field name="rt_oral_feeding_ids" nolabel="1">
+                                        <tree editable="bottom">
+                                            <field name="rt_of_time"/>
+                                            <field name="rt_of_feed" required="1"/>
+                                            <field name="rt_of_ml" sum="Total" string="ML"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Today's Investigation &amp; Reports">
+                                <group>
+                                    <group string="Investigation">
+                                        <field name="hb" />
+                                        <field name="tc" />
+                                        <field name="dc" />
+                                        <field name="platelet" />
+                                        <field name="urea" />
+                                        <field name="creatinine" />
+                                        <field name="pt" />
+                                        <field name="aptt" />
+                                        <field name="bt_ct" />
+                                        <field name="blood_group" readonly="1"/>
+                                        <field name="crp" />
+                                    </group>
+                                    <group string="X-RAY Chest">
+                                        <label for="abg_1" />
+                                        <div class="o_address_format">
+                                            <field name="abg_1" class="o_address_state" />
+                                            <field name="abg_2" class="o_address_city" />
+                                            <field name="abg_3" class="o_address_zip" />
+                                        </div>
+                                        <label for="ph_1" />
+                                        <div class="o_address_format">
+                                            <field name="ph_1" class="o_address_state" />
+                                            <field name="ph_2" class="o_address_city" />
+                                            <field name="ph_3" class="o_address_zip" />
+                                        </div>
+                                        <label for="paco2_1" />
+                                        <div class="o_address_format">
+                                            <field name="paco2_1" class="o_address_state" />
+                                            <field name="paco2_2" class="o_address_city" />
+                                            <field name="paco2_3" class="o_address_zip" />
+                                        </div>
+                                        <label for="pao2_1" />
+                                        <div class="o_address_format">
+                                            <field name="pao2_1" class="o_address_state" />
+                                            <field name="pao2_2" class="o_address_city" />
+                                            <field name="pao2_3" class="o_address_zip" />
+                                        </div>
+                                        <label for="tco2_1" />
+                                        <div class="o_address_format">
+                                            <field name="tco2_1" class="o_address_state" />
+                                            <field name="tco2_2" class="o_address_city" />
+                                            <field name="tco2_3" class="o_address_zip" />
+                                        </div>
+                                        <label for="hco2_1" />
+                                        <div class="o_address_format">
+                                            <field name="hco2_1" class="o_address_state" />
+                                            <field name="hco2_2" class="o_address_city" />
+                                            <field name="hco2_3" class="o_address_zip" />
+                                        </div>
+                                        <label for="be_1" />
+                                        <div class="o_address_format">
+                                            <field name="be_1" class="o_address_state" />
+                                            <field name="be_2" class="o_address_city" />
+                                            <field name="be_3" class="o_address_zip" />
+                                        </div>
+                                        <label for="sao2_1" />
+                                        <div class="o_address_format">
+                                            <field name="sao2_1" class="o_address_state" />
+                                            <field name="sao2_2" class="o_address_city" />
+                                            <field name="sao2_3" class="o_address_zip" />
+                                        </div>
+                                        <label for="fio2_1" />
+                                        <div class="o_address_format">
+                                            <field name="fio2_1" class="o_address_state" />
+                                            <field name="fio2_2" class="o_address_city" />
+                                            <field name="fio2_3" class="o_address_zip" />
+                                        </div>
+                                        <field name="ti_ecg" />
+                                        <field name="xray_note"/>
+                                    </group>
+                                    <group>
+                                        <field name="sgpt" />
+                                        <field name="sgot" />
+                                        <field name="s_alk" />
+                                        <field name="s_bil_total" />
+                                        <field name="s_bil_direct" />
+                                        <field name="s_bil_indirect" />
+                                        <field name="s_protein_total" />
+                                        <field name="s_protein_ab" />
+                                        <field name="s_protein_glob" />
+                                        <field name="any_other_ixs"/>
+                                    </group>
+                                    <group string="Electrolytes">
+                                        <field name="na_plus" />
+                                        <field name="k_plus" />
+                                        <field name="cl_plus" />
+                                        <field name="ca_pplus" />
+                                        <field name="mgpplus" />
+                                        <field name="elec_blood_group"/>
+                                        <field name="elec_note"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_hms_icu_chart1_search" model="ir.ui.view">
+            <field name="name">hms.icu.chart1.search</field>
+            <field name="model">hms.icu.chart</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search string="ICU">
+                    <field name="patient_id"/>
+                    <filter name="today" string="Today" domain="[('icu_chart_date', '&gt;=', time.strftime('%Y-%m-%d 00:00:00')),('icu_chart_date', '&lt;=', time.strftime('%Y-%m-%d 23:59:59')),('state','!=','done')]"/>
+                    <newline />
+                    <!-- <group expand="0" string="Group By...">
+                        <filter string="Patient Name" domain="[]" context="{'group_by':'patient_id'}" />
+                    </group> -->
+                </search>
+            </field>
+        </record>
+
+        <record id="action_icu_chart1" model="ir.actions.act_window">
+            <field name="name">Doctor Chart</field>
+            <field name="res_model">hms.icu.chart</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_hms_icu_chart1_search" />
+            <field name="context">{'form_view_ref': 'hms_icu.view_hms_icu_chart1_form','tree_view_ref':'hms_icu.view_hms_icu_chart1_tree','default_type':'chart1','search_default_today': 1}</field>
+            <field name="domain">[]</field>
+        </record>
+
+        <menuitem id="action_menu_icu_chart1"
+            action="action_icu_chart1"
+            parent="action_menu_icu_chart"
+            name="Doctor Chart"
+            sequence="1"/>
+
+
+        <record id="view_hms_icu_chart2_tree" model="ir.ui.view">
+            <field name="name">hms.icu.chart2.tree</field>
+            <field name="model">hms.icu.chart</field>
+            <field name="priority">32</field>
+            <field name="arch" type="xml">
+                <tree string="Nurse Chart" create="false" delete="false">
+                <!-- colors="blue:state=='done';red:state=='draft'" -->
+                    <field name="icu_chart_date"/>
+                    <field name="patient_id" />
+                    <field name="name" string="ID"/>
+                    <field name="gender"/>
+                    <field name="chart_blood_group" />
+                    <field name="age" />
+                    <field name="weight"/>
+                    <field name="cm" />
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_hms_icu_chart2_form" model="ir.ui.view">
+            <field name="name">hms.icu.chart2.form</field>
+            <field name="model">hms.icu.chart</field>
+            <field name="priority">32</field>
+            <field name="arch" type="xml">
+                <form string="Nurse Chart" create="false" delete="false">
+                    <header>
+                        <field name="state" widget="statusbar" clickable="1"/>
+                    </header>
+                    <sheet>
+                        <!-- <div class="oe_button_box" name="button_box">
+                            <button name="indimedi_icu_chart_one" class="oe_stat_button" icon="fa-pencil-square-o" type="object" groups="hms.group_hms_medical_officer,hms.group_hms_doctor,hms.group_hms_nurse" string="ICU Doctor Chart" />
+                        </div> -->
+                        <field name="image" widget="image" class="oe_avatar" />
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1" />
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="icu_chart_date" attrs="{'readonly': [('state', '=', 'done')]}"/>
+                                <field name="patient_id" />
+                                <field name="code" readonly="1"/>
+                                <field name="age" />
+                                <field name="cm" />
+                            </group>
+                            <group>
+                                <field name="inpatient_id" />
+                                <field name="gender" />
+                                <field name="chart_blood_group" />
+                                <field name="weight" />
+                                <field name="type" invisible="1"/>
+                            </group>
+                        </group>
+                        <group string="Last 24 Hours Input/Output Total">
+                            <group col="4">
+                                <group string="INTAKE">
+                                    <field name="in_iv" readonly="1"/>
+                                    <field name="in_oral" readonly="1"/>
+                                    <field name="in_rtf" readonly="1"/>
+                                    <field name="in_infusion" readonly="1"/>
+                                    <field name="in_other" readonly="1"/>
+                                    <field name="in_total_intake"/>
+                                </group>
+                                <group string="OUTPUT">
+                                    <group>
+                                        <field name="ot_uo" readonly="1"/>
+                                        <field name="ot_rta" readonly="1"/>
+                                        <field name="ot_blood_loss" readonly="1"/>
+                                        <field name="ot_dialysis" readonly="1"/>
+                                        <field name="ot_stool" readonly="1"/>
+                                        <field name="ot_vomiting" readonly="1"/>
+                                    </group>
+                                    <group>
+                                        <field name="ot_do" />
+                                        <field name="ot_drain1" />
+                                        <field name="ot_drain2" />
+                                        <field name="ot_ileostomy" />
+                                        <field name="ot_total_output" />
+                                        <field name="in_ot_balance" class="text_value_color"/>
+                                    </group>
+                                </group>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="General Information">
+                                <group>
+                                    <group string="Past Day Record">
+                                        <field name="icu_generalinf_date"/>
+                                        <field name="past_post_op_day"/>
+                                        <field name="past_stay_day"/>
+                                        <field name="past_iv_line"/>
+                                        <field name="past_cpv_dlc"/>
+                                        <field name="past_ett_trac"/>
+                                        <field name="past_foleys_cath"/>
+                                        <field name="past_ryles_tube_no"/>
+                                        <field name="past_arterial_line"/>
+                                        <field name="parent_id2" domain="[('patient_id', '=', False)]"
+                                        context="{'form_view_ref': 'hms_icu.view_hms_icu_chart2_form','default_type':'chart2'}"/>
+                                    </group>
+                                    <group string="Today Record">
+                                        <field name="icu_post_op_day" />
+                                        <field name="icu_stay_day"/>
+                                        <field name="icu_iv_line"/>
+                                        <field name="icu_cpv_dlc"/>
+                                        <field name="icu_ett_trac"/>
+                                        <field name="icu_foleys_cath"/>
+                                        <field name="icu_ryles_tube_no"/>
+                                        <field name="icu_arterial_line"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <label for="oral_care_1" />
+                                    <div class="o_address_format">
+                                        <field name="oral_care_1" class="o_address_state" />
+                                        <field name="oral_care_2" class="o_address_city" />
+                                    </div>
+                                    <label for="sponge_bath_1" />
+                                    <div class="o_address_format">
+                                        <field name="sponge_bath_1" class="o_address_state" />
+                                        <field name="sponge_bath_2" class="o_address_city" />
+                                    </div>
+                                    <label for="back_care_1" />
+                                    <div class="o_address_format">
+                                        <field name="back_care_1" class="o_address_state" />
+                                        <field name="back_care_2" class="o_address_city" />
+                                    </div>
+                                    <label for="urinary_cath_care_1" />
+                                    <div class="o_address_format">
+                                        <field name="urinary_cath_care_1" class="o_address_state" />
+                                        <field name="urinary_cath_care_2" class="o_address_city" />
+                                    </div>
+                                    <label for="hair_care_1" />
+                                    <div class="o_address_format">
+                                        <field name="hair_care_1" class="o_address_state" />
+                                        <field name="hair_care_2" class="o_address_city" />
+                                    </div>
+                                    <label for="surgical_wound_desg_1" />
+                                    <div class="o_address_format">
+                                        <field name="surgical_wound_desg_1" class="o_address_state" />
+                                        <field name="surgical_wound_desg_2" class="o_address_city" />
+                                    </div>
+                                </group>
+                                <group string="Important Events &amp; Today's Plan">
+                                    <group>
+                                        <field name="note_1" />
+                                    </group>
+                                    <group>
+                                        <field name="note_2" />
+                                    </group>
+                                    <group>
+                                        <field name="ref_1" />
+                                        <field name="ref_2" />
+                                        <field name="ref_3" />
+                                    </group>
+                                    <group>
+                                        <field name="created_by"/>
+                                        <field name="create_timestamp" readonly="1"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Intake-Output">
+                                <group col="6">
+                                    <label for="intake_ids" string="Intake" />
+                                    <label for="output_ids" string="Output" />
+                                </group>
+                                <group col="6">
+                                    <field name="intake_ids" nolabel="1" options="{'no_open': True}">
+                                        <tree editable="button" create="false" delete="false">
+                                            <field name="time" string="Time" readonly="1" options="{'no_open': True}"/>
+                                            <field name="intake_hr_1" />
+                                            <field name="intake_hr_2"/>
+                                            <field name="intake_hr_3"/>
+                                            <field name="intake_hr_4"/>
+                                            <field name="hourly_total" sum="Total" string="Total"/>
+                                        </tree>
+                                    </field>
+                                    <field name="output_ids" nolabel="1" options="{'no_open': True}">
+                                        <tree editable="bottom" create="false" delete="false">
+                                            <field name="time" string="Time" readonly="1" options="{'no_open': 1}"/>
+                                            <field name="u_o" />
+                                            <field name="drain" />
+                                            <field name="rta" />
+                                            <field name="stool" />
+                                            <field name="total" sum="Total" string="Total"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="ICU Vital">
+                                <notebook>
+                                    <page string="Vital Signs.">
+                                        <field name="vitals_ids" nolabel="1">
+                                            <tree editable="bottom" create="false" delete="false">
+                                                <field name="time" readonly="1"/>
+                                                <field name="vitals_temp" />
+                                                <field name="vitals_rate" />
+                                                <field name="vitals_nibp_ibp" />
+                                                <field name="vitals_cvp" />
+                                                <field name="vitals_resp_rate" />
+                                                <field name="vitals_spo2" />
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Infusion Pumps">
+                                        <notebook>
+                                            <page string="Day">
+                                                <field name="inf_pump_value_day_ids" nolabel="1">
+                                                    <tree editable="bottom">
+                                                        <field name="pumps_value_id"/>
+                                                        <field name="time_a"/>
+                                                        <field name="time_b"/>
+                                                        <field name="time_c"/>
+                                                        <field name="time_d"/>
+                                                        <field name="time_e"/>
+                                                        <field name="time_f"/>
+                                                        <field name="time_g"/>
+                                                        <field name="time_h"/>
+                                                        <field name="time_i"/>
+                                                        <field name="time_j"/>
+                                                        <field name="time_k"/>
+                                                        <field name="time_l"/>
+                                                    </tree>
+                                                </field>
+                                            </page>
+                                            <page string="Night">
+                                                <field name="inf_pump_value_night_ids" nolabel="1">
+                                                    <tree editable="bottom">
+                                                        <field name="pumps_value_id"/>
+                                                        <field name="time_m"/>
+                                                        <field name="time_n"/>
+                                                        <field name="time_o"/>
+                                                        <field name="time_p"/>
+                                                        <field name="time_q"/>
+                                                        <field name="time_r"/>
+                                                        <field name="time_s"/>
+                                                        <field name="time_t"/>
+                                                        <field name="time_u"/>
+                                                        <field name="time_v"/>
+                                                        <field name="time_w"/>
+                                                        <field name="time_x"/>
+                                                    </tree>
+                                                </field>
+                                            </page>
+                                        </notebook>
+                                    </page>
+                                    <page string="Venti. Setting Pt’s">
+                                        <field name="venti_setting_ids" nolabel="1">
+                                            <tree editable="bottom" create="1" delete="1">
+                                                <field name="time" readonly="0"/>
+                                                <field name="venti_mode" />
+                                                <field name="venti_fio2" />
+                                                <field name="venti_tvml" />
+                                                <field name="venti_rate" />
+                                                <field name="venti_ie" />
+                                                <field name="venti_peep" />
+                                                <field name="venti_p_maxsupp" />
+                                                <field name="venti_plimit" />
+                                                <field name="venti_trigger" />
+                                                <field name="is_max" invisible="True"/>
+                                                <button name="action_one_hour_copy" string="Copy" type="object" attrs="{'invisible': [('is_max', '==', False)]}"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Pt’s Ventilatory Data">
+                                        <field name="pts_entilatory_ids" nolabel="1">
+                                            <tree editable="bottom" create="false" delete="false">
+                                                <field name="time" readonly="1"/>
+                                                <field name="ptsven_ppeak" />
+                                                <field name="ptsven_peepe" />
+                                                <field name="ptsven_mv" />
+                                                <field name="ptsven_rr" />
+                                                <field name="ptsven_tv" />
+                                                <field name="ptsven_compl" />
+                                                <field name="ptsven_raw" />
+                                                <field name="ptsven_nebuliser" />
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Other">
+                                        <field name="icu_chart_other_ids" nolabel="1">
+                                            <tree editable="bottom" create="false" delete="false">
+                                                <field name="time" readonly="1"/>
+                                                <field name="bagg_suc_phy" />
+                                                <field name="pt_position" />
+                                                <field name="gcs_emv"/>
+                                                <field name="ag" />
+                                                <field name="other" />
+                                            </tree>
+                                        </field>
+                                    </page>
+                                </notebook>
+                            </page>
+                            <page string="Diabetic Flow Chart">
+                                <group>
+                                    <label for="diabetic_chart_flow_ids" string="Diabetic Flow Chart" />
+                                    <field name="diabetic_chart_flow_ids" nolabel="1" colspan="2">
+                                        <tree editable="bottom">
+                                            <field name="time" required="1"/>
+                                            <field name="bsl"/>
+                                            <field name="insulin"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_hms_icu_chart2_search" model="ir.ui.view">
+            <field name="name">hms.icu.chart2.search</field>
+            <field name="model">hms.icu.chart</field>
+            <field name="priority" eval="16" />
+            <field name="arch" type="xml">
+                <search string="ICU">
+                    <field name="patient_id" />
+                    <filter name="today" string="Today" domain="[('icu_chart_date', '&gt;=', time.strftime('%Y-%m-%d 00:00:00')),('icu_chart_date', '&lt;=', time.strftime('%Y-%m-%d 23:59:59')),('state','!=','done')]"/>
+                    <!-- <newline />
+                    <group expand="0" string="Group By...">
+                        <filter string="Patient Name" icon="terp-personal" domain="[]" context="{'group_by':'patient_id'}" />
+                    </group> -->
+                </search>
+            </field>
+        </record>
+
+        <record id="action_icu_chart2" model="ir.actions.act_window">
+            <field name="name">Nursing Chart</field>
+            <field name="res_model">hms.icu.chart</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_hms_icu_chart2_search" />
+            <field name="context">{'form_view_ref': 'hms_icu.view_hms_icu_chart2_form','default_type':'chart2','search_default_today': 1}</field>
+            <field name="domain">[]</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_inpatient_registration_icu_form" model="ir.ui.view">
+            <field name="name">inpatient.registration.form</field>
+            <field name="model">inpatient.registration</field>
+            <field name="priority" eval="32" />
+            <field name="arch" type="xml">
+                <form string="Inpatient Registration Information">
+                    <header>
+                        <!-- <button name="action_create_confirm" string="Confirm" class="oe_highlight" type="object" states="draft" /> -->
+                        <button name="action_confirm" string="Hospitalize" class="oe_highlight" type="object" states="confirm,reserved" />
+                        <button name="action_reserved" type="object" string="Reserved" class="oe_highlight" states="confirm" />
+                        <!-- <button name="action_discharge" type="object" string="Discharge" class="oe_highlight" states="hosp" /> -->
+                        <!-- groups="hms_insurance.group_hms_insurance_officer,hms.group_banas_hms_doctor,hms.group_banas_hms_jr_doctor" -->
+
+                        <button name="action_cancel" string="Cancel" states="reserved,confirm" type="object" class="oe_highlight" />
+                        <!-- <button name="action_create_invoice" string="Create Invoice" class="oe_highlight" type="object" groups="hms_insurance.group_hms_insurance_officer,hms.group_hms_doctor" attrs="{'invisible': ['|','|',('cashless', '=', True),('invoice_id','!=',False),('state','not in',('hosp','discharged','done'))]}" /> -->
+                        <!-- <button name="%(hms_hospitalization.transfer_accomodation_action)d" string="Transfer" class="oe_highlight" type="action" groups="hms.group_hms_receptionist,hms.group_hms_jr_doctor,hms.group_hms_doctor" /> -->
+                        <!-- <button name="indimedi_devasya_treatment" string="Treatment Sheet" type="object" class="oe_highlight" groups="hms.group_hms_jr_doctor,hms.group_hms_nurse,hms.group_hms_manager,hms.group_hms_medical_officer,hms.group_hms_doctor" /> -->
+                        <!-- <button name="action_done" string="Done" states="discharged" type="object" class="oe_highlight" groups="hms_insurance.group_hms_insurance_officer,hms.group_hms_doctor" /> -->
+                        <!-- <button name="action_draft" string="Draft" states="cancel" type="object" class="oe_highlight" /> -->
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,reserved,hosp,discharged,done" statusbar_colors="{&quot;cancel&quot;:&quot;red&quot;}"/>
+                    </header>
+                    <sheet>
+                       <!--  <div class="oe_button_box" name="button_box">
+                            <button type="object" class="oe_stat_button" id="invoice_button_hospitalization" icon="fa-pencil-square-o" name="action_view_invoice_hms" attrs="{'invisible': [('invoice_id', '=', False)]}" groups="hms_insurance.group_hms_insurance_officer,hms.group_hms_doctor" string="View Invoice"></button>
+                            <button name="action_view_lab" class="oe_stat_button" icon="fa-pencil-square-o" type="object" help="View Lab Requests Against Current Hospitalized ID" states="hosp,discharged,done" groups="hms.group_hms_medical_officer,hms.group_hms_doctor,hms.group_hms_nurse" string="Investigation"></button>
+                            <button name="action_view_ip_medication" class="oe_stat_button" icon="fa-pencil-square-o" type="object" states="hosp,discharged,done" groups="hms.group_hms_doctor,hms.group_hms_medical_officer,hms.group_hms_nurse" string="IPM Requests"></button>
+                            <button name="action_inpatient_icu" class="oe_stat_button" icon="fa-pencil-square-o" type="object" groups="hms.group_hms_doctor,hms.group_hms_medical_officer,hms.group_hms_nurse,hms.group_hms_receptionist" string="ICU Welcome" /><br/>
+                            <button name="action_icu_chart1" class="oe_stat_button" icon="fa-pencil-square-o" type="object" groups="hms.group_hms_doctor,hms.group_hms_medical_officer,hms.group_hms_nurse,hms.group_hms_receptionist" string="ICU Doctor Chart" />
+                        </div> -->
+                        <!-- <field name="image" widget="image" class="oe_avatar" nolabel="1" />
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1" class="oe_inline" />
+                            </h1>
+                        </div> -->
+                        <group>
+                            <group>
+                                <field name="patient_id" required="1"></field>
+                                <field name="mobile" />
+                                <field name="gender" invisible="1" />
+                                <!-- <field name="invoice_id" invisible="1" /> -->
+                                <field name="appointment_id" invisible="1" />
+                                <field name="hospitalization_date" required="1" />
+                                <field name="company_id" required="1"></field>
+                                <field name="department_id"></field>
+                                <!-- <field name="primary_physician" required="1" /> -->
+                                <label for="attending_physician_ids" string="Attending Doctor" />
+                                <div class="address_format">
+                                    <field name="attending_physician_ids" widget="many2many_tags" />
+                                </div>
+                                <field name="relative_id" invisible="1"></field>
+                                <field name="relative_name"></field>
+                                <field name="relative_number"></field>
+                            </group>
+                            <group>
+                                <field name="ward_id" widget="selection" attrs="{'required': [('state','in',('confirm'))], 'readonly': [('state','in',('reserved','hosp','discharged','done'))]}" />
+                                <field name="bed_id" domain="[('ward_id', '=', ward_id), ('state', '=', 'free')]" attrs="{'required': [('state','in',('confirm'))], 'readonly': [('state','in',('reserved','hosp','discharged','done'))]}"></field>
+                                <field name="admission_type" required="1"></field>
+                                <field name="admission_reason" invisible="1"></field>
+                                <field name="discharge_date" invisible="1"></field>
+                                <field name="no_invoice" groups="banastech_hms.group_banas_hms_jr_doctor,banastech_hms.group_banastech_hms_nurse,banastech_hms.group_banastech_hms_manager,banastech_hms.group_banastech_hms_medical_officer,banastech_hms.group_banas_hms_doctor"></field>
+                                <field name="expected_stay" />
+                                <!-- <field name="discharged_done_by"/> -->
+                            </group>
+                        </group>
+                        <!-- <notebook></notebook> -->
+                        <notebook>
+                            <page string="Doctors Visit Sheet" name="doctor_visit_sheet" groups="banastech_hms.group_banas_hms_doctor,banastech_hms.group_banastech_hms_medical_officer,banastech_hms.group_banastech_hms_nurse,banastech_hms.group_banastech_hms_receptionist">
+                                <div class="oe_button_box" name="button_box">
+                                    <!-- <button name="view_doctor_visit_invoice" class="oe_stat_button" icon="fa-pencil-square-o" type="object" string="View Invoice" /> -->
+                                    <!-- <button name="create_doctor_visit_invoice" class="oe_stat_button" icon="fa-pencil-square-o" type="object" string="Create Invoice" /> -->
+                                </div>
+                                <group>
+                                    <field name="doctors_visit_sheet_ids" nolabel="1"> 
+                                        <tree string="Doctors Visit Sheet" editable="bottom">
+                                            <field name="visit_datetime"/>
+                                            <field name="doctor_id"/>
+                                            <field name="visit_specification"/>
+                                            <field name="visit_charge" sum="total" string="Fees"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Services Given To Patient" name="icu_patient_services" groups="banastech_hms.group_banas_hms_doctor,banastech_hms.group_banastech_hms_medical_officer,banastech_hms.group_banastech_hms_nurse,banastech_hms.group_banastech_hms_receptionist">
+                                <!-- <div class="oe_button_box" name="button_box">
+                                    <button name="view_icu_patient_invoice" class="oe_stat_button" icon="fa-pencil-square-o" type="object" string="View Invoice" />
+                                    <button name="create_icu_patient_invoice" class="oe_stat_button" icon="fa-pencil-square-o" type="object" string="Create Invoice" />
+                                </div> -->
+                                <group>
+                                    <field name="patient_service_ids" nolabel="1"> 
+                                        <tree string="ICU Services" editable="bottom">
+                                            <field name="service_datetime"/>
+                                            <field name="service_name"/>
+                                            <field name="service_qty"/>
+                                            <field name="service_charges"/>
+                                            <field name="service_total_amount" sum="total" string="Total"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user" />
+                        <field name="message_ids" widget="mail_thread" />
+                    </div>
+                </form>
+            </field>
+        </record>
+
+       <!--  <record id="view_inpatient_insu_icu_form" model="ir.ui.view">
+            <field name="name">view.inpatient.insu.form</field>
+            <field name="model">inpatient.registration</field>
+            <field name="inherit_id" ref="view_inpatient_registration_icu_form"/>
+            <field name="arch" type="xml"> -->
+                <!-- <button name="action_view_invoice_hms" position="after">
+                    <button type="object" class="oe_stat_button oe_right" icon="fa-pencil-square-o" name="action_patient_doc_view" groups="hms_insurance.group_hms_insurance_officer,hms.group_hms_doctor" string="Patient Doc">
+                    </button>
+                    <button type="object" class="oe_stat_button oe_right" icon="fa-pencil-square-o" name="action_claim_view" attrs="{'invisible': [('cashless', '=', False)]}"
+                    groups="hms_insurance.group_hms_insurance_officer,hms.group_hms_doctor" string="Claim">
+                    </button>
+                </button> -->
+                <!-- <xpath expr="//field[@name='no_invoice']" position="after">
+                    <field name="cashless" />
+                </xpath> -->
+            <!-- </field>
+        </record> -->
+
+       <!--  <record id="view_inpatient_registration_icu_state_clickable_form" model="ir.ui.view">
+            <field name="name">inpatient.registration.icu.state.clickable.form</field>
+            <field name="model">inpatient.registration</field>
+            <field name="inherit_id" ref="view_inpatient_registration_icu_form"/>
+            <field name="groups_id" eval="[(4, ref('hms_hospitalization.group_hms_hospitalization_state_clickable'))]"/>
+            <field name="arch" type="xml">
+                <field name="state" position="attributes">
+                    <attribute name="clickable">True</attribute>
+                </field>
+            </field>
+        </record> -->
+
+        <record id="view_inpatient_registration_icu_search" model="ir.ui.view">
+            <field name="name">inpatient.registration.search</field>
+            <field name="model">inpatient.registration</field>
+            <field name="priority" eval="16" />
+            <field name="arch" type="xml">
+                <search string="Hospitalization Patient">
+                    <!-- <filter name="hospitalize" string="Hospitalized" domain="[('state', '=','hosp')]"/> -->
+                <separator />
+                    <!-- <filter name="reserved_hospitalized" string="Hospitalization" domain="[('state','=','hosp')]" /> -->
+                     <separator />
+                    <!-- <filter name="done" string="Done" domain="[('state','=','done')]" /> -->
+                    <separator />
+                    <!-- <field name="patient_id" /> -->
+                    <!-- <field name="attending_physician_ids" /> -->
+                    <!-- <field name="name" /> -->
+                    <separator />
+                    <!-- <group expand="0" string="Group By">
+                        <filter name="group_by_patient" string="Patient" context="{'group_by':'patient'}" />
+                        <filter string="Date" context="{'group_by':'hospitalization_date'}" />
+                        <filter string="Ward/Room" context="{'group_by':'ward_id'}" />
+                        <filter string="Status" context="{'group_by':'state'}" />
+                    </group> -->
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="indimedi_action_form_inpatient_icu">
+            <field name="name">Hospitalization</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">inpatient.registration</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="hms_icu.view_inpatient_registration_icu_search" />
+            <field name="context"></field>
+            <!-- {'search_default_reserved_hospitalized': 1, 'form_view_ref': 'hms_icu.view_inpatient_registration_icu_form'} -->
+        </record>
+
+        <menuitem id="action_menu_hosp_icu_welcome"
+            action="indimedi_action_form_inpatient_icu"
+            parent="hms_icu.action_menu_hosp_icu"
+            name="Hospitalization"/>
+
+        <!-- <record id="action_account_payments" model="ir.actions.act_window">
+            <field name="name">Advance Payment</field>
+            <field name="res_model">account.payment</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="context">{'default_payment_type': 'inbound'}</field>
+            <field name="domain">[('partner_type', '=', 'customer')]</field>
+            <field name="view_id" ref="account.view_account_payment_tree"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                  Click to register a payment
+                </p><p>
+                  Payments are used to register liquidity movements (send, collect or transfer money).
+                  You can then process those payments by your own means or by using installed facilities.
+                </p>
+            </field>
+        </record>
+
+        <menuitem action="action_account_payments" id="menu_action_account_payments_receivable" parent="hms_icu.action_menu_hosp_icu" sequence="20"/> -->
+
+    </data>
+ </odoo>

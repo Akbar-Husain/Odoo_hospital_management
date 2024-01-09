@@ -1,0 +1,178 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+,,,,,,,
+access_banastech_hms_patient,access.banastech.hms.patient,banastech_hms.model_banastech_hms_patient,base.group_user,1,1,1,1
+access_banastech_hms_patient_receptionist,access.banastech.hms.patient,banastech_hms.model_banastech_hms_patient,banastech_hms.group_banastech_hms_receptionist,1,1,1,0
+access_banastech_hms_patient_doctor,access.banastech.hms.patient,banastech_hms.model_banastech_hms_patient,banastech_hms.group_banas_hms_doctor,1,1,1,1
+access_banastech_hms_patient_nurse,access.banastech.hms.patient,banastech_hms.model_banastech_hms_patient,banastech_hms.group_banastech_hms_nurse,1,0,0,0
+access_banastech_hms_patient_jr_doctor,access.banastech.hms.patient,banastech_hms.model_banastech_hms_patient,banastech_hms.group_banas_hms_jr_doctor,1,1,1,1
+access_banastech_hms_patient_pharmacist,access.banastech.hms.patient,banastech_hms.model_banastech_hms_patient,banastech_hms.group_banastech_hms_pharmacist,1,0,0,0
+access_banastech_hms_patient_manager,access.banastech.hms.patient,banastech_hms.model_banastech_hms_patient,banastech_hms.group_banastech_hms_manager,1,1,1,0
+access_banastech_hms_patient_admin,access.banastech.hms.patient,banastech_hms.model_banastech_hms_patient,banastech_hms.group_banastech_hms_administration_user,1,1,1,0
+,,,,,,,
+,,,,,,,
+,,,,,,,
+access_banastech_hms_patient_appointment_user,access.banastech.hms.patient,banastech_hms.model_banastech_hms_patient,banastech_hms.group_banastech_hms_appointment_user,1,0,0,0
+access_banas_hms_diseases_appointment_user,access.banas.hms.diseases,banastech_hms.model_banas_hms_diseases,base.group_user,1,0,0,0
+access_account_move_line_appointment_user,access.account.move.line,account.model_account_move_line,base.group_user,1,0,0,0
+access_account_journal_appointment_user,access.account.journal,account.model_account_journal,base.group_user,1,1,1,1
+access_account_partial_reconcile_appointment_user,access.account.partial.reconcile,account.model_account_partial_reconcile,base.group_user,1,1,1,1
+access_account_account_tag_appointment_user,access.account.account.tag,account.model_account_account_tag,base.group_user,1,0,0,0
+access_account_account_type_appointment_user,access.account.account.type,account.model_account_account_type,base.group_user,1,0,0,0
+access_banas_hms_referring_doctor_appointment_user,access.banas.hms.referring.doctor,banastech_hms.model_banas_hms_referring_doctor,base.group_user,1,0,0,0
+access_banas_hms_appointment_purpose_appointment_user,access.banas.hms.appointment.purpose,banastech_hms.model_banas_hms_appointment_purpose,base.group_user,1,1,1,1
+access_banas_hms_special_service_appointment_user,access.banas.hms.special.service,banastech_hms.model_banas_hms_special_service,base.group_user,1,0,0,0
+access_banas_hms_doctor_degree_appointment_user,access.banas.hms.doctor.degree,banastech_hms.model_banas_hms_doctor_degree,base.group_user,1,0,0,0
+access_doctor_speciality_appointment_user,access.doctor.speciality,banastech_hms.model_doctor_speciality,base.group_user,1,0,0,0
+,,,,,,,
+,,,,,,,
+access_banas_hms_department_user,access.banas.hms.department,banastech_hms.model_banas_hms_department,banastech_hms.group_banastech_hms_patient_user,1,0,0,0
+access_banas_hms_department_admin,banas.hms.department,banastech_hms.model_banas_hms_department,banastech_hms.group_banastech_hms_administration_user,1,1,1,1
+access_banas_hms_department_receptionist,banas.hms.department,banastech_hms.model_banas_hms_department,banastech_hms.group_banastech_hms_receptionist,1,1,1,0
+access_banas_hms_department_doctor,banas.hms.department,banastech_hms.model_banas_hms_department,banastech_hms.group_banas_hms_doctor,1,1,1,1
+access_banas_hms_department_nurse,banas.hms.department,banastech_hms.model_banas_hms_department,banastech_hms.group_banastech_hms_nurse,1,1,1,0
+access_banas_hms_department_pharmacist,banas.hms.department,banastech_hms.model_banas_hms_department,banastech_hms.group_banastech_hms_pharmacist,1,0,0,0
+access_banas_hms_department_jr_doctor,banas.hms.department,banastech_hms.model_banas_hms_department,banastech_hms.group_banas_hms_jr_doctor,1,1,1,1
+access_banas_hms_department_manager,banas.hms.department,banastech_hms.model_banas_hms_department,banastech_hms.group_banastech_hms_manager,1,1,1,0
+,,,,,,,
+,,,,,,,
+access_banas_hms_patient_disease_appointment_user,access.banas.hms.patient.disease,banastech_hms.model_banas_hms_patient_disease,banastech_hms.group_banastech_hms_appointment_user,1,1,1,1
+access_banas_hms_patient_disease_patient_user,access.banas.hms.patient.disease,banastech_hms.model_banas_hms_patient_disease,banastech_hms.group_banastech_hms_patient_user,1,0,0,0
+access_banas_hms_patient_disease_receptionist,access.banas.hms.patient.disease,banastech_hms.model_banas_hms_patient_disease,banastech_hms.group_banastech_hms_receptionist,1,1,1,0
+access_banas_hms_patient_disease_doctor,access.banas.hms.patient.disease,banastech_hms.model_banas_hms_patient_disease,banastech_hms.group_banas_hms_doctor,1,1,1,1
+access_banas_hms_patient_disease_jr_doctor,access.banas.hms.patient.disease,banastech_hms.model_banas_hms_patient_disease,banastech_hms.group_banas_hms_jr_doctor,1,1,1,1
+access_banas_hms_patient_disease_nurse,access.banas.hms.patient.disease,banastech_hms.model_banas_hms_patient_disease,banastech_hms.group_banastech_hms_nurse,1,1,1,0
+access_banas_hms_patient_disease_pharmacist,access.banas.hms.patient.disease,banastech_hms.model_banas_hms_patient_disease,banastech_hms.group_banastech_hms_pharmacist,1,0,0,0
+access_banas_hms_patient_disease_manager,access.banas.hms.patient.disease,banastech_hms.model_banas_hms_patient_disease,banastech_hms.group_banastech_hms_manager,1,1,1,0
+access_banas_hms_patient_disease_admin,banas.hms.patient.disease,banastech_hms.model_banas_hms_patient_disease,banastech_hms.group_banastech_hms_administration_user,1,1,1,1
+,,,,,,,
+,,,,,,,
+access_banastech_hms_appointment_appointment_user,access.banastech.hms.appointment,banastech_hms.model_banastech_hms_appointment,banastech_hms.group_banastech_hms_appointment_user,1,1,1,1
+access_banastech_hms_appointment_user,access.banastech.hms.appointment,banastech_hms.model_banastech_hms_appointment,banastech_hms.group_banastech_hms_patient_user,0,1,1,0
+access_banastech_hms_appointment_view,access.banastech.hms.appointment,banastech_hms.model_banastech_hms_appointment,banastech_hms.group_banastech_hms_patient_view,1,0,0,0
+access_banastech_hms_appointment_manager,access.banastech.hms.appointment,banastech_hms.model_banastech_hms_appointment,banastech_hms.group_banastech_hms_manager,0,0,1,0
+access_banastech_hms_appointment_admin,access.banastech.hms.appointment,banastech_hms.model_banastech_hms_appointment,banastech_hms.group_banastech_hms_administration_user,1,1,1,1
+,,,,,,,
+,,,,,,,
+access_banastech_hms_patient_occupation,access.banastech.hms.patient.occupation,banastech_hms.model_banastech_hms_patient_occupation,banastech_hms.group_banastech_hms_patient_user,1,1,1,1
+,,,,,,,
+,,,,,,,
+access_banastech_hms_patient_language_user,access.banastech.hms.patient.language,banastech_hms.model_banastech_hms_patient_language,banastech_hms.group_banastech_hms_patient_user,1,1,1,1
+,,,,,,,
+,,,,,,,
+access_banas_hms_doctor_admin,banas.hms.doctor,banastech_hms.model_banas_hms_doctor,banastech_hms.group_banastech_hms_administration_user,1,1,1,1
+access_banas_hms_doctor_appointment_user,access.banas.hms.doctor,banastech_hms.model_banas_hms_doctor,base.group_user,1,1,1,1
+,,,,,,,
+,,,,,,,
+access_banas_hms_referring_doctor_patient,banas.hms.referring.doctor,banastech_hms.model_banas_hms_referring_doctor,banastech_hms.group_banastech_hms_patient_user,1,0,0,0
+access_banas_hms_referring_doctor_receptionist,banas.hms.referring.doctor,banastech_hms.model_banas_hms_referring_doctor,banastech_hms.group_banastech_hms_receptionist,1,1,1,0
+access_banas_hms_referring_doctor_doctor_user,banas.hms.referring.doctor,banastech_hms.model_banas_hms_referring_doctor,banastech_hms.group_banas_hms_doctor,1,1,1,1
+access_banas_hms_referring_doctor_jr_doctor_user,banas.hms.referring.doctor,banastech_hms.model_banas_hms_referring_doctor,banastech_hms.group_banas_hms_jr_doctor,1,1,1,1
+access_banas_hms_referring_doctor_nurse,banas.hms.referring.doctor,banastech_hms.model_banas_hms_referring_doctor,banastech_hms.group_banastech_hms_nurse,1,1,1,0
+access_banas_hms_referring_doctor_pharmacist,banas.hms.referring.doctor,banastech_hms.model_banas_hms_referring_doctor,banastech_hms.group_banastech_hms_pharmacist,1,0,0,0
+access_banas_hms_referring_doctor_manager,banas.hms.referring.doctor,banastech_hms.model_banas_hms_referring_doctor,banastech_hms.group_banastech_hms_manager,1,1,1,0
+access_banas_hms_referring_doctor_admin,banas.hms.referring.doctor,banastech_hms.model_banas_hms_referring_doctor,banastech_hms.group_banastech_hms_administration_user,1,1,1,1
+,,,,,,,
+,,,,,,,
+access_bmi_records,access.bmi.records,banastech_hms.model_bmi_records,base.group_user,1,1,1,1
+access_banas_hms_patient_insurance,access.banas.hms.patient.insurance,banastech_hms.model_banas_hms_patient_insurance,base.group_user,1,1,1,1
+access_banastech_hms_patient_view,banastech.hms.patient,banastech_hms.model_banastech_hms_patient,banastech_hms.group_banastech_hms_patient_view,1,0,0,0
+access_product_template,product.template,banastech_hms.model_product_template,banastech_hms.group_banastech_hms_patient_view,1,1,1,1
+access_banas_hms_doctor_degree_admin,banas.hms.doctor.degree,banastech_hms.model_banas_hms_doctor_degree,banastech_hms.group_banastech_hms_administration_user,1,1,1,1
+access_doctor_speciality_admin,doctor.speciality,banastech_hms.model_doctor_speciality,banastech_hms.group_banastech_hms_administration_user,1,1,1,1
+access_banas_hms_special_service_admin,banas.hms.special.service,banastech_hms.model_banas_hms_special_service,banastech_hms.group_banastech_hms_administration_user,1,1,1,1
+access_banas_hms_cancle_appointment_admin,banas.hms.cancle.appointment,banastech_hms.model_banas_hms_cancle_appointment,banastech_hms.group_banastech_hms_administration_user,1,1,1,1
+access_banas_hms_appointment_purpose_admin,banas.hms.appointment.purpose,banastech_hms.model_banas_hms_appointment_purpose,banastech_hms.group_banastech_hms_administration_user,1,1,1,1
+access_banas_hms_diseases_admin,banas.hms.diseases,banastech_hms.model_banas_hms_diseases,banastech_hms.group_banastech_hms_administration_user,1,1,1,1
+access_banas_hms_disease_gene_admin,banas.hms.disease.gene,banastech_hms.model_banas_hms_disease_gene,banastech_hms.group_banastech_hms_administration_user,1,1,1,1
+access_banas_hms_diseases_category_admin,banas.hms.diseases.category,banastech_hms.model_banas_hms_diseases_category,banastech_hms.group_banastech_hms_administration_user,1,1,1,1
+access_banas_hms_medicament_flavour_admin,banas.hms.medicament.flavour,banastech_hms.model_banas_hms_medicament_flavour,banastech_hms.group_banastech_hms_administration_user,1,1,1,1
+access_banas_hms_patient_family_diseases_admin,banas.hms.patient.family.diseases,banastech_hms.model_banas_hms_patient_family_diseases,banastech_hms.group_banastech_hms_administration_user,1,1,1,1
+access_banas_hms_medicament_content_admin,banas.hms.medicament.content,banastech_hms.model_banas_hms_medicament_content,banastech_hms.group_banastech_hms_administration_user,1,1,1,1
+access_banas_hms_patient_genetic_risk_admin,banas.hms.patient.genetic.risk,banastech_hms.model_banas_hms_patient_genetic_risk,banastech_hms.group_banastech_hms_administration_user,1,1,1,1
+access_banas_hms_reason_admin,banas.hms.reason,banastech_hms.model_banas_hms_reason,banastech_hms.group_banastech_hms_administration_user,1,1,1,1
+access_banas_hms_medicament_group_line_admin,banas.hms.medicament.group.line,banastech_hms.model_banas_hms_medicament_group_line,banastech_hms.group_banastech_hms_administration_user,1,1,1,1
+access_medicament_group_admin,medicament.group,banastech_hms.model_medicament_group,banastech_hms.group_banastech_hms_administration_user,1,1,1,1
+access_banas_hms_drug_form_admin,banas.hms.drug.form,banastech_hms.model_banas_hms_drug_form,banastech_hms.group_banastech_hms_administration_user,1,1,1,1
+access_banas_hms_drug_company_admin,banas.hms.drug.company,banastech_hms.model_banas_hms_drug_company,banastech_hms.group_banastech_hms_administration_user,1,1,1,1
+access_banas_hms_service_type_admin,banas.hms.service.type,banastech_hms.model_banas_hms_service_type,banastech_hms.group_banastech_hms_administration_user,1,1,1,1
+,,,,,,,
+,,,,,,,
+access_banas_hms_medication_dosage_admin,banas.hms.medication.dosage,banastech_hms.model_banas_hms_medication_dosage,banastech_hms.group_banastech_hms_administration_user,1,1,1,1
+access_banas_hms_medication_dosage_user,banas.hms.medication.dosage,banastech_hms.model_banas_hms_medication_dosage,banastech_hms.group_banastech_hms_patient_user,1,0,0,0
+access_banas_hms_medication_dosage_receptionist,banas.hms.medication.dosage,banastech_hms.model_banas_hms_medication_dosage,banastech_hms.group_banastech_hms_receptionist,1,1,1,0
+access_banas_hms_medication_dosage_doctor,banas.hms.medication.dosage,banastech_hms.model_banas_hms_medication_dosage,banastech_hms.group_banas_hms_doctor,1,1,1,1
+access_banas_hms_medication_dosage_jr_doctor,banas.hms.medication.dosage,banastech_hms.model_banas_hms_medication_dosage,banastech_hms.group_banas_hms_jr_doctor,1,1,1,1
+access_banas_hms_medication_dosage_nurse,banas.hms.medication.dosage,banastech_hms.model_banas_hms_medication_dosage,banastech_hms.group_banastech_hms_nurse,1,1,1,0
+access_banas_hms_medication_dosage_pharmacist,banas.hms.medication.dosage,banastech_hms.model_banas_hms_medication_dosage,banastech_hms.group_banastech_hms_pharmacist,1,1,1,0
+access_banas_hms_medication_dosage_manager,banas.hms.medication.dosage,banastech_hms.model_banas_hms_medication_dosage,banastech_hms.group_banastech_hms_manager,1,1,1,0
+,,,,,,,
+,,,,,,,
+access_hms_hms_surgery_user,Indimedi Surgery,model_hms_surgery,banastech_hms.group_banastech_hms_patient_user,1,0,0,0
+access_hms_hms_surgery_receptionist,Indimedi Surgery,model_hms_surgery,banastech_hms.group_banastech_hms_receptionist,1,0,0,0
+access_hms_hms_surgery_doctor,Indimedi Surgery,model_hms_surgery,banastech_hms.group_banas_hms_doctor,1,1,1,1
+access_hms_hms_surgery_nurse,Indimedi Surgery,model_hms_surgery,banastech_hms.group_banastech_hms_nurse,1,1,1,0
+access_hms_hms_surgery_pharmacist,Indimedi Surgery,model_hms_surgery,banastech_hms.group_banastech_hms_pharmacist,1,0,0,0
+access_hms_hms_surgery_jr_doctor,Indimedi Surgery,model_hms_surgery,banastech_hms.group_banas_hms_jr_doctor,1,1,1,1
+access_hms_hms_surgery_manager,Indimedi Surgery,model_hms_surgery,banastech_hms.group_banastech_hms_manager,1,1,1,0
+,,,,,,,
+,,,,,,,
+access_hms_hms_dietplan_user,Indimedi Dietplan,model_hms_dietplan,banastech_hms.group_banastech_hms_patient_user,1,1,1,0
+access_hms_hms_dietplan_receptionist,Indimedi Dietplan,model_hms_dietplan,banastech_hms.group_banastech_hms_receptionist,1,1,1,0
+access_hms_hms_dietplan_doctor,Indimedi Dietplan,model_hms_dietplan,banastech_hms.group_banas_hms_doctor,1,1,1,1
+access_hms_hms_dietplan_nurse,Indimedi Dietplan,model_hms_dietplan,banastech_hms.group_banastech_hms_nurse,1,1,1,0
+access_hms_hms_dietplan_pharmacist,Indimedi Dietplan,model_hms_dietplan,banastech_hms.group_banastech_hms_pharmacist,1,1,1,0
+access_hms_hms_dietplan_jr_doctor,Indimedi Dietplan,model_hms_dietplan,banastech_hms.group_banas_hms_jr_doctor,1,1,1,1
+access_hms_hms_dietplan_manager,Indimedi Dietplan,model_hms_dietplan,banastech_hms.group_banastech_hms_manager,1,1,1,0
+,,,,,,,
+,,,,,,,
+access_banastech_hms_patient_tag_user,HMS Patient Tag,model_banastech_hms_patient_tag,banastech_hms.group_banastech_hms_patient_user,1,0,0,0
+access_banastech_hms_patient_tag_receptionist,HMS Patient Tag,model_banastech_hms_patient_tag,banastech_hms.group_banastech_hms_receptionist,1,1,1,0
+access_banastech_hms_patient_tag_doctor,HMS Patient Tag,model_banastech_hms_patient_tag,banastech_hms.group_banas_hms_doctor,1,1,1,1
+access_banastech_hms_patient_tag_nurse,HMS Patient Tag,model_banastech_hms_patient_tag,banastech_hms.group_banastech_hms_nurse,1,1,1,0
+access_banastech_hms_patient_tag_pharmacist,HMS Patient Tag,model_banastech_hms_patient_tag,banastech_hms.group_banastech_hms_pharmacist,1,0,0,0
+access_banastech_hms_patient_tag_jr_doctor,HMS Patient Tag,model_banastech_hms_patient_tag,banastech_hms.group_banas_hms_jr_doctor,1,1,1,1
+access_banastech_hms_patient_tag_manager,HMS Patient Tag,model_banastech_hms_patient_tag,banastech_hms.group_banastech_hms_manager,1,1,1,0
+,,,,,,,
+,,,,,,,
+access_banastech_hms_opd_finding_user,HMS Finding,model_banastech_hms_opd_finding,banastech_hms.group_banastech_hms_patient_user,1,0,0,0
+access_banastech_hms_opd_finding_receptionist,HMS Finding,model_banastech_hms_opd_finding,banastech_hms.group_banastech_hms_receptionist,1,0,0,0
+access_banastech_hms_opd_finding_doctor,HMS Finding,model_banastech_hms_opd_finding,banastech_hms.group_banas_hms_doctor,1,1,1,1
+access_banastech_hms_opd_finding_nurse,HMS Finding,model_banastech_hms_opd_finding,banastech_hms.group_banastech_hms_nurse,1,0,0,0
+access_banastech_hms_opd_finding_pharmacist,HMS Finding,model_banastech_hms_opd_finding,banastech_hms.group_banastech_hms_pharmacist,1,0,0,0
+access_banastech_hms_opd_finding_jr_doctor,HMS Finding,model_banastech_hms_opd_finding,banastech_hms.group_banas_hms_jr_doctor,1,1,1,1
+access_banastech_hms_opd_finding_manager,HMS Finding,model_banastech_hms_opd_finding,banastech_hms.group_banastech_hms_manager,1,1,1,1
+,,,,,,,
+,,,,,,,
+access_banastech_hms_appointment_finding_user,Indimedi Appointment Finding,model_banastech_hms_appointment_finding,banastech_hms.group_banastech_hms_patient_user,1,0,0,0
+access_banastech_hms_appointment_finding_receptionist,Indimedi Appointment Finding,model_banastech_hms_appointment_finding,banastech_hms.group_banastech_hms_receptionist,1,0,0,0
+access_banastech_hms_appointment_finding_doctor,Indimedi Appointment Finding,model_banastech_hms_appointment_finding,banastech_hms.group_banas_hms_doctor,1,1,1,1
+access_banastech_hms_appointment_finding_nurse,Indimedi Appointment Finding,model_banastech_hms_appointment_finding,banastech_hms.group_banastech_hms_nurse,1,0,0,0
+access_banastech_hms_appointment_finding_pharmacist,Indimedi Appointment Finding,model_banastech_hms_appointment_finding,banastech_hms.group_banastech_hms_pharmacist,1,0,0,0
+access_banastech_hms_appointment_finding_jr_doctor,Indimedi Appointment Finding,model_banastech_hms_appointment_finding,banastech_hms.group_banas_hms_jr_doctor,1,1,1,1
+access_banastech_hms_appointment_finding_manager,Indimedi Appointment Finding,model_banastech_hms_appointment_finding,banastech_hms.group_banastech_hms_manager,1,1,1,1
+,,,,,,,
+,,,,,,,
+access_banas_hms_associated_diseases_doctor,banas.hms.associated.diseases,model_banas_hms_associated_diseases,banastech_hms.group_banas_hms_doctor,1,1,1,1
+access_banas_hms_associated_diseases_jr_doctor,banas.hms.associated.diseases,model_banas_hms_associated_diseases,banastech_hms.group_banas_hms_jr_doctor,1,1,1,1
+access_banas_hms_associated_diseases_mo,banas.hms.associated.diseases,model_banas_hms_associated_diseases,banastech_hms.group_banastech_hms_medical_officer,1,1,1,1
+access_banas_hms_associated_diseases_receptionist,banas.hms.associated.diseases,model_banas_hms_associated_diseases,banastech_hms.group_banastech_hms_receptionist,1,1,1,0
+access_banas_hms_associated_diseases_nurse,banas.hms.associated.diseases,model_banas_hms_associated_diseases,banastech_hms.group_banastech_hms_nurse,1,0,0,0
+,,,,,,,
+,,,,,,,
+access_banas_hms_chief_complain_receptionist,banas.hms.chief.complain,model_banas_hms_chief_complain,banastech_hms.group_banastech_hms_receptionist,1,1,1,0
+access_banas_hms_chief_complain_doctor,banas.hms.chief.complain,model_banas_hms_chief_complain,banastech_hms.group_banas_hms_doctor,1,1,1,1
+access_banas_hms_chief_complain_manager,banas.hms.chief.complain,model_banas_hms_chief_complain,banastech_hms.group_banastech_hms_manager,1,1,1,1
+access_banas_hms_chief_complain_jr_doctor,banas.hms.chief.complain,model_banas_hms_chief_complain,banastech_hms.group_banas_hms_jr_doctor,1,1,1,1
+access_banas_hms_chief_complain_mo,banas.hms.chief.complain,model_banas_hms_chief_complain,banastech_hms.group_banastech_hms_medical_officer,1,1,1,1
+,,,,,,,
+,,,,,,,
+access_hms_investigation_other_services_line,access.hms.investigation.other_services.line,hms_investigation.model_hms_investigation_other_services_line,base.group_user,1,1,1,1
+,,,,,,,
+,,,,,,,
+access_banas_hms_active_comp_user,Banastech HMS Active Comp,model_banas_hms_active_comp,banastech_hms.group_banastech_hms_patient_user,1,0,0,0
+access_banas_hms_active_comp_receptionist,Banastech HMS Active Comp,model_banas_hms_active_comp,banastech_hms.group_banastech_hms_receptionist,1,1,1,0
+access_banas_hms_active_comp_doctor,Banastech HMS Active Comp,model_banas_hms_active_comp,banastech_hms.group_banas_hms_doctor,1,1,1,1
+access_banas_hms_active_comp_nurse,Banastech HMS Active Comp,model_banas_hms_active_comp,banastech_hms.group_banastech_hms_nurse,1,1,1,0
+access_banas_hms_active_comp_pharmacist,Banastech HMS Active Comp,model_banas_hms_active_comp,banastech_hms.group_banastech_hms_pharmacist,1,0,0,0
+access_banas_hms_active_comp_jr_doctor,Banastech HMS Active Comp,model_banas_hms_active_comp,banastech_hms.group_banas_hms_jr_doctor,1,1,1,1
+access_banas_hms_active_comp_manager,Banastech HMS Active Comp,model_banas_hms_active_comp,banastech_hms.group_banastech_hms_manager,1,1,1,0

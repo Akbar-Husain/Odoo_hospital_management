@@ -1,0 +1,76 @@
+<!-- <?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="induction_checklist_id" model="employee.check.list">
+            <field name="name">Induction Checklist </field>
+        </record>
+
+        <record id="personal_information form_id" model="employee.check.list">
+            <field name="name">Personal Information form</field>
+        </record>
+
+        <record id="joining_report_id" model="employee.check.list">
+            <field name="name">Joining Report</field>
+        </record>
+
+        <record id="passport_size_photograph_id" model="employee.check.list">
+            <field name="name">Passport Size Photograph</field>
+        </record>
+
+        <record id="updated_resume_id" model="employee.check.list">
+            <field name="name">Updated Resume</field>
+        </record>
+
+        <record id="education_certificate_id" model="employee.check.list">
+            <field name="name">Education Certificate</field>
+        </record>
+
+        <record id="ssc_marksheet_id" model="employee.check.list">
+            <field name="name">SSC Marksheet</field>
+        </record>
+
+        <record id="hsc_marksheet_id" model="employee.check.list">
+            <field name="name">HSC Marksheet</field>
+        </record>
+
+        <record id="graduation_marksheet_id" model="employee.check.list">
+            <field name="name">Graduation Marksheet</field>
+        </record>
+
+        <record id="graduation_degree_certificate_id" model="employee.check.list">
+            <field name="name">Graduation Degree Certificate</field>
+        </record>
+
+        <record id="master_degree_marksheet_id" model="employee.check.list">
+            <field name="name">Master Degree Marksheet</field>
+        </record>
+
+        <record id="any_other_education_certificate_id" model="employee.check.list">
+            <field name="name">Any other education certificate</field>
+        </record>
+
+        <record id="training_conference_certificate_id" model="employee.check.list">
+            <field name="name">Training/Conference Certificate</field>
+        </record>
+
+        <record id="address_proof_id" model="employee.check.list">
+            <field name="name">Address Proof</field>
+        </record>
+
+        <record id="id_proof_id" model="employee.check.list">
+            <field name="name">ID Proof</field>
+        </record>
+
+        <record id="experience_certificate_id" model="employee.check.list">
+            <field name="name">Experience Certificate</field>
+        </record>
+
+        <record id="last_organisation_latest_salary_slip_id" model="employee.check.list">
+            <field name="name">Last Organisation Latest Salary Slip</field>
+        </record>
+
+        <record id="police_varification_id" model="employee.check.list">
+            <field name="name">Police Varification</field>
+        </record>
+    </data>
+</odoo> -->

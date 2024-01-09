@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="menu_banastech_hms"
+        name="HMS"
+        sequence="0"/>
+
+    <menuitem id="menu_banastech_hms_patient"
+        name="Patient Details"
+        sequence="1"
+        parent="menu_banastech_hms"/>
+
+                <menuitem id="action_menu_banastech_hms_patient"
+                    name="Patient"
+                    sequence="0"
+                    parent="menu_banastech_hms_patient"
+                    action="action_banastech_hms_patient" />
+
+    <menuitem id="menu_banastech_hms_appointment"
+        name="Appointments"
+        parent="menu_banastech_hms"
+        sequence="2" />
+
+                <menuitem id="action_menu_banastech_hms_appointment"
+                    name="Appointment"
+                    sequence="1"
+                    parent="menu_banastech_hms_appointment"
+                    action="action_banastech_hms_appointment" />
+                <menuitem id="action_menu_banas_hms_cancle_appointment"
+                    name="Cancle Appointment"
+                    sequence="2"
+                    parent="menu_banastech_hms_appointment"
+                    action="action_banas_hms_cancle_appointment" />
+                <menuitem id="menu_patient_appointment_purpose"
+                    name="Appointment Purpose"
+                    sequence="3"
+                    parent="banastech_hms.menu_banastech_hms_appointment"
+                    action="action_banas_hms_appointment_purpose" />
+
+    <menuitem id="menu_banas_hms_doctor"
+        name="Doctors"
+        parent="menu_banastech_hms"
+        sequence="3" />
+
+                <menuitem id="action_menu_banas_hms_doctor"
+                    name= "Doctor"
+                    action= "action_banas_hms_doctor"
+                    parent= "menu_banas_hms_doctor"
+                    sequence= "1"/>
+                <menuitem id="action_menu_banas_hms_referring_doctor"
+                    name= "Reffering Doctor"
+                    action= "action_banas_hms_referring_doctor"
+                    parent= "menu_banas_hms_doctor"
+                    sequence= "2"/>
+
+    <menuitem id="menu_banas_hms_configuration"
+        name="Configurations"
+        parent="menu_banastech_hms"
+        sequence="100" />
+
+                <menuitem id="banastech_hms_patient_language_menu"
+                    name="Languages"
+                    action="action_banastech_hms_patient_language"
+                    parent="banastech_hms.menu_banas_hms_configuration"
+                    sequence="6" />
+
+                <menuitem id="banas_hms_medicaments_conf_menu"
+                    name="Medicaments"
+                    parent="banastech_hms.menu_banas_hms_configuration"
+                    sequence="3" />
+
+                            <menuitem id="menu_product_template_action_medicament"
+                                name="Medicines"
+                                action="product_template_action_medical_medicament"
+                                parent="banastech_hms.banas_hms_medicaments_conf_menu"
+                                sequence="1"/>
+                            <menuitem id="menu_banas_hms_medicament_group"
+                                name="Medicament Group"
+                                action="act_open_medicament_group_view"
+                                parent="banastech_hms.banas_hms_medicaments_conf_menu"
+                                sequence="2"/>
+                            <menuitem id="banas_hms_drug"
+                                name="Drug Form"
+                                action="act_open_drug_form_view"
+                                parent="banastech_hms.banas_hms_medicaments_conf_menu"
+                                sequence="6" />
+                            <menuitem id="banas_hms_drug_company"
+                                name="Drug Company"
+                                action="act_open_drug_company_form_view"
+                                parent="banastech_hms.banas_hms_medicaments_conf_menu"
+                                sequence="7" />
+
+                <menuitem id="action_menu_departments"
+                    name="Departments"
+                    parent="menu_banas_hms_configuration"
+                    action="action_banas_hms_department"
+                    sequence="1" />
+
+                <menuitem id="menu_banastech_hms_group_appointment"
+                    name="Appointment"
+                    parent="banastech_hms.menu_banas_hms_configuration"
+                    sequence="50" />
+
+                <!-- <menuitem id="action_menu_master_data"
+                    name="Master Data"
+                    parent="menu_banas_hms_configuration"
+                    sequence="50" />
+
+                <menuitem id="action_menu_structure"
+                    name="Menu Structure"
+                    parent="menu_banas_hms_configuration"
+                    sequence="60" />
+
+                <menuitem id="action_sub_menu"
+                    name="Sub Menu"
+                    parent="menu_banas_hms_configuration"
+                    sequence="70" /> -->
+</odoo>

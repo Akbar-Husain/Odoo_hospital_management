@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="banastech_hms_patient_occupation_se" model="banastech.hms.patient.occupation">
+        <field name="name">Software Engineer</field>
+    </record>
+
+    <record id="banastech_hms_patient_occupation_hm" model="banastech.hms.patient.occupation">
+        <field name="name">Hotel Manager</field>
+    </record>
+
+    <record id="banastech_hms_patient_occupation_sk" model="banastech.hms.patient.occupation">
+        <field name="name">Shop Keeper</field>
+    </record>
+
+    <record id="banastech_hms_patient_occupation_fm" model="banastech.hms.patient.occupation">
+        <field name="name">Farmer</field>
+    </record>
+
+    <record id="banastech_hms_patient_occupation_wr" model="banastech.hms.patient.occupation">
+        <field name="name">Writer</field>
+    </record>
+
+    <record id="banastech_hms_patient_occupation_cmd" model="banastech.hms.patient.occupation">
+        <field name="name">Comedian</field>
+    </record>
+
+    <record id="banastech_hms_patient_occupation_tc" model="banastech.hms.patient.occupation">
+        <field name="name">Teacher</field>
+    </record>
+</odoo>

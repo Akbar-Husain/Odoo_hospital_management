@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="careplan_ip_fluid_view" model="ir.ui.view">
+            <field name="name">careplan.ip.fluid.form</field>
+            <field name="model">careplan.ip.fluid</field>
+            <field name="arch" type="xml">
+                <form string="Ip Fluid">
+                    <group>
+                        <!-- <field name="ips_id"/> -->
+                        <field name="rate"/>
+                        <field name="quantity"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="careplan_vital_view" model="ir.ui.view">
+            <field name="name">careplan.vital.form</field>
+            <field name="model">careplan.vital</field>
+            <field name="arch" type="xml">
+                <form string="Vitals">
+                    <group>
+                        <field name="pulse"/>
+                        <field name="bp"/>
+                        <field name="temperature"/>
+                        <field name="time"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="careplan_liquid_monitoring_view" model="ir.ui.view">
+            <field name="name">careplan.liquid.monitoring.form</field>
+            <field name="model">careplan.liquid.monitoring</field>
+            <field name="arch" type="xml">
+                <form string="liquid monitoring">
+                    <group>
+                        <field name="day"/>
+                        <field name="by_mouth"/>
+                        <field name="by_drip"/>
+                        <field name="total"/>
+                        <field name="urine"/>
+                        <field name="difference"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="careplan_antibiotic_analogesis_view" model="ir.ui.view">
+            <field name="name">careplan.antibiotic.analogesis.form</field>
+            <field name="model">careplan.antibiotic.analogesis</field>
+            <field name="arch" type="xml">
+                <form string="Antibiotic n Antibiotic-Analgesics">
+                    <group>
+                        <field name="product_id"/>
+                        <field name="sos"/>
+                        <field name="t1"/>
+                        <field name="b1"/>
+                        <field name="time1"/>
+                        <field name="t2"/>
+                        <field name="b2"/>
+                        <field name="time2"/>
+                        <field name="t3"/>
+                        <field name="b3"/>
+                        <field name="time3"/>
+                        <field name="t4"/>
+                        <field name="b4"/>
+                        <field name="time4"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="careplan_miscellaneous_drugs_view" model="ir.ui.view">
+            <field name="name">careplan.miscellaneous.drugs.form</field>
+            <field name="model">careplan.miscellaneous.drugs</field>
+            <field name="arch" type="xml">
+                <form string="Miscellaneous Drugs">
+                    <group>
+                        <field name="product_id"/>
+                        <field name="sos"/>
+                        <field name="t5"/>
+                        <field name="b5"/>
+                        <field name="time5"/>
+                        <field name="t6"/>
+                        <field name="b6"/>
+                        <field name="time6"/>
+                        <field name="t7"/>
+                        <field name="b7"/>
+                        <field name="time7"/>
+                        <field name="t8"/>
+                        <field name="b8"/>
+                        <field name="time8"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="careplan_instruction_view" model="ir.ui.view">
+            <field name="name">careplan.instruction.set.form</field>
+            <field name="model">careplan.instruction.set</field>
+            <field name="arch" type="xml">
+                <form string="Instruction Sets">
+                    <group>
+                        <!-- <field name="instruction_list_id" /> -->
+                        <field name="instruction_done" />
+                        <field name="instruction_time_ins" />
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="careplan_detail_view" model="ir.ui.view">
+            <field name="name">careplan.detail.form</field>
+            <field name="model">careplan.detail</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="nurse_id" context="{'model': 'res.partner','default_is_nurse':'True'}"/>
+                        <field name="date_careplan" />
+                        <field name="day_careplan" />
+                        <field name="ci_ids" string="Instruction">
+                            <tree>
+                                <!-- <field name="instruction_list_id" /> -->
+                                <field name="instruction_done" />
+                                <field name="instruction_time_ins" />
+                            </tree>
+                        </field>
+                        <field name="cm_ids" string="Miscellaneous Drugs">
+                            <tree>
+                                <field name="product_id" />
+                                <field name="sos" />
+                                <field name="t5" />
+                                <field name="b5" />
+                                <field name="time5" />
+                                <field name="t6" />
+                                <field name="b6" />
+                                <field name="time6" />
+                                <field name="t7" />
+                                <field name="b7" />
+                                <field name="time7" />
+                                <field name="t8" />
+                                <field name="b8" />
+                                <field name="time8" />
+                            </tree>
+                        </field>
+                        <field name="antibiotic_ids" string="Antibiotic-Analgesics">
+                            <tree>
+                                <field name="product_id" />
+                                <field name="sos" />
+                                <field name="t1" />
+                                <field name="b1" />
+                                <field name="time1" />
+                                <field name="t2" />
+                                <field name="b2" />
+                                <field name="time2" />
+                                <field name="t3" />
+                                <field name="b3" />
+                                <field name="time3" />
+                                <field name="t4" />
+                                <field name="b4" />
+                                <field name="time4" />
+                            </tree>
+                        </field>
+                        <field name="liquid_ids" string="Liquid Monitoring">
+                            <tree>
+                                <field name="day" />
+                                <field name="by_mouth" />
+                                <field name="by_drip" />
+                                <field name="total" />
+                                <field name="urine" />
+                                <field name="difference" />
+                            </tree>
+                        </field>
+                        <field name="vital_ids" string="Vitals">
+                            <tree>
+                                <field name="pulse" />
+                                <field name="bp" />
+                                <field name="temperature" />
+                                <field name="time" />
+                            </tree>
+                        </field>
+                        <field name="fluid_ids" string="Fluid">
+                            <tree>
+                                <!-- <field name="ips_id" /> -->
+                                <field name="rate" />
+                                <field name="quantity" />
+                            </tree>
+                        </field>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="careplan_detail_view_form" model="ir.ui.view">
+            <field name="name">inpatient.registration.care.form</field>
+            <field name="model">inpatient.registration</field>
+            <field name="priority" eval="9" />
+            <field name="inherit_id" ref="hms_hospitalization.view_inpatient_registration_form" />
+            <field name="arch" type="xml">
+                <page name="basic_careplan" position="replace">
+                    <page string="Careplan">
+                        <field name="careplan_ids" nolabel="1" colspan="4">
+                            <tree>
+                                <field name="nurse_id" context="{'model': 'res.partner','default_is_nurse':'True'}"/>
+                                <field name="date_careplan" />
+                                <field name="day_careplan" />
+                            </tree>
+                        </field>
+                    </page>
+                </page>
+            </field>
+        </record>
+    </data>
+</odoo>

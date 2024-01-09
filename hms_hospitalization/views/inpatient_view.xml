@@ -1,0 +1,845 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_inpatient_registration_form" model="ir.ui.view">
+            <field name="name">inpatient.registration.form</field>
+            <field name="model">inpatient.registration</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Inpatient Registration Information">
+                    <header>
+                        <button name="action_create_confirm" string="Confirm" class="oe_highlight" type="object" states="draft" />
+                        <button name="action_reserved" type="object" string="Reserve" class="oe_highlight" states="confirm" />
+                        <button name="action_confirm" string="Hospitalize" class="oe_highlight" type="object" states="confirm,reserved" />
+                        <button name="action_discharge" type="object" string="Discharge" class="oe_highlight" states="hosp" />
+                                <!-- groups="hms_insurance.group_hms_insurance_officer,hms.group_hms_doctor,hms.group_hms_jr_doctor,hms.group_hms_receptionist,hms.group_hms_manager" -->
+                        <button name="%(transfer_accomodation_action)d" string="Transfer" class="oe_highlight" type='action' />
+                        <button name="action_done" string="Done" states="discharged" type="object" class="oe_highlight" />
+                                <!-- groups="hms_insurance.group_hms_insurance_officer,hms.group_hms_doctor,hms.group_hms_receptionist,hms.group_hms_manager" -->
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,reserved,hosp,discharged,done" statusbar_colors='{"cancel":"red"}'/>
+                    </header>
+                    <sheet>
+                        <h1>
+                            <field name="image" widget="image" class="oe_avatar" nolabel="1"/><span></span><br/>
+                            <!-- <label string="IP No." attrs="{'invisible': ['|',('state','not in',('draft',))]}"/> -->
+                            <field name="name" readonly="1" class="oe_inline" placeholder="IP No."/>
+                            <!-- attrs="{'invisible': [('state','in',('draft'))]}" -->
+                        </h1>
+                        <group>
+                            <group>
+                                <field name="patient_id" required="1"></field>
+                                <field name="appointment_id" readonly="0"/>
+                                <field name="mobile"/>
+                                <field name="gender" invisible="1"/>
+                                <field name="invoice_id" invisible="1"/>
+                                <field name="hospitalization_date" required="1" />
+                                <field name="company_id" invisible="1"></field>
+                                <field name="department_id"></field>
+                                <!-- <field name="primary_physician" required="1"/> -->
+                                <label for="attending_physician_ids" string="Co-Consultant" />
+                                <div class="address_format">
+                                    <field name="attending_physician_ids" widget="many2many_tags"
+                                    />
+                                </div>
+                                <field name="relative_name"></field>
+                                <field name="relative_with_patient"></field>
+                                <field name="relative_number"></field>
+                                <field name="mlc"></field>
+                            </group>
+                            <group>
+                                <field name="ward_package_id" widget="selection"/>
+                                <field name="ward_id" attrs="{'required': [('state','in',('confirm'))]}"/>
+                                <field name="bed_id" domain="[('ward_id', '=', ward_id), ('state', '=', 'free')]" attrs="{'required': [('state','in',('confirm'))]}" />
+                                <field name="admission_type" required="1"></field>
+                                <field name="admission_reason" invisible="1"/>
+                                <field name="discharge_date" attrs="{'invisible': [('state','in',('draft','confirm','reserved','hosp'))], 'required': [('state','in',('discharged'))]}"></field>
+                                <field name="no_invoice" groups="banastech_hms.group_banas_hms_jr_doctor,banastech_hms.group_banastech_hms_nurse,banastech_hms.group_banastech_hms_manager,banastech_hms.group_banastech_hms_medical_officer,banastech_hms.group_banas_hms_doctor" invisible="1"></field>
+                                <field name="payment_category"/>
+                                <field name="expected_stay"/>
+                                <field name="remark_note"></field>
+                            </group>
+                        </group>
+                        <notebook name="main">
+                            <page name="administrative" string="Admission Checklist" groups="banastech_hms.group_banas_hms_doctor,banastech_hms.group_banastech_hms_medical_officer,banastech_hms.group_banastech_hms_nurse">
+                                <field name="checklist_ids" groups="banastech_hms.group_banas_hms_doctor,banastech_hms.group_banastech_hms_medical_officer,banastech_hms.group_banastech_hms_nurse">
+                                    <tree editable="top">
+                                        <field name="name" readonly="1"/>
+                                        <field name="is_done" />
+                                        <field name="remark" />
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Assessment" name="patient_assessment" groups="banastech_hms.group_banastech_hms_medical_officer,banastech_hms.group_banas_hms_doctor,banastech_hms.group_banastech_hms_manager">
+                                <notebook>
+                                    <page string="Emergency" name="patient_assessment_ericu" groups="banastech_hms.group_banastech_hms_medical_officer,banastech_hms.group_banastech_hms_nurse,banastech_hms.group_banastech_hms_medical_officer,banastech_hms.group_banastech_hms_manager">
+                                        <group string="Vitals:">
+                                            <group>
+                                                <field name="assess_doc_temp" widget="char" placeholder="Temp." style="width:50%;"/>
+                                                <field name="assess_doc_pulse" widget="char" placeholder="Pulse" style="width:50%;"/>
+                                                <label for="assess_doc_bp"/>
+                                                <div class="oe_inline">
+                                                    <field name="assess_doc_bp" style="width:23.5%" string="Other" placeholder="B.P."/> /
+                                                    <field name="assess_doc_lbp" style="width:23.5%" nolabel="1" placeholder="L.B.P."/>
+                                                </div>
+                                            </group>
+                                            <group>
+                                                <field name="assess_doc_rr" widget="char" placeholder="RR" style="width:50%;"/>
+                                                <field name="assess_pain_score" style="width:50%;"/>
+                                                <field name="assess_doc_spo2" widget="char" placeholder="Spo2" style="width:50%;"/>
+                                            </group>
+                                        </group>
+                                        <group string="Chief Complaint">
+                                            <field name="pa_chief_complaint" nolabel="1"/>
+                                        </group>
+                                        <group string="Abdominal Examination">
+                                            <field name="pa_abdominal_examination_note" nolabel="1"/>
+                                        </group>
+                                        <group string="Rectal Examination">
+                                            <field name="pa_rectal_examination_note" nolabel="1"/>
+                                        </group>
+                                        <group string="Systemic Examination">
+                                            <group>
+                                                <field name="pa_se_rs"/>
+                                                <field name="pa_se_cvs"/>
+                                                <field name="pa_se_cns"/>
+                                                <field name="pa_se_adb"/>
+                                            </group>
+                                            <group>
+                                                <field name="pa_se_pelvic"/>
+                                                <field name="pa_se_rectal"/>
+                                            </group>
+                                        </group>
+                                        <group>
+                                            <group string="Triage acuity">
+                                                <field name="pa_triage"/>
+                                                <field name="pa_triage_life" attrs="{'invisible': [('pa_triage', '=', False)]}"/>
+                                                <field name="pa_triage_nolife" attrs="{'invisible': [('pa_triage', '=', False)]}"/>
+                                                <field name="pa_triage_noemery" attrs="{'invisible': [('pa_triage', '=', False)]}"/>
+                                            </group>
+                                            <group string="Allergies">
+                                                <field name="pa_allergies"/>
+                                                <field name="pa_drug"/>
+                                                <field name="pa_food"/>
+                                                <field name="pa_other"/>
+                                            </group>
+                                        </group>
+                                        <group string="General Physical Examination">
+                                            <field name="pa_review_ge" nolabel="1"/>
+                                        </group>
+                                        <group string="Assessment &amp; Plan of Care">
+                                            <field name="pa_planofcare" nolabel="1"/>
+                                        </group>
+                                    </page>
+                                    <page string="By Doctor (ICU/Ward)" name="patient_assessment_word" groups="banastech_hms.group_banastech_hms_medical_officer,banastech_hms.group_banastech_hms_nurse,banastech_hms.group_banastech_hms_medical_officer,banastech_hms.group_banastech_hms_manager">
+                                        <group>
+                                            <group string="BMI Record">
+                                                <field name="bmi_line_by_doctor_ids" string="BMI Record" colspan="4" nolabel="1">
+                                                    <tree editable="bottom">
+                                                        <field name="weight" required="1"/>
+                                                        <field name="cm" required="1"/>
+                                                        <field name="bmi"/>
+                                                    </tree>
+                                                </field>
+                                            </group>
+                                            <group string="Allergies">
+                                                <field name="ahpa_allergies_ids" nolabel="1">
+                                                    <tree editable="top">
+                                                        <field name="allergicto"/>
+                                                        <field name="reaction"/>
+                                                    </tree>
+                                                </field>
+                                            </group>
+                                        </group>
+                                        <group>
+                                            <group string="Chief Complaint with Origin,Duration and Progress">
+                                                <field name="chief_complain" nolabel="1"/>
+                                            </group>
+                                            <group string="Significant Test's Done/Laboratory Reports">
+                                                <field name="sign_labreport_ids" nolabel="1">
+                                                    <tree editable="top">
+                                                        <field name="report_date"/>
+                                                        <field name="report_name"/>
+                                                        <field name="report_result"/>
+                                                        <field name="report_attachment"/>
+                                                    </tree>
+                                                </field>
+                                            </group>
+                                        </group>
+                                        <separator string="Past History"/>
+                                        <group>
+                                            <field name="by_doctor_past_history_ids" nolabel="1">
+                                                <tree editable="top">
+                                                    <field name="by_dr_disease"/>
+                                                    <field name="by_dr_since"/>
+                                                    <field name="by_dr_medication"/>
+                                                    <field name="by_dr_tr_doctor"/>
+                                                </tree>
+                                            </field>
+                                        </group>
+                                        <group>
+                                            <group>
+                                                <field name="ph_ischaemic_hd"/>
+                                                <field name="ph_ischaemic_hd1" attrs="{'invisible': [('ph_ischaemic_hd', '=', False)]}"/>
+                                                <field name="ph_ischaemic_hd2" attrs="{'invisible': [('ph_ischaemic_hd', '=', False)]}"/>
+                                                <field name="ph_ischaemic_hddr" attrs="{'invisible': [('ph_ischaemic_hd', '=', False)]}"/>
+                                            </group>
+                                            <group>
+                                                <field name="ph_tuberculosis"/>
+                                                <field name="ph_tuberculosis1" attrs="{'invisible': [('ph_tuberculosis', '=', False)]}"/>
+                                                <field name="ph_tuberculosis2" attrs="{'invisible': [('ph_tuberculosis', '=', False)]}"/>
+                                                <field name="ph_tuberculosisdr" attrs="{'invisible': [('ph_tuberculosis', '=', False)]}"/>
+                                            </group>
+                                        </group>
+                                        <group>
+                                            <group string="P/H of Operation">
+                                                <field name="pho_ids" nolabel="1">
+                                                    <tree editable="top">
+                                                        <field name="pho_date"/>
+                                                        <field name="pho_diagnosis"/>
+                                                        <field name="pho_result"/>
+                                                        <field name="pho_drhosp"/>
+                                                    </tree>
+                                                </field>
+                                            </group>
+                                            <group string="P/H of Hospitalization">
+                                                <field name="phh_ids" nolabel="1">
+                                                    <tree editable="top">
+                                                        <field name="phh_diagnosis"/>
+                                                        <field name="phh_year"/>
+                                                        <field name="phh_duration"/>
+                                                    </tree>
+                                                </field>
+                                            </group>
+                                        </group>
+                                        <label for="pho_phh_remark"/>
+                                        <field name="pho_phh_remark" nolabel="1"/>
+                                        <separator string="Family History"/>
+                                        <group>
+                                            <group>
+                                                <label for="fh_hypertension"/>
+                                                <div class="oe_inline">
+                                                    <field name="fh_hypertension" style="width:20%"/>
+                                                    <field name="fh_hypertension_value" attrs="{'invisible': [('fh_hypertension', '=', False)]}" nolabel="1" style="width:80%"/>
+                                                </div>
+                                                <label for="fh_heart_disease"/>
+                                                <div class="oe_inline">
+                                                    <field name="fh_heart_disease" style="width:20%"/>
+                                                    <field name="fh_heart_disease_value" attrs="{'invisible': [('fh_heart_disease', '=', False)]}" nolabel="1" style="width:80%"/>
+                                                </div>
+                                                <label for="fh_diabetes"/>
+                                                <div class="oe_inline">
+                                                    <field name="fh_diabetes" style="width:20%"/>
+                                                    <field name="fh_diabetes_value" attrs="{'invisible': [('fh_diabetes', '=', False)]}" nolabel="1" style="width:80%"/>
+                                                </div>
+                                                <label for="fh_tuberculosis"/>
+                                                <div class="oe_inline">
+                                                    <field name="fh_tuberculosis" style="width:20%"/>
+                                                    <field name="fh_tuberculosis_value" attrs="{'invisible': [('fh_tuberculosis', '=', False)]}" nolabel="1" style="width:80%"/>
+                                                </div>
+                                                <label for="fh_epilepsy"/>
+                                                <div class="oe_inline">
+                                                    <field name="fh_epilepsy" style="width:20%"/>
+                                                    <field name="fh_epilepsy_value" attrs="{'invisible': [('fh_epilepsy', '=', False)]}" nolabel="1" style="width:80%"/>
+                                                </div>
+                                            </group>
+                                            <group>
+                                                <label for="fh_asthma"/>
+                                                <div class="oe_inline">
+                                                    <field name="fh_asthma" style="width:20%"/>
+                                                    <field name="fh_asthma_value" attrs="{'invisible': [('fh_asthma', '=', False)]}" nolabel="1" style="width:80%"/>
+                                                </div>
+                                                <label for="fh_stroke"/>
+                                                <div class="oe_inline">
+                                                    <field name="fh_stroke" style="width:20%"/>
+                                                    <field name="fh_stroke_value" attrs="{'invisible': [('fh_stroke', '=', False)]}" nolabel="1" style="width:80%"/>
+                                                </div>
+                                                <label for="fh_arthritis"/>
+                                                <div class="oe_inline">
+                                                    <field name="fh_arthritis" style="width:20%"/>
+                                                    <field name="fh_arthritis_value" attrs="{'invisible': [('fh_arthritis', '=', False)]}" nolabel="1" style="width:80%"/>
+                                                </div>
+                                                <label for="fh_cancer"/>
+                                                <div class="oe_inline">
+                                                    <field name="fh_cancer" style="width:20%"/>
+                                                    <field name="fh_cancer_value" attrs="{'invisible': [('fh_cancer', '=', False)]}" nolabel="1" style="width:80%"/>
+                                                </div>
+                                                <label for="fh_chronic"/>
+                                                <div class="oe_inline">
+                                                    <field name="fh_chronic" style="width:20%"/>
+                                                    <field name="fh_chronic_value" attrs="{'invisible': [('fh_chronic', '=', False)]}" nolabel="1" style="width:80%"/>
+                                                </div>
+                                            </group>
+                                        </group>
+                                        <group>
+                                            <group string="Personal History">
+                                                <field name="personals_history_ids" nolabel="1">
+                                                    <tree editable="top">
+                                                        <field name="name"/>
+                                                        <field name="value"/>
+                                                    </tree>
+                                                </field>
+                                            </group>
+                                            <group string="Addiction History">
+                                                <field name="personals_historys_ids" nolabel="1">
+                                                    <tree editable="top">
+                                                        <field name="name"/>
+                                                        <field name="value"/>
+                                                        <field name="duration"/>
+                                                    </tree>
+                                                </field>
+                                            </group>
+                                        </group>
+                                        <separator string="For Females"/>
+                                        <group>
+                                            <group>
+                                                <field name="f_menstrual_history"/>
+                                                <field name="f_obstetric_history"/>
+                                                <field name="f_abortion"/>
+                                            </group>
+                                            <group>
+                                                <field name="f_reg_inreg"/>
+                                                <field name="f_others"/>
+                                            </group>
+                                        </group>
+                                        <separator string="Physical Examination(Vitals Signs)"/>
+                                        <group>
+                                            <group>
+                                                <field name="pe_temp"  widget="char" placeholder="Temp." style="width:50%;"/>
+                                                <field name="pe_pulse" widget="char" placeholder="Pulse" style="width:50%;"/>
+                                                <label for="pe_bp"/>
+                                                <div class="oe_inline">
+                                                    <field name="pe_bp" style="width:23.5%" string="Other" placeholder="B.P."/> /
+                                                    <field name="pe_lbp" style="width:23.5%" nolabel="1" placeholder="L.B.P."/>
+                                                </div>
+                                            </group>
+                                            <group>
+                                                <field name="pe_rr" widget="char" placeholder="RR" style="width:50%;"/>
+                                                <field name="pe_pain" style="width:50%;"/>
+                                                <field name="pe_spo2" widget="char" placeholder="Spo2" style="width:50%;"/>
+                                            </group>
+                                        </group>
+                                        <group string="Abdominal Examination">
+                                            <field name="se_abdomen" nolabel="1"/>
+                                        </group>
+                                        <separator string="Systemic Examination"/>
+                                        <group>
+                                            <group>
+                                                <field name="se_respiratory"/>
+                                                <field name="se_centralnervous"/>
+                                                <field name="se_cardiovascular"/>
+                                            </group>
+                                            <group>
+                                                <field name="se_musculoskeletal"/>
+                                                <field name="se_extremities" />
+                                            </group>
+                                        </group>
+                                        <separator string="General Examination"/>
+                                        <group>
+                                            <group>
+                                                <field name="ge_anemia"/>
+                                                <field name="ge_cyanosis"/>
+                                                <field name="ge_jaundice"/>
+                                            </group>
+                                            <group>
+                                                <field name="ge_gen_lymp"/>
+                                                <field name="ge_pedal_oedema"/>
+                                            </group>
+                                        </group>
+                                        <label for="general_examination"/>
+                                        <field name="general_examination" nolabel="1"/>
+                                        <separator string="Provisional Diagnosis"/>
+                                        <field name="provisional_diagnosis" nolabel="1"/>
+                                        <separator string="Medical Officers's Note"/>
+                                        <field name="medical_officers_note" nolabel="1"/>
+                                        <separator string="Consultant's Note"/>
+                                        <field name="consultant_note" nolabel="1"/>
+                                        <separator string="Plan of Care During Hospitalization"/>
+                                        <field name="planofcare_hosp" nolabel="1"/>
+                                        <group>
+                                            <group>
+                                                <field name="create_user_id"/>
+                                            </group>
+                                            <group>
+                                                <field name="create_timestamp"/>
+                                            </group>
+                                        </group>
+                                    </page>
+                                    <page string="By Dieticion" name="patient_assessment_dieticion" groups="banastech_hms.group_banastech_hms_medical_officer,banastech_hms.group_banastech_hms_nurse,banastech_hms.group_banastech_hms_medical_officer,banastech_hms.group_banastech_hms_manager">
+                                        <field name="hms_surgery_dietician_ids" colspan="4" context="{'default_patient_id': patient_id,'default_careplan_hms_surgery_dietician_id': id}">
+                                            <tree>
+                                                <field name="date_dietician" />
+                                                <field name="patient_id" invisible="1"/>
+                                                <field name="hms_surgery_dietician_id" invisible="1"/>
+                                                <field name="diet_height"/>
+                                                <field name="diet_weight"/>
+                                                <field name="diet_bmi"/>
+                                                <field name="diet_past_clinical_history"/>
+                                                <field name="diet_bio_chemical"/>
+                                                <field name="diet_meals"/>
+                                                <field name="diet_gi_symptoms"/>
+                                                <field name="diet_typesoffeeds"/>
+                                                <field name="diet_well_nourished"/>
+                                                <field name="diet_moderatery"/>
+                                                <field name="diet_severely"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="By Physiotherapist" name="patient_assessment_physiotheropist" groups="banastech_hms.group_banastech_hms_medical_officer,banastech_hms.group_banastech_hms_nurse,banastech_hms.group_banastech_hms_medical_officer,banastech_hms.group_banastech_hms_manager">
+                                        <separator string="Pre-Operative Assessment" />
+                                        <group>
+                                            <group>
+                                                <!-- <label string="Vitals:" style="font-weight: bold;"/> -->
+                                                <label for="assess_phy_pulse"/>
+                                                <field name="assess_phy_pulse" nolabel="1" widget="char" style="width:50%;" placeholder="Pulse"/>
+                                                <label for="assess_phy_rr"/>
+                                                <field name="assess_phy_rr" nolabel="1" widget="char" style="width:50%;" placeholder="RR"/>
+                                            </group>
+                                            <group>
+                                                <label for="assess_phy_bp" />
+                                                <div class="oe_inline">
+                                                    <field name="assess_phy_bp" nolabel="1" widget="char" style="width:23.5%;" placeholder="B.P."/> /
+                                                    <field name="assess_phy_lbp" nolabel="1" widget="char" style="width:23.5%;" placeholder="L.B.P."/>
+                                                </div>
+                                                <label for="assess_phy_spo2" />
+                                                <field name="assess_phy_spo2" nolabel="1" widget="char" style="width:50%;" placeholder="Spo2"/>
+                                            </group>
+                                        </group>
+                                        <group>
+                                            <group>
+                                                <field name="assess_phy_pain" style="width:100%" />
+                                                <field name="phy_remark" style="width:100%"/>
+                                                <field name="spirometry" style="width:100%"/>
+                                                <field name="assess_res_exam" />
+                                            </group>
+                                            <group>
+                                            </group>
+                                        </group>
+                                        <separator string="Post-Operative Assessment" />
+                                        <group>
+                                            <group>
+                                                <!-- <label string="Vitals:" style="font-weight: bold;"/> -->
+                                                <label for="assess_post_pulse" />
+                                                <field name="assess_post_pulse" nolabel="1" widget="char" style="width:50%;" placeholder="Pulse"/>
+                                                <label for="assess_post_rr" />
+                                                <field name="assess_post_rr" nolabel="1" widget="char" style="width:50%;" placeholder="RR"/>
+                                            </group>
+                                            <group>
+                                                <label for="assess_post_bp" />
+                                                <div class="oe_inline">
+                                                    <field name="assess_post_bp" nolabel="1" widget="char" style="width:23.5%;" placeholder="B.P."/> /
+                                                    <field name="assess_post_lbp" nolabel="1" widget="char" style="width:23.5%;" placeholder="L.B.P."/>
+                                                </div>
+                                                <label for="assess_post_spo2" />
+                                                <field name="assess_post_spo2" nolabel="1" widget="char" style="width:50%;" placeholder="Spo2"/>
+                                            </group>
+                                        </group>
+                                        <group>
+                                            <group>
+                                                <field name="assess_post_pain" style="width:100%" />
+                                                <field name="post_phy_remark" style="width:100%"/>
+                                                <field name="post_spirometry" style="width:100%"/>
+                                                <field name="assess_post_res_exam" />
+                                            </group>
+                                            <group>
+                                            </group>
+                                        </group>
+                                        <separator string="Physiotherapy Notes" />
+                                        <field name="phy_notes_line" >
+                                            <tree string="Physiotherapy Notes" editable="bottom">
+                                                <field name="phy_notes_date" />
+                                                <field name="phy_particulars" required="True"/>
+                                                <field name="assess_phy_id" />
+                                            </tree>
+                                        </field>
+                                    </page>
+                                </notebook>
+                            </page>
+                            <page string="Progress Note" name="progress_note"
+                                groups="banastech_hms.group_banastech_hms_medical_officer,banastech_hms.group_banas_hms_doctor,banastech_hms.group_banastech_hms_manager">
+                                <group>
+                                    <field name="progress_note_ids" nolabel="1"
+                                        context="{'default_patient_id': patient_id}"> 
+                                        <tree string="Progress Note" create="false">
+                                            <field name="oral_rt" widget="char"/>
+                                            <field name="fj_nj" widget="char"/>
+                                            <field name="iv_fluids" widget="char"/>
+                                            <field name="io_total_input" widget="char"/>
+                                            <field name="important_event"/>
+                                            <field name="todays_plan"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page name="basic_careplan" string="Nursing Chart" groups="banastech_hms.group_banastech_hms_medical_officer,banastech_hms.group_banas_hms_doctor,banastech_hms.group_banastech_hms_manager" invisible="0" >
+                                <group>
+                                    <group>
+                                        <field name="nurse_id" context="{'model': 'res.partner','default_is_nurse':'True'}" />
+                                    </group>
+                                </group>
+                                <label for="nursing_plan" />
+                                <field name="nursing_plan" colspan="4">
+                                </field>
+                                <newline />
+                                <group string="Ward Rounds">
+                                    <field name="ward_rounds" nolabel="1" colspan="4">
+                                        <tree string="Line" editable="top">
+                                            <field name="date" required="1" />
+                                            <field name="instruction" required="1" />
+                                            <field name="execution_time" required="1" />
+                                            <field name="executed_by" required="1" context="{'model': 'res.partner','default_is_nurse':'True', 'default_is_observer':'True'}"/>
+                                            <field name="remarks" required="1" />
+                                        </tree>
+                                    </field>
+                                </group>
+                                <label for="discharge_plan" />
+                                <field name="discharge_plan" colspan="4"></field>
+                            </page>
+                            <page string="Transfer History" groups="banastech_hms.group_banastech_hms_patient_user">
+                                <field name="accomodation_history_ids" colspan="4"
+                                    nolabel="1" readonly="1">
+                                    <tree string="Line"> <!--  options="{'no_create': True}" -->
+                                        <field name="patient_id" />
+                                        <field name="type"/>
+                                        <field name="ward_package_id"/>
+                                        <field name="ward_id" />
+                                        <field name="bed_id" />
+                                        <field name="start_date" />
+                                        <field name="end_date" />
+                                        <field name="days" />
+                                    </tree>
+                                </field>
+                            </page>
+
+                            <page string="Discharge Summary" groups="banastech_hms.group_banastech_hms_medical_officer,banastech_hms.group_banas_hms_doctor" name="discharged">
+                                <field name="done_summary" invisible="1"/>
+                                <!-- <button name="view_discharge_summary" type="object" string="View Discharge Summary" class="oe_highlight"  groups="hms_insurance.group_hms_insurance_officer,hms.group_hms_doctor"/> -->
+                             
+                                <!-- <button name="test_discharge_summary" type="object" string="Test Discharge Summary" class="oe_highlight"  groups="hms_insurance.group_hms_insurance_officer,hms.group_hms_doctor"/> -->
+
+                                <button name="done_discharge_summary" type="object" string="Done Discharge Summary" class="oe_highlight" />
+                                <!-- hms_insurance.group_hms_insurance_officer, groups="banastech_hms.group_banas_hms_doctor"-->
+
+                                <!-- <button name="final_discharge_summary" type="object" string="Final Discharge Summary" class="oe_highlight"  groups="hms_insurance.group_hms_insurance_officer,hms.group_hms_doctor"/>-->
+                                <br/><br/>
+                                <label for="clinincal_history" />
+                                <field name="clinincal_history" colspan="2"></field>
+                                <label for="past_history" />
+                                <field name="past_history" colspan="4"></field>
+                                <label for="past_surgical_history" />
+                                <field name="past_surgical_history" colspan="4"></field>
+                                <label for="post_operative" />
+                                <field name="post_operative" colspan="2"></field>
+                                <label for="prov_diagnosis" />
+                                <field name="prov_diagnosis" colspan="2"></field>
+                                <label for="discharge_diagnosis" />
+                                <field name="discharge_diagnosis" colspan="2"></field>
+                                <group>
+                                    <group>
+                                        <field name="discharge_status" />
+                                    </group>
+                                    <group>
+                                        <field name="type_of_discharge" />
+                                    </group>
+                                </group>
+                                <label for="op_note" />
+                                <field name="op_note" colspan="4"></field>
+                                <label for="followup_issue" />
+                                <field name="followup_issue" colspan="2"></field>
+                                <label for="instruction"/>
+                                <field name="instruction" nolabel="1" invisible="0">
+                                    <tree string="Instruction" editable="bottom">
+                                        <field name="inst_id"/>
+                                    </tree> 
+                                    <form string="Instruction" editable="bottom">
+                                        <group>
+                                            <field name="inst_id"/>
+                                            <field name="ipd_id"/>
+                                        </group>
+                                    </form>
+                                </field>
+                                <group>
+                                    <field name="hospitalization_injury" widget="radio" />
+                                    <field name="cause" widget="radio" attrs="{'invisible':[('hospitalization_injury','=','no')]}"/>
+                                    <field name="medico_legal" widget="radio" attrs="{'invisible':[('hospitalization_injury','=','no')]}"/>
+                                    <field name="reported_to_police" widget="radio" attrs="{'invisible':[('hospitalization_injury','=','no')]}"/>
+                                    <field name="fir_no" attrs="{'invisible':[('hospitalization_injury','=','no')]}"/>
+                                    <field name="fir_reason" attrs="{'invisible':[('hospitalization_injury','=','no')]}"/>
+                                </group>
+                                <group>
+                                    <field name="outside_injury" widget="radio"
+                                        string="If Injury due to Substance abuse /alcohol consumption,Test Conducted to this establish this" attrs="{'invisible':[('hospitalization_injury','=','no')]}"/>
+                                </group>
+                            </page>
+                            <page string="Services">
+                                <field name="service_ids">
+                                    <tree editable="bottom">
+                                        <field name="date_time_service"/>
+                                        <field name="hospitalisatione_service" required="1"/>
+                                        <field name="hospitalisation_service_provider_id"/>
+                                        <field name="audit_checkbox" groups="banastech_hms.group_banastech_hms_medical_officer"/>
+                                        <field name="hospitalisation_service_auditor"/>
+                                    </tree>
+                                </field>
+                            </page>                           
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user" />
+                        <field name="message_ids" widget="mail_thread" />
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="inpatient_registration_tree">
+            <field name="name">inpatient.registration.tree</field>
+            <field name="model">inpatient.registration</field>
+            <field name="arch" type="xml">
+                <tree string="Inpatient Registration Info" > <!--  default_order="name desc" -->
+                    <field name="name" string="I.P.D. No."></field>
+                    <field name="patient_id"></field>
+                    <field name="mobile"/>
+                    <field name="hospitalization_date"></field>
+                    <field name="discharge_date"></field>
+                    <field name="payment_category"/>
+                    <field name="ward_id"/>
+                    <field name="bed_id"></field>
+                    <field name="attending_physician_ids"/>
+                    <field name="cashless" invisible="1"/>
+                    <field name="state"></field>
+                    <!-- <button name="action_estimate_report" string="Estimate Report" type="object" icon="fa-ticket"/> -->
+                    <!-- <button name="action_zero_report" string="0-0 Error Report" type="object" icon="fa-tags" invisible="1"/> -->
+                    <!-- <button name="action_discharge_report" string="Discharge Summary" type="object" icon="fa-sticky-note-o"/> -->
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_inpatient_registration_filter" model="ir.ui.view">
+            <field name="name">inpatient.registration.select</field>
+            <field name="model">inpatient.registration</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Search Hospitalizations">
+                    <filter name="hospitalize" string="Hospitalized" domain="[('state', '=','hosp')]"/>
+                    <separator />
+                    <filter name="draft" string="Draft" domain="[('state','=','draft')]" />
+                    <separator />
+                    <filter name="reserved_hospitalized" string="Reserved &amp; Hospitalization" domain="['|', ('state','=','reserved'), ('state','=','hosp')]" />
+                    <separator />
+                    <filter name="reserved" string="Reserved" domain="[('state','=','reserved')]" />
+                    <separator />
+                    <filter name="discharged" string="Discharged" domain="[('state','=','discharged')]" />
+                    <separator />
+                    <filter name="done" string="Done" domain="[('state','=','done')]" />
+                    <separator />
+                    <field name="patient_id" />
+                    <field name="attending_physician_ids" />
+                    <field name="name" />
+                    <separator />
+                    <group expand="0" string="Group By">
+                        <filter string="Patient" name="patient_id" domain="[]" context="{'group_by':'patient_id'}" />
+                        <filter string="Date" name="hospitalization_date" domain="[]" context="{'group_by':'hospitalization_date'}" />
+                        <filter string="Ward/Room" name="ward_id" domain="[]" context="{'group_by':'ward_id'}" />
+                        <filter string="Status" name="state" domain="[]" context="{'group_by':'state'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="indimedi_action_form_inpatient">
+            <field name="name">Hospitalization</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">inpatient.registration</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="inpatient_registration_tree" />
+            <field name="search_view_id" ref="view_inpatient_registration_filter" />
+            <field name="context">{'search_default_reserved_hospitalized': 1}</field>
+        </record>
+
+        <!--Dieticion-->
+            <record id="hms_surgery_dietician_tree_view" model="ir.ui.view">
+            <field name="name">Dietician Form</field>
+            <field name="model">hms.surgery.dietician</field>
+            <field name="arch" type="xml">
+                <tree string="Dietician Form">
+                    <field name="date_dietician" />
+                    <field name="patient_id" invisible="1"/>
+                    <field name="hms_surgery_dietician_id" invisible="1"/>
+                    <field name="diet_height"/>
+                    <field name="diet_weight"/>
+                    <field name="diet_bmi"/>
+                    <field name="diet_past_clinical_history"/>
+                    <field name="diet_bio_chemical"/>
+                    <field name="diet_meals"/>
+                    <field name="diet_gi_symptoms"/>
+                    <field name="diet_typesoffeeds"/>
+                    <field name="diet_well_nourished"/>
+                    <field name="diet_moderatery"/>
+                    <field name="diet_severely"/>
+                </tree>
+            </field>
+        </record>
+
+         <record id="hms_surgery_dietician_form_view" model="ir.ui.view">
+            <field name="name">Dietician Form</field>
+            <field name="model">hms.surgery.dietician</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="date_dietician" style="width:50%"/>
+                                <field name="patient_id" invisible="1"/>
+                                <field name="hms_surgery_dietician_id" invisible="1"/>
+                            </group>
+                            <group>
+                            </group>
+                            <group>
+                                <label for="diet_height"/>
+                                <field name="diet_height" nolabel="1" style="width:50%" />
+                            </group>
+                            <group>
+                            </group>
+                            <group>
+                                <label for="diet_weight"/>
+                                <field name="diet_weight" nolabel="1" style="width:50%" />
+                            </group>
+                            <group>
+                            </group>
+                            <group>
+                                <label for="diet_bmi"/>
+                                <field name="diet_bmi" nolabel="1" style="width:50%" />
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="diet_past_clinical_history"/>
+                                <field name="diet_bio_chemical"/>
+                                <field name="diet_meals"/>
+                                <field name="diet_gi_symptoms" widget="many2many_tags"/>
+                                <label for="diet_typesoffeeds"/>
+                                <div class="oe_inline">
+                                    <field name="diet_typesoffeeds" style="width:48%" />
+                                    <field name="diet_typesoffeeds_value" style="margin-left:1%;width:50%"/>
+                                </div>
+                            </group>
+                            <group string="Global Assessment Rating">
+                                <field name="diet_well_nourished"/>
+                                <field name="diet_moderatery"/>
+                                <field name="diet_severely"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_hms_surgery_dietician_view">
+            <field name="name">Dietician</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hms.surgery.dietician</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="hms_surgery_dietician_tree_view" />
+        </record>
+
+        <record model="ir.ui.view" id="instruction_hms_instruction_tree">
+            <field name="name">Instruction</field>
+            <field name="model">hms.instruction</field>
+            <field name="arch" type="xml">
+                <tree string="Instruction">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="instruction_hms_instruction_form">
+            <field name="name">Instruction</field>
+            <field name="model">hms.instruction</field>
+            <field name="arch" type="xml">
+                <form string="Instruction">
+                    <group>
+                        <field name="name"/>
+                        <field name="gender"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_hms_instruction">
+            <field name="name">Instruction</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hms.instruction</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="instruction_hms_instruction_tree"/>
+        </record>
+
+        <record model="ir.ui.view" id="instruction_group_line_form">
+            <field name="name">Instruction Group Line</field>
+            <field name="model">ipd.instruction</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Instruction">
+                    <sheet>
+                        <group string="Insructions Line">
+                            <field name="inst_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="instruction_group_line_tree1">
+            <field name="name">Instruction Group Tree</field>
+            <field name="model">ipd.instruction</field>
+            <field name="arch" type="xml">
+                <tree string="Instruction">
+                    <field name="inst_id"/>
+                </tree>
+            </field>
+        </record>
+         <record model="ir.actions.act_window" id="action_instruction_group_line">
+            <field name="name">Instruction</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ipd.instruction</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="instruction_group_line_tree1" />
+        </record>
+
+        <record model="ir.ui.view" id="instruction_group_tree1">
+            <field name="name">Instruction Group Tree</field>
+            <field name="model">ipd.instruction.group</field>
+            <field name="arch" type="xml">
+                <tree string="Instruction Group">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="instruction_group_form">
+            <field name="name">Instruction Group</field>
+            <field name="model">ipd.instruction.group</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Instruction Group">
+                    <sheet>
+                        <group col="4">
+                            <field name="name"/>
+                            <field name="gender"/>
+                        </group>
+                        <group string="Insructions">
+                            <field name="ipd_instruction_ids" nolabel="1">
+                                <tree string="Instruction" editable="bottom">
+                                    <field name="inst_id" context="{'gender':parent.gender}"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_instruction_group">
+            <field name="name">Instruction Group</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ipd.instruction.group</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="instruction_group_tree1" />
+        </record>
+
+    </data>
+</odoo>

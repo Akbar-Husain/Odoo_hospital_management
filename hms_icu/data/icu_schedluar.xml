@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record forcecreate="True" id="ir_cron_icu" model="ir.cron">
+            <field name="name">ICU State Schedularr</field>
+            <field eval="True" name="active"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+            <field eval="'hms.icu.chart'" name="model"/>
+            <field eval="'icu_schedluarr'" name="function"/>
+            <field eval="'()'" name="args"/>
+        </record>
+        <record forcecreate="True" id="cron_create_icu_venti_setting_id" model="ir.cron">
+            <field name="name">Create Icu Venti Setting ID</field>
+            <field eval="True" name="active"/>
+            <field name="interval_number">30</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+            <field eval="'hms.icu.chart'" name="model"/>
+            <field eval="'cron_create_icu_venti_setting_id'" name="function"/>
+            <field eval="'(False,)'" name="args"/>
+        </record>
+    </data>
+</odoo>

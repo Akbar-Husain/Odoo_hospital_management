@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!-- <record id="banastech_hms_outpatient_prescription_view_form" model="ir.ui.view">
+            <field name="name">banastech.hms.outpatient.prescription.view.form</field>
+            <field name="model">prescription.order</field>
+            <field name="priority" eval="8" />
+            <field name="inherit_id" ref="hms_prescription.view_hms_prescription_order_form" />
+            <field name="arch" type="xml">
+                <field name="appointment" position="after">
+                    <field name="inpatient_registration_code" attrs="{'readonly': [('state', '=', 'so_created')]}" />
+                </field>
+            </field>
+        </record> -->
+
+        <record id="banastech_hms_inpatient_prescription_view_form" model="ir.ui.view">
+            <field name="name">banastech.hms.inpatient.prescription.view.form</field>
+            <field name="model">prescription.order</field>
+            <field name="priority" eval="8" />
+            <field name="inherit_id" ref="banastech_hms_prescription.view_indoor_Patient_medicine_request_form" />
+            <field name="arch" type="xml">
+                <group name='inpatient_details' position="after">
+                    <group>
+                        <field name="inpatient_registration_code" attrs="{'readonly': [('state','not in',('draft'))]}" />
+                        <field name="ward_no" attrs="{'readonly': [('state','not in',('draft'))]}" />
+                        <field name="bed_no" attrs="{'readonly': [('state','not in',('draft'))]}" />
+                    </group>
+                </group>
+            </field>
+        </record>
+
+        <record id="banastech_hms_inpatient_prescription_view_search" model="ir.ui.view">
+            <field name="name">banastech.hms.inpatient.prescription.view.search</field>
+            <field name="model">prescription.order</field>
+            <field name="priority" eval="8" />
+            <field name="inherit_id" ref="banastech_hms_prescription.view_banastech_hms_ipmr_search" />
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search string="IPMR">
+                    <field name="inpatient_registration_code" />
+                    <field name="bed_no" />
+                    <newline />
+                    <group expand="0" string="Group By...">
+                        <filter string="Hospitalization" name="inpatient_registration_code" domain="[]" context="{'group_by':'inpatient_registration_code'}" />
+                        <filter string="Bed No." name="bed_no" domain="[]" context="{'group_by':'bed_no'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="banastech_hms_inpatient_prescription_view_tree" model="ir.ui.view">
+            <field name="name">banastech.hms.inpatient.prescription.view.tree</field>
+            <field name="model">prescription.order</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Banastech HMS Prescription Order">
+                    <field name="prescription_date"/>
+                    <field name="name" />
+                    <field name="patient_id" />
+                    <field name="doctor_id" />
+                    <field name="state" string="Invoice Status"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

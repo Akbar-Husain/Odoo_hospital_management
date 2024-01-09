@@ -1,0 +1,120 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+
+access_hms_careplan_ip_fluid_user,Careplan Ip Fluid,hms_careplan.model_careplan_ip_fluid,banastech_hms.group_banastech_hms_patient_user,1,0,0,0
+
+access_hms_careplan_vital_user,Careplan Vital,hms_careplan.model_careplan_vital,banastech_hms.group_banastech_hms_patient_user,1,0,0,0
+
+access_hms_careplan_liquid_monitoring_user,Careplan Liquid Monitoring,hms_careplan.model_careplan_liquid_monitoring,banastech_hms.group_banastech_hms_patient_user,1,0,0,0
+
+access_hms_careplan_antibiotic_analogesis_user,Careplan Antibiotic Analogesis,hms_careplan.model_careplan_antibiotic_analogesis,banastech_hms.group_banastech_hms_patient_user,1,0,0,0
+
+access_hms_careplan_miscellaneous_drugs_user,Careplan Miscellaneous Drugs,hms_careplan.model_careplan_miscellaneous_drugs,banastech_hms.group_banastech_hms_patient_user,1,0,0,0
+
+access_hms_careplan_instruction_set_user,Careplan Instruction Set,hms_careplan.model_careplan_instruction_set,banastech_hms.group_banastech_hms_patient_user,1,0,0,0
+
+access_hms_careplan_detail_user,Careplan Detail,hms_careplan.model_careplan_detail,banastech_hms.group_banastech_hms_patient_user,1,0,0,0
+,,,,,,,
+,,,,,,,
+
+
+access_hms_careplan_ip_fluid_doctor,Careplan Ip Fluid,hms_careplan.model_careplan_ip_fluid,banastech_hms.group_banas_hms_doctor,1,1,1,1
+
+access_hms_careplan_vital_doctor,Careplan Vital,hms_careplan.model_careplan_vital,banastech_hms.group_banas_hms_doctor,1,1,1,1
+
+access_hms_careplan_liquid_monitoring_doctor,Careplan Liquid Monitoring,hms_careplan.model_careplan_liquid_monitoring,banastech_hms.group_banas_hms_doctor,1,1,1,1
+
+access_hms_careplan_antibiotic_analogesis_doctor,Careplan Antibiotic Analogesis,hms_careplan.model_careplan_antibiotic_analogesis,banastech_hms.group_banas_hms_doctor,1,1,1,1
+
+access_hms_careplan_miscellaneous_drugs_doctor,Careplan Miscellaneous Drugs,hms_careplan.model_careplan_miscellaneous_drugs,banastech_hms.group_banas_hms_doctor,1,1,1,1
+
+access_hms_careplan_instruction_set_doctor,Careplan Instruction Set,hms_careplan.model_careplan_instruction_set,banastech_hms.group_banas_hms_doctor,1,1,1,1
+
+access_hms_careplan_detail_doctor,Careplan Detail,hms_careplan.model_careplan_detail,banastech_hms.group_banas_hms_doctor,1,1,1,1
+,,,,,,,
+,,,,,,,
+
+
+access_hms_careplan_ip_fluid_receptionist,Careplan Ip Fluid,hms_careplan.model_careplan_ip_fluid,banastech_hms.group_banastech_hms_receptionist,1,0,0,0
+
+access_hms_careplan_vital_receptionist,Careplan Vital,hms_careplan.model_careplan_vital,banastech_hms.group_banastech_hms_receptionist,1,0,0,0
+
+access_hms_careplan_liquid_monitoring_receptionist,Careplan Liquid Monitoring,hms_careplan.model_careplan_liquid_monitoring,banastech_hms.group_banastech_hms_receptionist,1,0,0,0
+
+access_hms_careplan_antibiotic_analogesis_receptionist,Careplan Antibiotic Analogesis,hms_careplan.model_careplan_antibiotic_analogesis,banastech_hms.group_banastech_hms_receptionist,1,0,0,0
+
+access_hms_careplan_miscellaneous_drugs_receptionist,Careplan Miscellaneous Drugs,hms_careplan.model_careplan_miscellaneous_drugs,banastech_hms.group_banastech_hms_receptionist,1,0,0,0
+
+access_hms_careplan_instruction_set_receptionist,Careplan Instruction Set,hms_careplan.model_careplan_instruction_set,banastech_hms.group_banastech_hms_receptionist,1,0,0,0
+
+access_hms_careplan_detail_receptionist,Careplan Detail,hms_careplan.model_careplan_detail,banastech_hms.group_banastech_hms_receptionist,1,0,0,0
+,,,,,,,
+,,,,,,,
+
+
+access_hms_careplan_ip_fluid_nurse,Careplan Ip Fluid,hms_careplan.model_careplan_ip_fluid,banastech_hms.group_banastech_hms_nurse,1,1,1,0
+
+access_hms_careplan_vital_nurse,Careplan Vital,hms_careplan.model_careplan_vital,banastech_hms.group_banastech_hms_nurse,1,1,1,0
+
+access_hms_careplan_liquid_monitoring_nurse,Careplan Liquid Monitoring,hms_careplan.model_careplan_liquid_monitoring,banastech_hms.group_banastech_hms_nurse,1,1,1,0
+
+access_hms_careplan_antibiotic_analogesis_nurse,Careplan Antibiotic Analogesis,hms_careplan.model_careplan_antibiotic_analogesis,banastech_hms.group_banastech_hms_nurse,1,1,1,0
+
+access_hms_careplan_miscellaneous_drugs_nurse,Careplan Miscellaneous Drugs,hms_careplan.model_careplan_miscellaneous_drugs,banastech_hms.group_banastech_hms_nurse,1,1,1,0
+
+access_hms_careplan_instruction_set_nurse,Careplan Instruction Set,hms_careplan.model_careplan_instruction_set,banastech_hms.group_banastech_hms_nurse,1,1,1,0
+
+access_hms_careplan_detail_nurse,Careplan Detail,hms_careplan.model_careplan_detail,banastech_hms.group_banastech_hms_nurse,1,1,1,0
+,,,,,,,
+,,,,,,,
+
+
+access_hms_careplan_ip_fluid_pharmacist,Careplan Ip Fluid,hms_careplan.model_careplan_ip_fluid,banastech_hms.group_banastech_hms_pharmacist,1,0,0,0
+
+access_hms_careplan_vital_pharmacist,Careplan Vital,hms_careplan.model_careplan_vital,banastech_hms.group_banastech_hms_pharmacist,1,0,0,0
+
+access_hms_careplan_liquid_monitoring_pharmacist,Careplan Liquid Monitoring,hms_careplan.model_careplan_liquid_monitoring,banastech_hms.group_banastech_hms_pharmacist,1,0,0,0
+
+access_hms_careplan_antibiotic_analogesis_pharmacist,Careplan Antibiotic Analogesis,hms_careplan.model_careplan_antibiotic_analogesis,banastech_hms.group_banastech_hms_pharmacist,1,0,0,0
+
+access_hms_careplan_miscellaneous_drugs_pharmacist,Careplan Miscellaneous Drugs,hms_careplan.model_careplan_miscellaneous_drugs,banastech_hms.group_banastech_hms_pharmacist,1,0,0,0
+
+access_hms_careplan_instruction_set_pharmacist,Careplan Instruction Set,hms_careplan.model_careplan_instruction_set,banastech_hms.group_banastech_hms_pharmacist,1,0,0,0
+
+access_hms_careplan_detail_pharmacist,Careplan Detail,hms_careplan.model_careplan_detail,banastech_hms.group_banastech_hms_pharmacist,1,0,0,0
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+
+
+access_hms_careplan_ip_fluid_jr_doctor,Careplan Ip Fluid,hms_careplan.model_careplan_ip_fluid,banastech_hms.group_banas_hms_jr_doctor,1,1,1,1
+
+access_hms_careplan_vital_jr_doctor,Careplan Vital,hms_careplan.model_careplan_vital,banastech_hms.group_banas_hms_jr_doctor,1,1,1,1
+
+access_hms_careplan_liquid_monitoring_jr_doctor,Careplan Liquid Monitoring,hms_careplan.model_careplan_liquid_monitoring,banastech_hms.group_banas_hms_jr_doctor,1,1,1,1
+
+access_hms_careplan_antibiotic_analogesis_jr_doctor,Careplan Antibiotic Analogesis,hms_careplan.model_careplan_antibiotic_analogesis,banastech_hms.group_banas_hms_jr_doctor,1,1,1,1
+
+access_hms_careplan_miscellaneous_drugs_jr_doctor,Careplan Miscellaneous Drugs,hms_careplan.model_careplan_miscellaneous_drugs,banastech_hms.group_banas_hms_jr_doctor,1,1,1,1
+
+access_hms_careplan_instruction_set_jr_doctor,Careplan Instruction Set,hms_careplan.model_careplan_instruction_set,banastech_hms.group_banas_hms_jr_doctor,1,1,1,1
+
+access_hms_careplan_detail_jr_doctor,Careplan Detail,hms_careplan.model_careplan_detail,banastech_hms.group_banas_hms_jr_doctor,1,1,1,1
+,,,,,,,
+,,,,,,,
+
+
+access_hms_careplan_ip_fluid_medical_officer,Careplan Ip Fluid,hms_careplan.model_careplan_ip_fluid,banastech_hms.group_banastech_hms_medical_officer,1,1,1,0
+
+access_hms_careplan_vital_medical_officer,Careplan Vital,hms_careplan.model_careplan_vital,banastech_hms.group_banastech_hms_medical_officer,1,1,1,0
+
+access_hms_careplan_liquid_monitoring_medical_officer,Careplan Liquid Monitoring,hms_careplan.model_careplan_liquid_monitoring,banastech_hms.group_banastech_hms_medical_officer,1,1,1,0
+
+access_hms_careplan_antibiotic_analogesis_medical_officer,Careplan Antibiotic Analogesis,hms_careplan.model_careplan_antibiotic_analogesis,banastech_hms.group_banastech_hms_medical_officer,1,1,1,0
+
+access_hms_careplan_miscellaneous_drugs_medical_officer,Careplan Miscellaneous Drugs,hms_careplan.model_careplan_miscellaneous_drugs,banastech_hms.group_banastech_hms_medical_officer,1,1,1,0
+
+access_hms_careplan_instruction_set_medical_officer,Careplan Instruction Set,hms_careplan.model_careplan_instruction_set,banastech_hms.group_banastech_hms_medical_officer,1,1,1,0
+
+access_hms_careplan_detail_medical_officer,Careplan Detail,hms_careplan.model_careplan_detail,banastech_hms.group_banastech_hms_medical_officer,1,1,1,0
