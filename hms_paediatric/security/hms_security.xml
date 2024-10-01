@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="group_hms_paediatric" model="res.groups">
+            <field name="name">Paediatric</field>
+            <field name="category_id" ref="banastech_hms.module_category_banastech_hms"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+    </data>
+</odoo>

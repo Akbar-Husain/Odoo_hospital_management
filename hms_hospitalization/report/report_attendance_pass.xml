@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <template id="report_attendance_pass">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <!-- <t t-call="report.external_layout"> -->
+                    <div class="page" style="align: center;text-align: center;">
+                        <center>
+                            <h3>Attendance Pass</h3>
+                        </center>
+                        <table style="width:900px;height:150px;font-size: 120%">
+                            <tr>
+                                <td>
+                                    <b>Ward No. : </b>
+                                    <span t-field="o.ward_id.floor" />
+                                </td>
+                                <td>
+                                    <b>Patient Name :</b>
+                                    <span t-field="o.patient_id.name" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Bed No. : </b>
+                                    <span t-field="o.bed_id.id" />
+                                </td>
+                                <td>
+                                    <b>Attendance Name :</b>
+                                    <span t-field="o.relative_id" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Hospitalization Date. :</b>
+                                    <span t-field="o.hospitalization_date" />
+                                </td>
+                                <td>
+                                    <b>Attendance Phone No. : </b>
+                                    <span t-field="o.relative_number" />
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <!-- </t> -->
+                </t>
+            </t>
+        </template>
+        <report id="report_attendance_pass_id" string="Attendance Pass"
+            model="inpatient.registration" report_type="qweb-pdf"
+            file="hms_hospitalization.report_attendance_pass" name="hms_hospitalization.report_attendance_pass"  groups="hms.group_hms_receptionist"/>
+    </data>
+</openerp>

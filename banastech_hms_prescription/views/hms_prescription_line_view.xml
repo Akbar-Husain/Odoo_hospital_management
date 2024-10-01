@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_dashboard_hms_prescription_line_tree" model="ir.ui.view">
+            <field name="name">prescription.line.tree.dashboard</field>
+            <field name="model">prescription.line</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="HMS Prescription Line">
+                    <field name="patient_id"/>
+                    <field name="product_id" string="Medicine Name"/>
+                    <field name="dose" />
+                    <field name="common_dosage"/>
+                    <field name="stat"/>
+                    <field name="t1"/>
+                    <field name="t2"/>
+                    <field name="t3"/>
+                    <field name="t4"/>
+                    <field name="completed" invisible="1"/>
+                    <button name="medicine_done" string="Done" type="object" attrs="{'invisible':[('completed','=',True)]}" icon="gtk-apply"/>
+                    <button name="medicine_undone" string="Undone" type="object" attrs="{'invisible':[('completed','=',False)]}" icon="gtk-cancel"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_dashboard_hms_prescription_line_form" model="ir.ui.view">
+            <field name="name">prescription.line.form.dashboard</field>
+            <field name="model">prescription.line</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="HMS Prescription Line">
+                    <sheet>
+                        <group>
+                            <field name="patient_id"/>
+                            <field name="product_id" string="Medicine Name"/>
+                            <field name="dose" />
+                            <field name="common_dosage"/>
+                            <field name="stat"/>
+                            <field name="t1"/>
+                            <field name="t2"/>
+                            <field name="t3"/>
+                            <field name="t4"/>
+                            <field name="completed" invisible="1"/>
+                            <button name="medicine_done" string="Done" type="object" attrs="{'invisible':[('completed','=',True)]}" icon="gtk-apply"/>
+                            <button name="medicine_undone" string="Undone" type="object" attrs="{'invisible':[('completed','=',False)]}" icon="gtk-cancel"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="act_dashboard_prescription_line_view">
+            <field name="name">Prescription Line</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">prescription.line</field>
+            <field name="view_mode">tree,form</field>
+            <!-- <field name="view_id" ref="view_dashboard_hms_prescription_line_tree"/> -->
+            <field name="domain">[('completed','=',False)]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <record id="view_banastech_hms_prescription_line_tree" model="ir.ui.view">
+            <field name="name">prescription.line.tree</field>
+            <field name="model">prescription.line</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="HMS Prescription Line">
+                    <field name="prescription_id" />
+                    <field name="allow_substitution" />
+                    <field name="prnt" />
+                    <field name="review" />
+                    <field name="short_comment" />
+                    <field name="product_id" />
+                    <field name="quantity" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_banastech_hms_prescription_line_form" model="ir.ui.view">
+            <field name="name">prescription.line.form</field>
+            <field name="model">prescription.line</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="HMS Prescription Line">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="prescription_id" />
+                                <field name="review" />
+                                <field name="allow_substitution" />
+                                <field name="prnt" />
+                            </group>
+                            <group>
+                                <field name="short_comment" />
+                                <field name="product_id" />
+                                <field name="quantity" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_banastech_hms_prescription_line_search" model="ir.ui.view">
+            <field name="name">prescription.line.search</field>
+            <field name="model">prescription.line</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search string="HMS Prescription Line">
+                    <field name="prescription_id" />
+                    <field name="allow_substitution" />
+                    <field name="prnt" />
+                    <field name="review" />
+                    <field name="short_comment" />
+                    <field name="product_id" />
+                    <field name="quantity" />
+                    <newline />
+                    <group expand="0" string="Group By...">
+                        <!-- <filter name="name" string="Refills #" domain="[]" context="{'group_by':'name'}" /> -->
+                        <!-- <filter name="name" string="Prescription ID" domain="[]" context="{'group_by':'name'}" /> -->
+                        <filter name="allow_substitution" string="Allow substitution" domain="[]" context="{'group_by':'allow_substitution'}" />
+                        <filter name="prnt" string="Print" domain="[]" context="{'group_by':'prnt'}" />
+                        <filter name="review" string="Review" domain="[]" context="{'group_by':'review'}" />
+                        <filter name="short_comment" string="Comment" domain="[]" context="{'group_by':'short_comment'}" />
+                        <filter name="product_id" string="Medication Template" domain="[]" context="{'group_by':'product_id'}" />
+                        <filter name="quantity" string="Quantity" domain="[]" context="{'group_by':'quantity'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="act_banastech_hms_prescription_line_view">
+            <field name="name">Prescription Line</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">prescription.line</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_banastech_hms_prescription_line_search" />
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_hms_prescription_line_view_form">
+            <field name="act_window_id" ref="act_banastech_hms_prescription_line_view" />
+            <field name="sequence" eval="20" />
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_banastech_hms_prescription_line_form" />
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_hms_prescription_line_view_tree">
+            <field name="act_window_id" ref="act_banastech_hms_prescription_line_view" />
+            <field name="sequence" eval="10" />
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_banastech_hms_prescription_line_tree" />
+        </record>
+    </data>
+</odoo>

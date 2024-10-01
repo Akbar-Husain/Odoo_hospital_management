@@ -1,0 +1,34 @@
+<templates>
+    <t t-extend="ListView.buttons">
+
+        <t t-jquery="button.o_list_button_add" t-operation="after">
+        <div class="pull-right" style="padding-left:20px">
+            <button type="button" t-if="widget.dataset.model == 'hms.appointment'" class=" btn btn-sm" style="background-color:blue; color:black;border-color:black;padding:0px;">
+               New
+            </button>
+            <button type="button" t-if="widget.dataset.model == 'hms.appointment'" class=" btn btn-sm" style="background-color:green; color:black;border-color:black;padding:0px;">
+                Active
+            </button>
+            <button type="button" t-if="widget.dataset.model == 'hms.appointment'" class=" btn btn-sm" style="background-color:red; color:black;border-color:black;padding:0px;">
+                Waiting
+            </button>
+            <button t-if="widget.dataset.model == 'hms.appointment'" type="button" class=" btn btn-sm" style="background-color:maroon; color:black;border-color:black;padding:0px;">
+                To Investigation
+            </button>
+            <button t-if="widget.dataset.model == 'hms.appointment'" type="button" class=" btn btn-sm" style="background-color:teal; color:black;border-color:black;padding:0px;">
+                From Investigation
+            </button>
+            <button t-if="widget.dataset.model == 'hms.appointment'" type="button" class=" btn btn-sm" style="background-color:yellow; color:black;border-color:black;padding:0px;">
+                Dressing
+            </button>
+            <button type="button" t-if="widget.dataset.model == 'hms.appointment'" class=" btn btn-sm" style="background-color:orchid; color:black;border-color:black;padding:0px;">
+                Sr Doctor
+            </button>
+	        <button  t-if="widget.dataset.model == 'hms.appointment'" type="button" class=" btn btn-sm" style="background-color:grey; color:black; border-color:black;padding:0px;">
+                Done
+            </button>
+        </div>
+        </t>
+    </t>
+ 
+</templates>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="report_prescription_order_app_id">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="shah_opd.report_prescription_document_id" t-lang="doc.patient_id.partner_id.lang"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="report_prescription_document_id">
+            <t t-call="hms.hms_letterpad_layout">
+                <t t-set="doc" t-value="doc.with_context({'lang':doc.patient_id.partner_id.lang})" />
+                <div class="page" style="font-size: 14px">
+                    <div class="oe_structure"/>
+                    <br/>
+                    <div class="row">
+                        <div t-if="doc.special_day" style="font-size:16;">
+                            <t t-if="doc.language =='hindi'" style="font-size:18;">
+                                <center><b> मेमोरियल क्लिनिक</b></center>
+                                <center><b> बुधवार सुबह ६ :३० से ७ :३० </b></center>
+                            </t>
+                            <t t-if="doc.language =='gujarati'" style="font-size:18;">
+                                <center><b> મેમોરિયલ ક્લિનિક </b></center>
+                                <center><b> બુધવારે સવારે ६ :३० થી ७ :३०</b></center>
+                            </t>
+                            <t t-if="doc.language =='english'">
+                                <center><b> Memorial Clinic </b></center>
+                                <center><b> Wednesday Morning  6:30 to 7:30</b></center>
+                            </t>
+                        </div>
+                        <br/>
+                        <div class="col-xs-6">
+                            <h4><span t-esc="doc.get_name(doc)"/></h4>
+                        </div>
+                        <div class="col-xs-5 col-xs-offset-1">
+                            <strong><span>Date : </span><span t-field="doc.date"/></strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <span>Age : </span><span t-field="doc.patient_id.age"/><span>/</span>
+                            <span t-field="doc.patient_id.sex"/>
+                        </div>
+                        <div class="col-xs-5 col-xs-offset-1">
+                           <strong> <span>Reg. No. : </span><span t-field="doc.patient_id.code"/></strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <img src="/hms_prescription/static/src/img/red-rx-symbol.jpg" width="45"/>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <table class="table table-condensed">
+                            <t t-set="sr_no" t-value="1"/>
+                            <t t-foreach="doc.prescription_line.sorted(key=lambda a:a.sequence)" t-as="line">
+                                <tr>
+                                    <td>
+                                        <span t-esc="sr_no"/>
+                                    </td>
+                                    <td>
+                                        <strong>
+                                            <span t-esc="line.product_id.form_id.name"/>
+                                            <t t-if='line.product_id.form_id.name'> - </t>
+                                            <span t-esc="line.product_id.name"/>
+                                        </strong>
+                                        <span>[</span>
+                                        <span t-esc="', '.join(map(lambda x: x.name, line.product_id.content_ids))" style="font-size: 12px"/>
+                                        <span>]</span>
+                                        <t t-if="doc.language =='english'">
+                                            <span t-esc="line.common_dosage.name"/>
+                                            <span t-esc="line.product_id.suffix_frequency_id.name"/>
+                                        </t>
+                                        <t t-if="doc.language =='hindi'" style="font-size:18;"><br/>
+                                            <span t-esc="line.common_dosage.lng_hindi" />
+                                            <span t-esc="line.product_id.suffix_frequency_id.lng_hindi"/>
+                                        </t>
+                                        <t t-if="doc.language =='gujarati'" style="font-size:18;"><br/>
+                                            <span t-esc="line.common_dosage.lng_guj" />
+                                            <span t-esc="line.product_id.suffix_frequency_id.lng_guj"/>
+                                        </t>
+                                    </td>
+                                    <td>
+                                       <span t-esc="int(float(line.quantity))"/>
+                                    </td>
+                                </tr>
+                                <t t-set="sr_no" t-value="sr_no + 1"/>
+                            </t>
+                        </table>
+                    </div>
+                    <div class="row text-right">
+                        <br/>
+                        <img t-if="doc.physician_id.signature" width="150" height="90" alt="Signature" t-attf-src="data:image/gif;base64, #{doc.physician_id.signature}"/>
+                        <br/>
+                        <strong><span t-field="doc.physician_id.name"/></strong>
+                    </div>
+           
+                    <strong><u>Advice :</u></strong><br/>
+                    <div t-if="doc.others" class="row">
+                       <strong> <span t-field="doc.others"/></strong>
+                    </div>
+                    <br/>
+
+                    <t t-if="doc.language == 'english' and doc.days_1">
+                        <span>To come for check-up after </span>
+                        <span t-field="doc.days_1"/><span> days.</span>
+                    </t>
+                    <t t-if="doc.language == 'hindi' and doc.days_1" style="font-size:18;">
+                        <span t-field="doc.appointment.days_1"/>
+                        <span>दिन के बाद दिखाने आना हे !</span>
+                    </t>
+                    <t t-if="doc.language == 'gujarati' and doc.days_1" style="font-size:18;">
+                        <span t-field="doc.days_1"/>
+                        <span>દિવસ પછી બતાવવા આવવું.</span>
+                    </t> 
+
+                    <t t-if="doc.language == 'english' and doc.weeks" style="font-size:18;">
+                        <span>To come for check-up after </span>
+                        <span t-field="doc.weeks"/><span> weeks.</span>
+                    </t>
+                    <t t-if="doc.language == 'hindi' and doc.weeks" style="font-size:18;">
+                        <span t-field="doc.weeks"/>
+                        <span>हफ़्तों के बाद दिखाने आना हे !</span>
+                    </t>
+                    <t t-if="doc.language == 'gujarati' and doc.weeks" style="font-size:18;">
+                        <span t-field="doc.weeks"/>
+                        <span> અઠવાડિયા પછી બતાવવા આવવું. </span>
+                    </t>
+
+                    <t t-if="doc.language == 'english' and doc.months">
+                            <span>To come for check-up after </span>
+                            <span t-field="doc.months"/><span> months.</span>
+                    </t>
+                    <t t-if="doc.language == 'hindi' and doc.months" style="font-size:18;">
+                        <span t-field="doc.months"/>
+                        <span>महिनो के बाद दिखाने आना हे !</span>
+                    </t>
+                    <t t-if="doc.language == 'gujarati' and doc.months" style="font-size:18;">
+                        <span t-field="doc.months"/>
+                        <span>મહિના પછી બતાવવા આવવું.  </span>
+                    </t>        
+                    <div t-if="doc.pathology_line" class="row">
+                        <br/>
+                        <strong>Recommended Laboratory Tests</strong>
+                        <t t-set="sr_no" t-value="1"/>
+                        <table class="table table-condensed">
+                            <tbody>
+                                <t t-foreach="doc.pathology_line" t-as="path_line">
+                                    <tr>
+                                        <td style="width:30px;">
+                                            <span t-esc="sr_no"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="path_line.product_id.name"/>
+                                        </td>
+                                    </tr>
+                                    <t t-set="sr_no" t-value="sr_no + 1"/>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div t-if="doc.report_2d or doc.report_ppt or doc.report_ecg" class="row">
+                        <strong>Recommended Physician Reports :</strong><br/>
+                           <span t-if="doc.report_2d">○ 2D Echo<br/></span>
+                           <span t-if="doc.report_ppt">○ P.F.T<br/></span>
+                           <span t-if="doc.report_ecg">○ E.C.G</span>
+                    </div>
+                    <div class="oe_structure"/>
+                </div>
+            </t>
+        </template>
+
+        <report
+            id="report_appointment_prescription_id"
+            string="Prescription Report"
+            model="hms.appointment"
+            report_type="qweb-pdf"
+            file="shah_opd.report_prescription_order_app_id"
+            name="shah_opd.report_prescription_order_app_id"
+        />
+
+        <record id="paperformat_indimedi_landscape" model="report.paperformat">
+            <field name="name">A4 Portrait</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">50</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">50</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">35</field>
+            <field name="dpi">90</field>
+        </record>
+        <record id="report_appointment_prescription_id" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="" />
+            <!-- <field name="paperformat_id" ref="shah_opd.paperformat_indimedi_landscape"/> -->
+        </record>
+    </data>
+</openerp>

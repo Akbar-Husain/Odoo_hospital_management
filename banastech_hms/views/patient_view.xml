@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+        <!-- <record id="view_banas_hms_patient_family_diseases_form" model="ir.ui.view">
+            <field name="name">banas.hms.patient.family.diseases.form</field>
+            <field name="model">banas.hms.patient.family.diseases</field>
+            <field name="arch" type="xml">
+                <form string="Patient Genetic Family Diseases">
+                    <group>
+                        <group>
+                            <field name="name_id" widget="many2many_tags"/>
+                            <field name="xory"/>
+                        </group>
+                        <group>
+                            <field name="relative"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record> -->
+
+        <!-- <record id="view_banas_hms_patient_family_diseases_tree" model="ir.ui.view">
+            <field name="name">banas.hms.patient.family.diseases.tree</field>
+            <field name="model">banas.hms.patient.family.diseases</field>
+            <field name="arch" type="xml">
+                <tree string="Genetic Family Diseases">
+                    <field name="name_id" widget="many2many_tags"/>
+                    <field name="xory"/>
+                    <field name="relative" expand="1"/>
+                </tree>
+            </field>
+        </record> -->
+
+        <record id="view_banas_hms_patient_disease_form" model="ir.ui.view">
+            <field name="name">banas.hms.patient.disease.form</field>
+            <field name="model">banas.hms.patient.disease</field>
+            <field name="arch" type="xml">
+                <form string="Patient Disease">
+                    <group>
+                        <group>
+                            <field name="disease" />
+                            <field name="treatment_description" />
+                            <field name="diagnosed_date" />
+                            <field name="healed_date" string="Healing Date"/>
+                            <field name="doctor" string="Doctor"/>
+                            <field name="short_comment" />
+                        </group>
+                        <group>
+                            <field name="is_active" />
+                            <field name="is_allergy" />
+                            <field name="pregnancy_warning" />
+                            <field name="is_on_treatment" />
+                            <field name="weeks_of_pregnancy" />
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_banas_hms_patient_disease_tree" model="ir.ui.view">
+            <field name="name">banas.hms.patient.disease.tree</field>
+            <field name="model">banas.hms.patient.disease</field>
+            <field name="arch" type="xml">
+                <tree string="Patient Disease">
+                    <field name="disease" />
+                    <field name="treatment_description" />
+                    <field name="diagnosed_date" />
+                    <field name="doctor" />
+                    <field name="is_active" />
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="action_banas_hms_patient_disease" model="ir.actions.act_window">
+            <field name="name">Systematic Examintaion</field>
+            <field name="res_model">banas.hms.patient.disease</field>
+            <field name="view_mode">form</field>
+        </record>
+
+        <record id="view_banas_hms_department_tree" model="ir.ui.view">
+            <field name="name">banas.hms.department.tree</field>
+            <field name="model">banas.hms.department</field>
+            <field name="arch" type="xml">
+                <tree string="HMS Department">
+                    <field name="name" />
+                    <field name="department_name" />
+                    <field name="doctor_ids" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_banas_hms_department_form" model="ir.ui.view">
+            <field name="name">banas.hms.department.form</field>
+            <field name="model">banas.hms.department</field>
+            <field name="arch" type="xml">
+                <form string="HMS Department">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" required="1"/>
+                                <field name="doctor_ids" widget="many2many_tags"/>
+                            </group>
+                            <group>
+                                <field name="department_name" required="1"/>
+                                <field name="active"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_banas_hms_department" model="ir.actions.act_window">
+            <field name="name">HMS Department</field>
+            <field name="res_model">banas.hms.department</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Click to add a Department.
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="banastech_hms_patient_kanban_view">
+            <field name="name">banastech.hms.patient.kanban</field>
+            <field name="model">banastech.hms.patient</field>
+            <field name="type">kanban</field>
+            <field name="arch" type="xml">
+                <kanban class="o_res_partner_kanban" sample="1">
+                    <!-- <field name="id"/>
+                    <field name="color"/>
+                    <field name="display_name"/>
+                    <field name="title"/>
+                    <field name="email"/>
+                    <field name="parent_id"/>
+                    <field name="is_company"/>
+                    <field name="function"/>
+                    <field name="phone"/>
+                    <field name="street"/>
+                    <field name="street2"/>
+                    <field name="zip"/>
+                    <field name="city"/>
+                    <field name="country_id"/>
+                    <field name="mobile"/>
+                    <field name="state_id"/>
+                    <field name="category_id"/>
+                    <field name="avatar_128"/>
+                    <field name="type"/>
+                    <field name="partner_id"/> -->
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_res_partner_kanban">
+                                <div class="oe_kanban_details d-flex flex-column">
+                                    <strong class="oe_partner_heading">
+                                        <field name="display_name"/><br/>
+                                        <field name="code"/>
+                                    </strong>
+                                    <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
+                                    <ul>
+                                        <li t-if="record.age.raw_value"><b>Age:</b> <field name="age"/></li>
+                                        <li t-if="record.gender.raw_value"><b>Gender:</b> <field name="gender"/></li>
+                                        <li t-if="record.mobile.raw_value"><b>Mobile:</b> <field name="mobile"/></li>
+                                    </ul>
+                                    <div class="o_row">
+                                        <span class="oe_kanban_partner_links"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <record id="view_banastech_hms_patient_tree" model="ir.ui.view">
+            <field name="name">banastech.hms.patient.tree</field>
+            <field name="model">banastech.hms.patient</field>
+            <field name="arch" type="xml">
+                <tree string="Patient">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="age"/>
+                    <field name="gender"/>
+                    <field name="state" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_banastech_hms_patient_form" model="ir.ui.view">
+            <field name="name">banastech.hms.patient.form</field>
+            <field name="model">banastech.hms.patient</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="verified_state"
+                                string="Verify"
+                                type="object"
+                                class="oe_highlight"
+                                states="draft"
+                                confirm="Are you sure to verify this ?"/>
+                        <button name="draft_state"
+                                string="Set As Draft"
+                                type="object"
+                                class="oe_highlight"
+                                confirm="Are you sure to do this as a draft ?"
+                                states="verified" />
+                        <button name="create_appointment"
+                                string="Create Appointment"
+                                type="object"
+                                class="oe_highlight"
+                                states="verified"
+                                context="{'default_patient_id': active_id, 'default_doctor_id': primary_doctor_id, 'make_readonly': True}"/>
+                        <field name="state"
+                               widget="statusbar"
+                               statusbar_visible="draft,verified" />
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_open_banastech_hms_appointment" type="object" class="oe_stat_button" icon="fa-calendar" attrs="{'invisible': [('appointment_count', '&lt;=', 0)]}">
+                                <div class="o_stat_info">
+                                    <field name="appointment_count" class="o_stat_value" />
+                                    <span class="o_stat_text">Appointments</span>
+                                </div>
+                            </button>
+                        </div>
+                        <field name="image" widget="image" class="oe_avatar" />
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" placeholder="e.g. John Doe" required="1" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            </h1>
+                            <label for="mobile" string="Mobile" class="oe_edit_only"/>
+                            <h2>
+                                <field name="mobile" placeholder="e.g. 9546576869" required="1" attrs="{'readonly': [('state', '!=', 'draft')]}" widget="phone"/>
+                            </h2>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="code" readonly="1"/>
+                                <span class="o_form_label o_td_label" name="address_name">
+                                    <b>Address</b>
+                                </span>
+                                <div class="o_address_format">
+                                    <!-- <field name="street" placeholder="Street..." class="o_address_street" attrs="{'readonly': [('state', '!=', 'draft')]}"/> -->
+                                    <!-- <field name="street2" placeholder="Street 2..." class="o_address_street" attrs="{'readonly': [('state', '!=', 'draft')]}"/> -->
+                                    <field name="city_id" placeholder="City" class="o_address_city" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                    <!-- <field name="state_id" class="o_address_state" placeholder="State" options="{'no_open': True, 'no_create': 1, 'no_edit': 1}" context="{'country_id': country_id, 'default_country_id': country_id, 'zip': zip}" attrs="{'readonly': [('state', '!=', 'draft')]}"/> -->
+                                    <!-- <field name="zip" placeholder="ZIP" class="o_address_zip" attrs="{'readonly': [('state', '!=', 'draft')]}"/> -->
+                                    <!-- <field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" attrs="{'readonly': [('state', '!=', 'draft')]}"/> -->
+                                </div>
+                                <field name="phone" placeholder=" 4537 8490"/>
+                                <field name="email" placeholder="@gmail.com" widget="email"/>
+                                <!-- <field name="partner_id" required="0"/> -->
+                            </group>
+                            <group>
+                                <field name="primary_doctor_id"/>
+                                <field name="ref_doctor" widget="many2many_tags" string="Referred By" />
+                                <field name="refer_type1"/>
+                                <field name="company_id" groups="base.group_multi_company" />
+                                <!-- <field name="is_corpo_tieup"/> -->
+                                <!-- <field name="company_name" attrs="{'invisible': [('is_corpo_tieup', '!=', True)], 'required': [('is_corpo_tieup', '=', True)]}" /> -->
+                                <!-- <field name="emp_code" attrs="{'invisible': [('is_corpo_tieup', '!=', True)], 'required': [('is_corpo_tieup', '=', True)]}" /> -->
+                                <field name="clinical_research"/>
+                            </group>
+                            <separator string="Personal Information"/>
+                            <group>
+                                <field name="gender" required="1"/>
+                                <field name="dob" required="1"/>
+                                <field name="age" />
+                                <field name="active" invisible="1"/>
+                                <!-- <field name="feet" invisible="1"/> -->
+                                <!-- <field name="inch" invisible="1"/> -->
+                                <field name="occupation"/>
+                                <field name="language"/>
+                            </group>
+                            <group>
+                                <field name="pan_no" />
+                                <field name="aadhar_no" />
+                                <!-- <field name="marital_status" /> -->
+                                <field name="blood_group" />
+                            </group>
+                        </group>
+                        <notebook name="patient_note">
+                            <page name="basic_medical" string="Basic Medical Information" invisible="1">
+                                <group>
+                                    <separator colspan="4" string="Patient Allergies and Critical Information"/>
+                                    <field name="critical_info" colspan="4" nolabel="1"/>
+                                </group>
+                            </page>
+                            <page string="Family" name="family_note" invisible="0">
+                                <separator string="Family History"/>
+                                <field name="family_history">
+                                </field>
+                                <separator string="Genetic Risk"/>
+                                <field name="genetic_risks"/>
+                            </page>
+                            <page name='diseases' string="Diseases" invisible="0">
+                                <separator string="Past Medical History" />
+                                <field name="medical_history"/>
+                                <separator string="Diseases History" />
+                                <field name="patient_diseases" nolabel="1" />
+                            </page>
+                            <page string="BMI Records">
+                                <separator string="BMI Record"/>
+                                <field name="bmi_line_ids" string="BMI Record" >
+                                    <tree editable="bottom">
+                                        <field name="bmi_date" required="1"/>
+                                        <field name="weight" required="1"/>
+                                        <field name="cm" required="1"/>
+                                        <field name="bmi"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Patient's History">
+                                <separator colspan="4" string="Patient Allergies and Critical Information"/>
+                                <field name="critical_info" colspan="4" nolabel="1"/>
+                            </page>
+                            <page name="insurance" string="Insurance" colspan="4" >
+                                <field name="insurance_ids" colspan="4" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="insurance_company" required="1"/>
+                                        <field name="policy_number" required="1"/>
+                                        <field name="insured_value" required="1"/>
+                                        <field name="validity" required="1"/>
+                                        <field name="active" required="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_banastech_hms_patient_search" model="ir.ui.view">
+            <field name="name">banastech.hms.patient.search</field>
+            <field name="model">banastech.hms.patient</field>
+            <field name="arch" type="xml">
+                <search string="Patient">
+                    <filter name="today" string="Today" domain="[('create_date', '&gt;=', time.strftime('%Y-%m-%d 00:00:00')),('create_date', '&lt;=', time.strftime('%Y-%m-%d 23:59:59'))]"/>
+                    <separator />
+                    <field name="code" />
+                    <field name="name" />
+                    <field name="primary_doctor_id"/>
+                    <field name="ref_doctor"/>
+                    <field name="dob" />
+                    <field name="age" />
+                    <!-- <separator/> -->
+                    <!-- <filter name="filter_male" string="Male" domain="[('gender', '=', 'm')]" /> -->
+                    <!-- <filter name="filter_female" string="Female" domain="[('gender', '=', 'f')]" /> -->
+                    <!-- <filter name="filter_archived" string="Archived" domain="[('active', '=', False)]" /> -->
+                    <group expand="0" string="Group By...">
+                        <filter string="Code" name='code' domain="[]" context="{'group_by':'code'}" />
+                        <filter string="DoB" name="dob" domain="[]" context="{'group_by':'dob'}" />
+                        <filter string="Gender" name="gender" domain="[]" context="{'group_by':'gender'}" />
+                        <filter string="Age" name="age" domain="[]" context="{'group_by':'age'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+        <record id="action_banastech_hms_patient" model="ir.actions.act_window">
+            <field name="name">Patient</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">banastech.hms.patient</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="search_view_id" ref="view_banastech_hms_patient_search" />
+            <field name="context">{'search_default_gender': 1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Click to add a Patient.
+                </p>
+            </field>
+        </record>
+
+        <record id="view_banastech_hms_patient_language_tree" model="ir.ui.view">
+            <field name="name">banastech.hms.patient.language.tree</field>
+            <field name="model">banastech.hms.patient.language</field>
+            <field name="arch" type="xml">
+                <tree string="HMS Patient's Language">
+                    <field name="language" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_banastech_hms_patient_language_form" model="ir.ui.view">
+            <field name="name">banastech.hms.patient.language.form</field>
+            <field name="model">banastech.hms.patient.language</field>
+            <field name="arch" type="xml">
+                <form string="HMS Patient's Language">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="language" required="1"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_banastech_hms_patient_language" model="ir.actions.act_window">
+            <field name="name">HMS Patient's Language</field>
+            <field name="res_model">banastech.hms.patient.language</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Click to add a Language.
+                </p>
+            </field>
+        </record>
+</odoo>

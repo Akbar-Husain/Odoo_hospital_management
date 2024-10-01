@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_team_admission_consent_main">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <div class="page">
+                       <p>કા ઈ ઝન હોસ્પિટલ </p>
+                       
+                        <div class="row">
+                            <p style="font-size:25px;"><center><u><strong><h4><b>પ્રવેશ માટે નું સહમતી પત્રક </b></h4></strong></u></center>
+                            </p>
+
+                        </div>
+                         <p style="font-size:20px;text-align:right" class ="pull-right"><h4>તારીખ અને સમય :</h4>
+                            </p>
+                        <div class="cl-xs-12">
+                            <div class="cl-xs-6">
+                                <p style="font-size:20px;" class="pull-left">દર્દી નું નામ :________________</p>
+                            </div>
+                            <div class="cl-xs-6">
+                                <p style="font-size:20px;" class="pull-right">ઉમર અને જતી :_________________</p>
+                            </div>
+                        </div>
+                        <div class="cl-xs-12">
+                            <div class="cl-xs-6">
+                                <p style="font-size:20px;" class="pull-left">દર્દી નો દાખલ નંબર :____________</p>
+                            </div>
+                            <div class="cl-xs-6">
+                                <p style="font-size:20px;" class="pull-right">ડૉક્ટર :_________________</p>
+                            </div>
+                        </div>
+                         <div class="cl-xs-12">
+                            <div class="cl-xs-12">
+                                <p style="font-size:20px;" class="pull-left">હું ______________ સારવાર અર્થે ડૉક્ટર ____________ દેખરેખ હેઠળ કાઈઝન  હોસ્પિટલ માં દાખલ થયો છું./ થઈ  છું। 
+                                અમને આવી જાણકારી આપવામાં આવી છેકે ,</p>
+                            </div>
+                        </div>
+                        <div class="cl-xs-12">
+                            <div class="cl-xs-12">
+                                <p style="font-size:20px;" class="pull-left">આ હોસ્પિટલ માં ડો સંજીવ હરિભક્તિ ,ડો કે.એસ.પટેલ ,ડો.અતુલ શાહ ,ડો હર્ષદ સોની પેટ ની શસ્ત્રક્રિયા  ના તજજ્ઞ તબીબો ની ટિમ દર્દી ની  સારવાર કરશે,
+                                જો કોઈ તબીબ કે જેની સારવાર દર્દી લઈ રહ્યા છે.તેની અનુપરિસ્તિ  માં આ ટિમ પૈકીના કોઈ એક ડૉક્ટર દર્દીની દેખભાળ કરશે।,</p>
+                            </div>
+                        </div>
+                        <div class="cl-xs-12">
+                            <div class="cl-xs-12">
+                                <p style="font-size:20px;" class="pull-left">આ  ઉપરાંત દર્દી ની તબિયત ને ધ્યાન માં રાખી ને સ્પેશ્યલ ક્રિટીકૅલ કરે સેવા ના તબીબ ર્ડિઓલોજિસસટીક અને અન્ય નિસનિશ્રાંત તબીબોના ટિમ ની પણ મદદ લેવાશે,</p>
+                            </div>
+                        </div>
+                         <div class="cl-xs-12">
+                            <div class="cl-xs-12">
+                                <p style="font-size:20px;" class="pull-left">હું કાઇઝન  હોસ્પિટલ ને દર્દીની સારવાર કરવા માટે પ્રમાણિત કરું છું.</p>
+                            </div>
+                        </div>
+                         <div class="cl-xs-12">
+                            <div class="cl-xs-12">
+                                <p style="font-size:20px;" class="pull-left">દર્દી નું નામ /સાગા સબંધી/દેખરેખ રાખનાર :________________________</p>
+                            </div>
+                        </div>
+                         <div class="cl-xs-12">
+                            <div class="cl-xs-6">
+                                <p style="font-size:20px;" class="pull-left">દર્દી નો સંબંધ :______________</p>
+                            </div>
+                            <div class="cl-xs-6">
+                                <p style="font-size:20px;" class="pull-right">તારીખ :_________________</p>
+                            </div>
+                        </div>
+                        <div class="cl-xs-12">
+                            <div class="cl-xs-6 pull-left">
+                                <p style="font-size:20px;" class="pull-left">સહી :____________</p><br/>
+                            </div>
+                            <div class="cl-xs-6">
+                                <p style="font-size:20px;" class="pull-right">સમય  :_________________</p>
+                            </div>
+                        </div>
+                    </div>
+                             
+                </t>
+            </t>
+        </template>
+
+        <template id="template_admission_call">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="hms_hospitalization.report_team_admission_consent_main"/>
+                </t>
+            </t>
+        </template>
+
+    
+        <report
+            id="team_admission_consent_id"
+            string="Team Admission Consent"
+            model="inpatient.consent"
+            report_type="qweb-pdf"
+            file="hms_hospitalization.template_admission_call"
+            name="hms_hospitalization.template_admission_call"
+            menu="False"
+        />
+    </data>
+</odoo>

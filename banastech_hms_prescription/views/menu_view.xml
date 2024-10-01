@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <menuitem id="menu_banastech_hms_family_member"
+            parent="banastech_hms.menu_banastech_hms_patient"
+            name="Family Member"
+            action="act_banastech_hms_family_member_view"
+            sequence="15" />
+        <menuitem id="menu_banastech_hms_family"
+            parent="banastech_hms.menu_banastech_hms_patient"
+            name="Family"
+            action="act_open_banastech_hms_family_view"
+            sequence="1"/>
+            <!-- hos_pres -->
+        <menuitem id="menu_banastech_hms_presc"
+            name="Prescription"
+            parent="banastech_hms.menu_banastech_hms"
+            sequence="6"
+            groups="banastech_hms.group_banastech_hms_pharmacist,banastech_hms.group_banas_hms_jr_doctor"/>
+            <menuitem id="menu_indoor_medication"
+                name="IP Medicine Request"
+                parent="banastech_hms_prescription.menu_banastech_hms_presc"
+                action="act_indoor_Patient_medicine_request_view" />
+            <menuitem id="menu_prescription"
+                name="Prescription"
+                parent="menu_banastech_hms_presc"
+                action="act_open_banastech_hms_prescription_order_view" />
+
+
+        <!--Root menu for prescription-->
+
+        <menuitem id="hos_pres_root"
+            name="Prescription"
+            sequence="5"
+            />
+            <!-- groups="hms.group_hms_pharmacist,hms.group_hms_jr_doctor" -->
+            <menuitem id="indoor_medication_root"
+                name="IP Medicine Request"
+                parent="banastech_hms_prescription.hos_pres_root"/>
+                <menuitem id="indoor_medication_ip_root"
+                    name="IP Medicine Request"
+                    parent="indoor_medication_root"
+                    action="act_indoor_Patient_medicine_request_view"/>
+                <menuitem id="prescriotion_line"
+                    name="Prescription Line"
+                    parent="indoor_medication_root"
+                    action="act_dashboard_prescription_line_view"
+                    groups="base.group_no_one"/>
+            <menuitem id="hos_prescription_root"
+                name="Prescription"
+                parent="hos_pres_root"/>
+                <menuitem id="hos_prescption_inner_root"
+                    name="Prescription"
+                    parent="hos_prescription_root"
+                    action="act_open_banastech_hms_prescription_order_view" />
+
+   </data>
+</odoo>
+        <!--menuitem id="hos_vacc_apagen" name="Vaccination" parent="hms.menu_hms_cofig" action="act_open_indimedi_vaccination_view" sequence="15" /-->

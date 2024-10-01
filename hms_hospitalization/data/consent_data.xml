@@ -1,0 +1,1375 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <!--Colonoscopy Report  -->
+        <template id="report_saleorder_oa_document">
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+            <div class="page" style="height: 800px;width:100%; border-bottom: 1px solid white;">
+                <div class="col-xs-12">
+                    <div class="col-xs-8">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 80px;"/><br/>
+                    </div>
+                    <div class="col-xs-4" style="border: 1px solid black;height: 120px;width:270px;">
+                        <p style="text-align:center;font-size:14px;margin:50px;">Addressograph</p>
+                    </div>
+                </div>
+            <t t-foreach="docs" t-as="t">
+                    <div>
+                        <p style="font-size:18px;text-align:center;"><b>CONSENT FOR COLONOSCOPY</b></p>
+                    </div>
+                    <div class="col-xs-6" style="border: 1px solid black;height: 2250px;width:420px;border-right:1px solid white;margin-left:20px;">
+                        <p></p>
+                        <p style="background-color: #DCDCDC;"><b>Interpreter</b></p>
+                        <p  style="font-size:12px;">An Interpreter Service is required? ☐ Yes ☐ No</p>
+                        <p  style="font-size:12px;">If Yes, is a qualified Interpreter present ☐ Yes ☐ No</p>
+                        <p style="background-color: #DCDCDC;font-size:14px;"><b>B. Condition and Treatment</b></p>
+                        <p  style="font-size:12px;">The doctor has explained that you have the following condition: (Doctor to document in patient's own words)</p>
+                       
+                        <p>....................................................................</p>
+                        <p style="font-size:12px;">This condition requires the following procedure.</p>
+                        <p style="font-size:12px;">(Doctor to document - include site and/or side where relevant to the procedure)</p>
+                        <p>....................................................................</p>
+                        <p style="font-size:12px;">The following will be performed:</p>
+                        <p style="font-size:12px;">A Colonoscopy is where the doctor uses an instrument called a colonoscope to look at the inside lining of your bowel.</p>
+                        <p style="font-size:12px;">This procedure starts from your back passage (anus) and goes up to the right side of your large bowel (caecum). This is done to see if there are any growths, polyps or disease in your bowel.</p>
+                        <p style="font-size:12px;">Small pieces of your bowel may need to be removed for pathology tests.</p>
+                        <p style="font-size:12px;">This procedure may or may not require a sedation anaesthetic.</p>
+
+                        <p style="background-color: #DCDCDC;font-size:14px;"><b>C. Risks of a Colonoscopy  +/- Sedation</b></p>
+                        <p style="font-size:12px;">There are risks and complications with this procedure. They include but are not limited to the following.</p>
+                        <p style="font-size:12px;"><b>Common risks and complications include:</b></p>
+                        <li style="font-size:12px;">Mild pain and discomfort in the abdomen for one to five days  after the procedure. This usually settles with walking, and moving around to get rid of the trapped air.</li><br/>
+                        <li style="font-size:12px;">Nausea and vomiting.</li><br/>
+                        <li style="font-size:12px;">Faintness or dizziness, especially when you start to move around.</li><br/>
+                        <li style="font-size:12px;">Headache</li><br/>
+                        <li style="font-size:12px;">Pain, redness or bruising at the sedation injection site (usually in the hand or arm).</li><br/>
+                        <li style="font-size:12px;">Muscle aches and pains.</li><br/>
+                        <li style="font-size:12px;">Allergy to medications given at time of the procedure.</li><br/><br/>
+                        <p style="background-color: #DCDCDC;font-size:14px;"><b>F. Patient  consent</b></p>
+                        <p style="font-size:12px;">I acknowledge that the doctor has explained :</p><br/>
+                        <li style="font-size:12px;">my medical condition and the proposed procedure, including additional treatment if the doctor finds something unexpected. I understand the risks, including the risks that are specific to me.</li><br/>
+                        <li style="font-size:12px;">procedure. I understand the risks, including the risks that are specific to me.</li><br/>
+                        <li style="font-size:12px;">other relevant procedure/treatment options and their associated risks.</li><br/>
+                        <li style="font-size:12px;">my prognosis and the risks of not having the procedure.</li><br/>
+                        <li style="font-size:12px;">that no guarantee has been made that  the procedure will improve my condition even though it has been carried out with due professional care.</li><br/>
+                        <li style="font-size:12px;">the procedure may include a blood transfusion.</li><br/>
+                        <li style="font-size:12px;">tissues and blood may be removed and could be used for diagnosis or management of my condition, stored and disposed of sensitively by the hospital.</li><br/>
+                        <li style="font-size:12px;">if immediate life-threatening events happen during the procedure, they will be treated based on my discussions with the doctor or my Acute Resuscitation Plan.</li><br/>
+                        <li style="font-size:12px;">a doctor other than the Consultant may conduct the procedure. I understand this could be a doctor undergoing further training.</li><br/>
+                        <p style="font-size:12px;"><b>I have been given the following Patient Information Sheets :</b></p>
+                        <p style="font-size:14px;"> ☐ <b>Colonoscopy</b></p><br/>
+                        <li style="font-size:12px;">I was able to ask questions and raise concerns with the doctor about my condition, the proposed procedure and its risks, and my treatment options. My questions and concerns have been discussed and answered to my satisfaction.</li><br/><br/>
+                        <li style="font-size:12px;">I understand I have the right to change my mind at any time, including after I have signed this form but, preferably following a discussion with my doctor.</li><br/><br/>
+                        <li style="font-size:12px;">I understand that image/s or video footage may be recorded as part of and during my procedure and that these image/s or video/s will assist the doctor to provide appropriate treatment.</li><br/><br/>
+                        <li style="font-size:12px;">I understand that all research will be approved by a research ethics committee and undertaken in accordance with appropriate ethical, legal and professional standards.</li><br/><br/>
+                        <li style="font-size:12px;">I give consent that in case of averse unexpected situation, if the doctor has to re-operate, extend that operation, use special medicines or instrument or blood products and if required shift the patient to another hospital, it is for the benefit of the patient. The extra expenditure incurred in such a situation will be paid in ful by me.</li><br/><br/>
+                    </div>
+                    <div class="col-xs-6" style="border: 1px solid black;height: 2250px;width:420px;border-left:1px solid white;">
+                        <li style="font-size:14px;"><b>Uncommon risks and complications include:</b></li>
+                        <li style="font-size:12px;">About 1 person in every 1,000 will accidentally get a hole (perforation) to the bowel causing leakage of bowel contents into the abdomen. Surgery may be needed to repair the hole.</li><br/>
+                        <li style="font-size:12px;">About 1 person in every 100 will experience a significant bleed from the bowel where a polyp was removed. Further endoscopy, a blood transfusion or an operation may be necessary.</li><br/>
+                        <li style="font-size:12px;">Not being able to see the entire bowel. This can happen if your bowel is not completely clean or the colonoscope could not be passed to the end of your large bowel.</li><br/>
+                        <li style="font-size:12px;">Missed polyps, growths or bowel disease.</li><br/>
+                        <li style="font-size:12px;">Heart and lung problems such as heart attack or vomit in the lungs causing pneumonia. Emergency treatment may be necessary.</li><br/>
+                        <li style="font-size:12px;">Change of anaesthetic from a sedation anaesthetic to a general anaesthetic.</li><br/>
+                        <li style="font-size:12px;">Dead arm’ type feeling in any nerve due to positioning with the procedure — usually temporary.</li><br/>
+                        <li style="font-size:12px;">An existing medical condition that you may already have getting worse.</li><br/>
+                        <li style="font-size:14px;"><b>Rare risks and complications include:</b></li>
+                        <li style="font-size:12px;">Bacteraemia (infection in the blood). This will need antibiotics.</li><br/>
+                        <li style="font-size:12px;">Stroke resulting in brain damage.</li><br/>
+                        <li style="font-size:12px;">Anaphylaxis (severe allergy) to medication given at the time of procedure.</li><br/>
+                        <li style="font-size:12px;">Death as a result of complications to this procedure is extremely rare.</li><br/>
+                        <p style="background-color: #DCDCDC;"><b>D. Significant risks and procedure options</b></p><br/>
+                        <li style="font-size:12px;">(Doctor to document in space provided. Continue in Medical Record if necessary.)</li><br/>
+                        <p>......................................</p><br/>
+                        <b><p style="background-color: #DCDCDC;font-size:14px;">E. Risks of not having this procedure</p></b><br/>
+                        <li style="font-size:12px;">(Doctor to document in space provided. Continue in Medical Record if necessary.)</li>
+                        <p>.......................................</p>
+                        <li style="font-size:12px;">On the basis of I he above statements,</li>
+                        <p style="font-size:12px;"><b>I request to have the procedure</b></p>
+                        <t t-foreach="docs" t-as="o">
+                        <p style="font-size:12px;">Name of Patient: <span t-field="o.consent_patient_name"/></p>
+                        </t>
+                        <p style="font-size:12px;">Signature:..............................</p>
+                        <p style="font-size:12px;">Date:.................................</p>
+                        <div style="border: 1px solid black;">
+                        <p style="font-size:12px;margin:5px;"><b>Patients who lack capacity to provide consent</b></p><br/>
+                        <p style="font-size:12px;margin:5px;">Consent must be obtained from a  substitute decision marker/s in order below.</p><br/>
+                        <p style="font-size:12px;margin:5px;">Name of Relative: </p><br/>
+                        <p style="font-size:12px;margin:5px;">Signature:..................................</p><br/>
+                        <p style="font-size:12px;margin:5px;">Relation with Patient:.....................................</p><br/>
+                        <p style="font-size:12px;margin:5px;">Date:..............................</p><br/>
+                        <p style="font-size:12px;margin:5px;">Witness Name:...........................</p><br/>
+                        <p style="font-size:12px;margin:5px;">Signature:...........................</p><br/>
+                        </div><br/><br/><br/>
+                        <div style="border: 1px solid black;">
+                        <p style="margin:5px;"><b>H. Interpreter's statement</b></p>
+                        <p style="font-size:12px;margin:5px;">I have given a sight translation in</p>
+                        <p style="margin:5px;"> ................................................................................................................................................................................................................................................................................................</p><br/>
+                        <p style="font-size:12px;margin:5px;">(state the patient's language here) of the consent form the assisted in the provision of any verbal and written information given to the patient/parent or guardian/substitute decision-maker by the doctor.</p><br/>
+                        <p style="font-size:12px;margin:5px;">Name of Interpreter:......................................................................</p><br/>
+                        <p style="font-size:12px;margin:5px;">Signature:...........................</p><br/>
+                        <p style="font-size:12px;margin:5px;">Date:...........................</p><br/><br/>
+                        </div><br/>
+                        <div style="border: 1px solid black;">
+                        <p style="font-size:12px;margin:5px;">Name of Consultane Doctor:...........................</p><br/>
+                        <p style="font-size:12px;margin:5px;">Signature:...........................</p><br/>
+                        <p style="font-size:12px;margin:5px;">Relation with Patient:...........................</p><br/>
+                        <p style="font-size:12px;margin:5px;">Date:...........................</p><br/>
+                        <p style="font-size:12px;margin:5px;">Time:...........................</p><br/>
+                        </div>
+                    </div>
+            </t>
+            </div>
+        </template>
+
+        <template id="report_saleorder_oa">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="hms_hospitalization.report_saleorder_oa_document"/>
+                </t>
+            </t>
+        </template>
+
+        <report 
+            id="hms_hospitalization.report_sale_order_oa"
+            string="C-COLONOSCOPY"
+            model="inpatient.consent" 
+            report_type="qweb-pdf"
+            file="hms_hospitalization.report_saleorder_oa_report" 
+            name="hms_hospitalization.report_saleorder_oa"
+        />
+
+        <record id="paperformat_indimedi_sale_order_oa_report_colonoscopy" model="report.paperformat">
+            <field name="name">colonoscopy</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">10</field>
+            <field name="margin_bottom">15</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False" />
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="hms_hospitalization.report_sale_order_oa" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="hms_hospitalization.paperformat_indimedi_sale_order_oa_report_colonoscopy" />
+        </record>
+
+       
+<!--         <record id="email_template_edi_sale_confirmation_consentss" model="consent.form.type">
+            <field name="name">C - COLONOSCOPY</field>
+            <field name="model_id" ref="hms_hospitalization.model_inpatient_consent"/>
+            <field name="report_template" ref="hms_hospitalization.report_sale_order_oa"/>
+            <field name="report_name">${(object.name or '')}</field>
+            <field name="body_html"><![CDATA[
+            ]]></field>
+        </record> -->
+
+        <!-- Blood Consent Report -->
+        <template id="report_blood_consent_document">
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+            <div class="page" style="border: 1px solid black;height: 1030px;width:100%; border-bottom: 1px solid white;">
+                <div class="col-xs-12" style="margin:15px;">
+                    <div class="col-xs-3">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 80px;"/><br/>
+                    </div>
+                    <div class="col-xs-5">
+                        <p style="font-size:18px;"><b>Consent form for transfusion <br/> of Blood/Blood Products</b></p>
+                    </div>
+                    <div class="col-xs-4" style="border: 1px solid black;height: 120px;width:260px;">
+                        <p style="text-align:center;font-size:16px;">Addressograph</p>
+                    </div>
+                </div>
+            <t t-foreach="docs" t-as="t">
+                    <div>
+                    <div style="margin:15px;">
+                        <t t-foreach="docs" t-as="o">
+                            <p>Patient's Name:   <span t-field="o.consent_patient_name"/>     Age/Sex:   <span t-field="o.consent_patient_name.age"/>     IP No:   <span t-field="o.consent_patient_name.code"/></p>
+                            <p>Date of Transfusion:........................................................ Time of Transfusion:.........................................................................</p>
+                        </t>
+                    </div>
+                    <div style="margin:15px;">
+                        <p>My/My relative's Consultant, Dr............................................................has advised me that due to my / my relative's medical condition, the chances of my / my relative's improvement of recovery will be significantly helped by receiving blood/blood products by transfusion.</p>
+                        <p>The doctor has explained the benefits that are expected from me / my relative being transfused as well the risks. I understand that although the blood products to be administered have been prepared and tested properly from blood bank, there is still a very small chance the blood products will be incompatible with my / my relative's body and a transfusion reaction(Hemolytic Trnasfusion Reaction) can occur. I understand that allergic reaction to blood products with shivering, itching and fever are more common but can be treated and may not even require the transfusion to be stopped. I understand that even with testing by most up to date methods, there is small chance that blood /blood products may contain a virus that will enter my system and may not be recognized as an infection for many months or years. Even with proper testing, very rare chances for contracting viral hepatitis or HIV might be there.</p>
+                        <p>I have had an oppurtunity to ask questions regarding transfusion of blood/blood products for me / my relative and by signing I give consent for administering blood/blood products to me / my relative. I agree that informed consent may serve for consent to giving additional necessary blood/blood products for a time certain to end with this hospitalization  or for the complete course of this illness if I have been advised that the future need for transfusion of blood/blood products is quite likely and possible on a recurrent basis but still related to this same illness.</p>
+                    </div>
+                    <div style="margin:15px;">
+                        <p>M.O./Registrar's Signature:..............................................Date &amp; Time:................................</p>
+                        <p>Parent's Signature:...................................................Date &amp; Time:.........................................</p>
+                        <p>Relative Signature:...........................................Name of Relative:...........................................................</p>
+                </div>
+                </div>
+                <div style="border: 1px solid black;height: 400px;width:100%; border-top: 5px solid black;border-left:1px solid white;border-right:1px solid white;">
+                    <p style="margin:15px;text-align:center;font-size:14px;"><b>Emergency/Life-Threatening Circumstances (Informed Consent Not Obtained)</b></p>
+                    <p style="margin:15px;">Because of a life-threatening/emergent medical condition, I have not provided the patient with information sufficient to be considered informed consent and I have proceeded with ordering blood/blood products to be administered in sufficient quantity to alter, improve or reverse a life threatening/emergent medical condition.</p>
+                    <p style="margin:15px;">Signature of Attending Consultant/Registrar/House Officer..........................................</p>
+                    <p style="margin:15px;">Patient is unable to sign the consent as certified by the Doctor. A witness should sign below if the patient's unable to sign but has indicated his or her consent. Young people/children may also like a parent to sign here.(see notes)</p>   
+                    <p style="margin:15px;">Relative's/Witness's Signature......................................Date &amp; Time..........................</p>
+                    <p style="margin:15px;">Name &amp; relation with patient................................................................................</p>
+                    <p style="margin:15px;">Reason why patient cannot Sign:...........................................................</p>            
+                <div class="col-xs-12">
+                    <div class="col-xs-6">
+                        <p>Name:_______________________________</p>
+                    </div>
+                    <div class="col-xs-6">
+                        _________________________________________<br/>
+                        <p>Sign of M.O./Registrar/Attending Consultant</p>
+                    </div>
+                </div>
+                </div>
+            </t>
+            </div>
+        </template>
+
+        <template id="report_blood_consent">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="hms_hospitalization.report_blood_consent_document"/>
+                </t>
+            </t>
+        </template>
+
+        <report 
+            id="hms_hospitalization.report_blood"
+            string="Blood Consent"
+            model="inpatient.consent" 
+            report_type="qweb-pdf"
+            file="hms_hospitalization.report_bloodconsent" 
+            name="hms_hospitalization.report_blood_consent"
+            menu="False"
+        />
+
+
+        <record id="paperformat_indimedi_sale_order_oa_report_blood" model="report.paperformat">
+            <field name="name">blood consent</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">15</field>
+            <field name="margin_bottom">15</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False" />
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="hms_hospitalization.report_blood" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="hms_hospitalization.paperformat_indimedi_sale_order_oa_report_blood" />
+        </record>
+
+        <!-- Consent form for transfusion of Blood & blood products Report -->
+        <template id="report_blood_consent_for_transfusion_document">
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+            <div class="page" style="height: 800px;width:100%; border-bottom: 1px solid white;">
+                <div class="col-xs-12" style="margin:15px;">
+                    <div class="col-xs-8">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 80px;"/><br/>
+                    </div>
+                    <div class="col-xs-4" style="border: 1px solid black;height: 150px;width:260px;">
+                        <p style="text-align:center;margin:50px;">Addressograph</p>
+                    </div>
+                </div>
+            <t t-foreach="docs" t-as="t">
+                <div>
+                    <p style="text-align:center;font-size:16px;"><b>Consent form for transfusion of Blood/Blood Products</b></p>
+                    <div style="margin:15px;">
+                        <t t-foreach="docs" t-as="o">
+                            <p>Patient's Name:   <span t-field="o.consent_patient_name"/>     Age/Sex:   <span t-field="o.consent_patient_name.age"/>     IP No:   <span t-field="o.consent_patient_name.code"/></p>
+                            <p>Date of Transfusion:........................................................ Time of Transfusion:.........................................................................</p>
+                        </t>
+                    </div>
+                    <div style="margin:15px;">
+                        <p>My / My relative's Consultant, Dr. ..........................................................has advised me that due to my / my relative's medical condition, the chances of my / my relative'simprovement or recovery will be significantly helped by receiving blood / blood products by transfusion. The doctor has explained the benefits that are expected from me / my relative being transfused as well therisks. I understand that although the blood products to be administered have been prepared and tested properly from blood bank, there is still a very small chance the blood products will be incompatible with me /my relative's body and a transfusion reaction (Hemolytic Transfusion Reaction) can occur. I understand that allergic reaction to blood products with shivering, itching and fever are more common but can be treated and may not even require the transfusion to be stopped. I Understand that even with testing by the most up to date methods, there is small chance that blood / blood products may contain a virus that will enter my system and may not be recognized as an infection for many months or years. Even with proper testing very rate chances for contracting viral hepatitis or HIV might be there</p><br/>
+                        <p>I have had an opportunity to ask questions regarding transfusion of blood / blood products for me / my relative and by signing I give consent for administering blood / blood products to me / my relative. I agree that informed consent may serve for consent to giving additional necessary blood / blood products for a time certain to end with this hospitalizationor for the complete course of this illness if I have been advised that the future need for transfusion of blood / blood products is quite likely and possible on a recurrent basis but still related to this same illness</p>
+                    </div>
+                    <div style="margin:15px;">
+                        <p>Name &amp; Signature of M.O...............................................Date &amp; Time:................................</p>
+                        <p>Patient's Signature:...................................................Date &amp; Time:.........................................</p>
+                        <p>Relative Signature:...........................................Name of Relative:...........................................................</p>
+                    </div>
+                <div style="height: 400px;width:100%; border-top: 5px solid black; border-bottom: 1px solid white; border-right: 1px solid white; border-left: 1px solid white;">
+                    <p style="margin:15px;font-size:16px;text-align:center;"><b>Emergency/Life-Threatening Circumstances (Informed Consent Not Obtained)</b></p>
+                    <p style="margin:15px;">Because of a life-threatening/emergent medical condition, I have not provided the patient with information sufficient to be considered informed consent and I have proceeded with ordering blood/blood products to be administered in sufficient quantity to alter, improve or reverse a life threatening/emergent medical condition.</p>
+                    <p style="margin:15px;">Name &amp; Signature of Attending Consultant/M.O..........................................</p>
+                    <p style="margin:15px;">Patient is unable to sign the consent as certified by the Doctor. A witness should sign below if the patient's unable to sign but has indicated his or her consent. Young people/children may also like a parent to sign here.(see notes)</p>  
+                    <p style="margin:15px;">Relative's/Witness's Signature......................................Date &amp; Time..........................</p>
+                    <p style="margin:15px;">Name &amp; relation with patient..........................................</p>
+                </div>
+                </div>
+            </t>
+            </div>
+        </template>
+
+
+
+        <template id="report_blood_consent_trans">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="hms_hospitalization.report_blood_consent_for_transfusion_document"/>
+                </t>
+            </t>
+        </template>
+
+        <report 
+            id="hms_hospitalization.report_blood_for_transfusion"
+            string="Consent form for transfusion of Blood &amp; blood products"
+            model="inpatient.consent" 
+            report_type="qweb-pdf"
+            file="hms_hospitalization.report_bloodconsent_transfusion" 
+            name="hms_hospitalization.report_blood_consent_trans"
+            menu="False"
+        />
+
+        <record id="paperformat_indimedi_sale_order_oa_report_transfusion" model="report.paperformat">
+            <field name="name">transfusion</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">15</field>
+            <field name="margin_bottom">15</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False" />
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="hms_hospitalization.report_blood_for_transfusion" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="hms_hospitalization.paperformat_indimedi_sale_order_oa_report_transfusion" />
+        </record>
+
+        
+        <!-- High Risk consent Report 28/11 -->
+
+
+        <template id="report_high_consent_document">
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+             <div class="page">
+                <div class="col-xs-12" style="margin:15px;">
+                    <div class="col-xs-6">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 80px;"/><br/>
+                    </div>
+                    <div class="col-xs-6" >
+                        <center>
+                            <div style="text-align:right;width:200px;height:100px;border:1px solid black;">
+                                <center>
+                                    <br/>
+                                    <br/>
+                                    <span style="margin-top:50px;">Addresograph</span>
+                                </center>
+                            </div>
+                        </center>
+                    </div>
+                </div>
+
+
+                <t t-foreach="docs" t-as="t">
+                    <div style="height: 900px;width:100%;font-size:12px !important;">
+                    <div class="row" style="text-align:right;margin-left:20px;margin-right:20px;">
+                                <br/><br/>
+                                <span>Date:____________</span><br/>
+                            </div>
+                            
+                            <div class="row" style="margin-left:20px;margin-right:20px;">
+                                    <t t-foreach="docs" t-as="o">
+                                        <span t-field="o.consent_patient_name.code"/>
+                                        <p>Patient's Name:   <span t-field="o.consent_patient_name"/> <br/> </p>
+                                    </t>
+                            </div>
+
+                            <div class="row" style="margin-left:20px;margin-right:20px;">
+                                <div class="col-xs-6" style="text-align:left;">
+                                    <t t-foreach="docs" t-as="o">
+
+                                    <span style="margin-left:-14px;" t-field="o.consent_patient_name.code">I.P. No.:  </span><br/>
+                                    </t>
+                                </div>
+                                <div class="col-xs-6" style="text-align:right">
+                                    <span>Consultant:___________________</span><br/>
+                                </div>
+                            </div>
+
+
+                            <div class="row" style="margin-left:20px;margin-right:20px;">
+                                <center>
+                                    <span><strong style="font-size:16px !important; text-decoration: underline;">HIGH RISK CONSENT</strong></span><br/>
+                                </center><br/>
+                            </div>
+                            <div class="row mt16" style="margin-left:20px;margin-right:20px;">
+                                <span>We have been explained in detail that the patient named _____________________________________________________________________________________________________</span>
+                                <span>Sufiering______________________________________________________________________________________________</span><br/>
+                                <span>_____________________________________________________________________________________________________</span><br/>
+                                <span>The conditon of patient is quit serious. We have been also explain about the prons and cons of disease, it course, possit outcome and details of management. ent. We have also undarstood that during the course of Her/His illness and it's treatment anything may happen to the patient including the risk of life. Having understood those fully, we give our full consent to treating doctor and team to proceed with the further management, we also glve full consent to the doctor for any emergency procedure like Endotracheal intubation, CVP line, Cardlopulmonary resuscitation etc.  </span><br/>
+                                <br/>
+                            </div>       
+
+                            <div class="row" style="margin-left:20px;margin-right:20px;">
+                                <div class="col-xs-8" style="text-align:left;">
+                                    <span style="margin-left:-14px;">Name:______________________________</span><br/>
+                                    <span style="margin-left:-14px;">Signature:______________</span><br/>
+                                </div>
+                                <div class="col-xs-4" style="text-align:right">
+                                    <span>Relation:___________________</span><br/>
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin-left:20px;margin-right:20px;">
+                                <center>
+                                    <br/>
+                                    <br/>
+                                    <span><strong style="font-size:16px !important; text-decoration: underline;">જોખમી કેસ ની સારવાર માટે ની સમંતિ </strong></span><br/>
+                                </center><br/>
+                            </div>
+                            <div class="row" style="margin-left:20px;margin-right:20px;">
+                                    <span>દર્દી_______________________________________________કેજેમને_____________________________________________</span><br/>
+                                    <span>_____________________________________________________________________________________________________</span><br/>
+                                    <span>બીમારી થયેલ છે જેની બધી વિગતો અમને  પુરેપુરી સમજાવેલ છે.  દર્દી ની સ્થિતિ અત્યંત નાજુક છે. અમને આ રોગ ના જોખમો, સારવાર તથા તેના સંભવિત પરિણામ ની પુરેપુરી માહિતી આપવામાં આવેલી છે. સારવાર દરમ્યાન દર્દી ને જાન-જોખમ જેવી ગંભીરે તક્લીફ પણ ઉદ્ભવી શકે છે. ઉપર ની વિગતો સંપૂર્ણ સમજ્યા પછી અમે ડૉક્ટર તેમજ તેમની ટીમ ને આગળ સારવાર કરવા માટે ની સમંતિ આપીએ છીએ. કોઈ પણ પ્રકાર ની ઇમરજરન્સી સારવાર જેમકે એન્ડોટ્રેકીઅલ ઈંટ્યૂબેશન, સીવીપી લાઈન, કાર્ડિયોપલ્મોનરી રીસશીટેશન વગેરે કરવાની સમંતિ છે.</span><br/>
+                                <br/>
+                            </div>
+
+                            <div class="row" style="margin-left:20px;margin-right:20px;">
+                                <div class="col-xs-8" style="text-align:left;">
+                                    <span style="margin-left:-10px;">નામ:_____________________________________</span><br/>
+                                    <span style="margin-left:-10px;">સહી:______________</span><br/>
+                                </div>
+                                <div class="col-xs-4" style="text-align:right">
+                                    <span>સંબંધ:___________________</span><br/>
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin-left:20px;margin-right:20px;">
+                                <center>
+                                    <br/>
+                                    <br/>
+                                    <span><strong style="font-size:16px !important; text-decoration: underline;">जोखमी केस की सारवार करने की अनुमति</strong></span><br/>
+                                </center><br/>
+                            </div>
+                            <div class="row" style="margin-left:20px;margin-right:20px;">
+                                    <span><span>मरीज_______________________________________________जिसको____________________________________________</span></span><br/>
+                                    <span>_____________________________________________________________________________________________________</span><br/>
+                                    <span> बीमारी है । हमको इस बीमारी की सम्पूर्ण जानकारी दी गई है। मरीज की स्थिति अत्यंत नाजुक है। हमें इस रोज के सभी जोखिम, चिकित्सा और उससे संबंधित परिणाम की जानकारी दी गई है। हम ये भी समजे है की चिकित्सा के दौरान मरीज को कुछ भी होने की संभावना है, यहाँ तक की उनकी जान भी जोखिम में हो सकती है। ऊपर दी गई सभी जानकारी समझने के बाद हम डॉक्टर और उनकी टीम को आगे उपचार करने की अनुमति देते है। ईमरजन्सी सारवार जैसे कि एंडोट्रेकियल ईंटयबेसन, सीवीपी लाइन, कार्डियोपल्मोनरी रिसशीटेशन आदि करने की हमारी अनुमति है।</span><br/>
+                                <br/>
+                            </div>
+                            <div class="row" style="margin-left:20px;margin-right:20px;">
+                                <div class="col-xs-8" style="text-align:left;">
+                                    <span style="margin-left:-10px;">नाम :_____________________________________</span><br/>
+                                    <span style="margin-left:-10px;">हस्ताक्षर:______________</span><br/>
+                                </div>
+                                <div class="col-xs-4" style="text-align:right">
+                                    <span>संबंध:___________________</span><br/>
+                                </div>
+                            </div>
+
+            </div>
+                </t>
+            </div>
+        </template>
+
+        <template id="report_high_consent">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="hms_hospitalization.report_high_consent_document"/>
+                </t>
+            </t>
+        </template>
+
+        <report 
+            id="hms_hospitalization.report_high"
+            string="High Risk Consent Report"
+            model="inpatient.consent" 
+            report_type="qweb-pdf"
+            file="hms_hospitalization.reporthigh_consent" 
+            name="hms_hospitalization.report_high_consent"
+            menu = "False"
+        />
+
+        <record id="paperformat_indimedi_sale_order_oa_report_high" model="report.paperformat">
+            <field name="name">High</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">10</field>
+            <field name="margin_bottom">15</field>
+            <field name="margin_left">10</field>
+            <field name="margin_right">10</field>
+            <field name="header_line" eval="False" />
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="hms_hospitalization.report_high" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="hms_hospitalization.paperformat_indimedi_sale_order_oa_report_high" />
+        </record>
+        
+
+        <!-- ICU Admission consent Report 28/11 -->
+
+        <template id="report_admission_icu_consent_document">
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+
+            <div class="page">
+                <div class="col-xs-12" style="margin:15px;">
+                    <div class="col-xs-6" style="text-align:left;">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 80px;"/><br/>
+                    </div>
+                    <div class="col-xs-6" style="text-align:right;">
+                        <center>
+                            <div style="text-align:right;width:200px;height:100px;border:1px solid black;">
+                                <center>
+                                    <br/>
+                                    <br/>
+                                    <span style="margin-top:50px;">Addresograph</span>
+                                </center>
+                            </div>
+                        </center>
+                    </div>
+                </div>
+                <t t-foreach="docs" t-as="t">
+                    <div style="height: 900px;width:100%;font-size:12px !important;">
+                        <div class="row" style="margin-left:20px;margin-right:20px;">
+                            <br/>
+                            <center>
+                                <span><strong style="font-size:16px !important; text-decoration: underline;">આઈ.સી.યુ.(આપાતકાલીન સેવા) માં દાખલ કરવા અંગેનું સહમતિ પત્રક :-</strong></span><br/>
+                            </center><br/>
+                        </div>
+                        <div class="row" style="text-align:right;margin-left:20px;margin-right:20px;">
+                            <span>સમય અને તારીખ:____________</span><br/>
+                        </div>
+                        <div class="row" style="margin-left:20px;margin-right:20px;">
+                            <div class="col-xs-6" style="text-align:left;">
+                                <span style="margin-left:-14px;">દર્દી નું નામ :____________________</span><br/>
+                                <span style="margin-left:-14px;">દર્દી નો દાખલા નંબર :____________________</span><br/>
+                            </div>
+                            <div class="col-xs-6" style="text-align:right">
+                                <span>ઉંમર અને જાતિ:___________________</span><br/>
+                                <span>ડૉક્ટર:___________________</span><br/>
+                            </div>
+                        </div>
+                        <div class="row mt16" style="margin-left:20px;margin-right:20px;">
+                            <span>હું,______________________ (દર્દી /તેની સાથે જવાબદાર વ્યક્તિ )સમજુ છું કે ____________ (દર્દી) ને  જીવન બચાવવા માટે આઈ.સી.યુ  માં દાખલ કરવા પડે એમ છે. આપાતકાલીન સેવામાં દર્દી ની તે સમય ની પરિસ્થિતિ ને અનુરૂપ શ્વાચ્છોશ્વાસ માટે નું કૃત્રિમ સાધન, આવશ્યક અન્ય સારવાર તેમજ સાધન નો આઈ.સી.યુ. માં સમાવેશ થાય છે.</span><br/>
+                            <span>અમને અમે સમજી શકીએ એવી ભાષા માં દર્દી ની તબિયત અંગે ની જાણકારી આપવામાં આવી છે.</span><br/>
+                            <span>અમારી સાથે એ પણ ચર્ચા થઇ છે કે આપાતકાલીન સેવામાં ઉપલબ્ધ વૈકલ્પિક સારવાર ને લગતા લાભ અને જોખમો અને કોઈ વિશેષ સહમતી નો પણ સમાવેશ થાય છે.</span><br/>
+                            <span>અમે આપાતકાલીન સેવા ને લગતા તમામ નિયમો નું પાલન કરવા સહમત છીએ, જે નીચે પ્રમાણેના છે.</span><br/>
+                            <span>1. દરેક સંબંધીએ આઈ.સી.યુ  ની જરૂરિયાત ને  લગતા નિયમો નું પાલન કરવું  </span><br/>
+                            <span>2. દરેક સબંધી એ સૂચવેલ સમય અનુસાર દિવસ માં ચાર વખત દર્દી ને મળી શકાશે પરંતુ આખો દિવસ એની સાથે રહી શકશે નહિ.<br/>(૧૧ થી ૧૧:૩૦ - સવારે, ૩ થી ૩:૩૦ બપોરે, ૬ થી ૬:૩૦ સાંજે, ૧૦ થી ૧૦:૩૦ રાત્રે)<br/> ૧૨ વર્ષ થી નીચેના બાળકો માટે આઈ.સી.યુ માં પ્રવેશબંધી છે. </span><br/>
+                            <span>3. તમને દર્દી ના નજીક ના કોઈ બે સંબંધી અંગે વિગત જણાવવા વિનંતી :</span><br/>
+                            <div class="col-xs-6" style="text-align:left;">
+                                <span >નામ :____________________</span><br/>
+                                <span >નામ :____________________</span><br/>
+                            </div>
+                            <div class="col-xs-6" style="text-align:right">
+                                <span>મોબાઈલ નંબર:___________________</span><br/>
+                                <span>મોબાઈલ નંબર:___________________</span><br/>
+                            </div>
+                            <div style="margin-left:10px;">
+                                <span>સવારે ૯:૦૦ થી  ૧૨:૦૦ ના સમય માં ઉપર જણાવેલ સંબંધીઓ ને દર્દી ની તબિયત અંગે માહિતી આપવામાં આવશે. તેમની ગેરહાજરી માં તેમના ઘ્વારા સૂચવેલ વ્યક્તિ ને તબિયત અંગે ની માહિતી આપવામાં આવશે.</span>
+                            </div>
+
+                            <span>4. જયારે દર્દી આઈ.સી.યુ. માં રાખેલ હોય ત્યારે એ દર્દી ના સંબંધી ને રૂમ મળે નહિ તેમ છતાં જો રૂમ ની જરૂરિયાત હશે તો તે અંગે ની રકમ ભરવા પાત્ર થશે.</span><br/>
+                            <span>5. દર્દી ના સંબંધીઓ આઈ.સી.યુ  માટે ની યોગ્ય રકમ જમા કરાવાની રહેશે. નિયમિત રીતે બિલ ની રકમ ભરવાની રહેશે.</span><br/>
+                            <div>
+                                <br/>
+                                <span>હું સહમતી આપું છું કે આઈ.સી.યુ માં દાખલ કરવામાં આવે અને તેને લગતી તમામ પ્રક્રિયા શરુ થાય.<br/><br/>સગા : સંબંધી / દેખરેખ રાખનાર/દર્દી નું નામ  :___________________________</span>
+                            </div>                                  
+                            <div class="row" style="margin-left:20px;margin-right:20px;">
+                                <div class="col-xs-6" style="text-align:left;">
+                                    <span>દર્દી સાથે નો સંબંધ _______________</span><br/>
+                                    <span>સહી ________</span><br/>
+                                </div>
+                                <div class="col-xs-6" style="text-align:right">
+                                    <span>તારીખ : ____________</span><br/>
+                                    <span>સમય : ____________</span><br/>
+                                </div>
+                            </div>
+                            <br/>
+                        </div>
+            </div>
+                </t>
+            </div>            
+        </template>
+
+        <template id="report_icu_admission_consent">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="hms_hospitalization.report_admission_icu_consent_document"/>
+                </t>
+            </t>
+        </template>
+
+        <report 
+            id="hms_hospitalization.report_icu"
+            string="ICU Admission Consent Report"
+            model="inpatient.consent" 
+            report_type="qweb-pdf"
+            file="hms_hospitalization.report_icu_admission_consent" 
+            name="hms_hospitalization.report_icu_admission_consent"
+            menu="False"
+        />
+
+        <record id="paperformat_indimedi_sale_order_oa_report_icu" model="report.paperformat">
+            <field name="name">ICU</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">10</field>
+            <field name="margin_bottom">15</field>
+            <field name="margin_left">10</field>
+            <field name="margin_right">10</field>
+            <field name="header_line" eval="False" />
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="hms_hospitalization.report_icu" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="hms_hospitalization.paperformat_indimedi_sale_order_oa_report_icu" />
+        </record>
+
+        <!-- Informed consent costly Report 28/11-->
+
+        <template id="report_informed_consent_document">
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+            <div class="page">
+                <div class="col-xs-12" style="margin:15px;">
+                    <div class="col-xs-4">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 80px;"/><br/>
+                    </div>
+                    <div class="col-xs-4" style="text-align:center;">
+                        <div class="row" style="margin-top:18px;margin-right:10px;">
+                            <span style="font-size:16px;text-decoration: underline;"><b>INFORMED CONSENT</b></span><br/>
+                            <span style="font-size:16px;">(For High Cost Medicine)</span><br/>
+                            <span style="font-size:13px;">(To be Filled by Medical officer)</span><br/>
+                        </div>
+                    </div>
+                    <div class="col-xs-4" >
+                        <center>
+                            <div style="text-align:right;width:200px;height:100px;border:1px solid black;">
+                                <center>
+                                    <br/>
+                                    <br/>
+                                    <span style="margin-top:50px;">Addresograph</span>
+                                </center>
+                            </div>
+                        </center>
+                    </div>
+                </div>
+
+            <t t-foreach="docs" t-as="t">
+                    <div style="height: 900px;width:100%;font-size:12px !important;">
+                    <div class="row" style="border-bottom:1px solid black;margin-left:20px;margin-right:20px;" >
+                        <br/><br/>
+                        <span>Date:______________ </span><span>Time:____________</span><br/>
+                        <table class="table table-condensed">
+                            <tr>
+                                <td style="border:1px solid black;width:20%;text-align:center;">
+                                    <span>Sr.No.</span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span>Name of Medicine</span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span>Approximate Cost(per dose)</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid black;width:20%;text-align:center;">
+                                    <span> 1 </span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span></span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid black;width:20%;text-align:center;">
+                                    <span> 2 </span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span></span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid black;width:20%;text-align:center;">
+                                    <span> 3 </span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span></span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid black;width:20%;text-align:center;">
+                                    <span> 4 </span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span></span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid black;width:20%;text-align:center;">
+                                    <span> 5 </span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span></span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid black;width:20%;text-align:center;">
+                                    <span> 6 </span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span></span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span></span>
+                                </td>
+                            </tr>
+                        </table>
+                        <span style="font-size:13px;">I have been informed about the price of above medicine/s prescribed by doctor in a language I understand. Here by I agree to above mentioned treatment/course of treatment.</span><br/><br/><br/>
+
+                    <div class="col-xs-6" style="text-align:left;">
+                        <center>
+                            <span><b>____________________________________</b></span><br/>
+                            <span><b>____________________________________</b></span><br/>
+                            <span><b>Sign and Name of Medical Officer</b><br/><b> with Emp.ID No.</b></span>
+                        </center> 
+                    </div>
+                    <div class="col-xs-6" style="text-align:left;">
+                        <center>
+                            <span><b>____________________________________</b></span><br/>
+                            <span><b>____________________________________</b></span><br/>
+                            <span><b>Sign and Name of Patient / Relative</b></span>
+                        </center>
+                    </div>
+
+                    </div>
+
+                    <div class="row" style="margin-left:20px;margin-right:20px;font-size:12px !important;">
+                        <br/>
+                        <center>
+                            <span><strong style="font-size:16px !important; text-decoration: underline;">સંમતિની જાણકારી </strong></span><br/>
+                            <span style="font-size:14px !important;">(કિંમતી દવાઓ માટેં)</span><br/>
+                        </center>
+
+                        <span>તારીખ:______________ </span><span>સમય:____________</span><br/>
+                        <table class="table table-condensed">
+                            <tr>
+                                <td style="border:1px solid black;width:20%;text-align:center;">
+                                    <span>અનુક્રમ નંબર</span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span>દવાનું નામ</span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span>અંદાજિત કિંમત(એક વખત ની માત્રા નો)</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid black;width:20%;text-align:center;">
+                                    <span> ૧ </span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span></span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid black;width:20%;text-align:center;">
+                                    <span> ૨ </span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span></span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid black;width:20%;text-align:center;">
+                                    <span> ૩ </span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span></span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid black;width:20%;text-align:center;">
+                                    <span> ૪ </span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span></span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid black;width:20%;text-align:center;">
+                                    <span> ૫ </span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span></span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid black;width:20%;text-align:center;">
+                                    <span> ૬ </span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span></span>
+                                </td>
+                                <td style="border:1px solid black;width:40%;text-align:center;">
+                                    <span></span>
+                                </td>
+                            </tr>
+                        </table>
+                        <span>મને ડૉક્ટર દ્વારા સૂચવેલ દવા ની કિંમત વિશે જાણકારી પ્રાપ્ત થયેલ છે , જે હું સમજુ  એ ભાષા માં મળેલ છે.  હું ઉપયુક્ત જણાવેલ સારવાર અથવા સારવારના તબક્કા સાથે સંમત છું . </span><br/>
+                        <span>મેડિકલ ઓફિસર નું નામ: ________________________________________________________________________________________</span><br/>
+                        <span>સહી:_______________________________</span><span>કર્મચારી આઈ.ડી.:_______________</span><br/>
+                        <span>દર્દી સગા-સંબંધીનું નામ:_____________________________________________________________________</span><br/><span>સહી ___________________</span>
+
+                    </div>
+
+
+            </div>
+            </t>
+            </div>
+        </template>
+
+        <template id="report_inform_consent_costly_admission_consent">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="hms_hospitalization.report_informed_consent_document"/>
+                </t>
+            </t>
+        </template>
+
+        <report 
+            id="hms_hospitalization.report_inform_consent"
+            string="Informed Consent Costly Report"
+            model="inpatient.consent" 
+            report_type="qweb-pdf"
+            file="hms_hospitalization.report_inform_consent_costly_admission_consent" 
+            name="hms_hospitalization.report_inform_consent_costly_admission_consent"
+            menu="False"
+        />
+
+        <record id="paperformat_indimedi_sale_order_oa_report_costly" model="report.paperformat">
+            <field name="name">Costly</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">10</field>
+            <field name="margin_bottom">15</field>
+            <field name="margin_left">10</field>
+            <field name="margin_right">10</field>
+            <field name="header_line" eval="False" />
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="hms_hospitalization.report_inform_consent" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="hms_hospitalization.paperformat_indimedi_sale_order_oa_report_costly" />
+        </record>
+
+
+         <!--Stoma Report  -->
+        <template id="report_stoma_document">
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+            <div class="page" style="border: 1px solid white">
+                <div class="col-xs-12" style="margin:15px;">
+                    <div class="col-xs-6">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 80px;"/><br/>
+                    </div>
+                    <div class="col-xs-4">
+                        <p><b>Consent for Colonoscopy</b></p>
+                    </div>
+                    <div class="col-xs-6">
+                          <div class="pull-right" style="line-height: 15px;">
+                            <span t-field="company.street"/>
+                            <span t-field="company.street2"/>
+                            <span t-field="company.zip"/>.
+                            <span>(<span style="text-transform: uppercase;" t-field="company.state_id.name"/>)
+                            <span style="text-transform: uppercase;" t-field="company.country_id.name"/></span><br/><br/>
+                            <strong>Tel. No.: </strong>  <span t-field="company.phone"/> <br/>
+
+                            <strong>| Email: </strong><span t-field="company.email"/><br/>
+                            <strong>| Website: </strong><span t-field="company.website"/> <br/><br/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="col-xs-4">
+                    </div>
+                     <div class="col-xs-4">
+                    </div>
+                     <div class="col-xs-4">
+                        <span t-esc="datetime.datetime.now().date()" />
+                    </div>
+                </div>
+                 <div class="col-xs-12">
+                    <center><strong><h1>Stoma Consent</h1></strong></center>
+                 </div>
+            
+                <t t-foreach="docs" t-as="t">
+                    <div class="col-xs-12">
+                    <span >
+                        <p style = "left-margin:10px;line-height:2;"> <h4 style="margin-bottom:10%">we have been informed regarding formation of ileostomy /
+                    colostomy during the surgery, which would be temparory lpermanent '
+                    we have been explained the consequences of same and its management'
+                    we give consent for making a stoma after knowing all the d'etailed'
+                    </h4></p>
+                        </span>
+                        <div class="col-xs-12">
+                            <div class="col-xs-3">
+                                <span><h4>M.O Name</h4> <br/>
+                                <br/>
+                                <br/><h4>
+                                Signature -
+                                </h4></span>
+                            </div>
+                        <div class="col-xs-3">
+                        </div>
+                        
+                        <div class="col-xs-3">
+                        <span style="text-align:left"><h4>
+                          Relatives Name</h4><br/>
+                          <br/><h4>
+                          Relation</h4>
+                          <br/><h4>
+                          Signature -</h4>
+                        </span>
+                    </div>
+                    <div class="col-xs-3">
+                    </div>
+                </div>
+                </div>
+                </t>
+            </div>
+        </template>
+
+        <template id="report_stoma">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="hms_hospitalization.report_stoma_document"/>
+                </t>
+            </t>
+        </template>
+
+        <report 
+            id="hms_hospitalization.report_stoma_report"
+            string="Stoma Consent"
+            model="inpatient.consent" 
+            report_type="qweb-pdf"
+            file="hms_hospitalization.report_stoma" 
+            name="hms_hospitalization.report_stoma"
+            menu="False"
+        />
+
+        <record id="paperformat_indimedi_sale_order_oa_report_stoma" model="report.paperformat">
+            <field name="name">stoma</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">10</field>
+            <field name="margin_bottom">15</field>
+            <field name="margin_left">10</field>
+            <field name="margin_right">10</field>
+            <field name="header_line" eval="False" />
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="hms_hospitalization.report_stoma_report" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="hms_hospitalization.paperformat_indimedi_sale_order_oa_report_stoma" />
+        </record>
+
+
+         <!--intubation Report  -->
+        <template id="report_intubation_document">
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+            <div class="page" style="border: 1px solid white;">
+                <div class="col-xs-12" style="margin:15px;">
+                    <div class="col-xs-6">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 80px;"/><br/>
+                    </div>
+                    
+                    <div class="col-xs-6">
+                          <div class="pull-right" style="line-height: 15px;">
+                            <span t-field="company.street"/>
+                            <span t-field="company.street2"/>
+                            <span t-field="company.zip"/>.
+                            <span>(<span style="text-transform: uppercase;" t-field="company.state_id.name"/>)
+                            <span style="text-transform: uppercase;" t-field="company.country_id.name"/></span><br/><br/>
+                            <strong>Tel. No.: </strong>  <span t-field="company.phone"/> <br/>
+
+                            <strong>| Email: </strong><span t-field="company.email"/><br/>
+                            <strong>| Website: </strong><span t-field="company.website"/> <br/><br/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="col-xs-4">
+                    </div>
+                     <div class="col-xs-4">
+                    </div>
+                     <div class="col-xs-4">
+                        <span t-esc="datetime.datetime.now().date()" />
+                    </div>
+                </div>
+                 <div class="col-xs-12">
+                    <center><h1>Stoma Consent</h1></center>
+                 </div>
+            
+                 <t t-foreach="docs" t-as="t">
+                       
+                       <p><h4>કા ઈ ઝન હોસ્પિટલ</h4></p>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p style="font-size:25px;"><center><u><strong><h2><b>ઇન્ટુબેશન  સારવાર અંગે નું સંહામતિ પત્રક  </b></h2></strong></u></center>
+                                </p><p></p><br/>
+                            </div>
+                        
+                            <div class="col-xs-12">
+                                    <div class= "col-xs-6">
+                                    </div>
+                                <div class="col-xs-6">
+                                 <p style="font-size:20px;" class="pull-left">તારીખ અને સમય:.......... 
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12">
+                                <div class="col-xs-6">
+                                    <p style="font-size:20px;" class="pull-left">દર્દી નું નામ :..........</p>
+                                </div>
+                                 <div class="col-xs-6">
+                                    <p style="font-size:20px;">ઉમર અને જતી :..........</p>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12">
+                                <div class="col-xs-6">
+                                    <p style="font-size:20px;" class="pull-left">દર્દી નો દાખલ નંબર :..........</p>
+                                </div>
+                                <div class="col-xs-6">
+                                    <p style="font-size:20px;">ડૉક્ટર :..........</p>
+                                </div>
+                            </div>
+
+                         <div class="col-xs-12">
+                           
+                                <p style="font-size:20px;width: 900px; padding: 5px;" class="pull-left">અમને એવું જાણવામાં આવ્યું છે, દર્દી............... ની તબિયત દયાન માં રાખીને। ઇન્ટુબેશન સારવાર આપવાની જરૂર પડી છે.અમને આ પક્રિયા ને લગતા તમામ લાભ તેમજ જોખમો વિષે માહિતગાર કરવામાં આવેલ છે.અને ઇન્ટુબેશન આવતી પ્રતિકિયા ને લગતા લાભ અને જોખમો ને સાચી રીતે સમજ્યા છે ,</p>
+                            
+                        </div>
+                       
+                            <div class="col-xs-6">
+                                <p style="font-size:20px;" class="pull-left">મેડિકલ ઓફિસર નું નામ :............</p><br/>
+                            </div>
+                            <br/>
+                        <div class="col-xs-12">
+                            <div class="col-xs-6">
+                                <p style="font-size:20px;" class="pull-left">સહી :............</p><br/>
+                            </div>
+                        </div>
+                            <div class="col-xs-6">
+                                    <p style="font-size:20px;" class="pull-left">તારીખ અને સમય :............</p><br/>
+                            </div>
+
+                       
+                            <div class="col-xs-8">
+                                          <p style="font-size:20px;" class="pull-left">
+            દર્દી નુ નામ / સાગા સંધધી / દખરેખ રાખીનાર :.............</p>
+                            </div>
+                             <div class="col-xs-4">
+                                <p style="font-size:20px;">તારીખ:............</p>
+                             </div>
+                       
+                                <div class="col-xs-8">
+                                    <p style="font-size:20px;" class="pull-left">
+                                    દર્દી સાથે સંબંધ:............</p>
+                                </div>
+                      
+                                <div class="col-xs-4">
+                                     <p style="font-size:20px">સમય :............</p>
+                                </div>
+                            
+                         
+                            <div class="col-xs-6">
+                                <p style="font-size:20px;" class="pull-left">સહી  :..........</p>
+                            </div>
+                          
+                           </div>
+                </t>
+            </div>
+        </template>
+
+        <template id="report_intubation">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="hms_hospitalization.report_intubation_document"/>
+                </t>
+            </t>
+        </template>
+
+        <report 
+            id="hms_hospitalization.report_intubation_report"
+            string="Intubation Consent"
+            model="inpatient.consent" 
+            report_type="qweb-pdf"
+            file="hms_hospitalization.report_intubation" 
+            name="hms_hospitalization.report_intubation"
+            menu="False"
+        />
+
+        <record id="paperformat_indimedi_sale_order_oa_report_inbatuation" model="report.paperformat">
+            <field name="name">Intubation</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">10</field>
+            <field name="margin_bottom">15</field>
+            <field name="margin_left">10</field>
+            <field name="margin_right">10</field>
+            <field name="header_line" eval="False" />
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="hms_hospitalization.report_intubation_report" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="hms_hospitalization.paperformat_indimedi_sale_order_oa_report_inbatuation" />
+        </record>
+
+
+        <!--team_admission Report  -->
+        <template id="report_team_admission_document">
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+            <div class="page" style="border: 1px solid white;">
+                <div class="col-xs-12" style="margin:15px;">
+                    <div class="col-xs-6">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 80px;"/><br/>
+                    </div>
+                   
+                    <div class="col-xs-6">
+                          <div class="pull-right" style="line-height: 15px;">
+                            <span t-field="company.street"/>
+                            <span t-field="company.street2"/>
+                            <span t-field="company.zip"/>.
+                            <span>(<span style="text-transform: uppercase;" t-field="company.state_id.name"/>)
+                            <span style="text-transform: uppercase;" t-field="company.country_id.name"/></span><br/><br/>
+                            <strong>Tel. No.: </strong>  <span t-field="company.phone"/> <br/>
+
+                            <strong>| Email: </strong><span t-field="company.email"/><br/>
+                            <strong>| Website: </strong><span t-field="company.website"/> <br/><br/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="col-xs-4">
+                    </div>
+                     <div class="col-xs-4">
+                    </div>
+                     <div class="col-xs-4">
+                        <span t-esc="datetime.datetime.now().date()" />
+                    </div>
+                </div>
+                
+                 <t t-foreach="docs" t-as="t">
+                       <p><h4>કા ઈ ઝન હોસ્પિટલ</h4> </p>
+                       
+                        <div class="row">
+                            <p style="font-size:25px;"><center><u><strong><h4><b>પ્રવેશ માટે નું સહમતી પત્રક </b></h4></strong></u></center>
+                            </p>
+
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="col-xs-6">
+                            </div>
+                            <div class="col-xs-6">
+                         <p style="font-size:20px;" class ="pull-right"><h4>તારીખ અને સમય :__________</h4>
+                            </p>
+                        </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="col-xs-6">
+                                <p style="font-size:20px;" class="pull-left">દર્દી નું નામ :________________</p>
+                            </div>
+                            <div class="col-xs-6">
+                                <p style="font-size:20px;" class="pull-right">ઉમર અને જતી :_________________</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="col-xs-6">
+                                <p style="font-size:20px;" class="pull-left">દર્દી નો દાખલ નંબર :____________</p>
+                            </div>
+                            <div class="col-xs-6">
+                                <p style="font-size:20px;" class="pull-right">ડૉક્ટર :_________________</p>
+                            </div>
+                        </div>
+                         <div class="col-xs-12">
+                            <div class="col-xs-12">
+                                <p style="font-size:20px;left-margin:10px" class="pull-left">હું ______________ સારવાર અર્થે ડૉક્ટર ____________ દેખરેખ હેઠળ કાઈઝન  હોસ્પિટલ માં દાખલ થયો છું./ થઈ  છું।</p>
+                                 <p style="font-size:20px;left-margin:10px" class="pull-left">
+                                અમને આવી જાણકારી આપવામાં આવી છેકે ,</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="col-xs-12">
+                                <p style="font-size:20px;left-margin:10px" class="pull-left">1 )આ હોસ્પિટલ માં ડો સંજીવ હરિભક્તિ ,ડો કે.એસ.પટેલ ,ડો.અતુલ શાહ ,ડો હર્ષદ સોની પેટ ની શસ્ત્રક્રિયા  ના તજજ્ઞ તબીબો ની 
+ટીમ દર્દી ની  સારવાર કરશે,
+                                જો કોઈ તબીબ કે જેની સારવાર દર્દી લઈ રહ્યા છે.તેની અનુપરિસ્તિ  માં આ 
+ટીમ પૈકીના કોઈ એક ડૉક્ટર દર્દીની દેખભાળ કરશે।,</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="col-xs-12">
+                                <p style="font-size:20px;left-margin:10px" class="pull-left">2 )આ  ઉપરાંત દર્દી ની તબિયત ને ધ્યાન માં રાખી ને સ્પેશ્યલ ક્રિટીકૅલ કરે સેવા ના તબીબ ર્ડિઓલોજિસસટીક અને અન્ય નિસનિશ્રાંત તબીબોના 
+ટીમ ની પણ મદદ લેવાશે,</p>
+                            </div>
+                        </div>
+                         <div class="col-xs-12">
+                            <div class="col-xs-12">
+                                <p style="font-size:20px;left-margin:10px" class="pull-left">હું કાઇઝન  હોસ્પિટલ ને દર્દીની સારવાર કરવા માટે પ્રમાણિત કરું છું.</p>
+                            </div>
+                        </div>
+                         <div class="col-xs-12">
+                            <div class="col-xs-12">
+                                <p style="font-size:20px;left-margin:5px" class="pull-left">દર્દી નું નામ /સાગા સબંધી/દેખરેખ રાખનાર :________________________</p>
+                            </div>
+                        </div>
+                         <div class="col-xs-12">
+                            <div class="col-xs-6">
+                                <p style="font-size:20px;left-margin:5px" class="pull-left">દર્દી નો સંબંધ :______________</p>
+                            </div>
+                            <div class="col-xs-6">
+                                <p style="font-size:20px;" class="pull-right">તારીખ :_________________</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="col-xs-6 pull-left">
+                                <p style="font-size:20px;" class="pull-left">સહી :____________</p><br/>
+                            </div>
+                            <div class="col-xs-6">
+                                <p style="font-size:20px;" class="pull-right">સમય  :_________________</p>
+                            </div>
+                        </div>
+                </t>
+            </div>
+        </template>
+
+        <template id="report_team_admission">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="hms_hospitalization.report_team_admission_document"/>
+                </t>
+            </t>
+        </template>
+
+        <report 
+            id="hms_hospitalization.report_team_admission_report"
+            string="Team Admission Consent"
+            model="inpatient.consent" 
+            report_type="qweb-pdf"
+            file="hms_hospitalization.report_team_admission" 
+            name="hms_hospitalization.report_team_admission"
+            menu="False"
+        />
+
+        <record id="paperformat_indimedi_sale_order_oa_report_team" model="report.paperformat">
+            <field name="name">Team</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">10</field>
+            <field name="margin_bottom">20</field>
+            <field name="margin_left">10</field>
+            <field name="margin_right">10</field>
+            <field name="header_line" eval="False" />
+            <field name="dpi">80</field>
+        </record>
+
+        <record id="hms_hospitalization.report_team_admission_report" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="hms_hospitalization.paperformat_indimedi_sale_order_oa_report_team" />
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="patient_cardreport">
+            <t t-call="web.html_container">
+            <!-- <t t-call="report.html_container"> -->
+                <t t-foreach="docs" t-as="o">
+                    <!-- <t t-call="report.external_layout"> -->
+                    <div class="page">
+                        <!-- <h2>Report title</h2> -->
+                        <table style="border:1px solid;width:400px;height:150px;font-size: 120%">
+                            <tbody>
+                                <tr>
+                                    <td style="border:1px solid;color: black;padding:10">
+                                    <!-- <td style="border:1px solid;background-color: red;color: black;padding:10"> -->
+                                        <p>ID : <span t-field="o.code" /></p>
+                                    </td>
+                                    <!-- <td style="border:1px solid;background-color:grey"></td> -->
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid;padding:10">
+                                        <p>Name : <span t-field="o.name" /></p>
+                                        <p>DOB  : <span t-field="o.dob" /></p>
+                                        <p>Age  : <span t-field="o.age" /></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- </t> -->
+                </t>
+            </t>
+        </template>
+        <report id="patient_card_report_id"
+               string="Patient Card Report"
+               model="banastech.hms.patient" 
+               report_type="qweb-pdf"
+               file="banastech_hms.patient_cardreport" 
+               name="banastech_hms.patient_cardreport"/>
+    </data>
+</odoo>

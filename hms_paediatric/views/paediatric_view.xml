@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- <record id="view_banas_hms_medicament_context_tree" model="ir.ui.view">
+            <field name="name">medicament.content.tree</field>
+            <field name="model">banas.hms.medicament.content</field>
+            <field name="inherit_id" ref="banastech_hms.view_banas_hms_medicament_context_tree"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="minimum"/>
+                    <field name="maximum"/>
+                </field>
+            </field>
+        </record>
+        <record id="view_banas_hms_medicament_content_form" model="ir.ui.view">
+            <field name="name">medicament.content.form</field>
+            <field name="model">banas.hms.medicament.content</field>
+            <field name="inherit_id" ref="banastech_hms.view_banas_hms_medicament_content_form"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="minimum"/>
+                    <field name="maximum"/>
+                </field>
+            </field>
+        </record> -->
+        <record id="view_patient_paediatric_form" model="ir.ui.view">
+            <field name="name">banastech.hms.patient.form</field>
+            <field name="model">banastech.hms.patient</field>
+            <field name="inherit_id" ref="banastech_hms.view_banastech_hms_patient_form"/>
+            <field name="arch" type="xml">
+               <!--  <field name="gender" position="after">
+                    <field name="department_name" invisible="1"/>
+                </field>
+                <field name="marital_status" position="attributes">
+                    <attribute name="attrs"></attribute>
+                    {'invisible': [('department_name', '!=', 'Orthopedic')]}
+                </field>
+                <field name="is_corpo_tieup" position="attributes">
+                    <attribute name="attrs"></attribute>
+                    {'invisible': [('department_name', '!=', 'Orthopedic')]}
+                </field> -->
+                <notebook position="inside">
+                    <page string="Paediatric" >
+                        <!-- attrs="{'invisible': [('department_name', '=', 'Orthopedic')]}"  -->
+                        <notebook>
+                            <page string="Analytics Report">
+                                <field name="appointment_ids" >
+                                    <!-- mode="graph" -->
+                                    <!-- <tree>  commented cause getting field error
+                                        <field name="date_start"/>
+                                        <field name="weight"/>
+                                    </tree> -->
+                                    <!-- <graph domain="[('patient_id', '=', active_id)]">
+                                        <field name="weight" type="measure"/>
+                                        <field name="date_start" interval="day"/>
+                                    </graph> -->
+                                </field>
+                            </page>
+                            <page string="Newborn Examinations">
+                                <group>
+                                    <group>
+                                        <field name="ft_pt"/>
+                                        <field name="nd_cs"/>
+                                        <field name="vital_data"/>
+                                        <field name="tl"/>
+                                        <field name="hc"/>
+                                        <field name="skin_eruption"/>
+                                    </group>
+                                    <group>
+                                        <field name="eyes"/>
+                                        <field name="born_color"/>
+                                        <field name="systemic_examination"/>
+                                        <field name="cong"/>
+                                        <field name="pulsation"/>
+                                        <field name="nnr"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Mother History">
+                                <group>
+                                    <group>
+                                        <field name="m_age"/>
+                                        <label for="m_blood_type"/>
+                                        <div>
+                                            <field name="m_blood_type"/>
+                                            <field name="m_rh"/>
+                                        </div>
+                                        <field name="m_usg"/>
+                                        <field name="m_medical_i_d_p"/>
+                                        <field name="m_delievery_details"/>
+                                    </group>
+                                    <group>
+                                        <field name="m_para_gravida"/>
+                                        <field name="m_aml"/>
+                                        <field name="m_antenatal_care"/>
+                                        <field name="m_vaccination_advice"/>
+                                        <field name="m_previous_gynaec_history"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Milestones" groups="banastech_hms.group_banas_hms_jr_doctor" invisible="1">
+                                <field name="milestone_ids" nolabel="1">
+                                    <tree string="Child Milestone Master" editable="top">
+                                        <field name="name"/>
+                                        <field name="min_val"/>
+                                        <field name="max_val"/>
+                                        <field name="value"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+       <!--  <record id="view_appointment_paediatric_form" model="ir.ui.view">
+            <field name="name">banastech.hms.appointment.form</field>
+            <field name="model">banastech.hms.appointment</field>
+            <field name="priority" eval="9" />
+            <field name="inherit_id" ref="banastech_hms_orthopedic.view_banastech_hms_appointment_form"/>
+            <field name="arch" type="xml"> -->
+                <!-- <button name="appointment_done" position="after">
+                    <button name="create_padetric_invoice" string="Create Invoice" groups="hms.group_hms_receptionist" type="object" class="oe_highlight" attrs="{'invisible': ['|','|','|',('pae_foc', '!=', False),('invoice_id', '!=', False),('state','=','cancelled'),('department_name','!=','Paediatric')]}" />
+                </button>
+
+                <page name="history" position="attributes">
+                    <attribute name="attrs">{'invisible': [('department_name', '!=', 'Orthopedic')]}</attribute>
+                </page>
+                <page name="radio_history" position="attributes">
+                    <attribute name="attrs">{'invisible': [('department_name', '!=', 'Orthopedic')]}</attribute>
+                </page>
+                <page name="info" position="attributes">
+                    <attribute name="attrs">{'invisible': [('department_name', '!=', 'Orthopedic')]}</attribute>
+                </page>
+                <page name="payment_history" position="attributes">
+                    <attribute name="attrs">{'invisible': [('department_name', '!=', 'Orthopedic')]}</attribute>
+                </page>
+                <page name="prescription_price" position="attributes">
+                    <attribute name="attrs">{'invisible': [('department_name', '!=', 'Orthopedic')]}</attribute>
+                </page> -->
+
+                <!-- <notebook position="inside"> -->
+                    <!-- <page string="General Information" groups="banastech_hms.group_banas_hms_jr_doctor" > -->
+                         <!-- attrs="{'invisible': [('department_name', '!=', 'Paediatric')]}"  -->
+                        <!-- <div style="float:left; width:49%"> -->
+                            <!-- <separator string="Basis"/>
+                            <group>
+                                <field name="weight" required="1"/>
+                                <field name="head_cir" string="Head Circumference" />
+                                <field name="height" string="Height" />
+                            </group>
+                            <group>
+                                <br/>
+                            </group> -->
+                            <!-- <separator string="Chief Complain" /> -->
+                            <!-- <field name="paediatric_chief_complain_ids">
+                                <tree editable="bottom">
+                                    <field name="name" required="1" />
+                                    <field name="days" widget="float_time" />
+                                </tree>
+                            </field>
+                            <separator string="C.V.S" />
+                            <field name="cvs" />
+                            <separator string="Other Findings" />
+                            <field name="comments" /> -->
+                        <!-- </div> -->
+                        <!-- <div style="float:right; width:49%"> -->
+                            <!-- <separator string="Examination" /> -->
+                            <!-- <group>
+                                <field name="bp" string="Throat" />
+                                <field name="hr" />
+                                <field name="temp" />
+                                <field name="rr" />
+                            </group>
+                            <separator string="Systemic Examination" />
+                            <field name="patient_diseases">
+                                <tree editable="bottom">
+                                    <field name="disease" stri="Name" />
+                                    <field name="treatment_description" string="Description" />
+                                </tree>
+                            </field>
+                            <separator string="C.N.S"/>
+                            <field name="cns" /> -->
+                            <!-- <br/> -->
+                            <!-- <separator string="Consultation Service"/> -->
+                            <!-- <group> -->
+                                <!-- <group>
+                                    <field name="pae_product_id" string="Service Type" required="1" context="{'default_type':'service','default_hospital_product_type':'consultation'}" domain="[('hospital_product_type', '=', 'consultation')]" style="width:150%" />
+                                </group>
+                                <group> -->
+                                    <!-- <field style="margin-left:35%;" name="pae_special_price" nolabel="1" attrs="{'invisible': [('pae_reg_spe', '=', 'reg')]}" /> -->
+                                <!-- </group> -->
+                                <!-- <group>
+                                    <field name="pae_foc" />
+                                    <field name="pae_follow_foc" />
+                                </group>
+                                <group>
+                                    <field name="pae_reg_spe" widget="radio" groups="hms.group_hms_doctor" />
+                                    <field name="pae_special_day" />
+                                </group> -->
+                            <!-- </group> -->
+                       <!--  </div>
+                    </page> -->
+                   <!--  <page string="Newborn Examinations" attrs="{'invisible': ['|', ('department_name', '!=', 'Paediatric'), ('visit_count', '>', 0)]}">
+                        <group>
+                            <group>
+                                <field name="ft_pt"/>
+                                <field name="nd_cs"/>
+                                <field name="vital_data"/>
+                                <field name="tl"/>
+                                <field name="hc"/>
+                                <field name="skin_eruption"/>
+                            </group>
+                            <group>
+                                <field name="eyes"/>
+                                <field name="born_color"/>
+                                <field name="systemic_examination"/>
+                                <field name="cong"/>
+                                <field name="pulsation"/>
+                                <field name="nnr"/>
+                            </group>
+                        </group>
+                    </page> -->
+                    <!-- <page string="Newborn Examination at Follow Up" attrs="{'invisible': ['|', ('department_name', '!=', 'Paediatric'), ('visit_count', '&lt;', 1)]}">
+                        <field name="newborn_ex_follow_ids">
+                            <tree>
+                                <field name="nnr"/>
+                                <field name="jaundice"/>
+                                <field name="conjuctivities"/>
+                                <field name="skin_eruption"/>
+                                <field name="ymbilical_cord"/>
+                                <field name="cvs_murmurs"/>
+                                <field name="vaccination_advice"/>
+                            </tree>
+                            <form>
+                                <sheet>
+                                    <group>
+                                        <group>
+                                            <field name="nnr"/>
+                                            <field name="conjuctivities"/>
+                                            <field name="ymbilical_cord"/>
+                                            <field name="vaccination_advice"/>
+                                        </group>
+                                        <group>
+                                            <field name="jaundice"/>
+                                            <field name="skin_eruption"/>
+                                            <field name="cvs_murmurs"/>
+                                        </group>
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </page> -->
+                    <!-- <page string="Mother History" attrs="{'invisible': [('department_name', '!=', 'Paediatric')]}">
+                        <group>
+                            <group>
+                                <field name="m_age" style="width:25%" />
+                                <label for="m_blood_type"/>
+                                <div>
+                                    <field name="m_blood_type" style="width:25%" />
+                                    <field name="m_rh" style="width:25%" />
+                                </div>
+                                <field name="m_usg" style="width:100%" />
+                                <field name="m_medical_i_d_p" style="width:100%" />
+                                <field name="m_delievery_details" style="width:100%" />
+                            </group>
+                            <group>
+                                <field name="m_para_gravida" style="width:100%" />
+                                <field name="m_aml" style="width:100%" />
+                                <field name="m_antenatal_care" style="width:100%" />
+                                <field name="m_vaccination_advice" style="width:100%" />
+                                <field name="m_previous_gynaec_history" style="width:100%" />
+                            </group>
+                        </group>
+                    </page> -->
+                    <!-- <page string="Prescription" attrs="{'invisible': [('department_name', '!=', 'Paediatric')]}">
+                        <field name="pae_prescription_line" editable="bottom">
+                            <tree editable="bottom">
+                                <field name="content_id"/>
+                                <field name="drug_co_id"/>
+                                <field name="product_id" string="Medicine Name" domain="[('content_ids', '=', content_id), ('hospital_product_type', '=', 'medicament'), ('drug_company_id', '=', drug_co_id),('department_type','in',('pediatrics','both')),('used_in','in',('opd','both'))]"/>
+                                <field name="minimum"/>
+                                <field name="maximum"/>
+                                <field name="common_dosage" />
+                                <field name="days" />
+                                <field name="quantity" string="Quantity" />
+                                <field name="route" string="Volume"/>
+                            </tree>
+                        </field>
+                    </page> -->
+                    <!-- <page name="Vaccination" string="Vaccination" attrs="{'invisible': [('department_name', '!=', 'Paediatric')]}" >
+                        <group col="4">
+                            <field name="vaccination_group_id" style="width:200px;"/>
+                        </group>
+                        <group name="vaccine_info">
+                            <field name="vaccination_line" nolabel="1">
+                                <tree string="vaccination" editable="top">
+                                    <field name="product_id" domain="[('hospital_product_type','=','vaccination')]"/>
+                                    <field name="date_check_due"/>
+                                    <field name="check"/>
+                                    <field name="given_date"/>
+                                    <field name="batch"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group>
+                        </group>
+                    </page> -->
+                    <!-- <page string="Milestones" groups="hms.group_hms_jr_doctor" attrs="{'invisible': [('department_name', '!=', 'Paediatric')]}">
+                                <field name="milestone_ids" nolabel="1">
+                                    <tree string="Child Milestone Master" editable="top">
+                                        <field name="name"/>
+                                        <field name="min_val"/>
+                                        <field name="max_val"/>
+                                        <field name="value"/>
+                                    </tree>
+                                </field>
+                    </page> -->
+                <!-- </notebook> -->
+           <!--  </field>
+        </record> -->
+<!--
+        <record id="action_appointment_paediatric" model="ir.actions.act_window">
+            <field name="name">HMS Appointment</field>
+            <field name="res_model">banastech.hms.appointment</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_id" ref="banastech_hms.view_banastech_hms_appointment_tree"/>
+            <field name="domain"></field>
+                            ['&amp;',('department_name', '=', 'Paediatric'),('state','!=','canceled'),('physician_id.user_id.id','=',uid)]
+            <field name="context">{'search_default_today': 1}</field>
+            <field name="auto_refresh">1</field>
+        </record> -->
+        <!-- <record id="hms.action_appointment" model="ir.actions.act_window">
+            <field name="view_id" ref="hms.view_hms_appointment_tree"/>
+            <field name="domain">['&amp;',('department_name', '=', 'Orthopedic'),('state','!=','canceled'),('physician_id.user_id.id','=',uid)]</field>
+        </record> -->
+
+        <!-- <menuitem id="action_menu_appointment_paediatric"
+            action="action_appointment_paediatric"
+            sequence="10"
+            parent="banastech_hms.menu_banastech_hms_appointment"
+            /> -->
+            <!-- groups="group_hms_paediatric" -->
+
+        <!-- <menuitem id="action_main_menu_appointmnet_paediatric"
+            action="action_appointment_paediatric"
+            sequence="2"
+            groups="group_hms_paediatric"/>-->
+
+        <!-- Mileston Master -->
+        <record id="hms_milestone_template_formview" model="ir.ui.view" >
+            <field name="name">Child Milestone Template</field>
+            <field name="model">child.milestone.template</field>
+            <field name="arch" type="xml">
+                <form string="Child Milestone Master">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" required="1"/>
+                                <field name="min_val"/>
+                                <field name="max_val"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                        <field name="note" placeholder="Note"></field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="hms_milestone_template_treeview" model="ir.ui.view">
+            <field name="name">Child Milestone</field>
+            <field name="model">child.milestone.template</field>
+            <field name="arch" type="xml">
+                <tree string="Child Milestone Master">
+                    <field name="name"/>
+                    <field name="min_val"/>
+                    <field name="max_val"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_hms_milestone_template" model="ir.actions.act_window">
+            <field name="name">Child Milestone Master</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">child.milestone.template</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <odoo>
+      <data>
+        <template id="hms_icu_rbs_report">
+          <t t-foreach="docs" t-as="o">
+          <!--Header-->
+          <div class="header">
+            <div class="row">
+              <div class="col-xs-9"/>
+                <div align="right">
+                <img class="img img-responsive" t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' % res_company.logo"
+                     style="height: 150px;"/>
+          </div>
+            </div>
+          </div>
+
+          <!--Data-->
+          <div class="page">
+            <div class="row">
+              <div class="col-xs-12">
+                <table class="table table-condensed table-bordered" style="font-size:12px;">
+                  <tr colspan="4" style="background-color:#DBE1E5;">
+                    <td><strong>Patient Details</strong></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Patient Name</strong></td>
+                    <td><span t-field="o.patient_id"/></td>
+                    <td><strong>Patient ID</strong></td>
+                    <td><span t-field="o.code"/></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sex</strong></td>
+                    <td><span t-field="o.gender"/></td>
+                    <td><strong>Blood Group</strong></td>
+                    <td><span t-field="o.blood_group"/></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Age</strong></td>
+                    <td><span t-field="o.age"/></td>
+                    <td><strong>Work number</strong></td>
+                    <td>013 612 0531</td>
+                  </tr>
+                </table>
+              </div><br/><br/>
+              <div class="col-xs-6">
+                  <table class="table table-condensed table-bordered" style="font-size:12px;">
+                    <tr>
+                      <th style="background-color:#DBE1E5;"><strong>Total Charges of RBS</strong></th>
+                      <th><span t-field="o.rbs_total"/></th>
+                    </tr>
+                  </table>
+              </div><br/>
+            </div>
+          </div>    
+
+          <!--Footer-->
+          <div class="footer">
+              <div style="font-size:13px;">
+                <div class="col-xs-4">
+                  Nr. Bhimajipura Cross Roads,
+                  <br/>
+                  New Vadaj Road,
+                  <br/>
+                  Ahmedabad-380 013.
+                </div>
+                <div class="col-xs-4">
+                  <b>Phone:</b> +91-79-27642100 
+                  <br/>
+                  <b>Mobile:</b>+91-9825065275
+                  <br/>
+                  <b>Fax:</b>+91-79-27642300
+                  <br/>
+                  <b>E-mail:</b>mddevasya@gmail.com
+                  <br/>
+                  <b>Web-site:</b><a href="http://www.devasyahospital.com">Devasya Hospital</a>
+                </div>
+                <div class="col-xs-4">
+                  Random blood sugar Report
+                  <br/>
+                  ICU Department
+                </div>
+              </div>
+            </div>
+          </t>
+        </template>
+
+        <template id="report_best">
+          <t t-call="report.html_container">
+            <t t-foreach="doc_ids" t-as="doc_id">
+              <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'hms_icu.report_hms_icu_rbs')"/>
+            </t>
+          </t>
+        </template>
+
+    </data>
+  </odoo>

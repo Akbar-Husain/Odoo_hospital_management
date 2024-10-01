@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="report_hms_prescription">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <div class="page" style="font-size: 120%;">
+                        <center>
+                            <h2>Medical Prescription</h2>
+                        </center>
+                        <h3>Prescription#</h3>
+                        <center>
+                            <table style="width:900px;height:100px;margin:10 10 10 10">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <b>Patient:</b>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.patient_id" />
+                                        </td>
+                                        <td>
+                                            <b>Prescription Date:</b>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.prescription_date" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Age:</b></td>
+                                        <td>
+                                            <span t-field="o.patient_age" />
+                                        </td>
+                                        <td>
+                                            <b>Prescribing Doctor:</b>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.doctor_id" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </center>
+                        <p style="font-weight: bold;">Rx</p><br/>
+                        <center>
+                            <table style="width:900px;height:100px;margin:10 10 10 10;padding:5">
+                                <tbody>
+                                    <tr style="border-bottom:1px solid black;margin:10 10 10 10;font-weight: bold;">
+                                        <td>Sr.No</td>
+                                        <td>Description</td>
+                                        <!-- <td>Dosage</td> -->
+                                        <td>Frequency</td>
+                                        <td>Quantity</td>
+                                    </tr>
+                                    <t t-foreach="o.prescription_line" t-as="i"  t-value="1">
+                                        <tr style="border-bottom:0.2px solid grey;margin:10 10 10 10">
+                                            <td> <span t-esc="i.id"/></td>
+                                            <t t-value="i+1"/>
+                                            <td>
+                                                <span t-esc="i.product_id.name" />
+                                            </td>
+                                            <!-- <td>
+                                                <span t-esc="i.dose_unit.name" />
+                                            </td> -->
+                                            <td>
+                                                <span t-esc="i.common_dosage.name" />
+                                            </td>
+                                            <td>
+                                                <span t-esc="i.quantity" />
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </center>
+                        <br />
+                        <br />
+                        <br />
+                        <p>
+                            <b>Comment(If Any):</b>
+                            <br />
+                            <span t-esc="o.notes" />
+                        </p>
+                        <br />
+                        <p>
+                            <b>Doctor’s Stamp/Signature</b>
+                        </p>
+                    </div>
+                </t>
+            </t>
+        </template>
+        <!-- <report id="report_hms_prescription_id"
+            string="Prescription Order"
+            model="prescription.order"
+            report_type="qweb-pdf"
+            file="hms_prescription.report_hms_prescription" 
+            name="hms_prescription.report_hms_prescription"/> -->
+    </data>
+</odoo>

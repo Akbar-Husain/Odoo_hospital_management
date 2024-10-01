@@ -1,0 +1,45 @@
+<odoo>
+    <data noupdate="0">
+
+        <!-- <record id="reason_routine_follow" model="banas.hms.reason">
+            <field name="name">Routine Follow Up</field>
+        </record> -->
+
+        <record id="purpose_consultation" model="banas.hms.appointment.purpose" >
+            <field name="name">Consultation</field>
+        </record>
+
+        <record id="purpose_follow_up" model="banas.hms.appointment.purpose" >
+            <field name="name">Follow Up</field>
+        </record>
+
+        <!-- product.product -->
+        <!-- <record id="hms_registration_service_0" model="product.product">
+            <field name="name">Registration Service</field>
+            <field name="type">service</field>
+            <field name="hospital_product_type">consultation</field>
+            field name="department_type">general</field
+            <field name="list_price">100.0</field>
+            <field name="special_day_price">50.0</field>
+            <field name="reg_spe_price">70.0</field>
+            <field name="standard_price">10.0</field>
+        </record> -->
+
+       <!--  <record id="hms_consultation_service_0" model="product.product">
+            <field name="name">Consultation</field>
+            <field name="type">service</field>
+            <field name="hospital_product_type">consultation</field>
+             field name="department_type">general</field
+            <field name="list_price">800</field>
+            <field name="special_day_price">500.0</field>
+            <field name="reg_spe_price">0</field>
+            <field name="standard_price">0</field>
+        </record> -->
+
+
+    </data>
+</odoo>
+        <!-- Registration Service -->
+        <!-- <record id="hms_patient_reg_product_0" model="product.template" >
+            <field name="product_id" ref="hms_registration_service_0" />
+        </record> -->

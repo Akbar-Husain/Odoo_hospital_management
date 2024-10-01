@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+        <record id="menu_doctor_controller" model="website.menu">
+            <field name="name">Doctors Menu</field>
+            <field name="url">/hms_doctor</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">12</field>
+        </record>
+
+
+        <record id="banas_hms_department_general" model="banas.hms.department">
+            <field name="name">General</field>
+            <field name="department_name">general</field>
+        </record>
+        <!-- record id="hospital_department_urology" model="banas.hms.department">
+            <field name="name">Urology</field>
+            <field name="department_name">urology</field>
+        record -->
+        <record id="hospital_department_cardiology" model="banas.hms.department">
+            <field name="name">Cardiology</field>
+            <field name="department_name">cardiology</field>
+        </record>
+
+
+        <!-- Doctor Degree -->
+        <record id="doctor_degree_md" model="banas.hms.doctor.degree">
+            <field name="name">MD</field>
+        </record>
+        <record id="doctor_degree_bds" model="banas.hms.doctor.degree">
+            <field name="name">BDS</field>
+        </record>
+        <record id="doctor_degree_mbbs" model="banas.hms.doctor.degree">
+            <field name="name">MBBS</field>
+        </record>
+
+
+        <!-- Doctor Specialty -->
+        <record id="doctor_speciality_0" model="doctor.speciality">
+            <field name="code">CAD</field>
+            <field name="name">Cardiologist</field>
+        </record>
+        <record id="doctor_speciality_1" model="doctor.speciality">
+            <field name="code">URO</field>
+            <field name="name">Urologist</field>
+        </record>
+        <record id="doctor_speciality_2" model="doctor.speciality">
+            <field name="code">NEU</field>
+            <field name="name">Neurologist</field>
+        </record>
+        <record id="doctor_speciality_3" model="doctor.speciality">
+            <field name="code">ORT</field>
+            <field name="name">Orthopaedic</field>
+        </record>
+        <record id="doctor_speciality_4" model="doctor.speciality">
+            <field name="code">PAE</field>
+            <field name="name">Paediatric</field>
+        </record>
+
+
+         <!-- Ref. Doctor -->
+        <!-- <record id="referring_doctor_0" model="banas.hms.referring.doctor">
+            <field name="name">Dr. H.K.Patel</field>
+            <field name="email">hk.patel@yaho.in</field>
+            <field name="phone">21545741</field>
+            <field name="mobile">8455185251</field>
+            <field name="address">Vasna</field>
+            <field name="country_id">India</field>
+            <field name="city_id">Ahmedabad</field>
+        </record>
+        <record id="referring_doctor_1" model="banas.hms.referring.doctor">
+            <field name="name">Dr. Y.D. Vikani</field>
+            <field name="email">yd.vikani@gmail.com</field>
+            <field name="phone">41585214</field>
+            <field name="mobile">9988855522</field>
+            <field name="address">Pal Road</field>
+            <field name="country_id">India</field>
+            <field name="city_id">Surat</field>
+        </record>
+        <record id="referring_doctor_2" model="banas.hms.referring.doctor">
+            <field name="name">Dr. P.U.Marchant</field>
+            <field name="email">marchant.up@gmail.com</field>
+            <field name="phone">64455222</field>
+            <field name="mobile">8555215925</field>
+            <field name="address">Bandra</field>
+            <field name="country_id">India</field>
+            <field name="city_id">Mumbai</field>
+        </record>
+        <record id="referring_doctor_3" model="banas.hms.referring.doctor">
+            <field name="name">Dr. O.P Nayar</field>
+            <field name="email">nayarop@yahoo.in</field>
+            <field name="phone">48488252</field>
+            <field name="mobile">8445245632</field>
+            <field name="address">Chandkheda</field>
+            <field name="country_id">India</field>
+            <field name="city_id_">Ahmedabad</field>
+        </record>
+        <record id="referring_doctor_4" model="banas.hms.referring.doctor">
+            <field name="name">Dr. Sana Khan</field>
+            <field name="email">khan.Sana@gmail.com</field>
+            <field name="phone">25836995</field>
+            <field name="mobile">8488836985</field>
+            <field name="address">Memnagar</field>
+            <field name="country_id">India</field>
+            <field name="city_id">Ahmedabad</field>
+        </record> -->
+</odoo>

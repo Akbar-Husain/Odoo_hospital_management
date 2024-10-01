@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_operative_notes">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="report.internal_layout">
+                        <div class="page" style="align: center;text-align: center;">
+                        <center>
+                            <h3><b>Operative Note</b></h3>
+                        </center>
+
+                        <table class="table table-bordered" style="width:900px;height:150px;font-size: 120%;border: 1px solid black;" >
+                            <tr>
+                                <td style="border:none">
+                                    <b>Name : </b>
+                                    <span t-field="o.patient_id.name" />
+                                </td>
+                                <td style="border:none;" >
+                                    <b>Age / Gender : </b>
+                                    <span t-field="o.patient_id.age" /> / <span t-field="o.patient_id.sex" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border:none">
+                                    <b>IPD No : </b>
+                                    <span t-field="o.name" />
+                                </td>
+                                <td style="border:none;">
+                                    <b>OPD No : </b>
+                                    <!--<span t-field="o." />-->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border:none">
+                                    <b>Admission Date : </b>
+                                    <span t-field="o.hospitalization_date" />
+                                </td>
+                                <td style="border:none;">
+                                    <b>Discharge Date : </b>
+                                    <span t-field="o.discharge_date" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border:none" colspan="2">
+                                    <b>Address : </b>
+                                    <span t-field="o.patient_id.street" />
+                                    <span t-field="o.patient_id.street2" />
+                                    <span t-field="o.patient_id.city_id"/>
+                                    <span t-field="o.patient_id.state_id"/>
+                                </td>                               
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid black;" colspan="2">
+                                </td>
+                            </tr>   
+                                
+                        <!-- </table> -->
+                        
+ 
+                        <!-- <table class="table table-bordered" style="width:900px;height:150px;font-size: 120%;border: 1px solid black;" border="1"> -->
+                            <tr>
+                                <td style="border:none">
+                                    <b>Consultant : </b>
+                                    <span t-field="o.primary_physician" />
+                                </td>
+                                <td style="border:none;">
+                                    <b>Co-Consultant : </b>
+                                    <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                    <span t-esc="physician.name"/>
+                                    </t>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border:none">
+                                    <b>Diagnosis : </b>
+                                    <span t-field="o.admission_reason" />
+                                </td>
+                                <td style="border:none;">
+                                    <b>Co-Morbidity : </b>
+                                    <!--<span t-field="o." />-->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border:none">
+                                    <b>Surgery / Procedure : </b>
+                                    <span t-field="o.surgery_id" />
+                                </td>
+                                <td style="border:none;">
+                                    <b>Date of Surgery : </b>
+                                    <span t-field="o.start_date" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border:none">
+                                    <b>Allergy : </b>
+                                    <!-- <span t-field="o.patient_id.critical_info" /> -->
+                                </td>
+                                <td style="border:none">
+                                </td>
+                            </tr>     
+                        </table>
+
+                        <table class="table table-bordered" style="width:900px;height:150px;font-size: 120%;border: 1px solid black;" >
+                            <tr>
+                                <td style="border:none">
+                                    <b>Anesthesia Type : </b>
+                                    <span t-field="o.anaesthesia_id" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border:none">
+                                    <b>Operative Findings : </b>
+                                    <span t-field="o.findings" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border:none">
+                                    <b>Operative Steps : </b>
+                                    <span t-field="o.op_note" />
+                                </td>
+                            </tr>      
+                        </table>
+
+                        <table class="table-bordered" style="width:900px;height:150px;font-size: 120%;border: 1px solid black;" >
+
+
+                            <tr style="border:none;">
+                                <td style="border: 1px solid black;border-bottom: 0px white" colspan="2">
+                                    <u><b>Signature of Consultant</b></u>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border:none;" colspan="2">
+                                    <img t-if="o.primary_physician.signature" width="120" height="60" alt="Signature" t-attf-src="data:image/gif;base64, #{o.primary_physician.signature}"/>
+                                </td>
+                            </tr>    
+                            <!-- <div class="row text-right">
+                               <br/>
+                               <img t-if="o.primary_physician.signature" width="150" height="90" alt="Signature" t-attf-src="data:image/gif;base64, #{o.primary_physician.signature}"/>
+                               <br/>
+                               <strong><span t-field="o.primary_physician.name"/></strong>
+                            </div> -->
+                            
+                            
+
+                        </table>        
+                        </div>
+                    </t>
+                </t>
+            </t>            
+        </template>
+        <!-- QWeb Reports -->
+
+        <report id="action_report_operative_notes"
+            string="Operative Notes" 
+            model="inpatient.registration" 
+            report_type="qweb-pdf" 
+            file="hms_hospitalization.report_operative_notes"
+            name="hms_hospitalization.report_operative_notes"/>        
+    </data>  
+</odoo>                  
