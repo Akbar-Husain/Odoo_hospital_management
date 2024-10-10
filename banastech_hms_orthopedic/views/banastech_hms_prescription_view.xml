@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--Prescription group line-->
+        <record id="view_banastech_hms_prescription_group_line_tree" model="ir.ui.view">
+            <field name="name">banastech.hms.prescription.group.line.tree</field>
+            <field name="model">banastech.hms.prescription.group.line</field>
+            <field name="arch" type="xml">
+                <tree string="Prescription Group Line">
+                    <field name="medicament_group_id" />
+                    <field name="group_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_banastech_hms_prescription_group_line_form" model="ir.ui.view">
+            <field name="name">banastech.hms.prescription.group.line.form</field>
+            <field name="model">banastech.hms.prescription.group.line</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="medicament_group_id" />
+                            <field name="group_id" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_prescription_group_line">
+            <field name="name">Prescription Group Line</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">banastech.hms.prescription.group.line</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem id="menuitem_action_prescription_group_line"
+            name="Prescription Group Line"
+            parent="banastech_hms.banas_hms_medicaments_conf_menu"
+            action="banastech_hms_orthopedic.action_prescription_group_line"
+            sequence="9"/>
+
+        <!--Prescription group-->
+        <record id="view_banastech_hms_prescription_group_tree" model="ir.ui.view">
+            <field name="name">banastech.hms.prescription.group.tree</field>
+            <field name="model">banastech.hms.prescription.group</field>
+            <field name="arch" type="xml">
+                <tree string="Prescription Group">
+                    <field name="name" />
+                    <field name="display_name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_banastech_hms_prescription_group_form" model="ir.ui.view">
+            <field name="name">banastech.hms.prescription.group.form</field>
+            <field name="model">banastech.hms.prescription.group</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="diagnosis_id" />
+                        </group>
+                        <group string="Prescription Group">
+                            <field name="group_line" nolabel="1">
+                                <tree editable="bottom">
+                                    <field name="medicament_group_id" />
+                                    <field name="group_id"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_prescription_group">
+            <field name="name">Prescription Group</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">banastech.hms.prescription.group</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem id="menuitem_action_prescription_group"
+            name="Prescription Group"
+            parent="banastech_hms.banas_hms_medicaments_conf_menu"
+            action="banastech_hms_orthopedic.action_banastech_hms_prescription_group"
+            sequence="7" />
+
+    </data>
+</odoo>

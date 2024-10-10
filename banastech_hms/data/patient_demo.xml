@@ -1,0 +1,849 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- Patient Insurance -->
+        <record id="hms_patient_insurance_0" model="banas.hms.patient.insurance">
+            <field name="insurance_company">Bajaj Insurance</field>
+            <field name="policy_number">AJ0215851296</field>
+            <field name="insured_value">500000.00</field>
+            <field name="validity">09/09/2020</field>
+            <field name="active">True</field>
+        </record>
+        <record id="hms_patient_insurance_1" model="banas.hms.patient.insurance">
+            <field name="insurance_company">National Insurance</field>
+            <field name="policy_number">KY0215851852</field>
+            <field name="insured_value">100000.00</field>
+            <field name="validity">09/09/2017</field>
+            <field name="active">True</field>
+        </record>
+        <record id="hms_patient_insurance_2" model="banas.hms.patient.insurance">
+            <field name="insurance_company">Bajaj Insurance</field>
+            <field name="policy_number">LP0215851741</field>
+            <field name="insured_value">1000000.00</field>
+            <field name="validity">09/09/2020</field>
+            <field name="active">True</field>
+        </record>
+        <record id="hms_patient_insurance_3" model="banas.hms.patient.insurance">
+            <field name="insurance_company">Bajaj Insurance</field>
+            <field name="policy_number">IJ0415851285</field>
+            <field name="insured_value">200000.00</field>
+            <field name="validity">09/09/2020</field>
+            <field name="active">True</field>
+        </record>
+        <record id="hms_patient_insurance_4" model="banas.hms.patient.insurance">
+            <field name="insurance_company">Reliance Insurance</field>
+            <field name="policy_number">RLY096321296</field>
+            <field name="insured_value">350000.00</field>
+            <field name="validity">09/09/2022</field>
+            <field name="active">True</field>
+        </record>
+        <!-- Diseases -->
+        <record id="hms_diseases_0" model="banas.hms.diseases">
+            <field name="name">Osteoporosis</field>
+            <field name="info">Although osteoporosis itself does not directly increase the risk of falls, people who have osteoporosis have a higher risk of breaking a bone if they fall, with common sites of fracture including the hip, spinal vertebrae and wrist</field>
+        </record>
+        <record id="hms_diseases_1" model="banas.hms.diseases">
+            <field name="name">Ligament Injuries to the Knee</field>
+            <field name="info">There are 4 major ligaments in the knee. Ligaments are elastic bands of tissue that connect bones to each other and provide stability and strength to the joint. The four main ligaments in the knee connect the femur (thighbone) to the tibia (shin bone), and include the following:Anterior cruciate ligament (ACL),Posterior cruciate ligament (PCL),Medial collateral ligament (MCL),Lateral collateral ligament (LCL).</field>
+        </record>
+        <record id="hms_diseases_2" model="banas.hms.diseases">
+            <field name="name">Arthritis</field>
+            <field name="info">Arthritis and other rheumatic diseases are common conditions that cause pain, swelling, and limited movement. They affect joints and connective tissues around the body.</field>
+        </record>
+        <record id="hms_diseases_3" model="banas.hms.diseases">
+            <field name="name">Bursitis</field>
+            <field name="info">Inflammation of the fluid-filled pads (bursae) that act as cushions at the joints.</field>
+        </record>
+        <record id="hms_diseases_4" model="banas.hms.diseases">
+            <field name="name">Fibromyalgia</field>
+            <field name="info">Widespread muscle pain and tenderness.</field>
+        </record>
+        <record id="hms_diseases_5" model="banas.hms.diseases">
+            <field name="name">Kyphosis</field>
+            <field name="info">Kyphosis is a curving of the spine that causes a bowing or rounding of the back, which leads to a hunchback or slouching posture.</field>
+        </record>
+        <record id="hms_diseases_6" model="banas.hms.diseases">
+            <field name="name">Scoliosis</field>
+            <field name="info">A sideways curvature of the spine.</field>
+        </record>
+        <!-- Family Diseases -->
+        <record id="hms_patient_family_diseases_0" model="banas.hms.patient.family.diseases">
+            <field name="name_id" eval="[(4, ref('hms_diseases_1')),(4, ref('hms_diseases_4'))]" />
+            <field name="relative">aunt</field>
+            <field name="xory">m</field>
+        </record>
+        <record id="hms_patient_family_diseases_1" model="banas.hms.patient.family.diseases">
+            <field name="name_id" eval="[(4, ref('hms_diseases_6'))]" />
+            <field name="relative">aunt</field>
+            <field name="xory">f</field>
+        </record>
+        <record id="hms_patient_family_diseases_2" model="banas.hms.patient.family.diseases">
+            <field name="name_id" eval="[(4, ref('hms_diseases_3'))]" />
+            <field name="relative">grandfather</field>
+            <field name="xory">f</field>
+        </record>
+        <!-- Patient Disease Genes -->
+        <record id="disease_gene_0" model="banas.hms.disease.gene">
+            <field name="name">Colon Cancer or Lynch syndrome</field>
+            <field name="gene_id">Cancer</field>
+            <field name="long_name">hereditary non-polyposis colorectal cancer (HNPCC)</field>
+            <field name="location">development of cancer in the colon or rectum</field>
+            <field name="chromosome">MSH2 on chromosome 2,
+            MLH1 on chromosome 3,
+            PMS2 on chromosome 7,
+            MSH6 on chromosome 2,
+            PMS1 on chromosome 2</field>
+            <field name="info">Colon cancer is cancer of the large intestine (colon), the lower part of your digestive system. Rectal cancer is cancer of the last several inches of the colon. Together, they're often referred to as colorectal cancers.</field>
+            <field name="dominance">d</field>
+        </record>
+        <!-- Patient Genetic Risk -->
+        <!-- <record id="hms_patient_genetic_risk_0" model="banas.hms.patient.genetic.risk">
+             <field name="patient_id" eval="[(4, ref('hmshms_patient_0'))" /> 
+            <field name="disease_gene" eval="[(4,ref('disease_gene_0'))]" />
+        </record> -->
+        <!-- Patient -->
+        <record id="hmshms_patient_0" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_0.jpg" />
+            <field name="name">Neeta D. Shah</field>
+            <field name="dob">09/09/2000</field>
+            <field name="age">16year</field>
+            <field name="aadhar_no">852141237452</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_0" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_0')),(4, ref('referring_doctor_2'))]" />
+            <field name="gender">f</field>
+            <field name="marital_status">s</field>
+            <field name="blood_group">B+</field>
+            <field name="critical_info">Skin Allergies</field>
+            <field name="city">Ahmedabad</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">380012</field> -->
+            <field name="phone">25891595</field>
+            <!-- <field name="mobile">9798825862</field> -->
+            <field name="email">neeta.shah@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_4'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_0'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_1" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_1.jpg" />
+            <field name="name">Seema D. Amin</field>
+            <field name="dob">09/09/1996</field>
+            <field name="age">20year</field>
+            <field name="aadhar_no">877141238455</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_2" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_3'))]" />
+            <field name="gender">f</field>
+            <field name="marital_status">s</field>
+            <field name="blood_group">AB+</field>
+            <field name="critical_info">Dust Allergies</field>
+            <field name="city">Ahmedabad</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">380012</field> -->
+            <field name="phone">25875582</field>
+            <!-- <field name="mobile">9363274522</field> -->
+            <field name="email">amin.seema2000@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_2" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech.hms/static/img/patient_img_2.jpg" />
+            <field name="name">Dhaval a. Mishara</field>
+            <field name="dob">09/09/1998</field>
+            <field name="aadhar_no">877141238451</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_4" />
+            <field name="gender">m</field>
+            <field name="marital_status">s</field>
+            <field name="blood_group">A-</field>
+            <field name="critical_info">Dust Allergies</field>
+            <field name="city">Mumbai</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">380012</field> -->
+            <field name="phone">79875582</field>
+            <!-- <field name="mobile">9429230051</field> -->
+            <field name="email">dhavalr007@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_3" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_3.jpg" />
+            <field name="name">Kajal N Kothari</field>
+            <field name="dob">08/09/1980</field>
+            <field name="aadhar_no">887141238455</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_4" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_1'))]" />
+            <field name="gender">f</field>
+            <field name="marital_status">m</field>
+            <field name="blood_group">AB-</field>
+            <field name="critical_info">Dust Allergies</field>
+            <field name="city">Kannada</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">560012</field> -->
+            <field name="phone">30875582</field>
+            <!-- <field name="mobile">9798830556</field> -->
+            <field name="email">kahalkothari@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_4" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_4.jpg" />
+            <field name="name">Mayank p. Trivedi</field>
+            <field name="dob">06/09/1990</field>
+            <field name="aadhar_no">6877141238455</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_0" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_1'))]" />
+            <field name="gender">m</field>
+            <field name="marital_status">m</field>
+            <field name="blood_group">O+</field>
+            <field name="critical_info">Dust Allergies</field>
+            <field name="city">Bhandara</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">400012</field> -->
+            <field name="phone">65875582</field>
+            <!-- <field name="mobile">8898825775</field> -->
+            <field name="email">mayankp@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_5" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_5.jpg" />
+            <field name="name">Jahid R. Shekh</field>
+            <field name="dob">12/09/1990</field>
+            <field name="aadhar_no">667141238455</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_0" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_1'))]" />
+            <field name="gender">m</field>
+            <field name="marital_status">m</field>
+            <field name="blood_group">B-</field>
+            <field name="critical_info">Dust Allergies</field>
+            <field name="city">Ahmedabad</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">380012</field> -->
+            <field name="phone">79875582</field>
+            <!-- <field name="mobile">7798825775</field> -->
+            <field name="email">jahid123000@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_6" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_6.jpg" />
+            <field name="name">Jignesh P. Jani</field>
+            <field name="dob">07/09/1989</field>
+            <field name="aadhar_no">317141238455</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_5" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_0'))]" />
+            <field name="gender">m</field>
+            <field name="marital_status">s</field>
+            <field name="blood_group">O+</field>
+            <field name="critical_info">Dust Allergies</field>
+            <field name="city">Haveri Uttara</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">200012</field> -->
+            <field name="phone">20875582</field>
+            <!-- <field name="mobile">9898825775</field> -->
+            <field name="email">jigneshp2000@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_7" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_7.jpg" />
+            <field name="name">Hiral H. Dabhi</field>
+            <field name="dob">04/09/1992</field>
+            <field name="aadhar_no">777141238455</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_5" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_2'))]" />
+            <field name="gender">f</field>
+            <field name="marital_status">s</field>
+            <field name="blood_group">A+</field>
+            <field name="critical_info">Dust Allergies</field>
+            <field name="city">Chandrapur</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">200030</field> -->
+            <field name="phone">96875582</field>
+            <!-- <field name="mobile">9429230066</field> -->
+            <field name="email">hiral007@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_8" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_8.jpg" />
+            <field name="name">Malvika M. Dave</field>
+            <field name="dob">06/11/1990</field>
+            <field name="aadhar_no">557141238455</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_5" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_0'))]" />
+            <field name="gender">f</field>
+            <field name="marital_status">s</field>
+            <field name="blood_group">O-</field>
+            <field name="critical_info">Dust Allergies</field>
+            <field name="city">Kalaburagi Koppal</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">380015</field> -->
+            <field name="phone">30875582</field>
+            <!-- <field name="mobile">9429230053</field> -->
+            <field name="email">malvikam55@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_9" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_9.jpg" />
+            <field name="name">Nirali K. Patel</field>
+            <field name="dob">08/12/1985</field>
+            <field name="aadhar_no">877141235689</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_0" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_3'))]" />
+            <field name="gender">f</field>
+            <field name="marital_status">m</field>
+            <field name="blood_group">A-</field>
+            <field name="critical_info">Dust Allergies</field>
+            <field name="city">Bikaner</field>
+            <!-- <field name="state_id" ref="hms_rajasthan_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">658923</field> -->
+            <field name="phone">56897415</field>
+            <!-- <field name="mobile">9574041333</field> -->
+            <field name="email">niralipatel20@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_10" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_10.jpg" />
+            <field name="name">Ujas R. Upadhiyay</field>
+            <field name="dob">02/12/1992</field>
+            <field name="aadhar_no">697141238455</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_3" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_3'))]" />
+            <field name="gender">m</field>
+            <field name="marital_status">s</field>
+            <field name="blood_group">B-</field>
+            <field name="critical_info">Dust Allergies</field>
+            <field name="city">Ahmedabad</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">380025</field> -->
+            <field name="phone">69853214</field>
+            <!-- <field name="mobile">9429183679</field> -->
+            <field name="email">ujasr1213@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_11" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_11.jpg" />
+            <field name="name">Deepak K. Makwana</field>
+            <field name="dob">08/01/1991</field>
+            <field name="aadhar_no">567141238445</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_3" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_3'))]" />
+            <field name="gender">m</field>
+            <field name="marital_status">s</field>
+            <field name="blood_group">A+</field>
+            <field name="critical_info">Dust Allergies</field>
+            <field name="city">Bhilwara</field>
+            <!-- <field name="state_id" ref="hms_rajasthan_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">960055</field> -->
+            <field name="phone">56486523</field>
+            <!-- <field name="mobile">9798825777</field> -->
+            <field name="email">dipakk05@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_12" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_12.jpg" />
+            <field name="name">Nisha R. Rathod</field>
+            <field name="dob">09/09/1992</field>
+            <field name="aadhar_no">877141238455</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_3" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_3'))]" />
+            <field name="gender">f</field>
+            <field name="marital_status">s</field>
+            <field name="blood_group">O+</field>
+            <field name="critical_info">Dust Allergies</field>
+            <field name="city">Ahmedabad</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">380026</field> -->
+            <field name="phone">96550055</field>
+            <!-- <field name="mobile">9655550055</field> -->
+            <field name="email">nisha2016@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_13" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_13.jpg" />
+            <field name="name">Niket R. Mehta</field>
+            <field name="dob">04/07/1991</field>
+            <field name="aadhar_no">877145238455</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_2" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_0'))]" />
+            <field name="gender">m</field>
+            <field name="marital_status">m</field>
+            <field name="blood_group">A-</field>
+            <field name="critical_info">sunlight Allergies</field>
+            <field name="city">Ahmedabad</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">380014</field> -->
+            <field name="phone">25874582</field>
+            <!-- <field name="mobile">8745845512</field> -->
+            <field name="email">niket@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_14" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_14.jpg" />
+            <field name="name">Krutik M. Bhavsar</field>
+            <field name="dob">09/09/1992</field>
+            <field name="aadhar_no">780145238455</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_2" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_0'))]" />
+            <field name="gender">m</field>
+            <field name="marital_status">m</field>
+            <field name="blood_group">O-</field>
+            <field name="critical_info">Dust Allergies</field>
+            <field name="city">Ahmedabad</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">382414</field> -->
+            <field name="phone">25684450</field>
+            <!-- <field name="mobile">5478451212</field> -->
+            <field name="email">krutik@gmail.com</field>
+            <field name="medical_history">1) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_15" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_15.jpg" />
+            <field name="name">Raman G. Panchal</field>
+            <field name="dob">10/09/1958</field>
+            <field name="aadhar_no">780178107800</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_2" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_1'))]" />
+            <field name="gender">m</field>
+            <field name="marital_status">w</field>
+            <field name="blood_group">O+</field>
+            <field name="critical_info">Chest Pain</field>
+            <field name="city">Ahmedabad</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">378521</field> -->
+            <field name="phone">24587788</field>
+            <!-- <field name="mobile">7101110254</field> -->
+            <field name="email">raman@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_16" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_16.jpg" />
+            <field name="name">Vijay T. Mistry</field>
+            <field name="dob">2/3/1978</field>
+            <field name="aadhar_no">784545237823</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_1" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_1'))]" />
+            <field name="gender">m</field>
+            <field name="marital_status">m</field>
+            <field name="blood_group">B+</field>
+            <field name="critical_info">Neck Pain</field>
+            <field name="city">Ahmedabad</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">451220</field> -->
+            <field name="phone">25688845</field>
+            <!-- <field name="mobile">3212452001</field> -->
+            <field name="email">vijay@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years. 2) Multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_17" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_17.jpg" />
+            <field name="name">Dhaval B. Sathavara</field>
+            <field name="dob">12/08/1990</field>
+            <field name="aadhar_no">780145239523</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_1" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_1'))]" />
+            <field name="gender">m</field>
+            <field name="marital_status">s</field>
+            <field name="blood_group">A-</field>
+            <field name="critical_info">Back Pain</field>
+            <field name="city">Ahmedabad</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">378203</field> -->
+            <field name="phone">24589921</field>
+            <!-- <field name="mobile">6589521001</field> -->
+            <field name="email">dhaval@gmail.com</field>
+            <field name="medical_history">1)Strong Back pain in past; couldn't walk.  2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_18" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_18.jpg" />
+            <field name="name">Jay B. Patel</field>
+            <field name="dob">11/07/1980</field>
+            <field name="aadhar_no">780145234510</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_4" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_1'))]" />
+            <field name="gender">m</field>
+            <field name="marital_status">m</field>
+            <field name="blood_group">B+</field>
+            <field name="critical_info">Dust Allergies</field>
+            <field name="city">Ahmedabad</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">874520</field> -->
+            <field name="phone">21210033</field>
+            <!-- <field name="mobile">3211001258</field> -->
+            <field name="email">jay@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years. 2) Now requires a walker for ambulation and has needed a wheelchair in the past.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_19" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_19.jpg" />
+            <field name="name">Ashok M. Thakor</field>
+            <field name="dob">08/10/1974</field>
+            <field name="aadhar_no">780178457800</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_4" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_1'))]" />
+            <field name="gender">m</field>
+            <field name="marital_status">m</field>
+            <field name="blood_group">O-</field>
+            <field name="critical_info">Lactine Allergies</field>
+            <field name="city">Ahmedabad</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">382412</field> -->
+            <field name="phone">27521141</field>
+            <!-- <field name="mobile">9898565620</field> -->
+            <field name="email">ashok@gmail.com</field>
+            <field name="medical_history">1) Spinal stenosis, severe. 2) multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_20" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_20.jpg" />
+            <field name="name">Jitu N. Vanzara</field>
+            <field name="dob">07/09/1965</field>
+            <field name="aadhar_no">780145233212</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_3" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_2'))]" />
+            <field name="gender">m</field>
+            <field name="marital_status">d</field>
+            <field name="blood_group">AB-</field>
+            <field name="critical_info">Shoulder Pain</field>
+            <field name="city">Ahmedabad</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">654550</field> -->
+            <field name="phone">56254410</field>
+            <!-- <field name="mobile">6545457841</field> -->
+            <field name="email">jitu@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_21" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_21.jpg" />
+            <field name="name">Ganpatrao Aapte</field>
+            <field name="dob">06/09/1958</field>
+            <field name="aadhar_no">321244001025</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_2" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_2'))]" />
+            <field name="gender">m</field>
+            <field name="marital_status">m</field>
+            <field name="blood_group">A+</field>
+            <field name="critical_info">Joint Pain</field>
+            <field name="city">Satara</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">214520</field> -->
+            <field name="phone">95622120</field>
+            <!-- <field name="mobile">6523121101</field> -->
+            <field name="email">ganpat@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_22" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_22.jpg" />
+            <field name="name">Manoj D. Soni</field>
+            <field name="dob">01/09/1973</field>
+            <field name="aadhar_no">124145238600</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_5" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_2'))]" />
+            <field name="gender">m</field>
+            <field name="marital_status">m</field>
+            <field name="blood_group">B+</field>
+            <field name="critical_info">Sunlight Allergies</field>
+            <field name="city">Abu</field>
+            <!-- <field name="state_id" ref="hms_rajasthan_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">844450</field> -->
+            <field name="phone">32101225</field>
+            <!-- <field name="mobile">6523121101</field> -->
+            <field name="email">manoj@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_23" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_23.jpg" />
+            <field name="name">Rachna J. Rao</field>
+            <field name="dob">04/09/1984</field>
+            <field name="aadhar_no">780181017869</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_5" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_2'))]" />
+            <field name="gender">f</field>
+            <field name="marital_status">d</field>
+            <field name="blood_group">O-</field>
+            <field name="critical_info">Joint Pain</field>
+            <field name="city">Baroda</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">458420</field> -->
+            <field name="phone">31258454</field>
+            <!-- <field name="mobile">6523121101</field> -->
+            <field name="email">rachna@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_24" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_24.jpg" />
+            <field name="name">John K. Carter</field>
+            <field name="dob">02/09/1974</field>
+            <field name="aadhar_no">002388520110</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_0" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_4'))]" />
+            <field name="gender">m</field>
+            <field name="marital_status">d</field>
+            <field name="blood_group">B-</field>
+            <field name="critical_info">Lactic Allergies</field>
+            <field name="city">Perth</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">30012</field> -->
+            <field name="phone">65452545</field>
+            <!-- <field name="mobile">2100012154</field> -->
+            <field name="email">john@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_25" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_25.jpg" />
+            <field name="name">Scarlet F. Mcwarth</field>
+            <field name="dob">10/09/1979</field>
+            <field name="aadhar_no">1120215448</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_0" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_4'))]" />
+            <field name="gender">f</field>
+            <field name="marital_status">m</field>
+            <field name="blood_group">AB-</field>
+            <field name="critical_info">Back Pain</field>
+            <field name="city">alberta</field>
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">20012</field> -->
+            <field name="phone">301002</field>
+            <!-- <field name="mobile">1120215448</field> -->
+            <field name="email">scarlet@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_26" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_26.png" />
+            <field name="name">John B. Dey</field>
+            <field name="dob">10/09/1979</field>
+            <field name="aadhar_no">23120215448</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_2" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_4'))]" />
+            <field name="gender">m</field>
+            <field name="marital_status">m</field>
+            <field name="blood_group">AB+</field>
+            <field name="critical_info">Back Pain</field>
+            <field name="city">newjery</field>
+            <!-- <field name="country_id" ref="base.us" /> -->
+            <!-- <field name="zip">20012</field> -->
+            <field name="phone">301002</field>
+            <!-- <field name="mobile">8525896325</field> -->
+            <field name="email">scarlet@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_0'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_27" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_27.jpg" />
+            <field name="name">kevin pietersen</field>
+            <field name="dob">06/09/1980</field>
+            <field name="aadhar_no">877141238455</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_2" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_4'))]" />
+            <field name="gender">m</field>
+            <field name="marital_status">m</field>
+            <field name="blood_group">O+</field>
+            <field name="critical_info">Dust Allergies</field>
+            <field name="city">Ahmedabad</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">WC2N</field> -->
+            <field name="phone">222589659742</field>
+            <!-- <field name="mobile">222589659742</field> -->
+            <field name="email">pirtesen123@yahoo.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_28" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_28.jpg" />
+            <field name="name">Ross Taylor</field>
+            <field name="dob">04/03/1980</field>
+            <field name="aadhar_no">777141238455</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_3" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_4'))]" />
+            <field name="gender">m</field>
+            <field name="marital_status">m</field>
+            <field name="blood_group">A+</field>
+            <field name="critical_info">Dust Allergies</field>
+            <field name="city">Ahmedabad</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">WC2N 5RJ</field> -->
+            <field name="phone">225986478965</field>
+            <!-- <field name="mobile">225986478965</field> -->
+            <field name="email">rose1122@yahoo.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_29" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_29.jpg" />
+            <field name="name">AB de Villiers</field>
+            <field name="dob">03/09/1981</field>
+            <field name="aadhar_no">677141238455</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_3" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_1'))]" />
+            <field name="gender">m</field>
+            <field name="marital_status">m</field>
+            <field name="blood_group">B+</field>
+            <field name="critical_info">Dust Allergies</field>
+            <field name="city">Ahmedabad</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">B15 2LG</field> -->
+            <field name="phone">226895213658</field>
+            <!-- <field name="mobile">226895213658</field> -->
+            <field name="email">abde@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+        <record id="hmshms_patient_30" model="banastech.hms.patient">
+            <field name="image" type="base64" file="banastech_hms/static/img/patient_img_30.jpg" />
+            <field name="name">Nathan McCullum</field>
+            <field name="dob">02/09/1980</field>
+            <field name="aadhar_no">577141238455</field>
+            <field name="primary_doctor_id" ref="banastech_hms.hms_physician_5" />
+            <field name="ref_doctor" eval="[(4, ref('referring_doctor_1'))]" />
+            <field name="gender">m</field>
+            <field name="marital_status">m</field>
+            <field name="blood_group">AB+</field>
+            <field name="critical_info">Dust Allergies</field>
+            <field name="city">Ahmedabad</field>
+            <!-- <field name="state_id" ref="hms_karnataka_state" /> -->
+            <!-- <field name="country_id" ref="base.in" /> -->
+            <!-- <field name="zip">GL50 3DU</field> -->
+            <field name="phone">221256983456</field>
+            <!-- <field name="mobile">221256983456</field> -->
+            <field name="email">mccullum007@gmail.com</field>
+            <field name="medical_history">1) Multiple Sclerosis, stable for several years; now requires a walker for ambulation and has needed a wheelchair in the past. 2) Spinal stenosis, severe, with multiple previous laminectomies.</field>
+            <field name="insurance_ids" eval="[(4,ref('hms_patient_insurance_1'))]" />
+            <field name="family_history" eval="[(4,ref('hms_patient_family_diseases_2'))]" />
+            <!-- <field name="genetic_risks" 
+            eval="[(4,ref('disease_gene_risk_0'))]" /> -->
+        </record>
+    </data>
+</odoo>

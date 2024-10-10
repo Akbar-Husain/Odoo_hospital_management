@@ -1,0 +1,23 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+,,,,,,,
+access_hms_appointment_newborn_examinations_follow_user,Appointment Newborn Examinations Follow,model_hms_appointment_newborn_examinations_follow,banastech_hms.group_banastech_hms_patient_user,1,0,0,0
+
+access_child_milestone_template_user,Child Milestone Template,model_child_milestone_template,banastech_hms.group_banastech_hms_patient_user,1,0,1,1
+
+access_child_milestone_user,Child Milestone,model_child_milestone,banastech_hms.group_banastech_hms_patient_user,1,1,1,0
+,,,,,,,
+,,,,,,,
+access_hms_appointment_newborn_examinations_follow_receptionist,Appointment Newborn Examinations Follow,model_hms_appointment_newborn_examinations_follow,banastech_hms.group_banastech_hms_receptionist,1,0,0,0
+,,,,,,,
+,,,,,,,
+access_hms_appointment_newborn_examinations_follow_jr_doctor,Appointment Newborn Examinations Follow,model_hms_appointment_newborn_examinations_follow,banastech_hms.group_banas_hms_jr_doctor,1,1,1,1
+
+,,,,,,,
+,,,,,,,
+access_hms_appointment_newborn_examinations_follow_pharmacist,Appointment Newborn Examinations Follow,model_hms_appointment_newborn_examinations_follow,banastech_hms.group_banastech_hms_pharmacist,1,0,0,0
+
+,,,,,,,
+,,,,,,,
+access_hms_appointment_newborn_examinations_follow_manager,Appointment Newborn Examinations Follow,model_hms_appointment_newborn_examinations_follow,banastech_hms.group_banastech_hms_manager,1,1,1,1
+
+access_child_milestone_template_manager,Child Milestone Template,model_child_milestone_template,banastech_hms.group_banastech_hms_manager,1,1,1,1

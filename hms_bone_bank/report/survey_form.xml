@@ -1,0 +1,336 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="report_bone_donation_survey">
+            <t t-call="hms.hms_external_layout_consent">
+                <t t-foreach="docs" t-as="o">
+                    <div class="page" style="font-size:10px;">
+                        <div class="row" style="border-bottom:2px solid black;">
+                            <img style="height:200px;width:100%;" src="/hms_bone_bank/static/src/img/consent_form.png" />
+                        </div>
+                        <div class="row mt16"></div>
+                        <div class="row" style="font-size:12px;letter-spacing: 0.5px;">
+                            <table class="table table-condensed" style="border:none">
+                            <tr>
+                                    <th style="border: none;">
+                                    <strong>  <span>A.  <u>Patient to be excluded for lifetime</u> </span></strong> 
+                                    </th>
+                            </tr>
+                            <tr>
+                                    <td style="border: none;">
+                                        <span>1.Have you ever suffered from&#160;<strong> Hepatitis </strong> (if so ,when and what type) or suffering from&#160;<strong>any liver disease</strong>?</span><t t-if="o.hepatitis"><span> Yes</span></t><t t-if="not o.hepatitis"><span> No</span></t>
+                                    </td>
+                            </tr>
+                            <tr>
+                                    <td style="border: none;">
+                                        <span>2. Are you suffering from or have you suffered from any of a&#160;<strong> Serious infectious disease </strong>(e.g., Paratyphoid, Relapsing fever, Osteomyelitis or other)in the past?</span><t t-if="o.infection"><span> Yes</span></t><t t-if="not o.infection"><span> No</span></t>
+                                    </td>
+                            </tr>
+                            <tr>
+                                    <td style="border: none;">
+                                        <span>3. Have you suffered from&#160;<strong> Tuberculosis </strong>?</span><t t-if="o.tuberculosis"><span> Yes</span></t><t t-if="not o.tuberculosis"><span> No</span></t>
+                                    </td>
+                            </tr>
+                            <tr>
+                                    <td style="border: none;">
+                                        <span>4. Do you suffer from &#160;<strong> Parkinson's disease </strong>or other Nervous disorder?</span><t t-if="o.parkinson"><span> Yes</span></t><t t-if="not o.parkinson"><span> No</span></t>
+                                    </td>
+                            </tr>
+                            <tr>
+                                    <td style="border: none;">
+                                        <span>5. Are you suffering from or have you suffered from a &#160;<strong>  Malignant tumor (cancer)? </strong></span><t t-if="o.malignant"><span> Yes</span></t><t t-if="not o.malignant"><span> No</span></t>
+                                    </td>
+                            </tr>
+                            <tr>
+                                    <td style="border: none;">
+                                        <span>6. Are you suffering from or have suffered from chronic diseases such as &#160;<strong> Rheumatoid arthritis, Chronic renal conditions </strong> or other serious diseases?</span><t t-if="o.chronic"><span> Yes</span></t><t t-if="not o.chronic"><span> No</span></t>
+                                    </td>
+                            </tr>
+                            <tr>
+                                    <td style="border: none;">
+                                        <span>7. Have you ever undergone any procedure in which &#160;<strong> Explants from other person or animal </strong>were used (for ex-ample, eye surgery with cornea transplant, brain surgery with transplanting the dura skin, heart valve surgery)?</span><t t-if="o.explant"><span> Yes</span></t><t t-if="not o.explant"><span> No</span></t>
+                                    </td>
+                            </tr>
+                            <tr>
+                                    <td style="border: none;">
+                                        <span>8. Are you taking any drugs &#160;<strong> (Corticosteroids, Immunosuppressive drugs) </strong> permanently?</span><t t-if="o.drugs"><span> Yes</span></t><t t-if="not o.drugs"><span> No</span></t>
+                                    </td>
+                            </tr>
+                            <tr>
+                                    <td style="border: none;">
+                                        <span>9. Have you ever been treated with &#160;<strong> human origin hormones</strong>?</span><t t-if="o.hormones"><span> Yes</span></t><t t-if="not o.hormones"><span> No</span></t>
+                                    </td>
+                            </tr>
+                            <tr>
+                                    <td style="border: none;">
+                                        <span>10. Are you on regular &#160;<strong> hemodialysis </strong>?</span><t t-if="o.hemodialysis"><span> Yes</span></t><t t-if="not o.hemodialysis"><span> No</span></t>
+                                    </td>
+                            </tr>
+                            <tr>
+                                    <th style="border: none;">
+                                     <strong>  <span>B.  <u>Patients to be excluded for twelve months</u> </span> </strong>
+                                    </th>
+                            </tr>
+                            <tr>
+                                    <td style="border: none;">
+                                        <span>1. Have you been suffering from &#160;<strong> Malaria or typhoid fever </strong>in last one year.</span><t t-if="o.malaria"><span> Yes</span></t><t t-if="not o.malaria"><span> No</span></t>
+                                    </td>
+                            </tr>
+                            <tr>
+                                    <td style="border: none;">
+                                        <span>2. Have you suffered from &#160;<strong> unclear febrile condition</strong> in last twelve months?</span><t t-if="o.febrile"><span> Yes</span></t><t t-if="not o.febrile"><span> No</span></t>
+                                    </td>
+                            </tr>
+                            <tr>
+                                    <td style="border: none;">
+                                        <span>3. Have you been vaccinated against &#160;<strong> rabies </strong>in past twelve months?</span><t t-if="o.rabies"><span> Yes</span></t><t t-if="not o.rabies"><span> No</span></t>
+                                    </td>
+                            </tr>
+                            <tr>
+                                    <th style="border: none;">
+                                      <strong>  <span>C.  <u>Patients to be excluded for six months</u> </span> </strong>
+                                    </th>
+                            </tr>
+                            <tr>
+                                    <td style="border: none;">
+                                        <span>1. Have you taken &#160;<strong> Transfusion of blood or blood component </strong> in last six months?.</span><t t-if="o.transfusion"><span> Yes</span></t><t t-if="not o.transfusion"><span> No</span></t>
+                                    </td>
+                            </tr>
+                            <tr>
+                                    <td style="border: none;">
+                                        <span>2. Have you done &#160;<strong> any tattoo or acupuncture treatment</strong> or done piercing of skin in last six months or have you been injured with any contaminated needle?</span><t t-if="o.tatto"><span> Yes</span></t><t t-if="not o.tatto"><span> No</span></t>
+                                    </td>
+                            </tr>
+                            <tr>
+                                    <th style="border: none;">
+                              <strong> <span>D.  <u>Patients to be excluded for other limited period</u> </span> </strong>
+                                    </th>
+                            </tr>
+                            <tr>
+                                    <td style="border: none;">
+                                        <span>1.Have you been vaccinated against &#160;<strong> hepatits B vaccine </strong> in last three weeks?.</span>
+                                    <t t-if="o.vaccine"><span> Yes</span></t><t t-if="not o.vaccine"><span> No</span></t>
+                                    </td>
+                            </tr>
+                            <tr>
+                                    <td style="border: none;">
+                                        <span>2.Have you suffered for &#160;<strong> gonorrheal/diarshocal disease </strong> in last four weeks?</span>
+                                    <t t-if="o.gonorrheal"><span> Yes</span></t><t t-if="not o.gonorrheal"><span> No</span></t>
+                                    </td>
+                            </tr>
+                            <tr>
+                                    <td style="border: none;">
+                                        <span>3.Have you Undergone any &#160;<strong> small operation or tooth extraction </strong> in last week?</span>
+                                   <t t-if="o.operation"><span> Yes</span></t><t t-if="not o.operation"><span> No</span></t>
+                                    </td>
+                            </tr>
+                        </table>
+                        <div class="row mt16"></div>
+                        <div class="row" style="margin-left:10px;margin-right:1px;font-size:12px;letter-spacing: 0.5px;">
+                            <t t-if="o.language == 'english'">
+                                <table class="table table-condensed" style="border:none;">
+				    <tr>
+					<td style="border: none;" colspan="2">
+					  <span>   I have been explained in the language I understand about the importance and usefulness of bone graft.  I agree that bone parts in the context 
+					  measures carried out in my surgery are removed and must be used as a bone graft only. I assure that i do not have any of the risk factors mentioned above.
+					  I have truthfully answered all the questions asked to me by <t t-if="not o.physician_id">......................................</t><t t-if="o.physician_id"><span t-field="o.physician_id.name"/>.</t><br/>
+
+ </span>
+					</td>
+				    </tr>
+				    <tr>
+					<td style="border: none;">
+					    <span>  Medical Officer</span>
+					</td>
+					<td style="border: none;">
+					    <span>  Patient's Sign</span>
+					</td>
+				    </tr>
+				    <tr>
+					<td style="border: none;">
+					    <span>(..........................)</span>
+					</td>
+					<td style="border: none;">
+					    <span>(..........................)</span>
+					</td>
+				    </tr>
+				    <tr>
+					<td style="border: none;" colspan="2">
+					    <span>Patient's Sign....................................</span>
+					</td>
+				    </tr>
+				    <tr>
+					<td style="border: none;" colspan="2">
+					    <span>Datetime: <t t-if="not o.date_donation">.........................................</t><t t-if="o.date_donation"><span t-field="o.date_donation"></span></t></span>
+					</td>
+				    </tr>
+				    <tr>
+					<td style="border: none;" colspan="2">
+					    <span>Patient meets the criteria for donation?</span> <t t-if="o.donation"><span> Yes</span></t><t t-if="not o.donation"><span> No</span></t><br/><br/>
+					</td>
+				    </tr>
+				    <tr>
+					<td style="border: none;">
+					    <span>Dr. Haresh Kandhari</span>
+					</td>
+					<td style="border: none;">
+					    <span>Dr.Nikunj Jagrit</span>
+					</td>
+				    </tr>
+				    <tr>
+					<td style="border: none;">
+					    <span>Physician</span>
+					</td>
+					<td style="border: none;">
+					    <span>Anaesthetist</span>
+					</td>
+				    </tr>
+				</table>
+                            </t>
+                            <t t-if="o.language == 'hindi'">
+                                <table class="table table-condensed" style="border:none;">
+				    <tr>
+					<td style="border: none;" colspan="2">
+					  <span>   मुझे मेरी हिन्दी भाषा में बोन ग्राफट की उपयोगिता और अगत्या के बारे समजाया गया है. में सहेमत हूं के मेरी सर्जरी संदर्भ जो माप के भाग , सिर्फ ग्राफट के लिए 
+
+        ही उपयोग होगा। में विश्वास दिलाता हूं के ऊपर दिए गए कोई भी रोग के जोखमी कारण से पिडीत नहीं हूं डॉ. <t t-if="not o.physician_id">......................................</t><t t-if="o.physician_id"><span t-field="o.physician_id.name"/>.</t> के पूछे हूए सभी सवालो का मैने सही जवाब दीया है। <br/>
+
+ </span>
+					</td>
+				    </tr>
+				    <tr>
+					<td style="border: none;">
+					    <span>   मेडिकल ऑफिसर  </span>
+					</td>
+					<td style="border: none;">
+					    <span>  दर्दी की दस्तखत </span>
+					</td>
+				    </tr>
+				    <tr>
+					<td style="border: none;">
+					    <span>(..........................)</span>
+					</td>
+					<td style="border: none;">
+					    <span>(..........................)</span>
+					</td>
+				    </tr>
+				    <tr>
+					<td style="border: none;" colspan="2">
+					    <span>दर्दी के दस्तखत  ....................................</span>
+					</td>
+				    </tr>
+				    <tr>
+					<td style="border: none;" colspan="2">
+					    <span>दिनांक समय: <t t-if="not o.date_donation">.........................................</t><t t-if="o.date_donation"><span t-field="o.date_donation"></span></t></span>
+					</td>
+				    </tr>
+				    <tr>
+					<td style="border: none;" colspan="2">
+					    <span> दर्दी दान के मापदंडो को पूरा करता है। </span> <t t-if="o.donation"><span> Yes</span></t><t t-if="not o.donation"><span> No</span></t><br/><br/>
+					</td>
+				    </tr>
+				    <tr>
+					<td style="border: none;">
+					    <span>डॉ. हरेश कंधारी     </span>
+					</td>
+					<td style="border: none;">
+					    <span>डॉ. निकुंज जाग्रीत </span>
+					</td>
+				    </tr>
+				    <tr>
+					<td style="border: none;">
+					    <span>चिकित्सक </span>
+					</td>
+					<td style="border: none;">
+					    <span>ऐनेस्थेटिसि</span>
+					</td>
+				    </tr>
+				</table>
+                            </t>
+                            <t t-if="o.language == 'gujarati'">
+                                <table class="table table-condensed" style="border:none;">
+				    <tr>
+					<td style="border: none;" colspan="2">
+					  <span>   મને મારી ગુજરાતી ભાષા માં બોન ગ્રાફ્ટ ની ઉપયોગીતા અને અગત્યતા વિષે સમજાવવા માં આવ્યુ છે. હું સંમત થાવ છુ કે મારી સર્જરી સંદર્ભ જે બોન માપ વાળા ભાગો ,ફક્ત બોન  ગ્રાફ્ટ માટે વાપરવા માં આવશે. હું આથી બાહેધરી આપું છું કે ઉપર જણાવેલ કોઈ પણ રોગ ને લગતા જોખમી પરિબળો મારા માં નથી. ડો. <t t-if="not o.physician_id">......................................</t><t t-if="o.physician_id"><span t-field="o.physician_id.name"/></t> એ પુછેલા બધા સવાલોના મેં સાચા જવાબો આપ્યા છે.
+
+<br/>
+
+ </span>
+					</td>
+				    </tr>
+				    <tr>
+					<td style="border: none;">
+					    <span>  મેડિકલ ઓફિસર  </span>
+					</td>
+					<td style="border: none;">
+					    <span>  દર્દી ની સહી </span>
+					</td>
+				    </tr>
+				    <tr>
+					<td style="border: none;">
+					    <span>(..........................)</span>
+					</td>
+					<td style="border: none;">
+					    <span>(..........................)</span>
+					</td>
+				    </tr>
+				    <tr>
+					<td style="border: none;" colspan="2">
+					    <span>દર્દી ની સહી  ....................................</span>
+					</td>
+				    </tr>
+				    <tr>
+					<td style="border: none;" colspan="2">
+					    <span>તારીખ સમય: <t t-if="not o.date_donation">.........................................</t><t t-if="o.date_donation"><span t-field="o.date_donation"></span></t></span>
+					</td>
+				    </tr>
+				    <tr>
+					<td style="border: none;" colspan="2">
+					    <span>દર્દી દાન કરવા ના માપદંડ માટે ઉચિત છે ?</span> <t t-if="o.donation"><span> Yes</span></t><t t-if="not o.donation"><span> No</span></t><br/><br/>
+					</td>
+				    </tr>
+				    <tr>
+					<td style="border: none;">
+					    <span>ડો. હરેશ કંધારી </span>
+					</td>
+					<td style="border: none;">
+					    <span>ડો. નિકુંજ જગરિત </span>
+					</td>
+				    </tr>
+				    <tr>
+					<td style="border: none;">
+					    <span>ચિકિત્સક</span>
+					</td>
+					<td style="border: none;">
+					    <span>એનેસ્થેટિસ્ટ</span>
+					</td>
+				    </tr>
+				</table>
+                            </t>
+                            <br />
+                        </div>
+
+                        </div>
+                        
+                    </div>
+                </t>
+            </t>
+        </template>
+
+         <report
+            id="survey_report"
+            string="Patient Survey For Bone Donation"
+            model="res.partner" 
+            report_type="qweb-pdf"
+            file="hms_bone_bank.report_bone_donation_survey" 
+            name="hms_bone_bank.report_bone_donation_survey"
+            groups="hms_bone_bank.group_bone_bank_user,hms_bone_bank.group_bone_bank_manager"
+        />
+
+        <record id="hms_bone_bank.survey_report" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="paperformat_survey_report" />
+        </record>
+
+    </data>
+</odoo>
+ -->

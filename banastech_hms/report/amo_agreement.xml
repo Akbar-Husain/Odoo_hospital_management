@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="paperformat_amo" model="report.paperformat">
+           <field name="name">Custom Pro-forma</field>
+           <field name="default" eval="True"/>
+           <field name="format">A4</field>
+           <field name="page_height">0</field>
+           <field name="page_width">0</field>
+           <field name="orientation">Portrait</field>
+           <field name="margin_top">10</field>
+           <field name="margin_bottom">25</field>
+           <field name="margin_left">30</field>
+           <field name="margin_right">30</field>
+           <field name="header_line" eval="False"/>
+           <field name="header_spacing">20</field>
+           <field name="dpi">90</field>
+       </record>
+         <template id="report_amo_agreement">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <!-- <t t-call="report.external_layout"> -->
+                    <div class="page" style="align:left;text-align: center;font-size:18px;">
+                        <center>
+                            <h3>AGREEMENT</h3>
+                        </center>
+                        <table style="width:900px;height:150px;font-size:30px;padding:5px">
+                            <tr>
+                                <td style="text-align: center;margin-bottom:5%">
+                                    THIS <b>AGREEMENT</b> is made on this with effect from 
+                                    <t t-esc="datetime.datetime.now().date()"/> 
+                                    <!-- <span t-field="o.ward_id.floor" /> -->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">
+                                    <b style="text-align:center;">BETWEEN </b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;margin-bottom:5%">
+                                    <b><span t-esc="o.name"/> </b>aged<span t-esc="o.age"/> wife of / Husband of<b><span t-esc="o.relation"/></b>, having permanent residence.  <b><span t-esc="o.street"/></b>, a professionally qualified <b><span t-esc="o.highest_qualification_id.name"/></b>, hereinafter referred to as the <b><span t-esc="o.designation"/></b> on the <b>FIRST PART.</b><br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">
+                                    <b style="text-align:center;">AND </b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;margin-bottom:5%">
+                                    <b>Kaizen Hospital,</b> a company incorporated under the provision of the companies Act, 1986, and having Registered office at “Kaizen Hospital”, 132 ft ring road, near helmet circle, Memnagar, Ahmedabad” hereinafter referred to as the “Company” on the <b>SECOND  PART.</b><br/>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td style="text-align: center;">
+                                   
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;margin-bottom:5%">
+                                    (a) Kaizen Hospital is engaged in the business  of running super specialty hospitals located under the name and style of “Kaizen Hospital” at Ahmedabad, Gujarat, India <br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">
+                                   
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;margin-bottom:5%">
+                                    (b) The doctor has offered his/her services as a professionally qualified <b>Assistant to Medical officer</b> in the hospital.<br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">
+                                </td>
+                            </tr>
+                             <tr>
+                                <td style="text-align: left;margin-bottom:5%">
+                                    (c) The hospital has accepted the offer of the doctor for rendering his/her service as <b>Assistant to medical Officer</b> and has entered into this agreement on the following terms and conditions.<br/>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td style="text-align:center;">
+                                    <b style="text-align:center;">NOW THIS AGREEMENT WITNESSETH AND IT IS HEREBY AGREED BY AND BETWEEN THE PARTIES TO AS FOLLOWS. </b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;margin-bottom:5%">
+                                    1. The doctor hereby offers her services as Assistant to Medical Officer on full time basis to Kaizen Hospital and Kaizen Hospital hereby accept the offer and agree to avail the services of the doctor as full time Assistant to Medical Officer subject to award of clinical privileges as per Medical Staff Bye-Law of Kaizen Hospital in existence.
+                                </td>
+                            </tr>
+                             <tr>
+                                <td style="text-align: left;margin-bottom:5%">
+                                    2. The doctor may be posted to any of the Department of the Hospital.
+                                </td>
+                            </tr>
+                             <tr>
+                                <td style="text-align: left;margin-bottom:5%">
+                                   3. The doctor shall carry out faithfully and diligently all instructions given by the Hospital and its Management.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;margin-bottom:5%">
+                                  4. The Hospital agrees to pay the Doctor consultancy Fees of Rs. <t t-esc="o.consul_charge"/> /- (<t t-esc="o.test_amount_to_text()[0]['amount_text']"/>) per Hour in consideration of the services,  to be provided , as above, which may be modified, as may be decided by the management, from time to time . 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;margin-bottom:5%">
+                                  5. The doctor shall devote her whole time attention to the contractual services of the Hospital calculate yearly on the basis of 52 week @51 hours per week inclusive of 3 hours as half hour meal break per day. However for the purpose of calculation of the remuneration, these hours will not be calculated( Any number of less working hours during the week will be amount to loss of the contractual services accepted by the Hospital and given by the Doctor and the Doctor will receive proportionately less remuneration.)
+                                </td>
+                            </tr>
+                             <tr>
+                                <td style="text-align: left;margin-bottom:5%">
+                                 6. All payments by the Hospital under this Agreement shall be subject to deduction, on account of taxes, as may be applicable, from time to time.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;margin-bottom:5%">
+                                 7. The Hospital may appreciate the Doctor, any time, during the Contract period, by the way of good performance or any achievement by the Doctor. This will not form any precedent or right by the Doctor.
+                                </td>
+                            </tr>
+                             <tr>
+                                <td style="text-align: left;margin-bottom:5%">
+                                8. The Doctor shall not receive any emolument, directly or indirectly, in cash or in kind, from the patient or from anybody else on account of the patient, for the services rendered to the patient or for any other work performed in accordance with this agreement.
+                                </td>
+                            </tr>
+                              <tr>
+                                <td style="text-align: left;margin-bottom:5%">
+                               9. The doctor shall not receive any time disclose, divulge, any of processes, administrative policies, billing and method of accounts, medical development in medicine and technology, transaction or, dealings of the Hospital, and any information regarding the business of the hospital which comes to the knowledge of the Doctor during the course of providing his services to the Hospital.
+                                </td>
+                            </tr>
+                             <tr>
+                                <td style="text-align: left;margin-bottom:5%">
+                               10. The Doctor shall not, so long as this Agreement is valid and subsisting, either personally or through an agent, person or other manner, directly or indirectly,<br/>
+a. Be connected or interested in any business venture.<br/>
+b. Canvass or solicit business for or refer patients to, any other person, firm, Company, Trust, or other organization engaged in any business- whether competing with kaizen Hospital or otherwise.<br/>
+c. Induce or attempt to induce any key employee of Kaizen Hospital to leave his/her employment.<br/>
+                                </td>
+                            </tr>
+
+                             <tr>
+                                <td style="text-align: left;margin-bottom:5%">
+                              11. In the event of breach of clause 9 to 11 above, Kaizen Hospital shall have right to restrain the Doctor from doing so. In addition, Kaizen Hospital shall have full rights to claim and recover damages in respect of such breach or breach of any other clause in this Agreement. The Doctor hereby authorizes Kaizen Hospital to recover such damages from the amount payable to the Doctor under this Agreement, without any prejudice to Kaizen hospital’s right to claim and recover any further equitable damages under the law of the land.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;margin-bottom:5%">
+                             12. This Agreement is entered into between the Doctor and Kaizen Hospital on principal-to-principal basis. The Doctor is neither an agent nor an employee of Kaizen Hospital.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;margin-bottom:5%">
+                             13. Either party shall have right to terminate this Agreement at any time by giving advance notice of one month, in writing or compensation in lieu thereof, to the other party.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;margin-bottom:5%">
+                             14. Any dispute or difference between the parties hereto shall be referred to the arbitration of a panel of three arbitrators. One arbitrator shall be appointed by Kaizen Hospital and one by the Doctor. The two arbitrators shall appoint a third one, who shall be the Chairman of the panel. The Arbitrators shall have Summary power and the venue of arbitration shall be Ahmedabad.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;margin-bottom:5%">
+                            15. This agreement shall be governed by and constructed in accordance with the laws of India.
+                                </td>
+                            </tr>
+                             <tr>
+                                <td style="text-align: left;margin-bottom:5%">
+                           16. No modification, variation, waiver or amendment of any term or condition of this agreement shall be effective unless and until it shall be reduced to writing and signed by both the parties hereto.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;margin-bottom:5%">
+                          17. This agreement replaces all the previous agreements entered into by both the parties.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">
+                                    <b style="text-align:center;">NOW IN WITNESS WHEREOF BOTH THE PARTIES HAVE EXECUTED THIS AGREEMENT ON THE DATE AND PLACE FIRST MENTIONED HEREINABOVE</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:left;">
+                                    <b style="text-align:left;">For, Kaizen Hospital </b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:right;">
+                                    <b style="text-align:right;">For, Accepted: </b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:left;">
+                                    <b style="text-align:left;">For, Dr. Nehal Gadhavi<br/>                                             (Doctor name)</b>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <!-- </t> -->
+                </t>
+            </t>
+        </template>
+        <report
+            id="ipd_amo_agreement_report"
+            string="AMO Agreement"
+            model="hms.physician"
+            report_type="qweb-pdf"
+            file="hms.report_amo_agreement"
+            name="hms.report_amo_agreement"
+            paperformat="hms.paperformat_amo"
+        />
+    </data>
+</odoo>

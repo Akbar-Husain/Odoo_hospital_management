@@ -1,0 +1,42 @@
+.breadcrumb{
+	padding: 2px 15px;
+}
+.openerp .indimedi_form_full_width{
+	padding: 2px 0;
+}
+.oe_form_sheetbg .indimedi_form_full_width{
+	max-width: 1274% !important;
+	padding: 8px;
+}
+.oe_form_sheetbg .indimedi_form_full_width_75{
+	max-width: 85% !important;
+	padding: 8px;
+}
+.nav > li > a{
+	padding: 6px 15px;
+}
+.openerp .oe_form .oe_form_group{
+	margin: 0px 0 9px 0;
+}
+td.oe_list_field_object{
+	padding: 2px 2px !important;
+}
+td.oe_list_field_object button{
+	padding: 0px 4px !important;
+}
+.openerp .oe_button_box{
+	width: 300px !important;
+}
+table.patient_group tbody tr.oe_form_group_row td.oe_form_group_cell 
+
+{
+	width:50% !important;
+}
+
+
+table.patient_group tbody tr.oe_form_group_row td.oe_group_right
+
+{
+	width:30% !important;
+	
+}

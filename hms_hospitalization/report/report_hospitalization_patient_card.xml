@@ -1,0 +1,953 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openerp>
+    <data>
+        <template id="HospitalizationCard">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <div class="page" style="font-size:11px;">
+                        <table class="table table-condensed" style="border:none !important;">
+                            <tr>
+                                <td style="height:180px;border: none !important;">
+                                    <div style="width:302px;float:left; border: 1px solid black;">
+                                        <div style="height:20px; border-bottom: 1px solid black">
+                                            <div style="width:75px;text-align:center; float:left; border-right: 1 solid black;">
+                                                <span t-field="o.patient_id.code"/>
+                                            </div>
+                                            <div style="float:left; padding-left:5px">
+                                                <span>PT : </span><span t-field="o.patient_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                                <div style="width:150px;float:left;padding-left:4px"><span t-esc="physician.name"/></div>
+                                            </t>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>M.No : </span><span t-field="o.patient_id.mobile"/>
+                                            </div>
+                                            <div style="float:left;padding-left:4px">
+                                                <span>IP-ID : </span><span t-field="o.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>BED : </span><span t-field="o.bed_id.id"/>
+                                            </div>
+                                            <div style="float:left; padding-left:4px">
+                                                <span>DOA : </span><span t-field="o.hospitalization_date"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:30px; border-top: 1px solid black">
+                                            <div style="float:left;padding-left:75px">
+                                                <img width="120px" class="img img-responsive" src="/web/static/src/img/barcode.png"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="border: none !important;padding-left:45px">
+                                    <div style="width:302px;float:left;border:1px solid black;">
+                                        <div style="height:20px; border-bottom: 1px solid black">
+                                            <div style="width:75px;text-align:center; float:left; border-right: 1px solid black;">
+                                                <span t-field="o.patient_id.code"/>
+                                            </div>
+                                            <div style="float:left; padding-left:5px">
+                                                <span>PT : </span><span t-field="o.patient_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                                <div style="width:150px;float:left;padding-left:4px"><span t-esc="physician.name"/></div>
+                                            </t>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>M.No : </span><span t-field="o.patient_id.mobile"/>
+                                            </div>
+                                            <div style="float:left;padding-left:4px">
+                                                <span>IP-ID : </span><span t-field="o.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>BED : </span><span t-field="o.bed_id.id"/>
+                                            </div>
+                                            <div style="float:left; padding-left:4px">
+                                                <span>DOA : </span><span t-field="o.hospitalization_date"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:30px; border-top: 1px solid black">
+                                            <div style="float:left;padding-left:75px">
+                                                <img width="120px" class="img img-responsive" src="/web/static/src/img/barcode.png"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="border: none !important;padding-left:50px">
+                                    <div style="width:302px;float:left;border:1px solid black;">
+                                        <div style="height:20px; border-bottom: 1px solid black">
+                                            <div style="width:75px;text-align:center; float:left; border-right: 1px solid black;">
+                                                <span t-field="o.patient_id.code"/>
+                                            </div>
+                                            <div style="float:left; padding-left:5px">
+                                                <span>PT : </span><span t-field="o.patient_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                                <div style="width:150px;float:left;padding-left:4px"><span t-esc="physician.name"/></div>
+                                            </t>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>M.No : </span><span t-field="o.patient_id.mobile"/>
+                                            </div>
+                                            <div style="float:left;padding-left:4px">
+                                                <span>IP-ID : </span><span t-field="o.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>BED : </span><span t-field="o.bed_id.id"/>
+                                            </div>
+                                            <div style="float:left; padding-left:4px">
+                                                <span>DOA : </span><span t-field="o.hospitalization_date"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:30px; border-top: 1px solid black">
+                                            <div style="float:left;padding-left:75px">
+                                                <img width="120px"  class="img img-responsive" src="/web/static/src/img/barcode.png"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height:180px;border:none !important;">
+                                    <div style="width:302px;float:left; border: 1px solid black;">
+                                        <div style="height:20px; border-bottom: 1px solid black">
+                                            <div style="width:75px;text-align:center; float:left; border-right: 1 solid black;">
+                                                <span t-field="o.patient_id.code"/>
+                                            </div>
+                                            <div style="float:left; padding-left:5px">
+                                                <span>PT : </span><span t-field="o.patient_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                                <div style="width:150px;float:left;padding-left:4px"><span t-esc="physician.name"/></div>
+                                            </t>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>M.No : </span><span t-field="o.patient_id.mobile"/>
+                                            </div>
+                                            <div style="float:left;padding-left:4px">
+                                                <span>IP-ID : </span><span t-field="o.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>BED : </span><span t-field="o.bed_id.id"/>
+                                            </div>
+                                            <div style="float:left; padding-left:4px">
+                                                <span>DOA : </span><span t-field="o.hospitalization_date"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:30px; border-top: 1px solid black">
+                                            <div style="float:left;padding-left:75px">
+                                                <img width="120px" class="img img-responsive" src="/web/static/src/img/barcode.png"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="border: none !important;padding-left:45px">
+                                     <div style="width:302px;float:left;border:1px solid black;">
+                                        <div style="height:20px; border-bottom: 1px solid black">
+                                            <div style="width:75px;text-align:center; float:left; border-right: 1px solid black;">
+                                                <span t-field="o.patient_id.code"/>
+                                            </div>
+                                            <div style="float:left; padding-left:5px">
+                                                <span>PT : </span><span t-field="o.patient_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                                <div style="width:150px;float:left;padding-left:4px"><span t-esc="physician.name"/></div>
+                                            </t>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>M.No : </span><span t-field="o.patient_id.mobile"/>
+                                            </div>
+                                            <div style="float:left;padding-left:4px">
+                                                <span>IP-ID : </span><span t-field="o.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>BED : </span><span t-field="o.bed_id.id"/>
+                                            </div>
+                                            <div style="float:left; padding-left:4px">
+                                                <span>DOA : </span><span t-field="o.hospitalization_date"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:30px; border-top: 1px solid black">
+                                            <div style="float:left;padding-left:75px">
+                                                <img width="120px" class="img img-responsive" src="/web/static/src/img/barcode.png"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="border: none !important;padding-left:50px">
+                                    <div style="width:302px;float:left;border:1px solid black;">
+                                        <div style="height:20px; border-bottom: 1px solid black">
+                                            <div style="width:75px;text-align:center; float:left; border-right: 1px solid black;">
+                                                <span t-field="o.patient_id.code"/>
+                                            </div>
+                                            <div style="float:left; padding-left:5px">
+                                                <span>PT : </span><span t-field="o.patient_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                                <div style="width:150px;float:left;padding-left:4px"><span t-esc="physician.name"/></div>
+                                            </t>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>M.No : </span><span t-field="o.patient_id.mobile"/>
+                                            </div>
+                                            <div style="float:left;padding-left:4px">
+                                                <span>IP-ID : </span><span t-field="o.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>BED : </span><span t-field="o.bed_id.id"/>
+                                            </div>
+                                            <div style="float:left; padding-left:4px">
+                                                <span>DOA : </span><span t-field="o.hospitalization_date"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:30px; border-top: 1px solid black">
+                                            <div style="float:left;padding-left:75px">
+                                                <img width="120px"  class="img img-responsive" src="/web/static/src/img/barcode.png"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height:180px;border: none !important;">
+                                    <div style="width:302px;float:left; border: 1px solid black;">
+                                        <div style="height:20px; border-bottom: 1px solid black">
+                                            <div style="width:75px;text-align:center; float:left; border-right: 1 solid black;">
+                                                <span t-field="o.patient_id.code"/>
+                                            </div>
+                                            <div style="float:left; padding-left:5px">
+                                                <span>PT : </span><span t-field="o.patient_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                                <div style="width:150px;float:left;padding-left:4px"><span t-esc="physician.name"/></div>
+                                            </t>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>M.No : </span><span t-field="o.patient_id.mobile"/>
+                                            </div>
+                                            <div style="float:left;padding-left:4px">
+                                                <span>IP-ID : </span><span t-field="o.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>BED : </span><span t-field="o.bed_id.id"/>
+                                            </div>
+                                            <div style="float:left; padding-left:4px">
+                                                <span>DOA : </span><span t-field="o.hospitalization_date"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:30px; border-top: 1px solid black">
+                                            <div style="float:left;padding-left:75px">
+                                                <img width="120px" class="img img-responsive" src="/web/static/src/img/barcode.png"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="border: none !important;padding-left:45px">
+                                    <div style="width:302px;float:left;border:1px solid black;">
+                                        <div style="height:20px; border-bottom: 1px solid black">
+                                            <div style="width:75px;text-align:center; float:left; border-right: 1px solid black;">
+                                                <span t-field="o.patient_id.code"/>
+                                            </div>
+                                            <div style="float:left; padding-left:5px">
+                                                <span>PT : </span><span t-field="o.patient_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                                <div style="width:150px;float:left;padding-left:4px"><span t-esc="physician.name"/></div>
+                                            </t>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>M.No : </span><span t-field="o.patient_id.mobile"/>
+                                            </div>
+                                            <div style="float:left;padding-left:4px">
+                                                <span>IP-ID : </span><span t-field="o.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>BED : </span><span t-field="o.bed_id.id"/>
+                                            </div>
+                                            <div style="float:left; padding-left:4px">
+                                                <span>DOA : </span><span t-field="o.hospitalization_date"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:30px; border-top: 1px solid black">
+                                            <div style="float:left;padding-left:75px">
+                                                <img width="120px" class="img img-responsive" src="/web/static/src/img/barcode.png"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="border: none !important;padding-left:50px">
+                                    <div style="width:302px;float:left;border:1px solid black;">
+                                        <div style="height:20px; border-bottom: 1px solid black">
+                                            <div style="width:75px;text-align:center; float:left; border-right: 1px solid black;">
+                                                <span t-field="o.patient_id.code"/>
+                                            </div>
+                                            <div style="float:left; padding-left:5px">
+                                                <span>PT : </span><span t-field="o.patient_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                                <div style="width:150px;float:left;padding-left:4px"><span t-esc="physician.name"/></div>
+                                            </t>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>M.No : </span><span t-field="o.patient_id.mobile"/>
+                                            </div>
+                                            <div style="float:left;padding-left:4px">
+                                                <span>IP-ID : </span><span t-field="o.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>BED : </span><span t-field="o.bed_id.id"/>
+                                            </div>
+                                            <div style="float:left; padding-left:4px">
+                                                <span>DOA : </span><span t-field="o.hospitalization_date"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:30px; border-top: 1px solid black">
+                                            <div style="float:left;padding-left:75px">
+                                                <img width="120px"  class="img img-responsive" src="/web/static/src/img/barcode.png"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height:180px;border: none !important;">
+                                    <div style="width:302px;float:left; border: 1px solid black;">
+                                <div style="height:20px; border-bottom: 1px solid black">
+                                    <div style="width:75px;text-align:center; float:left; border-right: 1 solid black;">
+                                        <span t-field="o.patient_id.code"/>
+                                    </div>
+                                    <div style="float:left; padding-left:5px">
+                                        <span>PT : </span><span t-field="o.patient_id.name"/>
+                                    </div>
+                                </div>
+                                <div style="height:20px">
+                                    <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                        <div style="width:150px;float:left;padding-left:4px"><span t-esc="physician.name"/></div>
+                                    </t>
+                                </div>
+                                <div style="height:20px">
+                                    <div style="width:150px;float:left;padding-left:4px">
+                                        <span>M.No : </span><span t-field="o.patient_id.mobile"/>
+                                    </div>
+                                    <div style="float:left;padding-left:4px">
+                                        <span>IP-ID : </span><span t-field="o.name"/>
+                                    </div>
+                                </div>
+                                <div style="height:20px">
+                                    <div style="width:150px;float:left;padding-left:4px">
+                                        <span>BED : </span><span t-field="o.bed_id.id"/>
+                                    </div>
+                                    <div style="float:left; padding-left:4px">
+                                        <span>DOA : </span><span t-field="o.hospitalization_date"/>
+                                    </div>
+                                </div>
+                                <div style="height:30px; border-top: 1px solid black">
+                                    <div style="float:left;padding-left:75px">
+                                        <img width="120px" class="img img-responsive" src="/web/static/src/img/barcode.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                                </td>
+                                <td style="border: none !important;padding-left:45px">
+                                    <div style="width:302px;float:left;border:1px solid black;">
+                                        <div style="height:20px; border-bottom: 1px solid black">
+                                            <div style="width:75px;text-align:center; float:left; border-right: 1px solid black;">
+                                                <span t-field="o.patient_id.code"/>
+                                            </div>
+                                            <div style="float:left; padding-left:5px">
+                                                <span>PT : </span><span t-field="o.patient_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                                <div style="width:150px;float:left;padding-left:4px"><span t-esc="physician.name"/></div>
+                                            </t>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>M.No : </span><span t-field="o.patient_id.mobile"/>
+                                            </div>
+                                            <div style="float:left;padding-left:4px">
+                                                <span>IP-ID : </span><span t-field="o.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>BED : </span><span t-field="o.bed_id.id"/>
+                                            </div>
+                                            <div style="float:left; padding-left:4px">
+                                                <span>DOA : </span><span t-field="o.hospitalization_date"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:30px; border-top: 1px solid black">
+                                            <div style="float:left;padding-left:75px">
+                                                <img width="120px" class="img img-responsive" src="/web/static/src/img/barcode.png"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="border: none !important;padding-left:50px">
+                                    <div style="width:302px;float:left;border:1px solid black;">
+                                        <div style="height:20px; border-bottom: 1px solid black">
+                                            <div style="width:75px;text-align:center; float:left; border-right: 1px solid black;">
+                                                <span t-field="o.patient_id.code"/>
+                                            </div>
+                                            <div style="float:left; padding-left:5px">
+                                                <span>PT : </span><span t-field="o.patient_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                                <div style="width:150px;float:left;padding-left:4px"><span t-esc="physician.name"/></div>
+                                            </t>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>M.No : </span><span t-field="o.patient_id.mobile"/>
+                                            </div>
+                                            <div style="float:left;padding-left:4px">
+                                                <span>IP-ID : </span><span t-field="o.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>BED : </span><span t-field="o.bed_id.id"/>
+                                            </div>
+                                            <div style="float:left; padding-left:4px">
+                                                <span>DOA : </span><span t-field="o.hospitalization_date"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:30px; border-top: 1px solid black">
+                                            <div style="float:left;padding-left:75px">
+                                                <img width="120px"  class="img img-responsive" src="/web/static/src/img/barcode.png"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height:180px;border: none !important;">
+                                    <div style="width:302px;float:left; border: 1px solid black;">
+                                        <div style="height:20px; border-bottom: 1px solid black">
+                                            <div style="width:75px;text-align:center; float:left; border-right: 1 solid black;">
+                                                <span t-field="o.patient_id.code"/>
+                                            </div>
+                                            <div style="float:left; padding-left:5px">
+                                                <span>PT : </span><span t-field="o.patient_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                                <div style="width:150px;float:left;padding-left:4px"><span t-esc="physician.name"/></div>
+                                            </t>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>M.No : </span><span t-field="o.patient_id.mobile"/>
+                                            </div>
+                                            <div style="float:left;padding-left:4px">
+                                                <span>IP-ID : </span><span t-field="o.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>BED : </span><span t-field="o.bed_id.id"/>
+                                            </div>
+                                            <div style="float:left; padding-left:4px">
+                                                <span>DOA : </span><span t-field="o.hospitalization_date"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:30px; border-top: 1px solid black">
+                                            <div style="float:left;padding-left:75px">
+                                                <img width="120px" class="img img-responsive" src="/web/static/src/img/barcode.png"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="border: none !important;padding-left:45px">
+                                    <div style="width:302px;float:left;border:1px solid black;">
+                                        <div style="height:20px; border-bottom: 1px solid black">
+                                            <div style="width:75px;text-align:center; float:left; border-right: 1px solid black;">
+                                                <span t-field="o.patient_id.code"/>
+                                            </div>
+                                            <div style="float:left; padding-left:5px">
+                                                <span>PT : </span><span t-field="o.patient_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                                <div style="width:150px;float:left;padding-left:4px"><span t-esc="physician.name"/></div>
+                                            </t>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>M.No : </span><span t-field="o.patient_id.mobile"/>
+                                            </div>
+                                            <div style="float:left;padding-left:4px">
+                                                <span>IP-ID : </span><span t-field="o.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>BED : </span><span t-field="o.bed_id.id"/>
+                                            </div>
+                                            <div style="float:left; padding-left:4px">
+                                                <span>DOA : </span><span t-field="o.hospitalization_date"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:30px; border-top: 1px solid black">
+                                            <div style="float:left;padding-left:75px">
+                                                <img width="120px" class="img img-responsive" src="/web/static/src/img/barcode.png"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="border: none !important;padding-left:50px">
+                                    <div style="width:302px;float:left;border:1px solid black;">
+                                        <div style="height:20px; border-bottom: 1px solid black">
+                                            <div style="width:75px;text-align:center; float:left; border-right: 1px solid black;">
+                                                <span t-field="o.patient_id.code"/>
+                                            </div>
+                                            <div style="float:left; padding-left:5px">
+                                                <span>PT : </span><span t-field="o.patient_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                                <div style="width:150px;float:left;padding-left:4px"><span t-esc="physician.name"/></div>
+                                            </t>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>M.No : </span><span t-field="o.patient_id.mobile"/>
+                                            </div>
+                                            <div style="float:left;padding-left:4px">
+                                                <span>IP-ID : </span><span t-field="o.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>BED : </span><span t-field="o.bed_id.id"/>
+                                            </div>
+                                            <div style="float:left; padding-left:4px">
+                                                <span>DOA : </span><span t-field="o.hospitalization_date"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:30px; border-top: 1px solid black">
+                                            <div style="float:left;padding-left:75px">
+                                                <img width="120px"  class="img img-responsive" src="/web/static/src/img/barcode.png"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height:180px;border: none !important;">
+                                    <div style="width:302px;float:left; border: 1px solid black;">
+                                        <div style="height:20px; border-bottom: 1px solid black">
+                                            <div style="width:75px;text-align:center; float:left; border-right: 1 solid black;">
+                                                <span t-field="o.patient_id.code"/>
+                                            </div>
+                                            <div style="float:left; padding-left:5px">
+                                                <span>PT : </span><span t-field="o.patient_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                                <div style="width:150px;float:left;padding-left:4px"><span t-esc="physician.name"/></div>
+                                            </t>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>M.No : </span><span t-field="o.patient_id.mobile"/>
+                                            </div>
+                                            <div style="float:left;padding-left:4px">
+                                                <span>IP-ID : </span><span t-field="o.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>BED : </span><span t-field="o.bed_id.id"/>
+                                            </div>
+                                            <div style="float:left; padding-left:4px">
+                                                <span>DOA : </span><span t-field="o.hospitalization_date"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:30px; border-top: 1px solid black">
+                                            <div style="float:left;padding-left:75px">
+                                                <img width="120px" class="img img-responsive" src="/web/static/src/img/barcode.png"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="border: none !important;padding-left:45px">
+                                    <div style="width:302px;float:left;border:1px solid black;">
+                                        <div style="height:20px; border-bottom: 1px solid black">
+                                            <div style="width:75px;text-align:center; float:left; border-right: 1px solid black;">
+                                                <span t-field="o.patient_id.code"/>
+                                            </div>
+                                            <div style="float:left; padding-left:5px">
+                                                <span>PT : </span><span t-field="o.patient_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                                <div style="width:150px;float:left;padding-left:4px"><span t-esc="physician.name"/></div>
+                                            </t>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>M.No : </span><span t-field="o.patient_id.mobile"/>
+                                            </div>
+                                            <div style="float:left;padding-left:4px">
+                                                <span>IP-ID : </span><span t-field="o.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>BED : </span><span t-field="o.bed_id.id"/>
+                                            </div>
+                                            <div style="float:left; padding-left:4px">
+                                                <span>DOA : </span><span t-field="o.hospitalization_date"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:30px; border-top: 1px solid black">
+                                            <div style="float:left;padding-left:75px">
+                                                <img width="120px" class="img img-responsive" src="/web/static/src/img/barcode.png"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="border: none !important;padding-left:50px">
+                                    <div style="width:302px;float:left;border:1px solid black;">
+                                        <div style="height:20px; border-bottom: 1px solid black">
+                                            <div style="width:75px;text-align:center; float:left; border-right: 1px solid black;">
+                                                <span t-field="o.patient_id.code"/>
+                                            </div>
+                                            <div style="float:left; padding-left:5px">
+                                                <span>PT : </span><span t-field="o.patient_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                                <div style="width:150px;float:left;padding-left:4px"><span t-esc="physician.name"/></div>
+                                            </t>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>M.No : </span><span t-field="o.patient_id.mobile"/>
+                                            </div>
+                                            <div style="float:left;padding-left:4px">
+                                                <span>IP-ID : </span><span t-field="o.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>BED : </span><span t-field="o.bed_id.id"/>
+                                            </div>
+                                            <div style="float:left; padding-left:4px">
+                                                <span>DOA : </span><span t-field="o.hospitalization_date"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:30px; border-top: 1px solid black">
+                                            <div style="float:left;padding-left:75px">
+                                                <img width="120px"  class="img img-responsive" src="/web/static/src/img/barcode.png"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height:180px;border: none !important;">
+                                    <div style="width:302px;float:left; border: 1px solid black;">
+                                <div style="height:20px; border-bottom: 1px solid black">
+                                    <div style="width:75px;text-align:center; float:left; border-right: 1 solid black;">
+                                        <span t-field="o.patient_id.code"/>
+                                    </div>
+                                    <div style="float:left; padding-left:5px">
+                                        <span>PT : </span><span t-field="o.patient_id.name"/>
+                                    </div>
+                                </div>
+                                <div style="height:20px">
+                                    <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                        <div style="width:150px;float:left;padding-left:4px"><span t-esc="physician.name"/></div>
+                                    </t>
+                                </div>
+                                <div style="height:20px">
+                                    <div style="width:150px;float:left;padding-left:4px">
+                                        <span>M.No : </span><span t-field="o.patient_id.mobile"/>
+                                    </div>
+                                    <div style="float:left;padding-left:4px">
+                                        <span>IP-ID : </span><span t-field="o.name"/>
+                                    </div>
+                                </div>
+                                <div style="height:20px">
+                                    <div style="width:150px;float:left;padding-left:4px">
+                                        <span>BED : </span><span t-field="o.bed_id.id"/>
+                                    </div>
+                                    <div style="float:left; padding-left:4px">
+                                        <span>DOA : </span><span t-field="o.hospitalization_date"/>
+                                    </div>
+                                </div>
+                                <div style="height:30px; border-top: 1px solid black">
+                                    <div style="float:left;padding-left:75px">
+                                        <img width="120px" class="img img-responsive" src="/web/static/src/img/barcode.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                                </td>
+                                <td style="border: none !important;padding-left:45px">
+                                    <div style="width:302px;float:left;border:1px solid black;">
+                                <div style="height:20px; border-bottom: 1px solid black">
+                                    <div style="width:75px;text-align:center; float:left; border-right: 1px solid black;">
+                                        <span t-field="o.patient_id.code"/>
+                                    </div>
+                                    <div style="float:left; padding-left:5px">
+                                        <span>PT : </span><span t-field="o.patient_id.name"/>
+                                    </div>
+                                </div>
+                                <div style="height:20px">
+                                    <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                        <div style="width:150px;float:left;padding-left:4px"><span t-esc="physician.name"/></div>
+                                    </t>
+                                </div>
+                                <div style="height:20px">
+                                    <div style="width:150px;float:left;padding-left:4px">
+                                        <span>M.No : </span><span t-field="o.patient_id.mobile"/>
+                                    </div>
+                                    <div style="float:left;padding-left:4px">
+                                        <span>IP-ID : </span><span t-field="o.name"/>
+                                    </div>
+                                </div>
+                                <div style="height:20px">
+                                    <div style="width:150px;float:left;padding-left:4px">
+                                        <span>BED : </span><span t-field="o.bed_id.id"/>
+                                    </div>
+                                    <div style="float:left; padding-left:4px">
+                                        <span>DOA : </span><span t-field="o.hospitalization_date"/>
+                                    </div>
+                                </div>
+                                <div style="height:30px; border-top: 1px solid black">
+                                    <div style="float:left;padding-left:75px">
+                                        <img width="120px" class="img img-responsive" src="/web/static/src/img/barcode.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                                </td>
+                                <td style="border: none !important;padding-left:50px">
+                                    <div style="width:302px;float:left;border:1px solid black;">
+                                <div style="height:20px; border-bottom: 1px solid black">
+                                    <div style="width:75px;text-align:center; float:left; border-right: 1px solid black;">
+                                        <span t-field="o.patient_id.code"/>
+                                    </div>
+                                    <div style="float:left; padding-left:5px">
+                                        <span>PT : </span><span t-field="o.patient_id.name"/>
+                                    </div>
+                                </div>
+                                <div style="height:20px">
+                                    <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                        <div style="width:150px;float:left;padding-left:4px"><span t-esc="physician.name"/></div>
+                                    </t>
+                                </div>
+                                <div style="height:20px">
+                                    <div style="width:150px;float:left;padding-left:4px">
+                                        <span>M.No : </span><span t-field="o.patient_id.mobile"/>
+                                    </div>
+                                    <div style="float:left;padding-left:4px">
+                                        <span>IP-ID : </span><span t-field="o.name"/>
+                                    </div>
+                                </div>
+                                <div style="height:20px">
+                                    <div style="width:150px;float:left;padding-left:4px">
+                                        <span>BED : </span><span t-field="o.bed_id.id"/>
+                                    </div>
+                                    <div style="float:left; padding-left:4px">
+                                        <span>DOA : </span><span t-field="o.hospitalization_date"/>
+                                    </div>
+                                </div>
+                                <div style="height:30px; border-top: 1px solid black">
+                                    <div style="float:left;padding-left:75px">
+                                        <img width="120px"  class="img img-responsive" src="/web/static/src/img/barcode.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height:170px;;border: none !important;">
+                                    <div style="width:302px;float:left; border: 1px solid black;">
+                                        <div style="height:20px; border-bottom: 1px solid black">
+                                            <div style="width:75px;text-align:center; float:left; border-right: 1 solid black;">
+                                                <span t-field="o.patient_id.code"/>
+                                            </div>
+                                            <div style="float:left; padding-left:5px">
+                                                <span>PT : </span><span t-field="o.patient_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                                <div style="width:150px;float:left;padding-left:4px"><span t-esc="physician.name"/></div>
+                                            </t>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>M.No : </span><span t-field="o.patient_id.mobile"/>
+                                            </div>
+                                            <div style="float:left;padding-left:4px">
+                                                <span>IP-ID : </span><span t-field="o.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>BED : </span><span t-field="o.bed_id.id"/>
+                                            </div>
+                                            <div style="float:left; padding-left:4px">
+                                                <span>DOA : </span><span t-field="o.hospitalization_date"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:30px; border-top: 1px solid black">
+                                            <div style="float:left;padding-left:75px">
+                                                <img width="120px" class="img img-responsive" src="/web/static/src/img/barcode.png"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="border: none !important;padding-left:45px">
+                                    <div style="width:302px;float:left;border:1px solid black;">
+                                        <div style="height:20px; border-bottom: 1px solid black">
+                                            <div style="width:75px;text-align:center; float:left; border-right: 1px solid black;">
+                                                <span t-field="o.patient_id.code"/>
+                                            </div>
+                                            <div style="float:left; padding-left:5px">
+                                                <span>PT : </span><span t-field="o.patient_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                                <div style="width:150px;float:left;padding-left:4px"><span t-esc="physician.name"/></div>
+                                            </t>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>M.No : </span><span t-field="o.patient_id.mobile"/>
+                                            </div>
+                                            <div style="float:left;padding-left:4px">
+                                                <span>IP-ID : </span><span t-field="o.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>BED : </span><span t-field="o.bed_id.id"/>
+                                            </div>
+                                            <div style="float:left; padding-left:4px">
+                                                <span>DOA : </span><span t-field="o.hospitalization_date"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:30px; border-top: 1px solid black">
+                                            <div style="float:left;padding-left:75px">
+                                                <img width="120px" class="img img-responsive" src="/web/static/src/img/barcode.png"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="border: none !important;padding-left:50px">
+                                    <div style="width:302px;float:left;border:1px solid black;">
+                                        <div style="height:20px; border-bottom: 1px solid black">
+                                            <div style="width:75px;text-align:center; float:left; border-right: 1px solid black;">
+                                                <span t-field="o.patient_id.code"/>
+                                            </div>
+                                            <div style="float:left; padding-left:5px">
+                                                <span>PT : </span><span t-field="o.patient_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <t t-foreach="o.attending_physician_ids" t-as="physician">
+                                                <div style="width:150px;float:left;padding-left:4px"><span t-esc="physician.name"/></div>
+                                            </t>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>M.No : </span><span t-field="o.patient_id.mobile"/>
+                                            </div>
+                                            <div style="float:left;padding-left:4px">
+                                                <span>IP-ID : </span><span t-field="o.name"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:20px">
+                                            <div style="width:150px;float:left;padding-left:4px">
+                                                <span>BED : </span><span t-field="o.bed_id.id"/>
+                                            </div>
+                                            <div style="float:left; padding-left:4px">
+                                                <span>DOA : </span><span t-field="o.hospitalization_date"/>
+                                            </div>
+                                        </div>
+                                        <div style="height:30px; border-top: 1px solid black">
+                                            <div style="float:left;padding-left:75px">
+                                                <img width="120px"  class="img img-responsive" src="/web/static/src/img/barcode.png"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+        <report
+            id="dish_report_card"
+            string="Hospitalization Card"
+            model="inpatient.registration" 
+            report_type="qweb-pdf"
+            file="hms_hospitalization.HospitalizationCard" 
+            name="hms_hospitalization.HospitalizationCard"
+            groups="hms.group_hms_receptionist"
+        />
+    </data>
+</openerp>

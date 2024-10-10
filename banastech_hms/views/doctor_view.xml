@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+        <template id="hms_doctor_cont">
+            <t t-call="website.layout">
+                <div class="col-lg-12 row">
+                    <div t-if="enable_groups" id="div_doctor_groups" class="col-lg-3"/>
+                    <div id="main_div" t-attf-class="row #{'col-lg-9' if enable_groups else 'col-lg-12'}">
+                        <t t-foreach="records" t-as="doct">
+                            <div class="col-3" style="width: 250px !important; height: 250px !important;">
+                                <a t-att-href="'/hms_doctor/%s' % slug(doct)" itemprop="url">
+                                    <span t-field="doct.image"
+                                        t-options="{'widget': 'image', 'preview_image': 'image'}"
+                                        class="d-flex h-100 justify-content-center align-items-center" />
+                                    <div class="text-center" style="font-size: 20px;">
+                                        <span t-esc="doct.name"/>
+                                    </div>
+                                    <div class="text-center" style="font-size: 15px;">
+                                        <span t-field="doct.speciality"/>
+                                    </div>
+                                </a>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="doctor_details" name="doctor">
+            <t t-call="website.layout">
+                <div class="col-md-4" style="margin: 10px;">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/hms_doctor/%s">Doctors</a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            <span t-field="doctor.name"/>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-12 row">
+                    <div class="col-4 pull-left" style="margin-top: 32px;">
+                        <h4 class="mb-1">
+                            <b t-esc="doctor.name"/>
+                        </h4>
+                        <br/>
+                        <div class="d-flex align-items-center mb-1">
+                            <div class="fa fa-envelope fa-fa er-1"></div>
+                            <a t-att-href="mailto: '+doctor.email" t-esc="doctor.email"/>
+                        </div>
+                        <div class="d-flex flex-nowrap align-items-center mb-1">
+                            <div class="fa fa-enane fa fa mr-1"></div>
+                            <span t-esc="doctor.mobile"/>
+                        </div>
+                        <div class="d-flex flex-nowrap align-items-center mb-1">
+                            <div class="fa fa-gap-marker fa-fw mr-1"></div>
+                            <span t-esc="doctor.city"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+
+        <record id="view_doctor_controller_form" model="ir.ui.view">
+            <field name="name">banas.hms.doctor.tree</field>
+            <field name="model">banas.hms.doctor</field>
+            <field name="arch" type="xml">
+                <tree string="Doctor">
+                    <field name="name" string="Name"/>
+                    <field name="code" string="Code" />
+                    <field name="government_id" optional="hide"/>
+                    <field name="cabin_no"/>
+                    <field name="speciality"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_banas_hms_doctor_tree" model="ir.ui.view">
+            <field name="name">banas.hms.doctor.tree</field>
+            <field name="model">banas.hms.doctor</field>
+            <field name="arch" type="xml">
+                <tree string="Doctor">
+                    <field name="name" string="Name"/>
+                    <field name="code" string="Code" />
+                    <field name="government_id" optional="hide"/>
+                    <field name="cabin_no"/>
+                    <field name="speciality"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_banas_hms_doctor_form" model="ir.ui.view">
+            <field name="name">banas.hms.doctor.form</field>
+            <field name="model">banas.hms.doctor</field>
+            <field name="arch" type="xml">
+                <form string="Doctor">
+                    <sheet>
+                        <field name="image" widget="image" class="oe_avatar" />
+                        <div class="oe_title">
+                            <label for="name" string="Name" class="oe_edit_only" />
+                            <h1>
+                                <field name="name" placeholder="Doctor's Name" required="1"/>
+                            </h1>
+                            <label for="degree_ids" string="Degrees" class="oe_edit_only" />
+                            <h3>
+                                <field name="degree_ids" widget="many2many_tags" placeholder="e.g. MBBS" required="1"/>
+                            </h3>
+                            <separator/>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="code" string="Code" required="1" />
+                                <field name="cabin_no"/>
+                                <field name="type" required="1"/>
+                                <field name="user_id" required="False" />
+                                <field name="consul_service" domain="[('type','=','service'),('sale_ok','=',True)]"
+                                context="{'default_type':'service','default_hospital_product_type':'consultation'}" />
+                                <field name="consul_charge"/>
+                                <field name="is_primary_surgeon" />
+                                <field name="is_consultation_doctor" />
+                            </group>
+                            <group>
+                                <field name="government_id" />
+                                <field name="speciality" required="1"/>
+                                <field name="department_ids" required="1" widget="many2many_tags"/>
+                                <field name="reg_number" />
+                                <field name="highest_qualification_id" />
+                                <field name="designation"/>
+                                <field name="relation"/>
+                                <field name="age"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="General Information">
+                                <group>
+                                    <group>
+                                        <span class="o_form_label o_td_label" name="address">
+                                            <b>Address</b>
+                                        </span>
+                                        <div class="o_address_format">
+                                            <field name="street" placeholder="Street..." class="o_address_street"/>
+                                            <field name="city_id" placeholder="City" class="o_address_city"/>
+                                            <field name="state_id" class="o_address_state" placeholder="State" options="{'no_open': True, 'no_quick_create': True}" context="{'country_id': country_id, 'default_country_id': country_id, 'zip': zip}" />
+                                            <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                            <field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" />
+                                        </div>
+                                    </group>
+                                    <group>
+                                        <field name="website" string="Website" widget="url"/>
+                                        <field name="email" widget="email" />
+                                        <field name="mobile" widget="phone" placeholder="e.g. 9858747586"/>
+                                        <field name="phone" placeholder="e.g. 55555555"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Special Services">
+                                <field name="special_ids">
+                                    <tree editable="bottom">
+                                        <field name="product_id"/>
+                                        <field name="amount"/>
+                                        <field name="hospital_share"/>
+                                        <field name="ksga_share"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Signature">
+                                <br/>
+                                <field name="signature" widget="image" class="oe_left oe_avatar" />
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_banas_hms_doctor_search" model="ir.ui.view">
+            <field name="name">banas.hms.doctor.search</field>
+            <field name="model">banas.hms.doctor</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <search string="Doctor">
+                    <field name="name"/>
+                    <field name="code" />
+                </search>
+            </field>
+        </record>
+
+        <record id="action_banas_hms_doctor" model="ir.actions.act_window">
+            <field name="name">Doctor</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">banas.hms.doctor</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="context">{}</field>
+        </record>
+
+</odoo>

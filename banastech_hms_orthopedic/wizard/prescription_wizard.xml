@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+<!--made all field readonly to prevent write in fields-->
+       <record id="view_prescription_wizard_line" model="ir.ui.view">
+            <field name="name">prescription</field>
+            <field name="model">prescription.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Prescription Wizard">
+                   <field name="prescription_wizard_line" readonly="1" nolabel="1" options='{"no_open": True, "no_create": True, "no_open": True}'>
+                       <tree editable="bottom" >
+                            <field name="product_id" readonly="1"/>
+                            <field name="common_dosage" readonly="1"/>
+                            <field name="days" readonly="1"/>
+                            <field name="quantity" readonly="1"/>
+                            <field name="price" string="Charges per Unit" readonly="1"/>
+                            <field name="cost_per_unit" string="Total" sum="Total" readonly="1"/>
+                       </tree>
+                   </field>
+                </form>
+            </field>
+        </record>
+
+        <record id="prescription_wizard_action" model="ir.actions.act_window">
+            <field name="name">Prescription</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">prescription.wizard</field>
+            <field name="view_id" ref="view_prescription_wizard_line"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="context">{'form_view_ref': False}</field>
+        </record>
+
+    </data>
+</odoo>

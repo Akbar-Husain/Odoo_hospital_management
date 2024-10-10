@@ -1,0 +1,1045 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <template id="hms_icu_chart_report">
+      <div class="header">
+        <div class="row">
+          <div class="col-xs-3">
+            <img class="img img-responsive" t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' % res_company.logo" style="height: 150px;"/>
+          </div>
+          <div class="col-xs-8" style="font-size:25px; color:#001c49;">
+            ARHAM ICU &amp; TRAUMA CENTER
+          </div>
+          <div clas="col-xs-1"></div>
+        </div>
+      </div>
+
+      <t t-foreach="docs" t-as="o">
+      <div class="page">
+        <div class="row">
+          <div style="font-size:15px; color:#7C7BAD;">
+            <p><strong>ICU Patient Details</strong></p>
+          </div>
+          <table class="table table-condensed table-bordered" style="font-size:12px;">
+            <tr colspan="4" style="background-color:#DBE1E5;">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Report Printed Date</td>
+              <td><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/></td>
+              <td><strong>Patient Name</strong></td>
+              <td><span t-field="o.patient_id"/></td>
+            </tr>
+            <tr>
+              <td><strong>Patient ID</strong></td>
+              <td><span t-field="o.code"/></td>
+              <td><strong>Age</strong></td>
+              <td><span t-field="o.age"/></td>
+            </tr>
+            <tr>
+              <td><strong>Sex</strong></td>
+              <td><span t-field="o.gender"/></td>
+              <td><strong>Blood Group</strong></td>
+              <td><span t-field="o.blood_group"/></td>
+            </tr>
+            <tr>
+              <td><strong>Height</strong></td>
+              <td><span t-field="o.cm"/></td>
+              <td><strong>Weight</strong></td>
+              <td><span t-field="o.weight"/></td>
+            </tr>
+          </table>
+        </div>
+        <div class="row">
+          <div style="font-size:15px; color:#7C7BAD;">
+            <p><strong>Last 24Hr. Input/Output Total Details</strong></p>
+          </div>
+          <table class="table table-condensed table-bordered" style="font-size:12px;">
+            <tr colspan="4" style="background-color:#DBE1E5;">
+              <td><strong></strong></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>IV</strong></td>
+              <td><span t-field="o.in_iv"/></td>
+              <td><strong>UO</strong></td>
+              <td><span t-field="o.ot_uo"/></td>
+            </tr>
+            <tr>
+              <td><strong>Oral</strong></td>
+              <td><span t-field="o.in_oral"/></td>
+              <td><strong>RTA</strong></td>
+              <td><span t-field="o.ot_rta"/></td>
+            </tr>
+            <tr>
+              <td><strong>Infusion</strong></td>
+              <td><span t-field="o.in_infusion"/></td>
+              <td><strong>Stool</strong></td>
+              <td><span t-field="o.ot_stool"/></td>
+            </tr>
+            <tr>
+              <td><strong>Other</strong></td>
+              <td><span t-field="o.in_other"/></td>
+              <td><strong>Not Avalible</strong></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Total INTAKE</strong></td>
+              <td><span t-field="o.in_total_intake"/></td>
+              <td><strong>Total Output</strong></td>
+              <td><span t-field="o.ot_total_output"/></td>
+            </tr>
+          </table>
+        </div>
+        <div class="row">
+          <div style="font-size:15px; color:#7C7BAD;">
+            <p><strong>Diagnosis Details(W/R By Dr.)</strong></p>
+          </div>
+          <table class="table table-condensed table-bordered">
+            <thead>
+              <tr style="background-color:#DBE1E5;">
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+              <t t-foreach="o.diagnosis_ids" t-as="line">
+                <tr>
+                  <td>
+                    <span t-esc="line.diagnosis_id.name"/>
+                  </td>
+                </tr>
+              </t>
+            </tbody>
+          </table>
+        </div>
+        <div class="row">
+          <div style="font-size:15px; color:#7C7BAD;">
+            <p><strong>Intack - Output Reports</strong></p>
+          </div>
+          <div class="col-xs-6">
+            <table class="table table-condensed table-bordered">
+              <thead>
+                <tr style="background-color:#DBE1E5;">
+                  <th>Time</th>
+                  <th>IV</th>
+                  <th>Oral</th>
+                  <th>Infusion</th>
+                  <th>Other</th>
+                  <th>Intack-Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <t t-foreach="o.intake_ids" t-as="line">
+                  <tr>
+                    <td><span t-esc="line.time.replace('_', ':')"/></td>
+                    <td><span t-esc="line.intake_hr_1"/></td>
+                    <td><span t-esc="line.intake_hr_2"/></td>
+                    <td><span t-esc="line.intake_hr_3"/></td>
+                    <td><span t-esc="line.intake_hr_4"/></td>
+                    <td><span t-esc="line.hourly_total"/></td>
+                  </tr>
+                </t>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-xs-6">
+            <table class="table table-condensed table-bordered">
+              <thead>
+                <tr style="background-color:#DBE1E5;">
+                  <th>Time</th>
+                  <th>U/O</th>
+                  <th>Drain</th>
+                  <th>RTA</th>
+                  <th>Stool</th>
+                  <th>Output-Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <t t-foreach="o.output_ids" t-as="line">
+                  <tr>
+                    <td><span t-esc="line.time.replace('_', ':')"/></td>
+                    <td><span t-esc="line.u_o"/></td>
+                    <td><span t-esc="line.drain"/></td>
+                    <td><span t-esc="line.rta"/></td>
+                    <td><span t-esc="line.stool"/></td>
+                    <td><span t-esc="line.total"/></td>
+                  </tr>
+                </t>
+              </tbody>
+            </table>
+          </div>
+        </div>
+            
+            <!-- Prescription Details -->
+           <div class="row">
+              <div style="font-size:15px; color:#7C7BAD;">
+                  <p><strong>Prescription Report</strong></p>
+              </div>
+              <table class="table table-condensed table-bordered">
+                <thead>
+                    <tr style="background-color:#DBE1E5;">
+                        <th>Day No.</th>
+                        <th>Antibiotic</th>
+                        <th>Route</th>
+                        <th>Frequency</th>
+                        <th>Time</th>
+                        <th>Time</th>
+                        <th>Time</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="o.prescription_ids" t-as="line">
+                      <tr>
+                        <td><span t-esc="line.day_no"/></td>
+                        <td><span t-esc="line.product_id.name"/></td>
+                        <td><span t-esc="line.pre_route"/></td>
+                        <td><span t-esc="line.common_dosage.name"/></td>
+                        <td><span t-esc="line.pre_time_1"/></td>
+                        <td><span t-esc="line.pre_time_2"/></td>
+                        <td><span t-esc="line.pre_time_3"/></td>
+                        <td><span t-esc="line.pre_time_4"/></td>
+                      </tr>
+                    </t>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Other RX Details -->
+           <div class="row">
+              <div style="font-size:15px; color:#7C7BAD;">
+                  <p><strong>Prescription Other RX Report</strong></p>
+              </div>
+              <table class="table table-condensed table-bordered">
+                <thead>
+                    <tr style="background-color:#DBE1E5;">
+                        <th>Drugs</th>
+                        <th>Frequency</th>
+                        <th>Time</th>
+                        <th>Time</th>
+                        <th>Time</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="o.other_rx_ids" t-as="line">
+                      <tr>
+                        <td><span t-esc="line.product_id.name"/></td>
+                        <td><span t-esc="line.common_dosage.name"/></td>
+                        <td><span t-esc="line.rx_time_1"/></td>
+                        <td><span t-esc="line.rx_time_2"/></td>
+                        <td><span t-esc="line.rx_time_3"/></td>
+                        <td><span t-esc="line.rx_time_4"/></td>
+                      </tr>
+                    </t>
+                </tbody>
+              </table>
+            </div>
+
+            <!--Only Drug Details -->
+           <div class="row">
+              <div style="font-size:15px; color:#7C7BAD;">
+                    <p><strong>Prescription Only Drug Report</strong></p>
+              </div>
+              <table class="table table-condensed table-bordered">
+                <thead>
+                    <tr style="background-color:#DBE1E5;">
+                        <th>Name of Drug</th>
+                        <th>Frequency</th>
+                        <th>Dose</th>         
+                        <th>Route</th>
+                        <th>Time Given</th>
+                        <th>Nurse Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="o.once_only_drug_ids" t-as="line">
+                      <tr>
+                        <td><span t-esc="line.product_id.name"/></td>
+                        <td><span t-esc="line.common_dosage.name"/></td>
+                        <td><span t-esc="line.dose"/></td>
+                        <td><span t-esc="line.route"/></td>
+                        <td><span t-esc="line.time_given.replace('_', ':')"/></td>
+                        <td><span t-esc="line.nurse_name"/></td>
+                      </tr>
+                    </t>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="row">
+              <div style="font-size:15px; color:#7C7BAD;">
+                    <p><strong>Prescription Special Instructions</strong></p>
+              </div>
+              <table class="table table-condensed table-bordered">
+                  <tr style="background-color:#DBE1E5;">
+                    <td>Special Instructions</td>
+                  </tr>
+                  <tr>
+                    <td><span t-field="o.special_inst"/></td>
+                  </tr>
+                </table>
+            </div>
+
+
+            <!-- TPN Orders Details -->
+           <div class="row">
+              <div style="font-size:15px; color:#7C7BAD;">
+                  <p><strong>TPN Orders Report</strong></p>
+              </div>
+              <table class="table table-condensed table-bordered">
+                <thead>
+                    <tr style="background-color:#DBE1E5;">
+                        <th>Date</th>
+                        <th>Drugs</th>
+                        <th>Rate</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="o.tpn_orders_ids" t-as="line">
+                      <tr>
+                        <td><span t-esc="line.tpn_date"/></td>
+                        <td><span t-esc="line.tpn_drugs.name"/></td>
+                        <td><span t-esc="line.tpn_rate"/></td>
+                        <td><span t-esc="line.tpn_comments"/></td>
+                      </tr>
+                    </t>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Fluid Orders Details -->
+           <div class="row">
+              <div style="font-size:15px; color:#7C7BAD;">
+                  <p><strong>Fluid Orders Report</strong></p>
+              </div>
+              <table class="table table-condensed table-bordered">
+                <thead>
+                    <tr style="background-color:#DBE1E5;">
+                        <th>Date</th>
+                        <th>Drugs</th>         
+                        <th>Rate</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="o.fluid_orders_ids" t-as="line">
+                      <tr>
+                        <td><span t-esc="line.fluid_date"/></td>
+                        <td><span t-esc="line.fluid_drugs.name"/></td>
+                        <td><span t-esc="line.fluid_rate"/></td>
+                        <td><span t-esc="line.fluid_comments"/></td>
+                      </tr>
+                    </t>
+                </tbody>
+              </table>
+            </div>
+
+           <!-- Infusion Orders Details -->
+           <div class="row">
+              <div style="font-size:15px; color:#7C7BAD;">
+                  <p><strong>Infusion Orders Report</strong></p>
+              </div>
+              <table class="table table-condensed table-bordered">
+                <thead>
+                    <tr style="background-color:#DBE1E5;">
+                        <th>Date</th>
+                        <th>Drugs</th>
+                        <th>Dose</th>
+                        <th>Diluent</th>
+                        <th>Rate</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="o.infusion_orders_ids" t-as="line">
+                      <tr>
+                        <td><span t-esc="line.infusion_orders_date"/></td>
+                        <td><span t-esc="line.infusion_orders_drugs.name"/></td>
+                        <td><span t-esc="line.infusion_orders_dose"/></td>
+                        <td><span t-esc="line.infusion_orders_diluent"/></td>
+                        <td><span t-esc="line.infusion_orders_rate"/></td>
+                        <td><span t-esc="line.infusion_orders_comments"/></td>
+                      </tr>
+                    </t>
+                </tbody>
+              </table>
+            </div>
+
+          <!-- RT/Oral Feeding Details -->
+           <div class="row">
+              <div style="font-size:15px; color:#7C7BAD;">
+                <p><strong>RT/Oral Feeding</strong></p>
+              </div>
+              <div class="col-xs-12">
+                    <table class="table table-condensed table-bordered">
+                      <tr style="background-color:#DBE1E5;">
+                        <td><strong>Note:</strong></td>
+                      </tr>
+                      <tr>
+                        <td><span t-field="o.rt_oral_feeding"/></td>
+                      </tr>
+                    </table>
+              </div>
+              <table class="table table-condensed table-bordered">
+                <thead>
+                    <tr style="background-color:#DBE1E5;">
+                        <th>Time</th>
+                        <th>Feed</th>
+                        <th>ML</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="o.rt_oral_feeding_ids" t-as="line">
+                      <tr>
+                        <td><span t-esc="line.rt_of_time.replace('_', ':')"/></td>
+                        <td><span t-esc="line.rt_of_feed"/></td>
+                        <td><span t-esc="line.rt_of_ml"/></td>
+                      </tr>
+                    </t>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- ICU Chart - 2 -->
+            <!-- Intack-Output Details -->
+            <div class="row">
+              <div style="font-size:15px; color:#7C7BAD;">
+                  <p><strong>General Information</strong></p>
+              </div>
+              <table class="table table-condensed table-bordered" style="font-size:12px;">
+                    <tr colspan="4" style="background-color:#DBE1E5;">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><strong>ORAL CARE</strong></td>
+                      <td><span t-field="o.oral_care_1"/></td>
+                      <td>-</td>
+                      <td><span t-field="o.oral_care_2"/></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Sponge BATH/ BATH</strong></td>
+                      <td><span t-field="o.sponge_bath_1"/></td>
+                      <td>-</td>
+                      <td><span t-field="o.sponge_bath_2"/></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Back Care</strong></td>
+                      <td><span t-field="o.back_care_1"/></td>
+                      <td>-</td>
+                      <td><span t-field="o.back_care_2"/></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Urinary Catheter Care</strong></td>
+                      <td><span t-field="o.urinary_cath_care_1"/></td>
+                      <td>-</td>
+                      <td><span t-field="o.urinary_cath_care_2"/></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Hair Care</strong></td>
+                      <td><span t-field="o.hair_care_1"/></td>
+                      <td>-</td>
+                      <td><span t-field="o.hair_care_2"/></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Surgical Wound Dressing</strong></td>
+                      <td><span t-field="o.surgical_wound_desg_1"/></td>
+                      <td>-</td>
+                      <td><span t-field="o.surgical_wound_desg_2"/></td>
+                    </tr>
+                </table>
+
+
+                <div class="col-xs-6">
+                  <p><strong>Past Record</strong></p>
+                  <table class="table table-condensed table-bordered" style="font-size:12px;">
+                    <tr colspan="4" style="background-color:#DBE1E5;">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Post Op Day</strong></td>
+                      <td><span t-field="o.icu_post_op_day"/></td>
+                      <td><strong>Stay Day</strong></td>
+                      <td><span t-field="o.icu_stay_day"/></td>
+                    </tr>
+                    <tr>
+                      <td><strong>IV Line</strong></td>
+                      <td><span t-field="o.icu_iv_line"/></td>
+                      <td><strong>CVP/DLC Line</strong></td>
+                      <td><span t-field="o.icu_cpv_dlc"/></td>
+                    </tr>
+                    <tr>
+                      <td><strong>ETT/Tracheostomy Care</strong></td>
+                      <td><span t-field="o.icu_ett_trac"/></td>
+                      <td><strong>Foleys Catheter No.</strong></td>
+                      <td><span t-field="o.icu_foleys_cath"/></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Ryles Tube No.</strong></td>
+                      <td><span t-field="o.icu_ryles_tube_no"/></td>
+                      <td><strong>Arterial Line</strong></td>
+                      <td><span t-field="o.icu_arterial_line"/></td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="col-xs-6">
+                  <p><strong>Today Record</strong></p>
+                  <table class="table table-condensed table-bordered" style="font-size:12px;">
+                    <tr colspan="4" style="background-color:#DBE1E5;">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Post Op Day</strong></td>
+                      <td><span t-field="o.past_post_op_day"/></td>
+                      <td><strong>Stay Day</strong></td>
+                      <td><span t-field="o.past_stay_day"/></td>
+                    </tr>
+                    <tr>
+                      <td><strong>IV Line</strong></td>
+                      <td><span t-field="o.past_iv_line"/></td>
+                      <td><strong>CVP/DLC Line</strong></td>
+                      <td><span t-field="o.past_cpv_dlc"/></td>
+                    </tr>
+                    <tr>
+                      <td><strong>ETT/Tracheostomy Care</strong></td>
+                      <td><span t-field="o.past_ett_trac"/></td>
+                      <td><strong>Foleys Catheter No.</strong></td>
+                      <td><span t-field="o.past_foleys_cath"/></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Ryles Tube No.</strong></td>
+                      <td><span t-field="o.past_ryles_tube_no"/></td>
+                      <td><strong>Arterial Line</strong></td>
+                      <td><span t-field="o.past_arterial_line"/></td>
+                    </tr>
+                  </table>
+              </div>  
+            </div>
+
+        
+                  <!--Reports-->
+                  <!--Vital Signs.-->
+                  <div class="row">
+                    <div style="font-size:15px; color:#7C7BAD;">
+                        <p><strong>Vital Sign's Report</strong></p>
+                    </div>
+                    <table class="table table-condensed table-bordered">
+                      <thead>
+                          <tr style="background-color:#DBE1E5;">
+                              <th>Time</th>
+                              <th>Temp</th>
+                              <th>Heart Rate</th>
+                              <th>NIBP/IBP</th>
+                              <th>CVP</th>
+                              <th>RR</th>
+                              <th>SPO2</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <t t-foreach="o.vitals_ids" t-as="line">
+                            <tr>
+                              <td><span t-esc="line.time.replace('_', ':')"/></td>
+                              <td><span t-esc="line.vitals_temp"/></td>
+                              <td><span t-esc="line.vitals_rate"/></td>
+                              <td><span t-esc="line.vitals_nibp_ibp"/></td>
+                              <td><span t-esc="line.vitals_cvp"/></td>
+                              <td><span t-esc="line.vitals_resp_rate"/></td>
+                              <td><span t-esc="line.vitals_spo2"/></td>
+                            </tr>
+                          </t>
+                      </tbody>
+                     </table>
+                    </div>
+
+                    <!--Infusion Pumps.-->
+                  
+                  <div class="row">
+                    <div style="font-size:15px; color:#7C7BAD;">
+                        <p><strong>Infusion Pumps Report</strong></p>
+                    </div>
+                      <p><strong>Day</strong></p>
+                      <table class="table table-condensed table-bordered" style="font-size:12px;">
+                        <thead>
+                          <tr colspan="4" style="background-color:#DBE1E5;">
+                            <th><strong>Name</strong></th>
+                            <th><strong>08:09 AM</strong></th>
+                            <th><strong>09:10 AM</strong></th>
+                            <th><strong>10:11 AM</strong></th>
+                            <th><strong>11:12 AM</strong></th>
+                            <th><strong>12:01 PM</strong></th>
+                            <th><strong>01:02 PM</strong></th>
+                            <th><strong>02:03 PM</strong></th>
+                            <th><strong>03:04 PM</strong></th>
+                            <th><strong>04:05 PM</strong></th>
+                            <th><strong>05:06 PM</strong></th>
+                            <th><strong>06:07 PM</strong></th>
+                            <th><strong>07:08 PM</strong></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <t t-foreach="o.inf_pump_value_day_ids" t-as="line">
+                            <tr>
+                              <td><span t-esc="line.pumps_value_id.id"/></td>
+                              <td><span t-esc="line.time_a"/></td>
+                              <td><span t-esc="line.time_b"/></td>
+                              <td><span t-esc="line.time_c"/></td>
+                              <td><span t-esc="line.time_d"/></td>
+                              <td><span t-esc="line.time_e"/></td>
+                              <td><span t-esc="line.time_f"/></td>
+                              <td><span t-esc="line.time_g"/></td>
+                              <td><span t-esc="line.time_h"/></td>
+                              <td><span t-esc="line.time_i"/></td>
+                              <td><span t-esc="line.time_j"/></td>
+                              <td><span t-esc="line.time_k"/></td>
+                              <td><span t-esc="line.time_l"/></td>
+                            </tr>
+                         </t>
+                      </tbody>
+                      </table>
+                        <p><strong>Night</strong></p>
+                        <table class="table table-condensed table-bordered" style="font-size:12px;">
+                        <thead>
+                          <tr colspan="4" style="background-color:#DBE1E5;">
+                            <th><strong>Name</strong></th>
+                            <th><strong>08:09 PM</strong></th>
+                            <th><strong>09:10 PM</strong></th>
+                            <th><strong>10:11 PM</strong></th>
+                            <th><strong>11:12 PM</strong></th>
+                            <th><strong>12:01 AM</strong></th>
+                            <th><strong>01:02 AM</strong></th>
+                            <th><strong>02:03 AM</strong></th>
+                            <th><strong>03:04 AM</strong></th>
+                            <th><strong>04:05 AM</strong></th>
+                            <th><strong>05:06 AM</strong></th>
+                            <th><strong>06:06 AM</strong></th>
+                            <th><strong>07:08 AM</strong></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        <t t-foreach="o.inf_pump_value_night_ids" t-as="line">
+                            <tr>
+                              <td><span t-esc="line.pumps_value_id.id"/></td>
+                              <td><span t-esc="line.time_m"/></td>
+                              <td><span t-esc="line.time_n"/></td>
+                              <td><span t-esc="line.time_o"/></td>
+                              <td><span t-esc="line.time_p"/></td>
+                              <td><span t-esc="line.time_q"/></td>
+                              <td><span t-esc="line.time_r"/></td>
+                              <td><span t-esc="line.time_s"/></td>
+                              <td><span t-esc="line.time_t"/></td>
+                              <td><span t-esc="line.time_u"/></td>
+                              <td><span t-esc="line.time_v"/></td>
+                              <td><span t-esc="line.time_w"/></td>
+                              <td><span t-esc="line.time_x"/></td>
+                            </tr>
+                          </t>
+                        </tbody>
+                      </table>  
+                    </div>
+
+
+                    <!--Venti. Setting Pts-->
+                    <div class="row">
+                      <div style="font-size:15px; color:#7C7BAD;">
+                        <p><strong>Venti. Setting Report</strong></p>
+                    </div>
+                    <table class="table table-condensed table-bordered">
+                      <thead>
+                          <tr style="background-color:#DBE1E5;">
+                              <th>Time</th>
+                              <th>Mode</th>
+                              <th>FiO2%</th>
+                              <th>TV ml[Pinsp/Phigh cm H2O][P high cm H2O]</th>
+                              <th>Rate/min[P low cm H2O]</th>
+                              <th>I:E|T insp s|T high s</th>
+                              <th>PEEP cm H2O|T low s</th>
+                              <th>P max cm H2O|P supp cm H2O</th>
+                              <th>P limit</th>
+                              <th>Trigger</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <t t-foreach="o.venti_setting_ids" t-as="line">
+                            <tr>
+                              <td><span t-esc="line.time.replace('_', ':')"/></td>
+                              <td><span t-esc="line.venti_mode"/></td>
+                              <td><span t-esc="line.venti_fio2"/></td>
+                              <td><span t-esc="line.venti_tvml"/></td>
+                              <td><span t-esc="line.venti_rate"/></td>
+                              <td><span t-esc="line.venti_ie"/></td>
+                              <td><span t-esc="line.venti_peep"/></td>
+                              <td><span t-esc="line.venti_p_maxsupp"/></td>
+                              <td><span t-esc="line.venti_plimit"/></td>
+                              <td><span t-esc="line.venti_trigger"/></td>
+                            </tr>
+                          </t>
+                      </tbody>
+                    </table>
+                    </div>
+                  
+
+                    <!--Pt’s Ventilatory Data-->
+                  
+                  <div class="row">
+                    <div style="font-size:15px; color:#7C7BAD;">
+                        <p><strong>Pt’s Ventilatory Report</strong></p>
+                    </div>
+                    <table class="table table-condensed table-bordered">
+                      <thead>
+                          <tr style="background-color:#DBE1E5;">
+                              <th>Time</th>
+                              <th>P peak</th>
+                              <th>PEEPe</th>
+                              <th>MVexp L/min</th>
+                              <th>RR/min</th>
+                              <th>TVexp ml</th>
+                              <th>Compl ml/cm H2O</th>
+                              <th>Raw cm H2O/L/S</th>
+                              <th>Nebuliser</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <t t-foreach="o.pts_entilatory_ids" t-as="line">
+                            <tr>
+                              <td><span t-esc="line.time.replace('_', ':')"/></td>
+                              <td><span t-esc="line.ptsven_ppeak"/></td>
+                              <td><span t-esc="line.ptsven_peepe"/></td>
+                              <td><span t-esc="line.ptsven_mv"/></td>
+                              <td><span t-esc="line.ptsven_rr"/></td>
+                              <td><span t-esc="line.ptsven_tv"/></td>
+                              <td><span t-esc="line.ptsven_compl"/></td>
+                              <td><span t-esc="line.ptsven_raw"/></td>
+                              <td><span t-esc="line.ptsven_nebuliser"/></td>
+                            </tr>
+                          </t>
+                      </tbody>
+                    </table>
+                    </div>
+
+                     <!--Other Data-->
+                  
+                  <div class="row">
+                    <div style="font-size:15px; color:#7C7BAD;">
+                        <p><strong>Reports(Other)</strong></p>
+                    </div>
+                    <table class="table table-condensed table-bordered">
+                      <thead>
+                          <tr style="background-color:#DBE1E5;">
+                              <th>Time</th>
+                              <th>Bagging|Suction|Physio</th>
+                              <th>PT.Position</th>
+                              <th>AG</th>
+                              <th>Other</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <t t-foreach="o.icu_chart_other_ids" t-as="line">
+                            <tr>
+                              <td><span t-esc="line.time.replace('_', ':')"/></td>
+                              <td><span t-esc="line.bagg_suc_phy"/></td>
+                              <td><span t-esc="line.pt_position"/></td>
+                              <td><span t-esc="line.gcs_emv"/></td>
+                              <td><span t-esc="line.ag"/></td>
+                              <td><span t-esc="line.other"/></td>
+                            </tr>
+                          </t>
+                      </tbody>
+                    </table>
+                    </div>
+
+
+                    <!-- Today's Investigation &amp; Report -->
+                      <!-- Reports Value -->
+
+                    <div class="row">
+                      <div style="font-size:15px; color:#7C7BAD;">
+                        <p><strong>Reports Details</strong></p>
+                      </div>
+                      <table class="table table-condensed table-bordered" style="font-size:12px;">
+                        <tr colspan="4" style="background-color:#DBE1E5;">
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td><strong>HB</strong></td>
+                          <td><span t-field="o.hb"/></td>
+                          <td><strong>tc</strong></td>
+                          <td><span t-field="o.tc"/></td>
+                        </tr>
+                        <tr>
+                          <td><strong>DC</strong></td>
+                          <td><span t-field="o.dc"/></td>
+                          <td><strong>Platelet Count</strong></td>
+                          <td><span t-field="o.platelet"/></td>
+                        </tr>
+                        <tr>
+                          <td><strong>Urea</strong></td>
+                          <td><span t-field="o.urea"/></td>
+                          <td><strong>Creatinine</strong></td>
+                          <td><span t-field="o.creatinine"/></td>
+                        </tr>
+                        <tr>
+                          <td><strong>PT</strong></td>
+                          <td><span t-field="o.pt"/></td>
+                          <td><strong>APTT</strong></td>
+                          <td><span t-field="o.aptt"/></td>
+                        </tr>
+                        <tr>
+                          <td><strong>BT,CT</strong></td>
+                          <td><span t-field="o.bt_ct"/></td>
+                          <td><strong>Blood Group</strong></td>
+                          <td><span t-field="o.blood_group"/></td>
+                        </tr>
+                        <tr>
+                          <td><strong>CRP</strong></td>
+                          <td><span t-field="o.crp"/></td>
+                          <td><strong>SGPT</strong></td>
+                          <td><span t-field="o.sgpt"/></td>
+                        </tr>
+                        <tr>
+                          <td><strong>SGOT</strong></td>
+                          <td><span t-field="o.sgot"/></td>
+                          <td><strong>S.Alk</strong></td>
+                          <td><span t-field="o.s_alk"/></td>
+                        </tr>
+                        <tr>
+                          <td><strong>S.Bil.Total</strong></td>
+                          <td><span t-field="o.s_bil_total"/></td>
+                          <td><strong>S.Bil.Direct</strong></td>
+                          <td><span t-field="o.s_bil_direct"/></td>
+                        </tr>
+                        <tr>
+                          <td><strong>S.Bil.Indirect</strong></td>
+                          <td><span t-field="o.s_bil_indirect"/></td>
+                          <td><strong>S.Protein Total</strong></td>
+                          <td><span t-field="o.s_protein_total"/></td>
+                        </tr>
+                        <tr>
+                          <td><strong>S.Protein Ab</strong></td>
+                          <td><span t-field="o.s_protein_ab"/></td>
+                          <td><strong>S.Protein Glob</strong></td>
+                          <td><span t-field="o.s_protein_glob"/></td>
+                        </tr>
+                        <tr>
+                          <td><strong>Any Other ixs</strong></td>
+                          <td><span t-field="o.any_other_ixs"/></td>
+                        </tr>
+                      </table>
+                    </div>
+
+                    <div class="row">
+                      <div style="font-size:15px; color:#7C7BAD;">
+                        <p><strong>X-ray Chest Details</strong></p>
+                      </div>
+                      <table class="table table-condensed table-bordered" style="font-size:12px;">
+                        <tr colspan="4" style="background-color:#DBE1E5;">
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td><strong>ABG</strong></td>
+                          <td><span t-field="o.abg_1"/></td>
+                          <td><span t-field="o.abg_2"/></td>
+                          <td><span t-field="o.abg_3"/></td>
+                        </tr>
+                        <tr>
+                          <td><strong>PH</strong></td>
+                          <td><span t-field="o.ph_1"/></td>
+                          <td><span t-field="o.ph_2"/></td>
+                          <td><span t-field="o.ph_3"/></td>
+                        </tr>
+                        <tr>
+                          <td><strong>PaCO2</strong></td>
+                          <td><span t-field="o.paco2_1"/></td>
+                          <td><span t-field="o.paco2_2"/></td>
+                          <td><span t-field="o.paco2_3"/></td>
+                        </tr>
+                        <tr>
+                          <td><strong>PaO2</strong></td>
+                          <td><span t-field="o.pao2_1"/></td>
+                          <td><span t-field="o.pao2_2"/></td>
+                          <td><span t-field="o.pao2_3"/></td>
+                        </tr>
+                        <tr>
+                          <td><strong>TCO2</strong></td>
+                          <td><span t-field="o.tco2_1"/></td>
+                          <td><span t-field="o.tco2_2"/></td>
+                          <td><span t-field="o.tco2_3"/></td>
+                        </tr>
+                        <tr>
+                          <td><strong>HCO3</strong></td>
+                          <td><span t-field="o.hco2_1"/></td>
+                          <td><span t-field="o.hco2_2"/></td>
+                          <td><span t-field="o.hco2_3"/></td>
+                        </tr>
+                        <tr>
+                          <td><strong>BE</strong></td>
+                          <td><span t-field="o.be_1"/></td>
+                          <td><span t-field="o.be_2"/></td>
+                          <td><span t-field="o.be_3"/></td>
+                        </tr>
+                        <tr>
+                          <td><strong>SaO2</strong></td>
+                          <td><span t-field="o.sao2_1"/></td>
+                          <td><span t-field="o.sao2_2"/></td>
+                          <td><span t-field="o.sao2_2"/></td>
+                        </tr>
+                        <tr>
+                          <td><strong>FIO2</strong></td>
+                          <td><span t-field="o.fio2_1"/></td>
+                          <td><span t-field="o.fio2_2"/></td>
+                          <td><span t-field="o.fio2_3"/></td>
+                        </tr>
+                        <tr>
+                          <td><strong>ECG</strong></td>
+                          <td><span t-field="o.ti_ecg"/></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                      </table>
+                    </div>
+
+                    <!-- Electrolytes Details-->
+                    <div class="row">
+                      <div style="font-size:15px; color:#7C7BAD;">
+                        <p><strong>Electrolytes</strong></p>
+                      </div>
+                      <table class="table table-condensed table-bordered">
+                        <thead>
+                            <tr style="background-color:#DBE1E5;">
+                                <th>Na+</th>
+                                <th>K+</th>
+                                <th>Cl+</th>
+                                <th>Ca++</th>
+                                <th>Mg++</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                              <td><span t-field="o.na_plus"/></td>
+                              <td><span t-field="o.k_plus"/></td>
+                              <td><span t-field="o.cl_plus"/></td>
+                              <td><span t-field="o.ca_pplus"/></td>
+                              <td><span t-field="o.mgpplus"/></td>
+                            </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <!-- Diabetic Flow Chat-->
+                    <div class="row">
+                      <div style="font-size:15px; color:#7C7BAD;">
+                          <p><strong>Diabetic Flow Chart Report</strong></p>
+                      </div>
+                    <table class="table table-condensed table-bordered">
+                      <thead>
+                          <tr style="background-color:#DBE1E5;">
+                              <th>Time</th>
+                              <th>BSL</th>
+                              <th>Insulin</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <t t-foreach="o.diabetic_chart_flow_ids" t-as="line">
+                            <tr>
+                              <td><span t-esc="time"/></td>
+                              <td><span t-esc="line.bsl"/></td>
+                              <td><span t-esc="line.insulin"/></td>
+                            </tr>
+                          </t>
+                      </tbody>
+                    </table>
+                    </div>
+
+                    <!-- Important Events & Today's Plan -->
+                    <div class="row">
+                      <div style="font-size:15px; color:#7C7BAD;">
+                          <p><strong>Important Events &amp; Today's Plan</strong></p>
+                      </div>
+                      <div class="col-xs-6">
+                          <table class="table table-condensed table-bordered">
+                            <tr style="background-color:#DBE1E5;">
+                              <td><strong>Note:1</strong></td>
+                            </tr>
+                            <tr>
+                              <td><span t-field="o.note_1"/></td>
+                            </tr>
+                          </table>
+                      </div>
+                      <div class="col-xs-6">
+                          <table class="table table-condensed table-bordered">
+                            <tr style="background-color:#DBE1E5;">
+                              <td><strong>Note:2</strong></td>
+                            </tr>
+                            <tr>
+                              <td><span t-field="o.note_2"/></td>
+                            </tr>
+                          </table>
+                      </div>       
+                    </div>
+
+                    <div class="row">
+                      <div style="font-size:15px; color:#7C7BAD;">
+                          <p><strong>References</strong></p>
+                      </div>
+                      <table class="table table-condensed table-bordered" style="font-size:12px;">
+                        <tr style="background-color:#DBE1E5;">
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td><strong>Reference:-1</strong></td>
+                          <td><span t-field="o.ref_1"/></td>
+                        </tr>
+                        <tr>
+                          <td><strong>Reference:-2</strong></td>
+                          <td><span t-field="o.ref_2"/></td>
+                        </tr>
+                        <tr>
+                          <td><strong>Reference:-3</strong></td>
+                          <td><span t-field="o.ref_3"/></td>
+                        </tr>
+                      </table>
+                    </div>
+                    </div><br/><br/>
+    </t>
+
+    <!--Footer-->
+          <div class="footer">
+            <div class="row">
+                <div class="text-center" style="font-size:18px; color:#0e397f;">
+                    3rd Floor, Devasya Kidney and MultiSpeciality Hospital, New Wadaj,Ahmedabad-380013 (M) 9998972844
+                </div>
+            </div>
+        </div>
+
+  </template>
+
+  <template id="report_chart_icu">
+    <t t-call="report.html_container">
+      <t t-foreach="doc_ids" t-as="doc_id">
+        <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'hms_icu.report_hms_icu_chart')"/>
+      </t>
+    </t>
+  </template>
+  </data>
+</odoo>

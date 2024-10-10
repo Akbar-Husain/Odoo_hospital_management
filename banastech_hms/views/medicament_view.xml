@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_banas_hms_medicament_route_tree" model="ir.ui.view">
+            <field name="name">banas.hms.drug.route.tree</field>
+            <field name="model">banas.hms.drug.route</field>
+            <field name="arch" type="xml">
+                <tree string="HMS Medicament Flavour">
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_banas_hms_medicament_route_form" model="ir.ui.view">
+            <field name="name">banas.hms.drug.route.form</field>
+            <field name="model">banas.hms.drug.route</field>
+            <field name="arch" type="xml">
+                <form string="HMS Medicament Flavours">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_medicament_route">
+            <field name="name">Route</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">banas.hms.drug.route</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+        <record id="view_medicament_group_tree" model="ir.ui.view">
+            <field name="name">medicament.group.tree</field>
+            <field name="model">medicament.group</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Line">
+                    <field name="name" />
+                    <field name="display_name"/>
+                    <field name="doctor_id" invisible="1"/>
+                    <field name="diseases_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_medicament_group_form" model="ir.ui.view">
+            <field name="name">medicament.group.form</field>
+            <field name="model">medicament.group</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="HMS Medicine Group">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="doctor_id" />
+                            </group>
+                            <group>
+                                <field name="diseases_id" />
+                                <field name="limit"/>
+                            </group>
+                        </group>
+                        <field name="medicine_list">
+                            <tree string="" editable="top">
+                                <field name="product_id" expand="1"/>
+                                <field name="common_dosage"/>
+                                <field name="days"/>
+                                <field name="quantity" string="Quantity"/>
+                            </tree>
+                            <form string="" version="7.0">
+                                <group colspan="4" col="4">
+                                    <field name="template" colspan="2" />
+                                    <field name="indication" colspan="2" />
+                                </group>
+                                <group colspan="4" col="8">
+                                    <field name="active_component_ids" colspan="4" widget="many2many_tags" />
+                                    <field name="allow_substitution" colspan="2" />
+                                    <field name="prnt" colspan="2"/>
+                                </group>
+                                <group colspan="4" col="4">
+                                    <field name="form" />
+                                    <field name="route" invisible="0" />
+                                    <field name="start_treatment" />
+                                    <field name="end_treatment" />
+                                </group>
+                                <group colspan="4">
+                                    <group colspan="4" col="6">
+                                        <field name="dose" />
+                                        <!-- <field name="dose_unit" /> -->
+                                        <field name="qty"/>
+                                    </group>
+                                    <group colspan="4">
+                                        <field name="common_dosage" />
+                                        <field name="admin_times"/>
+                                    </group>
+                                    <group colspan="4" col="6" string="Specific Dosage" >
+                                        <field name="frequency"/>
+                                        <field name="frequency_unit"/>
+                                        <field name="frequency_prn"/>
+                                    </group>
+                                </group>
+                                <group colspan="3" col="3">
+                                    <field name="duration" colspan="2" class="oe_inline" />
+                                    <field name="duration_period" class="oe_inline" nolabel="1" />
+                                    <field name="review" colspan="4" />
+                                    <field name="quantity" colspan="4" />
+                                    <field name="short_comment" colspan="4" />
+                                </group>
+                            </form>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_banas_hms_medicament_group_line_tree" model="ir.ui.view">
+            <field name="name">banas.hms.medicament.group.line.tree</field>
+            <field name="model">banas.hms.medicament.group.line</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Line">
+                    <field name="product_id" />
+                    <field name="common_dosage" />
+                    <field name="days" />
+                    <field name="quantity"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_banas_hms_medicament_group_line_form" model="ir.ui.view">
+            <field name="name">banas.hms.medicament.group.line.form</field>
+            <field name="model">banas.hms.medicament.group.line</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Line">
+                    <sheet>
+                        <group>
+                            <field name="product_id" />
+                            <field name="common_dosage" />
+                            <field name="days" />
+                            <field name="quantity"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="product_template_only_form_view_inherit_apagen_ids" model="ir.ui.view">
+            <field name="name">product.template.product.form.drug.details</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view" />
+            <field name="arch" type="xml">
+                <field name="detailed_type" position="after">
+                    <field name="hospital_product_type" required="1" />
+                    <field name="department_ids" widget="many2many_tags"/>
+                    <field name="department_type"/>
+                    <field name="used_in"/>
+                </field>
+                <div name="pricing" position="after">
+                    <field name="special_day_price" invisible="0"/>
+                    <field name="reg_spe_price" invisible="0"/>
+                    <field name="day_price" invisible="0"/>
+                    <field name="night_price" invisible="0"/>
+                    <field name="file_price" invisible="0"/>
+                </div>
+                <xpath expr="//notebook" position="inside">
+                    <page string="Investigation" >
+                        <!-- attrs="{'invisible': [('hospital_product_type', 'not
+                        in', ('radiology', 'pathology'))]}" -->
+                        <group>
+                            <group string="Radiology" >
+                                <!-- attrs="{'invisible': [('hospital_product_type', '!=', 'radiology')]}" -->
+                                <field name="plate"/>
+                                <field name="side"/>
+                            </group>
+                            <group string="Pathology" >
+                                <!-- attrs="{'invisible': [('hospital_product_type', '!=', 'pathology')]}" -->
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Medicament Details">
+                        <group>
+                            <group>
+                                <field name="common_dosage"/>
+                                <field name="no_per_pack"/>
+                                <field name="product_exception"/>
+                                <field name="suffix_frequency_id"/>
+                                <field name='base_condition'/>
+                                <field name="active_component" />
+                                <field name="therapeutic_action"/>
+                                <field name="presentation"/>
+                                <field name="form_id" >
+                                    <!-- attrs="{'required':[('hospital_product_type','=','medicament')]}" -->
+                                    <form string="Drug Form">
+                                        <field name="name" />
+                                        <field name="code" />
+                                    </form>
+                                </field>
+                            </group>
+                            <group>
+                                <field name="content_ids" widget="many2many_tags" />
+                                <!-- attrs="{'required':[('hospital_product_type','=','medicament')]}" -->
+                                <field name="days"/>
+                                <field name="composition"/>
+                                <field name="dosage" />
+                                <field name="overdosage"/>
+                                <field name="adverse_reaction"/>
+                                <field name="storage"/>
+                                <field name="drug_company_id">
+                                    <form string="Drug Company">
+                                        <field name="name" />
+                                        <field name="code" />
+                                    </form>
+                                </field>
+                            </group>
+                        </group>
+                        <separator string="Indications" colspan="4"/>
+                        <field name="indications" nolabel="1" colspan="4"/>
+                        <separator string="Notes" colspan="4"/>
+                        <field name="notes" nolabel="1" colspan="4"/>
+                        <separator string="Pregnancy" colspan="4"/>
+                        <group colspan="4">
+                            <field name="pregnancy_warning" />
+                            <field name="lactation" />
+                            <field name="pregnancy_category" />
+                        </group>
+                        <group>
+                            <separator string="Pregnancy Notes" colspan="4"/>
+                            <newline/>
+                            <field colspan="4" name="pregnancy" nolabel="1"/>
+                        </group>
+                    </page>
+                    <page string="Services">
+                        <field name="service_type_ids">
+	                        <tree>
+	                            <field name="service_type"/>
+	                            <field name="percent_service"/>
+	                        </tree>
+	                        <form>
+	                            <group col="4">
+	                                <field name="service_type"/>
+	                                <field name="percent_service"/>
+	                            </group>
+	                        </form>
+                    	</field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        <record id="product_template_search_view_inherit" model="ir.ui.view">
+            <field name="name">product.template.product.search</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_search_view" />
+            <field name="arch" type="xml">
+                <field name='name' position="after">
+                    <field name="active_component_ids" />
+                    <field name="drug_company_id" />
+                </field>
+            </field>
+        </record>
+        
+       <!--  <record id="product_product_form_view_inherit" model="ir.ui.view">
+            <field name="name">product.product.form.inherit</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view" />
+            <field name="arch" type="xml"> -->
+                <!-- <button name="toggle_active" position="replace">
+                    <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-check">
+                        <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;active&quot;}"/>
+                    </button>
+                </button> -->
+                <!-- <field name='barcode' position="after"> -->
+                    <!-- <field name="med_group_ids" context="{'default_product_id':id}"> -->
+                        <!-- 'default_common_dosage':common_dosage,'default_days':days -->
+                        <!-- <tree>
+                            <field name="line_id"/>
+                        </tree>
+                        <form>
+                            <group col="4">
+                                <field name="line_id"/>
+                                <field name="product_id"/>
+                                <field name='common_dosage' invisible="1"/>
+                                <field name='days' invisible="1"/>
+                            </group>
+                        </form> -->
+                    <!-- </field> -->
+                <!-- </field> -->
+            <!-- </field> -->
+        <!-- </record> -->
+        
+
+        <record model="ir.actions.act_window" id="act_open_medicament_group_view">
+            <field name="name">HMS Medicaments Group</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">medicament.group</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_medicament_group_tree" />
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="act_open_medicament_group_line_view">
+            <field name="name">HMS Medicaments Group Line</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">banas.hms.medicament.group.line</field>
+            <!-- <field name="view_type">tree</field> -->
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_banas_hms_medicament_group_line_form" />
+        </record>
+        <record id="product_template_action_medicines" model="ir.actions.act_window">
+            <field name="name">HMS Medicines</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.template</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="view_id" ref="product.product_template_kanban_view" />
+             <field name="context">{"search_default_filter_to_medicines":1}</field>
+        </record>
+        <record id="product_template_action_medical_supply" model="ir.actions.act_window">
+            <field name="name">HMS Medical Supplies</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.template</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="view_id" ref="product.product_template_kanban_view" />
+             <field name="context">{"search_default_filter_to_medicalsupply":1}</field>
+        </record>
+ 
+        <!-- <record id="product_template_search_view_medicament" model="ir.ui.view">
+            <field name="name">product.template.search</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_search_view" />
+            <field name="arch" type="xml">
+                 <filter name="filter_to_sell" position="after">
+                        <filter string="Medicament Groups" name="medicament" domain="[('hospital_product_type','=','medicament')]"/>
+                        <filter string="Prescription Groups" name="prescription" domain="[('hospital_product_type','=','prescription')]"/> 
+                        <filter string="Both Department" name="both_department" domain="[('department_type','=','general')]"/>
+                        <filter string="Orthopedic" name="Orthopedic" domain="[('department_type','=','orthopedic')]"/>
+                        <filter string="Ortho &amp; Common" name="not_padetric" domain="[('department_type','!=','peditrics')]"/>
+                 </filter>
+             </field>
+         </record>  -->
+
+        <record id="product_template_action_medical_medicament" model="ir.actions.act_window">
+            <field name="name">Medicines</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.product</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="view_id" ref="product.product_product_tree_view" />
+        </record>
+    </data>
+</odoo>

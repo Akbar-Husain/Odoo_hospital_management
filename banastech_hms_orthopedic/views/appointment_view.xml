@@ -1,0 +1,878 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_banastech_hms_prescription_group_form" model="ir.ui.view">
+            <field name="name">banastech.hms.prescription.group.form</field>
+            <field name="model">banastech.hms.prescription.group</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                            </group>
+                            <group>
+                                <field name="diagnosis_id" />
+                            </group>
+                        </group>
+                        <group string="Medicaments Group">
+                            <field name="group_line" nolabel="1">
+                                <tree editable="bottom">
+                                    <field name="medicament_group_id" />
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_banastech_hms_prescription_group" model="ir.actions.act_window">
+            <field name="name">HMS Prescription Group</field>
+            <field name="res_model">banastech.hms.prescription.group</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="view_banastech_hms_patient_bmi_from" model="ir.ui.view">
+            <field name="name">HMS Patient BMI</field>
+            <field name="model">banastech.hms.patient.bmi</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="patient_id"/>
+                                <field name="date"/>
+                            </group>
+                            <group>
+                                <field name="weight"/>
+                                <field name="cm"/>
+                                <field name="bmi"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_banastech_hms_patient_bmi_tree" model="ir.ui.view">
+            <field name="name">HMS Patient BMI</field>
+            <field name="model">banastech.hms.patient.bmi</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="patient_id"/>
+                    <field name="date"/>
+                    <field name="bmi"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_banastech_hms_chief_complaint_from" model="ir.ui.view">
+            <field name="name">HMS Chief Complaint</field>
+            <field name="model">banas.hms.chief.complain</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                            </group>
+                            <group>
+                                <!-- <field name="days" /> -->
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_banastech_hms_chief_complaint_group" model="ir.actions.act_window">
+            <field name="name">HMS Chief Complaint</field>
+            <field name="res_model">banas.hms.chief.complain</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="view_opd_finding" model="ir.ui.view">
+            <field name="name">HMS Opd Finding</field>
+            <field name="model">banastech.hms.opd.finding</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                            </group>
+                            <group>
+                                <field name="description" />
+                                <field name="datetime" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_banastech_hms_opd_finding" model="ir.actions.act_window">
+            <field name="name">HMS Opd Finding</field>
+            <field name="res_model">banastech.hms.opd.finding</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="view_shah_investigation_form" model="ir.ui.view">
+            <field name="name">shah.investigation</field>
+            <field name="model">hms.investigation</field>
+            <field name="inherit_id" ref="hms_investigation.hms_investigation_form" />
+            <field name="arch" type="xml">
+                <!-- <xpath expr="//form" position="inside">
+                    <link rel="stylesheet" href="/banastech_hms_orthopedic/static/src/css/indimedi_project.css" />
+                </xpath>
+                <xpath expr="//form/sheet" position="attributes">
+                    <attribute name="class">indimedi_form_full_width_75</attribute>
+                    <attribute name="id">indimedi_form_full_width_75</attribute>
+                </xpath> -->
+                <t position="replace">
+                    <div class="oe_title" width="100%">
+                        <div style="width:100%; float:left">
+                            <group>
+                                <group>
+                                    <field name="patient_id" required="1" />
+                                    <field name="gender" />
+                                    <field name="multi_seq" class="multi_seq" invisible="1"/>
+                                    <field name="age" />
+                                    <field name="investigation_type" required="1"/>
+                                </group>
+                                <group>
+                                    <!-- <label for="street" />
+                                    <div>
+                                        <field name="area_id" readonly="1" style="width:50%;"/>
+                                        <field name="street" readonly="1" style="width:50%;"/>
+                                        <field name="city_id" readonly="1" style="width:50%;"/>
+                                        <field name="state_id" readonly="1" style="width:50%;"/>
+                                    </div> -->
+                                    <field name="doctor_id" invisible="1"/>
+                                    <field name="date_investigation"/>
+                                    <field name="ref_no" attrs="{'required':['|','|',('investigation_type', '=', 'pathology'),('investigation_type', '=', 'endoscopy'),('investigation_type', '=', 'manometry')], 'invisible': [('investigation_type', '=', 'radiology')]}"/>
+                                    <!-- <field name="invoice_state" readonly="1"/> -->
+                                    <field name="hospitalization_id" attrs="{'invisible': [('hospitalization_id', '=', False)]}"/>
+                                </group>
+                            </group>
+                            <separator string="Radiology Test" attrs="{'invisible': [('investigation_type', '!=', 'radiology')]}"/>
+                            <separator string="Pathology Test" attrs="{'invisible': [('investigation_type', '!=', 'pathology')]}"/>
+                            <separator string="Manometry Test" attrs="{'invisible': [('investigation_type', '!=', 'manometry')]}"/>
+                            <separator string="Endoscopy Test" attrs="{'invisible': [('investigation_type', '!=', 'endoscopy')]}"/>
+                            <field name="pathology_line" nolable="1" attrs="{'invisible': [('investigation_type', '!=', 'pathology')]}">
+                                <tree editable="bottom">
+                                    <field name="product_id" context="{'default_type':'service','default_hospital_product_type':'pathology'}"/>
+                                    <field name="price" sum="Total"/>
+                                    <field name="instruction"/>
+                                    <button class="oe_highlight oe_right" name="action_open_preview" string="Preview" type="object"></button>
+                                </tree>
+                            </field>
+                            <field name="radiology_line" nolable="1" attrs="{'invisible': [('investigation_type', '!=', 'radiology')]}">
+                                <tree editable="bottom">
+                                    <field name="product_id" context="{'default_type':'service','default_hospital_product_type':'radiology'}"/>
+                                    <field name="foc" invisible="1" />
+                                    <field name="price" sum="Total"/>
+                                    <field name="instruction"/>
+                                    <field name="plate" />
+                                    <field name="side" widget="radio" />
+                                </tree>
+                            </field>
+                            <field name="manometry_line" nolable="1" attrs="{'invisible': [('investigation_type', '!=', 'manometry')]}">
+                                <tree editable="bottom">
+                                    <field name="product_id" context="{'default_type':'service','default_hospital_product_type':'manometry'}"/>
+                                    <field name="price" sum="Total"/>
+                                    <field name="instruction"/>
+                                    <button class="oe_highlight oe_right" name="action_open_preview" string="Preview" type="object"></button>
+                                </tree>
+                            </field>
+                            <field name="endoscopy_line" nolable="1" attrs="{'invisible': [('investigation_type', '!=', 'endoscopy')]}">
+                                <tree editable="bottom">
+                                    <field name="product_id" context="{'default_type':'service','default_hospital_product_type':'endoscopy'}"/>
+                                    <field name="price" sum="Total"/>
+                                    <field name="instruction"/>
+                                    <button class="oe_highlight oe_right" name="action_open_preview" string="Preview" type="object"></button>
+                                </tree>
+                            </field>
+                            <notebook> <!-- groups="banastech_hms.group_banas_hms_jr_doctor,hms_investigation.group_hms_radiologist,hms_investigation.group_hms_pathologist" -->
+                                <page string="Reports" attrs="{'invisible':[('investigation_type', '=', 'radiology')]}">
+                                    <!-- <button attrs="{'invisible': [('investigation_type', '=', 'pathology')]}" class="oe_highlight oe_right" name="action_open_preview" string="Preview" type="object"></button> -->
+                                    <field name="binary_text" string="File Name"/>
+                                    <field name="binary" class="oe_edit_only multi_seq_binary" filename="binary_text" attrs="{'invisible': [('investigation_type', '!=', 'radiology')]}"/>
+                                    <field name="open_pdf" class="oe_edit_only multi_seq_binary" filename="binary_text" attrs="{'invisible': [('investigation_type', '=', 'radiology')]}"/>
+                                    <field name="doc_ids" mode="kanban" nolabel="0" >
+                                        <kanban create="false">
+                                            <field name="is_document" filename="name"/>
+                                            <field name="name"/>
+                                            <field name="investigation_type"/>
+                                            <templates >
+                                                <t t-name="kanban-box"> <!-- style="width:250px;height:250px;" -->
+                                                    <div class="oe_kanban_vignette oe_semantic_html_override">
+                                                        <t t-if="record.investigation_type.raw_value == 'radiology'">
+                                                            <a t-if="! read_only_mode" type="delete" style="position: absolute; right: 0; padding: 4px; diplay: inline-block">X</a>
+                                                            <a type="open">
+                                                                <img t-att-src="kanban_image('document.management', 'is_document', record.id.value)" style="width:200px;height:200px;" class="oe_kanban_image"/>
+                                                            </a>
+                                                        </t>
+                                                        <t t-if="record.investigation_type.raw_value != 'radiology'">
+                                                            <a t-if="! read_only_mode" type="delete" style="position: absolute; right: 0; padding: 4px; diplay: inline-block">X</a>
+                                                            <!-- <img t-att-src="_s + &quot;/web/static/src/img/mimetypes/pdf.png&quot;" class="o_kanban_image oe_kanban_avatar_smallbox"/> -->
+                                                        </t>
+                                                        <div class="oe_kanban_details">
+                                                            <h4>
+                                                                <t t-if="record.investigation_type.raw_value == 'radiology'">
+                                                                    <a type="open">
+                                                                        <t t-if="record.name.value">
+                                                                            <field name="name" />
+                                                                        </t>
+                                                                        <p/>
+                                                                    </a>
+                                                                </t>
+                                                                <!-- <t t-if="record.investigation_type.raw_value != 'radiology'">
+                                                                    <a t-attf-href="/web/content/document.management/#{record.id.value}/is_document?download=1;&amp;filename=#{record.name.value}">
+                                                                        <t t-if="record.name.value">
+                                                                            <field name="name" />
+                                                                        </t>
+                                                                        <p/>
+                                                                    </a>
+                                                                </t> -->
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+                                                </t>
+                                            </templates>
+                                        </kanban>
+                                    </field>
+                                </page>
+                                <page string="Images" attrs="{'invisible':[('investigation_type', '!=', 'radiology')]}">
+                                    <!-- <button attrs="{'invisible': [('investigation_type', '=', 'pathology')]}" class="oe_highlight oe_right" name="action_open_preview" string="Preview" type="object"></button> -->
+                                    <!-- <group>
+                                        <label for="xray_path" attrs="{'invisible': [('investigation_type', '!=', 'pathology')]}" string="Investigations"/>
+                                        <label for="xray_path" attrs="{'invisible': [('investigation_type', '=', 'pathology')]}" string="X-Ray"/>
+                                        <field style="width:80%;" name="xray_path" nolabel="1"/>
+                                    </group> -->
+                                    <field name="binary" class="oe_edit_only multi_seq_binary"/>
+                                    <field name="doc_ids" mode="kanban" nolabel="0" >
+                                        <kanban create="false">
+                                            <field name="is_document" filename="name"/>
+                                            <field name="name"/>
+                                            <field name="investigation_type"/>
+                                            <templates >
+                                                <t t-name="kanban-box" style="width:250px;height:250px;">
+                                                    <div class="oe_kanban_vignette oe_semantic_html_override">
+                                                        <t t-if="record.investigation_type.raw_value == 'radiology'">
+                                                            <a t-if="! read_only_mode" type="delete" style="position: absolute; right: 0; padding: 4px; diplay: inline-block">X</a>
+                                                            <a type="open">
+                                                                <img t-att-src="kanban_image('document.management', 'is_document', record.id.value)" style="width:200px;height:200px;" class="oe_kanban_image"/>
+                                                            </a>
+                                                        </t>
+                                                        <t t-if="record.investigation_type.raw_value != 'radiology'">
+                                                            <a t-if="! read_only_mode" type="delete" style="position: absolute; right: 0; padding: 4px; diplay: inline-block">X</a>
+                                                            <!-- <img t-att-src="_s + &quot;/web/static/src/img/mimetypes/pdf.png&quot;" class="o_kanban_image oe_kanban_avatar_smallbox"/> -->
+                                                        </t>
+                                                        <div class="oe_kanban_details">
+                                                            <h4>
+                                                                <t t-if="record.investigation_type.raw_value == 'radiology'">
+                                                                    <a type="open">
+                                                                        <t t-if="record.name.value">
+                                                                            <field name="name"/>
+                                                                        </t>
+                                                                        <p/>
+                                                                    </a>
+                                                                </t>
+                                                                <!-- <t t-if="record.investigation_type.raw_value != 'radiology'">
+                                                                    <a t-attf-href="/web/content/document.management/#{record.id.value}/is_document?download=1;&amp;filename=#{record.name.value}">
+                                                                        <t t-if="record.name.value">
+                                                                            <field name="name" />
+                                                                        </t>
+                                                                        <p/>
+                                                                    </a>
+                                                                </t> -->
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+                                                </t>
+                                            </templates>
+                                        </kanban>
+                                    </field>
+                                </page>
+                                <page string="Notes">
+                                    <field name="notes" placeholder="Notes"/>
+                                </page>
+                            </notebook>
+                        </div>
+                        <div style="width:25.5%; float:left; margin-left: 10px">
+                            <br/>
+                            <field name="waiting_ids" nolabel="0" readonly="1">
+                                <tree>
+                                    <field name="patient_id"/>
+                                    <field name="state" invisible="0" />
+                                </tree>
+                            </field>
+                        </div>
+                    </div>
+                </t>
+            </field>
+        </record>
+
+        <record id="view_receptionist_readonly" model="ir.ui.view">
+            <field name="name">hms.investigation.readonly</field>
+            <field name="model">hms.investigation</field>
+            <field name="inherit_id" ref="view_shah_investigation_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('banastech_hms.group_banas_hms_doctor')])]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='foc']" position="attributes">
+                    <attribute name="readonly">0</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- <record id="view_patient_shah_form" model="ir.ui.view">
+            <field name="name">patient.form</field>
+            <field name="model">banastech.hms.patient</field>
+            <field name="inherit_id" ref="banastech_hms.view_banastech_hms_patient_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='oe_title']/h1" position="replace">
+                    <h4>
+                        <field name="first_name" placeholder="First Name" on_change='onchange_case_first(first_name)'/>
+                        <field name="middel_name" placeholder="Middle Name" required="True" on_change='onchange_case_middle(middel_name)'/>
+                        <field name="last_name" placeholder="Last Name" required="True" on_change='onchange_case_last(last_name)'/>
+                    </h4>
+                </xpath>
+                <field name="gender" position="before">
+                    <field name="department_id" widget="selection" style="width:70%;" />
+                </field>
+            </field>
+        </record> -->
+                <!-- <script src="/shah_opd/static/src/css/custom.js"/> -->
+        <!-- <template id="assets_backend" name="web_tests assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/shah_opd/static/src/css/indimedi_project_tree.css" />
+            </xpath>
+        </template> -->
+        <!-- <record id="view_hms_appointment2_tree" model="ir.ui.view">
+            <field name="name">hms.appointment.form</field>
+            <field name="model">banastech.hms.appointment</field>
+            <field name="inherit_id" ref="banastech_hms.view_banastech_hms_appointment_tree" />
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="attributes">
+                    <attribute name="background_colors">green:state=='in_consultation';grey:state=='done';blue:state=='done';red:state=='waiting';orchid:state=='sr_dr';maroon:state=='to_x';teal:state=='f_x';yellow:state=='dressing'
+                    </attribute>
+                </xpath> -->
+                <!-- <field name="state" position="replace" /> -->
+                <!-- <field name="name" position="replace">
+                    <field name="name" />
+                    <field name="cabin_no" invisible="0"/>
+                    <field name="special_price" string="OPD P" />
+                    <field name="opd_fee" />
+                    <field name="xray_price_receptionist" string="Rad P" />
+                    <field name="x_ray" string="Rad"/>
+                    <field name="amount_pathology" string="Path P"/>
+                    <field name="payment_pathology"/>
+                    <field name="amount_manometry" string="Mano P"/>
+                    <field name="payment_manometry"/>
+                    <field name="amount_endoscopy" string="Endo P"/>
+                    <field name="payment_endoscopy"/>
+                    <field name="physician_id" />
+                    <field name="state" string="Status"/>
+                    <field name="special_day" invisible="1"/>
+                </field> -->
+                <!-- <field name="date" position="replace" />
+                <field name="department_id" position="replace" />
+                <field name="create_uid" position="replace" />
+                <field name="consultation_type" position="replace" />
+                <field name="no_invoice" position="replace" /> -->
+                <!-- <field name="patient_id" position="after">
+                    <field name="invoice_id" invisible="1"/>
+                    <field name="department_name" invisible="1"/>
+                    <field name="bill_to_hospital" invisible="1"/>
+                    <field name="merge_invoice_id" invisible="1"/>
+                    <field name="prescription" invisible="1"/>
+                    <field name="amount_due" groups="hms.group_hms_both"/>
+                    <button name="action_amount_due_invoice" string="Amount Due Invoices" type="object" groups="hms.group_hms_both" icon="fa-sort-amount-desc" attrs="{'invisible': [('amount_due', '&lt;=', 0)]}"/>
+                    <field name="bill_to_hospital" groups="hms.group_hms_both" invisible="1"/> -->
+
+                    <!-- <button name="action_zero" type="object" string="0" style="padding: 
+                    2px 2px"/> -->
+
+                    <!-- <button name="action_cabin" type="object" string="C" groups="hms.group_hms_jr_doctor" style="padding: 2px 2px" /> -->
+
+                    <!-- <button name="action_none" type="object" string=" . " groups="hms.group_hms_jr_doctor" style="padding: 2px 2px" 
+                        attrs="{'invisible':[('cabin_no','in',('1','2','3','4','5','6'))]}"/> -->
+                    <!-- <button name="action_one" type="object" string="1" groups="hms.group_hms_jr_doctor" style="padding: 2px 2px" 
+                        attrs="{'invisible':[('cabin_no','!=','1')]}"/> -->
+                    <!--<button name="action_two" type="object" string="2" groups="hms.group_hms_jr_doctor" style="padding: 2px 2px" 
+                        attrs="{'invisible':[('cabin_no','!=','2')]}"/>
+                    <button name="action_three" type="object" string="3" groups="hms.group_hms_jr_doctor" style="padding: 2px 2px" 
+                        attrs="{'invisible':[('cabin_no','!=','3')]}"/>
+                    <button name="action_four" type="object" string="4" groups="hms.group_hms_jr_doctor" style="padding: 2px 2px" 
+                        attrs="{'invisible':[('cabin_no','!=','4')]}" />
+                    <button name="action_three" type="object" string="5" groups="hms.group_hms_jr_doctor" style="padding: 2px 2px" 
+                        attrs="{'invisible':[('cabin_no','!=','5')]}"/>
+                    <button name="action_four" type="object" string="6" groups="hms.group_hms_jr_doctor" style="padding: 2px 2px" 
+                        attrs="{'invisible':[('cabin_no','!=','6')]}" /> -->
+                    <!-- <button name="action_bill_to_hospital" string="Bill to Hospital" type="object" groups="hms.group_hms_both" attrs="{'invisible': ['|', ('invoice_id', '!=', False), ('opd_foc', '!=', False)]}" icon="fa-hospital-o"/> -->
+                    <!-- <button name="create_invoice" string="Create Invoice" groups="hms.group_hms_both" type="object" class="oe_highlight" attrs="{'invisible': ['|','|','|','|', '|', ('bill_to_hospital', '!=', False),('opd_foc', '!=', False),('invoice_id', '!=', False),('state','=','cancel'), ('invoice_id', '!=', False)]}" icon="fa-money"/>
+                    <button name="merge_invoice" string="Create Invoice" groups="hms.group_hms_both" attrs="{'invisible': ['|', '|', ('bill_to_hospital', '=', False),('merge_invoice_id', '!=', False), ('invoice_id', '!=', False)]}" type="object" class="oe_highlight" icon="fa-money"/>
+                    <button name="action_register_payments" string="OPD Register Payment" type="object" groups="hms.group_hms_both" attrs="{'invisible': ['|', '|', ('invoice_id', '=', False), ('opd_fee', '=', '✓'), ('opd_fee', '=', '+')]}" icon="fa-paypal"/>
+                    <button name="action_investigation_register_payments" string="Investigation Register Payment" type="object" groups="hms.group_hms_both" icon="fa-flask" attrs="{'invisible': ['|', '|', '|', ('xray_price_receptionist', '&lt;=', 0), ('x_ray', 'in', ('+', '✓', '•')), ('bill_to_hospital', '=', True)]}"/>
+                    <button name="action_view_payments" string="Receipts" type="object" groups="hms.group_hms_both" icon="fa-print"/>
+                    <button name="print_prescription" string="Print Prescription" type="object" groups="hms.group_hms_both" icon="fa-medkit" attrs="{'invisible': ['|', ('state', '!=', 'done'), ('prescription', '=', False)]}"/> -->
+
+                <!-- </field> -->
+         <!--    </field>
+        </record> -->
+        <!-- <record id="view_account_payment_tree" model="ir.ui.view">
+            <field name="name">account.payment.tree</field>
+            <field name="model">account.payment</field>
+            <field name="arch" type="xml">
+                <tree string="Payments">
+                    <field name="report_type"/>
+                    <field name="payment_date"/>
+                    <field name="name"/>
+                    <field name="journal_id"/>
+                    <field name="partner_id" string="Customer"/>
+                    <field name="amount"/>
+                    <field name="state"/>
+                    <button name="%(hms_invoice.report_invoice_receipt)d" string="Receipt" class="oe_highlight" type="action"/>
+                </tree>
+            </field>
+        </record> -->
+        <!-- <record id="action_account_payments" model="ir.actions.act_window">
+            <field name="name">Payments</field>
+            <field name="res_model">account.payment</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="context">{'default_payment_type': 'inbound'}</field>
+            <field name="domain">[('partner_type', '=', 'customer')]</field>
+            <field name="view_id" ref="account.view_account_payment_tree"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                  Click to register a payment
+                </p><p>
+                  Payments are used to register liquidity movements (send, collect or transfer money).
+                  You can then process those payments by your own means or by using installed facilities.
+                </p>
+            </field>
+        </record> -->
+
+        <record id="view_banastech_hms_appointment_form" model="ir.ui.view">
+            <field name="name">banastech.hms.appointment.form</field>
+            <field name="model">banastech.hms.appointment</field>
+            <field name="inherit_id" ref="banastech_hms.view_banastech_hms_appointment_form" />
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <!-- <xpath expr="//form" position="inside">
+                    <link rel="stylesheet" href="/shah_opd/static/src/css/indimedi_project.css" />
+                </xpath> -->
+                <!-- <xpath expr="//form/sheet" position="attributes">
+                    <attribute name="class">indimedi_form_full_width</attribute>
+                    <attribute name="id">indimedi_form_full_width</attribute>
+                </xpath> -->
+                <button name="appointment_done" position="attributes">
+                    <attribute name="states">in_consultation,to_x,f_x,invoiced,dressing</attribute>
+                </button>
+                <xpath expr="//button[@name='appointment_done']" position="before">
+                    <button name="appointment_done" states="sr_dr" type="object" groups="banastech_hms.group_banas_hms_doctor" string="Done" class="oe_highlight" />
+                </xpath>
+                <!-- <button name="action_move_out_invoice_type" position="replace">
+                    <button name="create_invoice" string="Create Consultation Invoice" type="object" class="oe_highlight" attrs="{'invisible': [('invoice_id', '!=', False)]}" />
+                     groups="hms.group_hms_receptionist"
+                </button> -->
+                <!-- <button name="create_invoice" position="after">
+                    <button name="create_inv_invoice" string="Create Investigation Invoice" groups="hms.group_hms_receptionist" attrs="{'invisible': [('state','not in',['to_x','f_x'])]}" type="object" class="oe_highlight"/>
+                </button> -->
+                <!-- <xpath expr="//button[@name='view_invoice']" position="attributes">
+                    <attribute name="attrs">{'invisible': ['|',('bill_to_hospital', '!=', False),('invoice_id', '=', False)]}</attribute>
+                </xpath> -->
+                <!-- <button name="view_invoice" position="after">
+                    <button name="view_invoice" string="Consultation Invoice" groups="hms.group_hms_receptionist" type="object" class="oe_highlight" attrs="{'invisible': [('invoice_id', '=', False)]}" />
+                    <button name="view_inv_invoice" string="Investigation Invoice" groups="hms.group_hms_receptionist" attrs="{'invisible': ['|',('inv_invoice_id', '=', False),('state','not in',['to_x'])]}" type="object" class="oe_highlight"/>
+                    <button name="view_merge_invoice" string="Investigation Invoice" groups="hms.group_hms_receptionist" attrs="{'invisible': ['|',('bill_to_hospital', '=', False),('merge_invoice_id', '=', False)]}" type="object" class="oe_highlight"/>
+                    <button name="action_cost_estimation_form" type="object" string="Cost Estimation Form" groups="hms.group_hms_receptionist" class="oe_highlight"/>
+                    <button name="action_admission_note" type="object" string="Admission Note" groups="hms.group_hms_jr_doctor,hms.group_hms_manager,hms.group_hms_medical_officer,hms.group_hms_doctor" class="oe_highlight"/>
+                </button> -->
+                <!-- <button name="appointment_done" position="after">
+                    <button name="send_radiology" states="waiting,in_consultation,to_x" type="object" groups="hms.group_hms_doctor,hms.group_hms_receptionist" string="To Investigation" class="oe_highlight" />
+                    <button name="send_sr_dr" groups="hms.group_hms_jr_doctor" states="in_consultation,f_x,dressing" type="object" string="To Sr.Dr" class="oe_highlight" />
+                    <button name="action_cancel" states="confirm,waiting,dressing" type="object" string="Cancel" groups="hms.group_hms_receptionist" class="oe_highlight" />
+                    <button name="button_close_wo_saving" string="Close W/O Saving" type="object" class="oe_highlight" groups="hms.group_hms_jr_doctor,hms.group_hms_doctor"
+                        attrs="{'invisible': [('state', '=', 'in_consultation')]}" special="nosave"/>
+                    <button name="button_close_wo" string="Close W/O Saving" type="object" class="oe_highlight" groups="hms.group_hms_jr_doctor,hms.group_hms_doctor"
+                        attrs="{'invisible': [('state', '!=', 'in_consultation')]}" special="nosave"/>
+                </button> -->
+                <field name="state" position="attributes">
+                    <attribute name="statusbar_visible">draft,confirm,waiting,in_consultation,done</attribute>
+                    <attribute name="statusbar_colors">{"waiting":"blue","invoiced":"red"}</attribute>
+                </field>
+                <notebook name="appointment_note" position="attributes">
+                    <attribute name="groups">banastech_hms.group_banastech_hms_receptionist</attribute>
+                </notebook>
+                <!-- <page name="clinical_ass" position="replace" />
+                <page name="advice" position="replace" />
+                <page name="diseases" position="replace" />
+                <page name="info" position="replace" /> -->
+                <div class="oe_title" position="after">
+                    <!-- <sheet class="patient_group"> -->
+                    <group>
+                        <group>
+                            <field name="opd_fee" invisible="1"/>
+                            <field name="x_ray" invisible="1"/>
+                            <field name="patient_id" class="oe_line" nolabel="0" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="age" readonly="1" class="oe_line" nolabel="0" />
+                            <field name="gender" class="oe_line" nolabel="0" style="width:20%;" invisible="1"/>
+                            <field name="department_id" invisible="1" />
+                            <field name="p_occupation" string="Occupation" readonly="1" class="oe_line" nolabel="0"/>
+                            <field name="case_type" widget="selection" class="oe_line" nolabel="0" groups="banastech_hms.group_banastech_hms_receptionist"/>
+                            <field name="purpose_id" class="oe_line" nolabel="0" />
+                            <field name="certificate" class="oe_line" nolabel="0" groups="banastech_hms.group_banastech_hms_receptionist"/>
+                            <field name="department_name" invisible="1" />
+                            <field name="pregnancy_warning" class="oe_line" attrs="{'invisible': [('gender', '==', 'm')]}" nolabel="0" />
+                        </group>
+                        <group>
+                            <field name="doctor_id" class="oe_line" nolabel="0" domain="[('speciality','=',speciality)]"/>
+                            <field name="speciality" required="1" class="oe_line" nolabel="0"/>
+                            <field name="cabin_no" class="oe_line" nolabel="0"/>
+                            <field name="ref_doctor" class="oe_line" required="0" nolabel="0" widget="many2many_tags" />
+                            <field name="invoice_id" invisible="1" />
+                            <!-- <field name="merge_invoice_id" invisible="1"/> -->
+                            <!-- <field name="inv_invoice_id" invisible="1"/> -->
+                            <field name="lactation" class="oe_line" nolabel="0" attrs="{'invisible': [('gender', '==', 'm')]}"/>
+                            <field name="language" class="oe_line" widget="selection" string="Language" options="{'horizontal': true}" nolabel="0" style="width:100%;" />
+                            <field name="dressing" string="Dressing" invisible="1" class="oe_line" nolabel="1" groups="banastech_hms.group_banastech_hms_receptionist"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group name="pregnancy_warning">
+                            <field name="visit_count" readonly="0" class="oe_line" nolabel="0"/>
+                            <field name="date"  class="oe_line" nolabel="0" attrs="{'readonly': [('state','=','done')]}"/>
+                            <field name="bill_to_hospital" string="Bill to Hospital" class="oe_line" nolabel="1" invisible="1"/>
+                            <field name="special_price_receptionist" string="O.P.D Charges" groups="banastech_hms.group_banastech_hms_receptionist" class="oe_line" nolabel="0"/>
+                            <!-- <field name="xray_price_receptionist" string="Xray" class="oe_line" nolabel="1" groups="banastech_hms.group_banastech_hms_receptionist" style="width:60%;margin-left:54px;" /> -->
+                            <field name="date_start" string="Reporting Time" attrs="{'invisible': [('date_start', '=', False)]}" class="oe_line" nolabel="0"/>
+                            <div attrs="{'invisible': ['|', ('date_start', '=', False), ('state','=','cancel')]}">
+                                <label for="waiting_duration" invisible="0" attrs="{'invisible': [('date_start', '=', False)]}"/>
+                                <!-- <button style="pointer-events: none;" class="oe_inline label label-default"> -->
+                                <field name="waiting_duration" widget="web_time_counter" class="oe_line" invisible="0"/>
+                                <!-- </button> -->
+                            </div>
+                        </group>
+                    </group>
+                    <notebook name="appointment_note" position="inside">
+                        <page name="info" string="Case Details and History" groups="banastech_hms.group_banas_hms_doctor">
+                            <div class="oe_title" groups="banastech_hms.group_banas_hms_doctor">
+                                <div>
+                                    <div>
+                                        <group>
+                                            <field name="complain_ids" widget="many2many_tags" string="Complains"/>
+                                            <field name="complain_ids_dummy" widget="many2many_tags" invisible="1"/>
+                                            <field name="hypersensitive" string="Allergic To"/>
+                                            <field name="chief_complain" string="Chief Complain" />
+                                            <field name="associated_disease" invisible="1"/>
+                                            <field name="associated_diseases" string=" Associated disease">
+                                                <tree editable="bottom">
+                                                    <field name="associated_diseases_name" required="1" />
+                                                    <field name="associated_diseases_desc"/>
+                                                </tree>
+                                            </field>
+                                            <field name="opd_foc" invisible="1"/>
+                                        </group>
+                                    </div>
+                                    <div>
+                                        <group>
+                                            <group>
+                                                <field name="product_id" string="Service Type" required="0" context="{'default_type':'service','default_hospital_product_type':'consultation'}" domain="[('hospital_product_type', '=', 'consultation')]" invisible="0"/>
+                                            </group>
+                                            <group>
+                                                <field style="margin-left:35%;" name="special_price" nolabel="1" attrs="{'invisible': [('opd_reg_spe', '=', 'reg')]}" invisible="1"/>
+                                            </group>
+                                            <group>
+                                                <field name="opd_foc" invisible="1"/>
+                                                <field name="follow_foc" invisible="1"/>
+                                            </group>
+                                            <group>
+                                                <field name="opd_reg_spe" widget="radio" invisible="1"/>
+                                                <field name="special_day" invisible="1"/>
+                                            </group>
+                                        </group>
+                                    </div>
+                                </div>
+                                <div class="pager_hiding">
+                                    <field name="waiting_ids" nolabel="1" >
+                                        <tree>
+                                            <field name="patient_id" string="Waiting List" />
+                                            <field name="waiting_duration"/>
+                                            <field name="state" invisible="1" />
+                                        </tree>
+                                    </field>
+                                    <field name="bmi_lines_ids" nolabel="1">
+                                        <tree>
+                                            <field name="bmi_date" string="Date" />
+                                            <field name="bmi" string="BMI" style="width:35%"/>
+                                        </tree>
+                                    </field>
+                                </div>
+                            </div>
+                        </page>
+                        <page string="Systemic Examination" sequence="10" groups="banastech_hms.group_banas_hms_doctor">
+                            <group>
+                                <group>
+                                    <field name="temperature"  widget="char" placeholder="Temp." style="width:50%;"/>
+                                    <field name="pulse" widget="char" placeholder="Pulse" style="width:50%;"/>
+                                    <label for="bp"/>
+                                    <div class="oe_inline">
+                                        <field name="bp" style="width:23.5%" string="Other" placeholder="B.P."/> /
+                                        <field name="lbp" style="width:23.5%" nolabel="1" placeholder="L.B.P."/>
+                                    </div>
+                                </group>
+                                <group>
+                                    <field name="rr" widget="char" placeholder="RR" style="width:50%;"/>
+                                    <field name="pain_score" style="width:50%;"/>
+                                    <field name="spo2" widget="char" placeholder="Spo2" style="width:50%;"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="general_examination"/>
+                                    <field name="abdominal_examination_note"/>
+                                    <field name="rs" string="R.S."/>
+                                    <field name="remark" invisible="1"/>
+                                </group>
+                                <group>
+                                    <field name="rectal_examination_ids" widget="many2many_tags" invisible="0"/>
+                                    <field name="rectal_examination_note" invisible="1"/>
+                                    <field name="cns"/>
+                                    <field name="cvs"/>
+                                    <field name="external_genitals"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="investigation" string="Investigation" >
+                            <!-- groups="banastech_hms.group_banastech_hms_receptionist,banastech_hms.group_banas_hms_doctor" -->
+                            <group>
+                                <group>
+                                    <label for="lab_group_id" style="font-weight: bold;"/>
+                                    <field name="lab_group_id" attrs="{'readonly': [('state', 'in', ['cancel'])]}" context="{'form_view_ref': 'hms_investigation.hms_investigation_group_form2'}" style="margin-right:100px;" nolabel="1" class="oe_line" /><br/><br/>
+                                </group>
+                                <group>
+                                </group>
+                                <group groups="banastech_hms.group_banastech_hms_receptionist,banastech_hms.group_banas_hms_doctor">
+                                    <!-- <field name="p_total" invisible="1"/> -->
+                                    <!-- <field name="r_total" invisible="1"/> -->
+                                    <!-- <field name="e_total" invisible="1"/> -->
+                                    <!-- <field name="m_total" invisible="1"/> -->
+                                    <!-- <field name="os_total" invisible="1"/> -->
+                                    <!-- <field name="final_amount" /> -->
+                                    <label for="pathology_line" string="Pathology"/>
+                                    <field name="pathology_line" nolabel="1" colspan="2" attrs="{'readonly': [('state', 'in', ['cancel'])]}">
+                                        <tree editable="bottom">
+                                            <field name="product_id" string="Pathology" context="{'default_type':'service','default_hospital_product_type':'pathology'}" required="1"/>
+                                            <field name="price" string="Cost" sum="Total" invisible="False" />
+                                            <field name="instruction" string="Instruction"/>
+                                            <!-- <field name="write_uid" string="Prescribed by" /> -->
+                                            <button class="oe_highlight oe_right" name="action_open_preview" string="Preview" type="object"></button>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group groups="banastech_hms.group_banastech_hms_receptionist,banastech_hms.group_banas_hms_doctor">
+                                    <label for="radilogy_date" style="font-weight: bold;" invisible="1"/>
+                                    <field name="radilogy_date" attrs="{'readonly': ['|',('state', 'in', ['cancel']),('pregnancy_warning', '=', True)]}" nolabel="1" class="oe_line" invisible="1"/>
+                                    <label for="radiology_line" string="Radiology"/>
+                                    <field name="radiology_line" nolabel="1" colspan="2" attrs="{'readonly': ['|',('state', 'in', ['cancel']),('pregnancy_warning', '=', True)]}">
+                                        <tree editable="bottom" colors="green:state=='done'">
+                                            <field name="product_id" string="Radiology" context="{'default_type':'service','default_hospital_product_type':'radiology'}" required="1" />
+                                            <field name="instruction" string="Instruction" />
+                                            <field name="side" widget="radio" />
+                                            <field name="price" string="Cost" sum="Total" invisible="False" />
+                                            <!-- <field name="write_uid" string="Prescribed by" /> -->
+                                            <!-- <field name="state" invisible="1" /> -->
+                                            <button class="oe_highlight oe_right" name="action_open_preview" string="Preview" type="object"></button>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group groups="banastech_hms.group_banastech_hms_receptionist,banastech_hms.group_banas_hms_doctor">
+                                    <label for="endoscopy_line" string="Endoscopy"/>
+                                    <field name="endoscopy_line" nolabel="1" colspan="2" attrs="{'readonly': [('state', 'in', ['cancel'])]}">
+                                        <tree editable="bottom">
+                                            <field name="product_id" string="Endoscopy" context="{'default_type':'service','default_hospital_product_type':'endoscopy'}" required="1" />
+                                            <field name="price" string="Cost" sum="Total" invisible="False" />
+                                            <field name="instruction" string="Instruction"/>
+                                            <field name="write_uid" string="Prescribed by" />
+                                            <button class="oe_highlight oe_right" name="action_open_preview" string="Preview" type="object"></button>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group groups="banastech_hms.group_banastech_hms_receptionist,banastech_hms.group_banas_hms_doctor">
+                                    <label for="manometry_line" string="Manometry" />
+                                    <field name="manometry_line" nolabel="1" colspan="2" attrs="{'readonly': [('state', 'in', ['cancel'])]}">
+                                        <tree editable="bottom">
+                                            <field name="product_id" string="Manometry" context="{'default_type':'service','default_hospital_product_type':'manometry'}" required="1" />
+                                            <field name="price" string="Cost" sum="Total" invisible="False" />
+                                            <field name="instruction" string="Instruction"/>
+                                            <!-- <field name="write_uid" string="Prescribed by" /> -->
+                                            <button class="oe_highlight oe_right" name="action_open_preview" string="Preview" type="object"></button>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group groups="banastech_hms.group_banastech_hms_receptionist">
+                                    <label for="other_services_line" string="Other Services" />
+                                    <field name="other_services_line" nolabel="1" colspan="2" attrs="{'readonly': [('state', 'in', ['cancel'])]}">
+                                        <tree editable="bottom">
+                                            <field name="product_id" string="Other Services" context="{'default_type':'service','default_hospital_product_type':'os'}" required="1" />
+                                            <field name="price" string="Cost" sum="Total" invisible="False" />
+                                            <field name="instruction" string="Instruction"/>
+                                            <!-- <field name="write_uid" string="Prescribed by" /> -->
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <label for="suggestive_investigations" string="Special Investigation" />
+                                    <field name="suggestive_investigations" nolabel="1" colspan="2"/>
+                                    <label for="suggestive_investigation_ipd" string="Suggestive Investigation" />
+                                    <field name="suggestive_investigation_ipd" nolabel="1" colspan="2"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="provisional_inv" string="Past Investigation" groups="banastech_hms.group_banas_hms_doctor">
+                            <group col="4">
+                                <field name="provisional_inv" nolabel="1" >
+                                    <tree editable="bottom">
+                                        <field name="past_inv_datetime" required="1" />
+                                        <field name="product_id" domain="[('hospital_product_type','in',['radiology','pathology','manometry','endoscopy'])]"/>
+                                        <field name="result"/>
+                                    </tree>
+                                </field>
+                                <field name="session1_image_ids" mode="kanban" >
+                                    <kanban string="Past Investigation Images">
+                                        <field name="s_image1" widget="image" style="width:200px;height:200px;"/>
+                                        <templates>
+                                            <t t-name="kanban-box">
+                                                <div class="oe_kanban_global_click">
+                                                    <a t-if="!read_only_mode" type="delete" class="fa fa-times pull-right"/>
+                                                    <div class="o_kanban_image" style="width:200px;height:200px;">
+                                                        <img t-if="record.s_image1.raw_value" t-att-src="'data:image/png;base64,'+record.s_image1.raw_value" style="width:200px;height:200px;"/>
+                                                    </div>
+                                                    <div class="oe_kanban_details">
+                                                        <field name="s_date1"/>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                        </templates>
+                                    </kanban>
+                                </field>
+                                <button class="oe_highlight oe_right oe_read_only" name="action_open_s1_preview" string="Preview" type="object" />
+                            </group>
+                        </page>
+                        <page name="drug_prescription" string="Diagnosis, Prescription and Advice" groups="banastech_hms.group_banas_hms_jr_doctor,banastech_hms.group_banastech_hms_manager">
+                            <group>
+                                <group>
+                                    <label for="appt_prov_diagnosis"/>
+                                    <field name="appt_prov_diagnosis" nolabel="1"/>
+                                    <label for="second_diagonsiss"/>
+                                    <field name="second_diagonsiss" nolabel="1"/>
+                                    <label for="group_id"/>
+                                    <field name="group_id" nolabel="1" context="{'diagnosis_id':diagnosis_id}" options="{'no_create': true}"/>
+                                    <label for="prescription_total" string="Total Presc. Charges"/>
+                                    <field name="prescription_total" nolabel="1"/>
+                                </group>
+                                <group>
+                                    <label for="diagnosis_id" string="Final Diagnosis"/>
+                                    <field name="diagnosis_id" nolabel="1" widget="many2many_tags" options="{'no_create': false}"/>
+                                </group>
+                            </group>
+                            <div name="diagnosis_class">
+                                <group>
+                                    <field name="prescription_line" editable="bottom" nolabel="1">
+                                        <tree editable="bottom">
+                                            <field name="sequence" widget="handle"/>
+                                            <field name="product_id" string="Medicine" domain="[('hospital_product_type', '=', 'medicament')]" options="{'no_create': true}"/>
+                                            <field name="common_dosage" string="Freq."/>
+                                            <field name="sub_frequency_id"/>
+                                            <field name="days"/>
+                                            <field name="quantity" string="Qty"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <!-- <group groups="banastech_hms.group_banastech_hms_receptionist,banastech_hms.group_banas_hms_doctor">
+                                    <label for="advice_group_ids" style="font-weight: bold;"/>
+                                    <field name="advice_group_ids" nolabel="1" context="{'form_view_ref': 'hms_investigation.hms_investigation_advices_form'}" widget="many2many_tags"/>
+                                </group> -->
+                                <!-- <group>
+                                    <field name="advices_group_lines_ids" nolabel="1">
+                                        <tree editable="bottom">
+                                            <field name="name" string="Advices"/>
+                                        </tree>
+                                    </field>
+                                </group> -->
+                                <group>
+                                    <field name="others" string="Advice" style="width:50%;" invisible="1"/>
+                                    <field name="adv_followup_date" />
+                                </group>
+                            </div>
+                        </page>
+                        <!-- <page name="history" string="Kaizen History" groups="banastech_hms.group_banas_hms_jr_doctor,banastech_hms.group_banastech_hms_manager">
+                            <group>
+                                <group string="">
+                                    <field name="past_history" readonly="0" nolabel="1" />
+                                </group>
+                                <group></group>
+                            </group>
+                        </page> -->
+                        <!-- <page name="radio_history" string="Kaizen Reports" groups="hms.group_hms_jr_doctor,hms.group_hms_manager">
+                            <field name="investigation_ids" readonly="1" nolabel="1" />
+                        </page> -->
+                    </notebook>
+                </div>
+            </field>
+        </record>
+
+        <record forcecreate="True" id="decimal_custom_bp" model="decimal.precision">
+            <field name="name">BP</field>
+            <field name="digits">0</field>
+        </record>
+        <record forcecreate="True" id="decimal_custom_lbp" model="decimal.precision">
+            <field name="name">LBP</field>
+            <field name="digits">0</field>
+        </record>
+        <record forcecreate="True" id="decimal_custom_pulse" model="decimal.precision">
+            <field name="name">Pulse</field>
+            <field name="digits">0</field>
+        </record>
+        <record forcecreate="True" id="decimal_custom_rr" model="decimal.precision">
+            <field name="name">RR</field>
+            <field name="digits">0</field>
+        </record>
+        <record forcecreate="True" id="decimal_custom_spo2" model="decimal.precision">
+            <field name="name">Spo2</field>
+            <field name="digits">0</field>
+        </record>
+        <record forcecreate="True" id="decimal_custom_dp1" model="decimal.precision">
+            <field name="name">Temp</field>
+            <field name="digits">0</field>
+        </record>
+
+        <record model="ir.ui.view" id="view_session1_image_form">
+            <field name="name">session1.image.form</field>
+            <field name="model">session1.image</field>
+            <field name="arch" type="xml">
+                <form string="Images">
+                    <sheet>
+                        <group style="width:50%">
+                            <field name="name"/>
+                            <field name="s_date1"/>
+                            <field name="s_image1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <menuitem id="menu_chief_complaint"
+            name="Chief Complaint"
+            sequence="3"
+            parent="banastech_hms.menu_banastech_hms_group_appointment"
+            action="action_banastech_hms_chief_complaint_group" />
+        <menuitem id="menu_opd_finding"
+            name="Opd Finding"
+            sequence="4"
+            parent="banastech_hms.menu_banastech_hms_group_appointment"
+            action="action_banastech_hms_opd_finding" />
+
+    </data>
+</odoo>

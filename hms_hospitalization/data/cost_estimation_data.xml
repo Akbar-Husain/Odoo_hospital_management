@@ -1,0 +1,102 @@
+<odoo>
+     <data noupdate="1">
+
+    <!-- Data for Admission Check List -->
+
+    <record id="cost_estimation_data_a" model="room.facility.charges">
+        <field name="name">Room Charges</field>
+    </record>
+
+    <record id="cost_estimation_data_b" model="room.facility.charges">
+        <field name="name">ICU Charges</field>
+    </record>
+
+    <record id="cost_estimation_data_c" model="room.facility.charges">
+        <field name="name">Nursing Charges</field>
+    </record>
+
+    <record id="cost_estimation_data_d" model="room.facility.charges">
+        <field name="name">Doctor Visit Charges</field>
+    </record>
+
+    <record id="cost_estimation_data_e" model="surgical.charges">
+        <field name="name">Dietician Charges</field>
+    </record>
+
+    <record id="cost_estimation_data_f" model="surgical.charges">
+        <field name="name">Physiotherapy Charges</field>
+    </record>
+
+    <!-- B -->  
+
+    <record id="cost_estimation_data_g" model="surgical.charges">
+        <field name="name">Surgeon Fees</field>
+    </record>
+
+    <record id="cost_estimation_data_h" model="surgical.charges">
+        <field name="name">Assistant Surgeon Charges</field>
+    </record>
+
+    <record id="cost_estimation_data_i" model="surgical.charges">
+        <field name="name">Anesthesia Charges</field>
+    </record>
+
+    
+    <!-- C -->
+
+    <record id="cost_estimation_data_j" model="operation.equip.charges">
+        <field name="name">OT Charges/Hours</field>
+    </record>
+
+    <record id="cost_estimation_data_k" model="operation.equip.charges">
+        <field name="name">Lap. Equip. Charges/Hours</field>
+    </record>
+
+    <record id="cost_estimation_data_l" model="operation.equip.charges">
+        <field name="name">Energy Source Charges/Hours</field>
+    </record>
+
+    <record id="cost_estimation_data_m" model="operation.equip.charges">
+        <field name="name">IITV Usage Charges/Mins</field>
+    </record>
+
+    <record id="cost_estimation_data_n" model="operation.equip.charges">
+        <field name="name">Procedure Charges</field>
+    </record>
+
+    <record id="cost_estimation_data_o" model="operation.equip.charges">
+        <field name="name">Warmer Charges</field>
+    </record>
+
+    <record id="cost_estimation_data_19" model="operation.equip.charges">
+        <field name="name">Medical Gases</field>
+    </record>
+
+    <!-- D -->
+    <record id="cost_estimation_data_p" model="investigation.pharmacy.charges">
+        <field name="name">Pathology Investigation Charges</field>
+    </record>
+
+    <record id="cost_estimation_data_q" model="investigation.pharmacy.charges">
+        <field name="name">Radiology Investigation Charges</field>
+    </record>
+
+    <record id="cost_estimation_data_r" model="investigation.pharmacy.charges">
+        <field name="name">Special Investigation Charges</field>
+    </record>
+
+    <record id="cost_estimation_data_s" model="investigation.pharmacy.charges">
+        <field name="name">Pharmacy-Medicines &amp; Consumables</field>
+    </record>
+
+    <record id="cost_estimation_data_t" model="investigation.pharmacy.charges">
+        <field name="name">Mesh &amp; Tackers Charges</field>
+    </record>
+
+    <record id="cost_estimation_data_u" model="investigation.pharmacy.charges">
+        <field name="name">Trocar &amp; Staplers Charges</field>
+    </record>
+
+    </data>
+</odoo>
+        

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo> 
+       <record model="ir.module.category" id="module_category_banastech_hms">
+              <field name="name">HMS</field>
+              <field name="description">Helps you manage patients.</field>
+              <!-- <field name="sequence">9</field> -->
+       </record>
+
+       <record model="ir.module.category" id="module_category_banastech_hms_patient">
+              <field name="name">Patient</field>
+              <field name="description">Helps you manage patients.</field>
+              <field name="parent_id" ref="module_category_banastech_hms" />
+              <!-- <field name="sequence">9</field> -->
+       </record>
+
+       <record model="ir.module.category" id="module_category_banastech_hms_administration">
+              <field name="name">Administration</field>
+              <field name="description">Helps you manage HMS.</field>
+              <field name="parent_id" ref="module_category_banastech_hms" />
+              <!-- <field name="sequence">9</field> -->
+       </record>
+
+       <record model="ir.module.category" id="module_category_banastech_hms_appointment">
+              <field name="name">Appointment</field>
+              <field name="description">Helps you manage appointments.</field>
+              <field name="parent_id" ref="module_category_banastech_hms" />
+              <!-- <field name="sequence">9</field> -->
+       </record>
+
+       <record model="ir.module.category" id="module_category_banastech_hms_doctor">
+              <field name="name">Doctor</field>
+              <field name="description">Helps you manage doctor.</field>
+              <field name="parent_id" ref="module_category_banastech_hms" />
+       </record>
+
+
+
+       <!-- <record id="appointment_user_rule" model="ir.rule">
+              <field name="name">User can view and create only their own appointment</field>
+              <field name="model_id" ref="banastech_hms.model_banastech_hms_appointment"/>
+              <field name="domain_force">[('patient_id', '=', user.id)]</field>
+              <field name="perm_read" eval="True"/>
+              <field name="perm_write" eval="False"/>
+              <field name="perm_create" eval="True"/>
+              <field name="perm_unlink" eval="False"/>
+              <field name="groups" eval="[(4, ref('banastech_hms.group_banastech_hms_patient_view'))]"/>
+       </record> -->
+
+
+
+       <record id="group_banastech_hms_patient_view" model="res.groups">
+              <field name="name">View only</field>
+              <field name="category_id" ref="banastech_hms.module_category_banastech_hms_patient"/>
+              <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+       </record>
+
+       <record id="group_banastech_hms_patient_user" model="res.groups">
+              <field name="name">User</field>
+              <field name="category_id" ref="banastech_hms.module_category_banastech_hms_patient"/>
+              <field name="implied_ids" eval="[(4, ref('banastech_hms.group_banastech_hms_patient_view'))]"/>
+       </record>
+
+       <record id="group_banastech_hms_appointment_user" model="res.groups">
+              <field name="name">Appointment User</field>
+              <field name="category_id" ref="banastech_hms.module_category_banastech_hms_appointment"/>
+              <field name="implied_ids" eval="[(4, ref('banastech_hms.group_banastech_hms_patient_view'))]"/>
+       </record>
+
+       <record id="group_banastech_hms_administration_user" model="res.groups">
+              <field name="name">Admin User</field>
+              <field name="category_id" ref="banastech_hms.module_category_banastech_hms_administration"/>
+              <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+       </record>
+
+       <record id="group_banas_hms_doctor" model="res.groups">
+              <field name="name">Doctor User</field>
+              <field name="category_id" ref="banastech_hms.module_category_banastech_hms_doctor"/>
+              <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+              <field name="users" eval="[(4, ref('base.user_root'))]"/>
+       </record>
+
+       <record id="group_banas_hms_jr_doctor" model="res.groups">
+              <field name="name">Jr Doctor</field>
+              <field name="category_id" ref="banastech_hms.module_category_banastech_hms"/>
+              <field name="implied_ids" eval="[(4, ref('base.group_user')),]"/>
+              <!-- ('banastech_hms.group_banastech_hms_receptionist') -->
+               <!-- (4, ref('banastech_hms.group_banastech_hms_nurse')) -->
+              <field name="users" eval="[(4, ref('base.user_root'))]"/>
+       </record>
+
+       <record id="group_banastech_hms_pharmacist" model="res.groups">
+              <field name="name">Pharmacist</field>
+              <field name="category_id" ref="module_category_banastech_hms"/>
+              <field name="implied_ids" eval="[(4, ref('base.group_user')),(4, ref('banastech_hms.group_banastech_hms_patient_user'))]"/>
+              <field name="users" eval="[(4, ref('base.user_root'))]"/>
+       </record>
+
+       <record id="group_banastech_hms_nurse" model="res.groups">
+              <field name="name">Nurse</field>
+              <field name="category_id" ref="module_category_banastech_hms"/>
+              <field name="implied_ids" eval="[(4, ref('base.group_user')),(4, ref('banastech_hms.group_banastech_hms_patient_user'))]"/>
+              <field name="users" eval="[(4, ref('base.user_root'))]"/>
+       </record>
+
+       <record id="group_banastech_hms_manager" model="res.groups">
+              <field name="name">Manager</field>
+              <field name="category_id" ref="module_category_banastech_hms"/>
+              <field name="implied_ids" eval="[(4, ref('group_banastech_hms_pharmacist')),(4, ref('group_banas_hms_doctor'))]"/>
+              <field name="users" eval="[(4, ref('base.user_root'))]"/>
+       </record>
+
+       <record id="group_banastech_hms_medical_officer" model="res.groups">
+              <field name="name">Medical Officer</field>
+              <field name="category_id" ref="banastech_hms.module_category_banastech_hms"/>
+              <field name="implied_ids" eval="[(4, ref('base.group_user')),(4, ref('banastech_hms.group_banastech_hms_patient_user'))]"/>
+              <field name="users" eval="[(4, ref('base.user_root'))]"/>
+       </record>
+
+       <record id="group_banastech_hms_icu" model="res.groups">
+              <field name="name">ICU</field>
+              <field name="category_id" ref="banastech_hms.module_category_banastech_hms"/>
+              <field name="users" eval="[(4, ref('base.user_root'))]"/>
+       </record>
+
+       <record id="group_banastech_hms_receptionist" model="res.groups">
+              <field name="name">Receptionist</field>
+              <field name="category_id" ref="banastech_hms.module_category_banastech_hms"/>
+              <field name="implied_ids" eval="[(4, ref('base.group_user')),(4, ref('banastech_hms.group_banastech_hms_patient_user'))]"/>
+              <field name="users" eval="[(4, ref('base.user_root'))]"/>
+       </record>
+</odoo>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="menu_certificate_management"
+            name="Certificate"
+            sequence="45"
+            groups="group_certificate_manager"/>
+
+        <!--form view for Certificate -->
+        <record id="view_certificate_management_form" model="ir.ui.view">
+            <field name="name">Certificate Management</field>
+            <field name="model">certificate.management</field>
+            <field name="arch" type="xml">
+                <form string="Certificate">
+                    <header>
+                        <button name="action_done"
+                            string="Done"
+                            class="oe_highlight"
+                            type="object"
+                            states="draft"/>
+                        <field name="state" widget="statusbar" />
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="patient_id" attrs="{'readonly': [('state','=','done')]}" required="True"/>
+                                <field name="doctor_id" attrs="{'readonly': [('state','=','done')]}" required="True"/>
+                            </group>
+                            <group>
+                                <field name="date_attachment" attrs="{'readonly': [('state','=','done')]}" required="True"/>
+                                <field name="template_id" attrs="{'readonly': [('state','=','done')]}"/>
+                            </group>
+                        </group>
+                            <field name="certificate_content" nolabel="1" placeholder="Certificate Content" attrs="{'readonly': [('state','=','done')]}"/>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_certificate_management_tree" model="ir.ui.view">
+            <field name="name">Certificate Management</field>
+            <field name="model">certificate.management</field>
+            <field name="arch" type="xml">
+                <tree string="Certificate Management">
+                    <field name="name" />
+                    <field name="patient_id" />
+                    <field name="doctor_id"/>
+                    <field name="date_attachment"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_certificate_management_search" model="ir.ui.view">
+            <field name="name">Certificate Management</field>
+            <field name="model">certificate.management</field>
+            <field name="priority" eval="1" />
+            <field name="arch" type="xml">            
+                <search string="Certificate Management">
+                    <field name="name" />
+                    <field name="patient_id" />
+                    <field name="doctor_id"/>
+                    <field name="date_attachment"/>
+                    <field name="state"/>
+                    <newline/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_certificate_management_view" model="ir.actions.act_window">
+            <field name="name">Certificate Management</field>
+            <field name="res_model">certificate.management</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_certificate_management_search"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a Certificate.
+                </p>
+            </field>
+        </record>
+
+        <!--Template Configuration For Certificate -->
+        <record id="view_certificate_template_form" model="ir.ui.view">
+            <field name="name">Certificate Template</field>
+            <field name="model">certificate.template</field>
+            <field name="arch" type="xml">
+                <form string="Certificate Template">
+                    <sheet>
+                        <group colspan="2" cols="2"> 
+                            <field name="name" required="True"/>
+                        </group>
+                        <div>
+                            <label for="certificate_content"/>
+                            <field name="certificate_content" placeholder="Content"/>
+                        </div>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_certificate_template_tree" model="ir.ui.view">
+            <field name="name">Certificate Template</field>
+            <field name="model">certificate.template</field>
+            <field name="arch" type="xml">
+                <tree string="Certificate Template">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_certificate_template_search" model="ir.ui.view">
+            <field name="name">Certificate Template</field>
+            <field name="model">certificate.template</field>
+            <field name="priority" eval="1" />
+            <field name="arch" type="xml">
+                <search string="Certificate Template">
+                    <field name="name"/>
+                    <newline/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_certificate_template_view" model="ir.actions.act_window">
+            <field name="name">Certificate Template</field>
+            <field name="res_model">certificate.template</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_certificate_template_search" />
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add Certificate Template.
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem id="menu_certificate"
+            name="Certificate"
+            sequence="0"
+            parent="menu_certificate_management"/>
+        <menuitem id="menu_certificate_data"
+            name="Certificate Management"
+            sequence="0"
+            parent="menu_certificate"
+            action="action_certificate_management_view"/>
+        <menuitem id="menu_certificate_template"
+            name="Configuration"
+            sequence="1"
+            parent="menu_certificate_management"/>
+        <menuitem id="menu_certificate_template_data"
+            name="Certificate Template"
+            sequence="1"
+            parent="menu_certificate_template"
+            action="action_certificate_template_view"/>
+
+
+        <record model="ir.ui.view" id="view_hms_patient_certificate_form">
+            <field name="name">hms.patient.certificate.view</field>
+            <field name="model">banastech.hms.patient</field>
+            <field name="inherit_id" ref="banastech_hms.view_banastech_hms_patient_form" />
+            <field name="arch" type="xml">
+                <button name='action_open_banastech_hms_appointment' position="before">
+                    <button name="action_open_certificate" string="Certificate"  type="object" class="oe_stat_button" icon="fa-certificate"/>
+                    <!-- groups="banastech_hms.group_banas_hms_jr_doctor" -->
+                </button>
+            </field>
+        </record>
+
+    </data>
+</odoo>
